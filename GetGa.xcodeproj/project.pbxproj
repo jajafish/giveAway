@@ -28,7 +28,6 @@
 		E7A29A02193878B00045EC83 /* JFGiveItemsTableViewC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A29A01193878B00045EC83 /* JFGiveItemsTableViewC.m */; };
 		E7C8AE99193700AA00856D4B /* JFGiveItemDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C8AE98193700AA00856D4B /* JFGiveItemDetailsVC.m */; };
 		E7C8AE9C19370B7C00856D4B /* JFConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C8AE9B19370B7C00856D4B /* JFConstants.m */; };
-		E7F5D2C5193826DD00B17BE0 /* JFGiveItemsTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F5D2C4193826DD00B17BE0 /* JFGiveItemsTableVC.m */; };
 		E7F5D2C8193831BF00B17BE0 /* JFGiveItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F5D2C7193831BF00B17BE0 /* JFGiveItemCell.m */; };
 		E7F5D2CB19383F4800B17BE0 /* PFGiveItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F5D2CA19383F4800B17BE0 /* PFGiveItem.m */; };
 /* End PBXBuildFile section */
@@ -76,8 +75,6 @@
 		E7C8AE98193700AA00856D4B /* JFGiveItemDetailsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFGiveItemDetailsVC.m; sourceTree = "<group>"; };
 		E7C8AE9A19370B7C00856D4B /* JFConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFConstants.h; sourceTree = "<group>"; };
 		E7C8AE9B19370B7C00856D4B /* JFConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFConstants.m; sourceTree = "<group>"; };
-		E7F5D2C3193826DD00B17BE0 /* JFGiveItemsTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFGiveItemsTableVC.h; sourceTree = "<group>"; };
-		E7F5D2C4193826DD00B17BE0 /* JFGiveItemsTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFGiveItemsTableVC.m; sourceTree = "<group>"; };
 		E7F5D2C6193831BF00B17BE0 /* JFGiveItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFGiveItemCell.h; sourceTree = "<group>"; };
 		E7F5D2C7193831BF00B17BE0 /* JFGiveItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFGiveItemCell.m; sourceTree = "<group>"; };
 		E7F5D2C919383F4800B17BE0 /* PFGiveItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFGiveItem.h; sourceTree = "<group>"; };
@@ -245,8 +242,6 @@
 		E7C8AE941937006400856D4B /* give items table */ = {
 			isa = PBXGroup;
 			children = (
-				E7F5D2C3193826DD00B17BE0 /* JFGiveItemsTableVC.h */,
-				E7F5D2C4193826DD00B17BE0 /* JFGiveItemsTableVC.m */,
 				E7F5D2C6193831BF00B17BE0 /* JFGiveItemCell.h */,
 				E7F5D2C7193831BF00B17BE0 /* JFGiveItemCell.m */,
 				E7A29A00193878B00045EC83 /* JFGiveItemsTableViewC.h */,
@@ -410,7 +405,6 @@
 				E705E0BB19367B6A00CD2E3A /* JFGivePhotoVC.m in Sources */,
 				E7A29A02193878B00045EC83 /* JFGiveItemsTableViewC.m in Sources */,
 				E7F5D2CB19383F4800B17BE0 /* PFGiveItem.m in Sources */,
-				E7F5D2C5193826DD00B17BE0 /* JFGiveItemsTableVC.m in Sources */,
 				E775594319325CC600CD76A0 /* JFAppDelegate.m in Sources */,
 				E7C8AE99193700AA00856D4B /* JFGiveItemDetailsVC.m in Sources */,
 				E7F5D2C8193831BF00B17BE0 /* JFGiveItemCell.m in Sources */,

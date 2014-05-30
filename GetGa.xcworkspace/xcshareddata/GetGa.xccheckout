@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>2D86E218-7507-4FE6-9C4F-84C4268E29B9</string>
+	<key>IDESourceControlProjectName</key>
+	<string>GetGa</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>1129F1CD-3AC4-4C24-8D22-AAA083EE53E4</key>
+		<string>https://github.com/jajafish/giveAway.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>GetGa.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>1129F1CD-3AC4-4C24-8D22-AAA083EE53E4</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/jajafish/giveAway.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>1129F1CD-3AC4-4C24-8D22-AAA083EE53E4</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>1129F1CD-3AC4-4C24-8D22-AAA083EE53E4</string>
+			<key>IDESourceControlWCCName</key>
+			<string>GetGa</string>
+		</dict>
+	</array>
+</dict>
+</plist>

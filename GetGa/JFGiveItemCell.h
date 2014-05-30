@@ -15,4 +15,14 @@
 @property (strong, nonatomic) IBOutlet UILabel *giveItemLabel;
 
 
+
+
+
+
+
+
+
+
+
+
 @end
