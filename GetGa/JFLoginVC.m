@@ -7,7 +7,6 @@
 //
 
 #import "JFLoginVC.h"
-#import "JFGiveItemsTableVC.h"
 
 @interface JFLoginVC ()
 @property (strong, nonatomic) IBOutlet UIButton *loginWithFBButton;

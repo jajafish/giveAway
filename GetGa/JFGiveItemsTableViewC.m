@@ -13,6 +13,7 @@
 @interface JFGiveItemsTableViewC ()
 
 @property (strong, nonatomic) NSMutableArray *myGiveItems;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *logButton;
 
 @end
 
@@ -36,31 +37,21 @@
     [query whereKey:@"giver" equalTo:[PFUser currentUser]];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-            // The find succeeded.
-            NSLog(@"Successfully retrieved %d give items.", objects.count);
-            // Do something with the found objects
-            
-            NSMutableArray *mutableGiveItems = [[NSMutableArray alloc]init];
-            
+            self.myGiveItems = [[NSMutableArray alloc]init];
             for (PFObject *object in objects) {
                 PFGiveItem *newGiveItem = [[PFGiveItem alloc]init];
                 newGiveItem.giveItemName = object[@"giveItemTitle"];
                 newGiveItem.giveItemImage = object[@"giveItemPhoto"];
-                [mutableGiveItems addObject:newGiveItem];
-                [self.myGiveItems addObjectsFromArray:mutableGiveItems];
-                NSLog(@"%@", mutableGiveItems);
+                [self.myGiveItems addObject:newGiveItem];
             }
+            
         } else {
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
         
-        
-        
     }];
     
-    
-
     
     
     
@@ -82,30 +73,37 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.myGiveItems count];
+    return self.myGiveItems.count;
 }
 
 
-
-
-    
     
 - (JFGiveItemCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-        
-    JFGiveItemCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-        
+    
+    static NSString *cellIdentifier = @"Cell";
+    
+    JFGiveItemCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (cell == nil){
+        cell = [[JFGiveItemCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+    }
 
-    PFGiveItem *giveItem = self.myGiveItems[indexPath.row];
-    cell.giveItemLabel.text = giveItem.giveItemName;
-        
-    /* Now that the cell is configured we return it to the table view so that it can display it */
+    //    PFGiveItem *giveItem = self.myGiveItems[indexPath.row];
+    cell.giveItemLabel.text = @"BOb";
+    
         
     return cell;
 
-    
-    
+
 }
 
+
+
+
+- (IBAction)logButtonPressed:(UIBarButtonItem *)sender {
+    
+    NSLog(@"%@", self.myGiveItems);
+    
+}
 
 
 

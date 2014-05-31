@@ -7,7 +7,6 @@
 //
 
 #import "JFGiveItemDetailsVC.h"
-#import "JFGiveItemsTableVC.h"
 
 @interface JFGiveItemDetailsVC () <UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UIImageView *giveItemPhotoImageView;

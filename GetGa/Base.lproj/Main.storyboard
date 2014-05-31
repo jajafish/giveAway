@@ -45,12 +45,20 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="I'm Giving Away..." id="eFr-6V-8Ft">
+                        <barButtonItem key="leftBarButtonItem" systemItem="rewind" id="PBf-rh-EOY">
+                            <connections>
+                                <action selector="logButtonPressed:" destination="5Np-FY-BoD" id="Idq-K6-g4r"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="0u9-3Q-OF4">
                             <connections>
                                 <segue destination="p25-uW-pG8" kind="push" id="TDO-IQ-biN"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="logButton" destination="PBf-rh-EOY" id="Ejf-qg-PCR"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3t8-qw-hkp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
