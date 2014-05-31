@@ -10,8 +10,6 @@
 
 @implementation JFGiveItemCell
 
-
-
 @synthesize giveItemImageView = _giveItemImageView;
 @synthesize giveItemLabel = _giveItemLabel;
 
@@ -24,6 +22,9 @@
     }
     return self;
 }
+
+
+
 
 - (void)awakeFromNib
 {

@@ -31,8 +31,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-
     PFQuery *query = [PFQuery queryWithClassName:@"giveItem"];
     [query whereKey:@"giver" equalTo:[PFUser currentUser]];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -44,19 +42,16 @@
                 newGiveItem.giveItemImage = object[@"giveItemPhoto"];
                 [self.myGiveItems addObject:newGiveItem];
             }
-            
+            [self.tableView reloadData];
         } else {
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
         
     }];
-    
-    
-    
-    
-    
 }
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -66,10 +61,6 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -87,23 +78,15 @@
         cell = [[JFGiveItemCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
 
-    //    PFGiveItem *giveItem = self.myGiveItems[indexPath.row];
-    cell.giveItemLabel.text = @"BOb";
-    
-        
+    PFGiveItem *giveItem = self.myGiveItems[indexPath.row];
+    cell.giveItemLabel.text = giveItem.giveItemName;
     return cell;
-
-
 }
 
 
 
 
-- (IBAction)logButtonPressed:(UIBarButtonItem *)sender {
-    
-    NSLog(@"%@", self.myGiveItems);
-    
-}
+
 
 
 
