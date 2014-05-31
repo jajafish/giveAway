@@ -31,6 +31,14 @@
     // Do any additional setup after loading the view.
 }
 
+//-(void)viewDidAppear:(BOOL)animated
+//{
+//    if ([PFUser currentUser] && [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]){
+//        [self updateUserInformation];
+//        [self performSegueWithIdentifier:@"loginToGiveItemsTable" sender:self];
+//    }
+//}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

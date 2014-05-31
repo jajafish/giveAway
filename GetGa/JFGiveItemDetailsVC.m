@@ -45,35 +45,22 @@
 
 
 
-
-
-//    [self.photos addObject:[self photoFromImage:image]];
-
-
-//    NSData *imageData = UIImagePNGRepresentation(image);
-//    PFFile *imageFile = [PFFile fileWithName:@"image.png" data:imageData];
-//
-//    PFObject *itemPhoto = [PFObject objectWithClassName:@"ItemPhoto"];
-//    itemPhoto[@"imageName"] = @"old bed";
-//    itemPhoto[@"imageFile"] = imageFile;
-//    [itemPhoto saveInBackground];
-
-
-
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     
     
-    NSString *currentUserName = [PFUser currentUser][@"profile"][@"name"];
-    NSString *nameForGiveItem = [NSString stringWithFormat:@"%@%@%@", currentUserName, self.giveItemTitleTextField.text, @"Photo"];
     
+    
+    NSString *nameForGiveItem = self.giveItemTitleTextField.text;
     NSData *giveItemImageData = UIImagePNGRepresentation(self.giveItemImage);
     PFFile *giveItemImageFile = [PFFile fileWithName:nameForGiveItem data:giveItemImageData];
     PFObject *giveItemPhoto = [PFObject objectWithClassName:@"giveItemPhoto"];
+    giveItemPhoto[@"imageOwner"] = [PFUser currentUser];
     giveItemPhoto[@"imageName"] = nameForGiveItem;
-    giveItemPhoto[@"imageFIle"] = giveItemImageFile;
+    giveItemPhoto[@"imageFile"] = giveItemImageFile;
+
     [giveItemPhoto saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//        NSLog(@"saved %@", giveItemPhoto);
+        NSLog(@"saved %@", giveItemPhoto);
     }];
     
     
@@ -83,6 +70,8 @@
     [giveItem setObject:giveItemPhoto forKey:@"giveItemPhoto"];
     [giveItem saveInBackground];
     
+    
+    NSLog(@"you saved \n an item called %@ \n and a photo called %@", giveItem, giveItemPhoto);
     
     
     [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:YES];

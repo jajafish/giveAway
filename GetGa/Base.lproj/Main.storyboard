@@ -45,9 +45,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="I'm Giving" id="eFr-6V-8Ft">
+                        <barButtonItem key="backBarButtonItem" title=" " id="FVu-wQ-0zj"/>
                         <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="0u9-3Q-OF4">
                             <connections>
-                                <segue destination="p25-uW-pG8" kind="push" id="TDO-IQ-biN"/>
+                                <segue destination="p25-uW-pG8" kind="push" identifier="givePhotoToGiveDetailsSegue" id="TDO-IQ-biN"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

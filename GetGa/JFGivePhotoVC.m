@@ -80,7 +80,6 @@
     if(!image) image = info[UIImagePickerControllerOriginalImage];
     
 
-
     [self setPhotoForNextVC:image];
     
     [self dismissViewControllerAnimated:YES completion:nil];
