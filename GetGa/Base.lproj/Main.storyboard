@@ -212,10 +212,6 @@
                                         </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="getItemImageView" destination="YAp-Yy-CZ8" id="Imf-aj-JRe"/>
-                                    <outlet property="getItemLabel" destination="75e-Ef-zqv" id="QCo-cT-dY2"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -224,11 +220,14 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Free Stuff" id="GVX-vV-tCM">
-                        <barButtonItem key="rightBarButtonItem" title="filter" id="Hs7-7o-Bu4"/>
+                        <barButtonItem key="rightBarButtonItem" title="filter" id="Hs7-7o-Bu4">
+                            <connections>
+                                <action selector="filterButtonPressed:" destination="xED-am-X9c" id="BJD-2Y-AQl"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="filterButton" destination="Hs7-7o-Bu4" id="Ys4-ge-WAo"/>
-                        <outlet property="getItemsTableView" destination="uUB-bk-hfI" id="rjG-8f-wxo"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jPO-jK-chC" userLabel="First Responder" sceneMemberID="firstResponder"/>

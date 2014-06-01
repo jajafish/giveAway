@@ -16,7 +16,7 @@
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *filterButton;
 
-@property (strong, nonatomic) IBOutlet UITableView *getItemsTableView;
+//@property (strong, nonatomic) IBOutlet UITableView *getItemsTableView;
 
 @end
 
@@ -35,6 +35,8 @@
 {
     [super viewDidLoad];
     
+    self.availableFreeStuff = [[NSMutableArray alloc]init];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -52,31 +54,20 @@
 {
     
     PFQuery *query = [PFQuery queryWithClassName:@"giveItem"];
-    //    [query whereKey:@"giver" notEqualTo:[PFUser currentUser]];
+    [query whereKey:@"giver" equalTo:[PFUser currentUser]];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-            self.availableFreeStuff = [[NSMutableArray alloc]init];
+
             for (PFObject *object in objects) {
                 PFGetItem *newGetItem = [[PFGetItem alloc]init];
                 newGetItem = object[@"giveItemTitle"];
-                
-                // return photo files for each of the objecs
-                PFFile *giveItemImageFile = object[@"imageFile"];
-                [giveItemImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
-                    if (!error) {
-                        UIImage *giveItemImageForCell = [UIImage imageWithData:imageData];
-                        newGetItem.getItemImage = giveItemImageForCell;
-                    };
-                }];
                 NSLog(@"%@", newGetItem);
-                
-                [self.availableFreeStuff addObject:[newGetItem description]];
-                
+                [self.availableFreeStuff addObject:newGetItem];
             }
         } else {
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
-        [self.getItemsTableView reloadData];
+        [self.tableView reloadData];
         
         NSLog(@"reached end of query");
         
@@ -98,8 +89,8 @@
         cell = [[JFGetItemCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
     
-//    PFGetItem *giveItem = self.availableFreeStuff[indexPath.row];
-    cell.getItemLabel.text = @"bob";
+    PFGetItem *getItem = self.availableFreeStuff[indexPath.row];
+    cell.getItemLabel.text = getItem.getItemName;
 //    cell.getItemImageView.image = giveItem.getItemImage;
     
     return cell;
@@ -109,69 +100,14 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    return 1;
+    return self.availableFreeStuff.count;
 }
 
-
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+- (IBAction)filterButtonPressed:(UIBarButtonItem *)sender {
     
-    // Configure the cell...
+    NSLog(@"%@", self.availableFreeStuff);
     
-    return cell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

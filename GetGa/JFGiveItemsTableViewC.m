@@ -111,27 +111,6 @@
 }
 
 
-//-(void)getImagesForGiveItemCells
-//{
-//    
-//    
-//    PFQuery *imagesQuery = [PFQuery queryWithClassName:@"giveItemPhoto"];
-//    [imagesQuery whereKey:@"imageFile" equalTo:@"laptop"];
-//    [imagesQuery countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
-//       
-//        if (number == 0)
-//        {
-//            
-//            NSURL
-//            
-//            
-//            
-//        }
-//        
-//    }];
-//}
-
-
 
 - (IBAction)logButtonPressed:(UIBarButtonItem *)sender {
     
