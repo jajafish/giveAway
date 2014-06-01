@@ -325,7 +325,8 @@ static NSMutableArray *allInstances;
     {
         @try
         {
-            [self performSegueWithIdentifier:@"leftMenu" sender:self];
+        //            ONLY HAVE RIGHT MENU RIGHT NOW JUNE 1 2014, 330 AM
+        //            [self performSegueWithIdentifier:@"leftMenu" sender:self];
 
             @try {
                 [self performSegueWithIdentifier:@"rightMenu" sender:self];
