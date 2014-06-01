@@ -35,6 +35,15 @@
     // Do any additional setup after loading the view.
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    
+    if ([PFUser currentUser] && [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]){
+        [self updateUserInformation];
+    }
+}
+
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -92,7 +101,7 @@
             
             [[PFUser currentUser] setObject:userProfile forKey:kJFUserProfileKey];
             [[PFUser currentUser] saveInBackground];
-            //            NSLog(@"%@", userProfile);
+            NSLog(@"%@", userProfile);
             
         }
         
@@ -119,7 +128,7 @@
             }
         } else{
             [self performSegueWithIdentifier:@"loginToMainSegue" sender:self];
-            //            [self updateUserInformation];
+            [self updateUserInformation];
         }
     }];
     

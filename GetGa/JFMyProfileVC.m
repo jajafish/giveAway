@@ -32,6 +32,7 @@
     self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width / 2;
     self.profileImageView.clipsToBounds = YES;
     self.profileImageView.image = [UIImage imageNamed:@"dad.png"];
+    self.navigationItem.title = [PFUser currentUser][@"profile"][@"first_name"];
     
 }
 
