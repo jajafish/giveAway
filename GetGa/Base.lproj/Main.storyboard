@@ -187,7 +187,7 @@
         <scene sceneID="ULD-kK-jk2">
             <objects>
                 <viewController id="CEK-P6-xPr" customClass="JFGetItemsTableViewC" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Alr-9o-rZy">
+                    <view key="view" contentMode="left" id="Alr-9o-rZy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
@@ -196,22 +196,42 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="getCell" rowHeight="200" id="WXI-BU-F2q">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="getCell" rowHeight="200" id="WXI-BU-F2q" customClass="JFGetItemCell">
                                         <rect key="frame" x="0.0" y="86" width="320" height="200"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WXI-BU-F2q" id="DxC-Y6-Rht">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="199"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GsV-YB-hgm">
+                                                    <rect key="frame" x="20" y="158" width="42" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="bMg-Yn-19F">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="199"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="getItemImageView" destination="bMg-Yn-19F" id="a1W-We-8qW"/>
+                                            <outlet property="getItemLabel" destination="GsV-YB-hgm" id="D6E-QV-31d"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="0.94099416151760396" green="1" blue="0.86216733488275454" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.1193147928" green="1" blue="0.060547953420000002" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Free Stuff!" id="f0O-VM-qCT"/>
+                    <navigationItem key="navigationItem" title="Free Stuff!" id="f0O-VM-qCT">
+                        <barButtonItem key="rightBarButtonItem" title="filter" id="et0-4f-vBk"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="getItemsTableView" destination="q1G-yg-Njo" id="OWg-fA-adt"/>
+                        <outlet property="getItemsView" destination="Alr-9o-rZy" id="2xv-wc-6X4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zdo-c6-k3T" userLabel="First Responder" sceneMemberID="firstResponder"/>

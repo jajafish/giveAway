@@ -14,6 +14,7 @@
 @property (strong, nonatomic) IBOutlet UITableView *getItemsTableView;
 
 @property (strong, nonatomic) NSMutableArray *availableFreeStuff;
+@property (strong, nonatomic) IBOutlet UIView *getItemsView;
 
 @end
 
@@ -58,9 +59,9 @@
                         newGetItem.getItemImage = giveItemImageForCell;
                     };
                 }];
-                NSLog(@"hello");
+                NSLog(@"%@", newGetItem);
                 
-                [self.availableFreeStuff addObject:newGetItem];
+                [self.availableFreeStuff addObject:[newGetItem description]];
                 
             }
         } else {

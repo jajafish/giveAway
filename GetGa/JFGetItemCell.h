@@ -10,8 +10,10 @@
 
 @interface JFGetItemCell : UITableViewCell
 
+
 @property (strong, nonatomic) IBOutlet UIImageView *getItemImageView;
 
 @property (strong, nonatomic) IBOutlet UILabel *getItemLabel;
+
 
 @end
