@@ -44,32 +44,32 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-//    PFQuery *query = [PFQuery queryWithClassName:@"giveItem"];
-//    [query whereKey:@"giver" equalTo:[PFUser currentUser]];
-//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-//        if (!error) {
-//            self.myGiveItems = [[NSMutableArray alloc]init];
-//            for (PFObject *object in objects) {
-//                PFGiveItem *newGiveItem = [[PFGiveItem alloc]init];
-//                newGiveItem.giveItemName = object[@"giveItemTitle"];
-//                
-//                // return photo files for each of the objecs
-//                PFFile *giveItemImageFile = object[@"imageFile"];
-//                [giveItemImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
-//                    if (!error) {
-//                        UIImage *giveItemImageForCell = [UIImage imageWithData:imageData];
-//                        newGiveItem.giveItemImage = giveItemImageForCell;
-//                    };
-//                }];
-//                
-//                [self.myGiveItems addObject:newGiveItem];
-//
-//            }
-//        } else {
-//            NSLog(@"Error: %@ %@", error, [error userInfo]);
-//        }
-//        [self.tableView reloadData];
-//    }];
+    PFQuery *query = [PFQuery queryWithClassName:@"giveItem"];
+    [query whereKey:@"giver" equalTo:[PFUser currentUser]];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            self.myGiveItems = [[NSMutableArray alloc]init];
+            for (PFObject *object in objects) {
+                PFGiveItem *newGiveItem = [[PFGiveItem alloc]init];
+                newGiveItem.giveItemName = object[@"giveItemTitle"];
+                
+                // return photo files for each of the objecs
+                PFFile *giveItemImageFile = object[@"imageFile"];
+                [giveItemImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+                    if (!error) {
+                        UIImage *giveItemImageForCell = [UIImage imageWithData:imageData];
+                        newGiveItem.giveItemImage = giveItemImageForCell;
+                    };
+                }];
+                
+                [self.myGiveItems addObject:newGiveItem];
+
+            }
+        } else {
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+        [self.tableView reloadData];
+    }];
 
 }
 

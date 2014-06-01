@@ -183,24 +183,36 @@
             </objects>
             <point key="canvasLocation" x="3296" y="3223"/>
         </scene>
-        <!--View Controller-->
+        <!--Get Items Table ViewC - Free Stuff!-->
         <scene sceneID="ULD-kK-jk2">
             <objects>
-                <viewController id="CEK-P6-xPr" sceneMemberID="viewController">
+                <viewController id="CEK-P6-xPr" customClass="JFGetItemsTableViewC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Alr-9o-rZy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VDk-ID-Wn5">
-                                <rect key="frame" x="139" y="137" width="41" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="q1G-yg-Njo">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="getCell" rowHeight="200" id="WXI-BU-F2q">
+                                        <rect key="frame" x="0.0" y="86" width="320" height="200"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WXI-BU-F2q" id="DxC-Y6-Rht">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="199"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.94099416151760396" green="1" blue="0.86216733488275454" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="f0O-VM-qCT"/>
+                    <navigationItem key="navigationItem" title="Free Stuff!" id="f0O-VM-qCT"/>
+                    <connections>
+                        <outlet property="getItemsTableView" destination="q1G-yg-Njo" id="OWg-fA-adt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zdo-c6-k3T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
