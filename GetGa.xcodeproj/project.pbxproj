@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		94A60AA2A66F4CDE90D4D337 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C541893280A489EBA8DAF07 /* libPods.a */; };
 		E705E0BB19367B6A00CD2E3A /* JFGivePhotoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E705E0BA19367B6A00CD2E3A /* JFGivePhotoVC.m */; };
-		E705E0BF1936FDFC00CD2E3A /* JFLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E705E0BE1936FDFC00CD2E3A /* JFLoginVC.m */; };
 		E775593319325CC600CD76A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E775593219325CC600CD76A0 /* Foundation.framework */; };
 		E775593519325CC600CD76A0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E775593419325CC600CD76A0 /* CoreGraphics.framework */; };
 		E775593719325CC600CD76A0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E775593619325CC600CD76A0 /* UIKit.framework */; };
@@ -48,8 +47,6 @@
 		4E51306CA64B45D59323E32A /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		E705E0B919367B6A00CD2E3A /* JFGivePhotoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFGivePhotoVC.h; sourceTree = "<group>"; };
 		E705E0BA19367B6A00CD2E3A /* JFGivePhotoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFGivePhotoVC.m; sourceTree = "<group>"; };
-		E705E0BD1936FDFC00CD2E3A /* JFLoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFLoginVC.h; sourceTree = "<group>"; };
-		E705E0BE1936FDFC00CD2E3A /* JFLoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFLoginVC.m; sourceTree = "<group>"; };
 		E775592F19325CC600CD76A0 /* GetGa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GetGa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E775593219325CC600CD76A0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E775593419325CC600CD76A0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -138,8 +135,6 @@
 		E705E0BC1936FDF100CD2E3A /* login */ = {
 			isa = PBXGroup;
 			children = (
-				E705E0BD1936FDFC00CD2E3A /* JFLoginVC.h */,
-				E705E0BE1936FDFC00CD2E3A /* JFLoginVC.m */,
 			);
 			name = login;
 			sourceTree = "<group>";
@@ -422,7 +417,6 @@
 				E7C8AE99193700AA00856D4B /* JFGiveItemDetailsVC.m in Sources */,
 				E7F5D2C8193831BF00B17BE0 /* JFGiveItemCell.m in Sources */,
 				E7C8AE9C19370B7C00856D4B /* JFConstants.m in Sources */,
-				E705E0BF1936FDFC00CD2E3A /* JFLoginVC.m in Sources */,
 				E7BB0417193AAC6D000DEF36 /* JFMainViewController.m in Sources */,
 				E775596D19325D8E00CD76A0 /* JFGetVC.m in Sources */,
 				E775593F19325CC600CD76A0 /* main.m in Sources */,
