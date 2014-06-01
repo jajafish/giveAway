@@ -13,11 +13,17 @@
 @interface JFGiveItemsTableViewC ()
 
 @property (strong, nonatomic) NSMutableArray *myGiveItems;
+
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *logButton;
+
+
 
 @end
 
+
 @implementation JFGiveItemsTableViewC
+
+@synthesize myGiveItems;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -31,9 +37,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     [self.navigationItem setHidesBackButton:YES];
-    
+//    [self.tableView setContentInset:UIEdgeInsetsMake(50,0,0,0)];
+}
+
+
+-(void)viewWillAppear:(BOOL)animated
+{
     PFQuery *query = [PFQuery queryWithClassName:@"giveItem"];
     [query whereKey:@"giver" equalTo:[PFUser currentUser]];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -42,19 +52,26 @@
             for (PFObject *object in objects) {
                 PFGiveItem *newGiveItem = [[PFGiveItem alloc]init];
                 newGiveItem.giveItemName = object[@"giveItemTitle"];
-                newGiveItem.giveItemImage = object[@"giveItemPhoto"];
+                
+                // return photo files for each of the objecs
+                PFFile *giveItemImageFile = object[@"imageFile"];
+                [giveItemImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+                    if (!error) {
+                        UIImage *giveItemImageForCell = [UIImage imageWithData:imageData];
+                        newGiveItem.giveItemImage = giveItemImageForCell;
+                    };
+                }];
+                
                 [self.myGiveItems addObject:newGiveItem];
+
             }
-            [self.tableView reloadData];
-            NSLog(@"%@",objects);
         } else {
-            // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
-        
+        [self.tableView reloadData];
     }];
-}
 
+}
 
 
 - (void)didReceiveMemoryWarning
@@ -75,7 +92,8 @@
 {
     tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
-    
+
+
 - (JFGiveItemCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *cellIdentifier = @"Cell";
@@ -87,45 +105,40 @@
 
     PFGiveItem *giveItem = self.myGiveItems[indexPath.row];
     cell.giveItemLabel.text = giveItem.giveItemName;
-    
+    cell.giveItemImageView.image = giveItem.giveItemImage;
     
     return cell;
 }
 
 
-
-
-
-//    NSString *pathToPhotoFile = giveItem.giveItemImage[@"giveItemPhoto"];
-
-//NSLog(@"%@", giveItem.giveItemImage);
-
-//    PFFile *giveItemImageFile = giveItem[@"giveItemPhoto"][@"imageFIle"];
-//    [giveItemImageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-//        cell.giveItemImageView.image = [UIImage imageWithData:data];
-//        NSLog(@"hello");
-//    }];
-
-
-
-
-//-(void)requestImage
+//-(void)getImagesForGiveItemCells
 //{
-//    PFQuery *imageQuery = [PFQuery queryWithClassName:@"giveItemPhoto"];
-//    [imageQuery whereKey:<#(NSString *)#> equalTo:<#(id)#>]
-
-
-    
-//    QUERY PHOTOS WHERE USER key is current user AND item name key is current item name
-
-
 //    
 //    
+//    PFQuery *imagesQuery = [PFQuery queryWithClassName:@"giveItemPhoto"];
+//    [imagesQuery whereKey:@"imageFile" equalTo:@"laptop"];
+//    [imagesQuery countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
+//       
+//        if (number == 0)
+//        {
+//            
+//            NSURL
+//            
+//            
+//            
+//        }
+//        
+//    }];
 //}
 
 
 
-
+- (IBAction)logButtonPressed:(UIBarButtonItem *)sender {
+    
+    NSLog(@"%@", self.myGiveItems);
+    
+    
+}
 
 
 @end

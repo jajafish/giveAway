@@ -47,10 +47,6 @@
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    
-    
-    
-    
     NSString *nameForGiveItem = self.giveItemTitleTextField.text;
     NSData *giveItemImageData = UIImagePNGRepresentation(self.giveItemImage);
     PFFile *giveItemImageFile = [PFFile fileWithName:nameForGiveItem data:giveItemImageData];
@@ -59,20 +55,13 @@
     giveItemPhoto[@"imageName"] = nameForGiveItem;
     giveItemPhoto[@"imageFile"] = giveItemImageFile;
 
-    [giveItemPhoto saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        NSLog(@"saved %@", giveItemPhoto);
-    }];
-    
+    [giveItemPhoto saveInBackground];
     
     PFObject *giveItem = [PFObject objectWithClassName:@"giveItem"];
     giveItem[@"giveItemTitle"] = self.giveItemTitleTextField.text;
     giveItem[@"giver"] = [PFUser currentUser];
     [giveItem setObject:giveItemPhoto forKey:@"giveItemPhoto"];
     [giveItem saveInBackground];
-    
-    
-    NSLog(@"you saved \n an item called %@ \n and a photo called %@", giveItem, giveItemPhoto);
-    
     
     [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:YES];
 
