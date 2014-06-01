@@ -208,9 +208,18 @@
                     <view key="view" contentMode="scaleToFill" id="Nyl-rD-gT9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="LJv-rV-kSG">
+                                <rect key="frame" x="100" y="80" width="120" height="120"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="My Name" id="qFA-7J-LFw"/>
+                    <connections>
+                        <outlet property="profileImageView" destination="LJv-rV-kSG" id="Ex7-f2-d3p"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eH2-0k-isT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

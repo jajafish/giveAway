@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		94A60AA2A66F4CDE90D4D337 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C541893280A489EBA8DAF07 /* libPods.a */; };
 		E7025FEA193B0D9100E0027C /* JFMyProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7025FE9193B0D9100E0027C /* JFMyProfileVC.m */; };
+		E7025FEC193B142B00E0027C /* dad.png in Resources */ = {isa = PBXBuildFile; fileRef = E7025FEB193B142B00E0027C /* dad.png */; };
 		E705E0BB19367B6A00CD2E3A /* JFGivePhotoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E705E0BA19367B6A00CD2E3A /* JFGivePhotoVC.m */; };
 		E70DAE5C193AF79E001EABF4 /* JFGetItemsTableViewC.m in Sources */ = {isa = PBXBuildFile; fileRef = E70DAE5B193AF79E001EABF4 /* JFGetItemsTableViewC.m */; };
 		E71BDFA3193AC62F00861171 /* JFLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E71BDFA2193AC62F00861171 /* JFLoginVC.m */; };
@@ -51,6 +52,7 @@
 		4E51306CA64B45D59323E32A /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		E7025FE8193B0D9100E0027C /* JFMyProfileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFMyProfileVC.h; sourceTree = "<group>"; };
 		E7025FE9193B0D9100E0027C /* JFMyProfileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFMyProfileVC.m; sourceTree = "<group>"; };
+		E7025FEB193B142B00E0027C /* dad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dad.png; sourceTree = "<group>"; };
 		E705E0B919367B6A00CD2E3A /* JFGivePhotoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFGivePhotoVC.h; sourceTree = "<group>"; };
 		E705E0BA19367B6A00CD2E3A /* JFGivePhotoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFGivePhotoVC.m; sourceTree = "<group>"; };
 		E70DAE5A193AF79E001EABF4 /* JFGetItemsTableViewC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFGetItemsTableViewC.h; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 		E775593919325CC600CD76A0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E7025FEB193B142B00E0027C /* dad.png */,
 				E775594119325CC600CD76A0 /* JFAppDelegate.h */,
 				E775594219325CC600CD76A0 /* JFAppDelegate.m */,
 				E775596E1932637C00CD76A0 /* appshot.png */,
@@ -417,6 +420,7 @@
 			files = (
 				E775594B19325CC600CD76A0 /* Images.xcassets in Resources */,
 				E775593D19325CC600CD76A0 /* InfoPlist.strings in Resources */,
+				E7025FEC193B142B00E0027C /* dad.png in Resources */,
 				E775594619325CC600CD76A0 /* Main.storyboard in Resources */,
 				E775596F1932637C00CD76A0 /* appshot.png in Resources */,
 			);

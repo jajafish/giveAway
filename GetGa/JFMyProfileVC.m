@@ -9,6 +9,7 @@
 #import "JFMyProfileVC.h"
 
 @interface JFMyProfileVC ()
+@property (strong, nonatomic) IBOutlet UIImageView *profileImageView;
 
 @end
 
@@ -26,7 +27,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+
+    self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width / 2;
+    self.profileImageView.clipsToBounds = YES;
+    self.profileImageView.image = [UIImage imageNamed:@"dad.png"];
+    
 }
 
 - (void)didReceiveMemoryWarning
