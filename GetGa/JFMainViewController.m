@@ -37,5 +37,27 @@
 }
 
 
+-(void)configureLeftMenuButton:(UIButton *)button
+{
+    
+    CGRect frame = button.frame;
+    frame.origin = (CGPoint){0, 0};
+    frame.size = (CGSize){40,40};
+    
+    button.frame = frame;
+    
+}
+
+-(BOOL)deepnessForLeftMenu
+{
+    return YES;
+}
+
+-(BOOL)deepnessForRightMenu
+{
+    return YES;
+}
+
+
 
 @end
