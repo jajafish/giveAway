@@ -176,35 +176,63 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="CEK-P6-xPr" kind="relationship" relationship="rootViewController" id="UpY-UF-93e"/>
+                        <segue destination="xED-am-X9c" kind="relationship" relationship="rootViewController" id="5Ou-eL-7lG"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Nv-MO-hAn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3296" y="3223"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="ULD-kK-jk2">
+        <!--Get Items Table ViewC - Free Stuff-->
+        <scene sceneID="phP-l5-1iF">
             <objects>
-                <viewController id="CEK-P6-xPr" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Alr-9o-rZy">
+                <tableViewController id="xED-am-X9c" customClass="JFGetItemsTableViewC" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="200" sectionHeaderHeight="22" sectionFooterHeight="22" id="uUB-bk-hfI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VDk-ID-Wn5">
-                                <rect key="frame" x="139" y="137" width="41" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="f0O-VM-qCT"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zdo-c6-k3T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="getCell" rowHeight="200" id="GnV-rr-H7T" customClass="JFGetItemCell">
+                                <rect key="frame" x="0.0" y="86" width="320" height="200"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GnV-rr-H7T" id="LCH-74-Qj7">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="199"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="75e-Ef-zqv">
+                                            <rect key="frame" x="20" y="158" width="42" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="YAp-Yy-CZ8">
+                                            <rect key="frame" x="0.0" y="0.0" width="332" height="199"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="xED-am-X9c" id="68K-bS-wne"/>
+                            <outlet property="delegate" destination="xED-am-X9c" id="lyI-WK-118"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Free Stuff" id="GVX-vV-tCM">
+                        <barButtonItem key="rightBarButtonItem" title="filter" id="Hs7-7o-Bu4">
+                            <connections>
+                                <action selector="filterButtonPressed:" destination="xED-am-X9c" id="BJD-2Y-AQl"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="filterButton" destination="Hs7-7o-Bu4" id="Ys4-ge-WAo"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jPO-jK-chC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3928" y="3227"/>
+            <point key="canvasLocation" x="3828" y="3231"/>
         </scene>
         <!--Give PhotoVC-->
         <scene sceneID="Z6H-gc-Cf6">

@@ -8,6 +8,7 @@
 
 #import "JFAppDelegate.h"
 #import "PFGiveItem.h"
+#import "PFGetItem.h"
 
 
 @implementation JFAppDelegate
@@ -16,14 +17,14 @@
 {
     // Override point for customization after application launch.
     
- 
+    [PFGiveItem registerSubclass];
+    
+    [PFGetItem registerSubclass];
     
     [Parse setApplicationId:@"IjFRIlLu8yBBxiUQYcal76jTJv631Y9vJF5XMugI"
                   clientKey:@"1nZesjcYElee33M9iWCCw2f3eKXhkMJNyivEuDbQ"];
     
     [PFFacebookUtils initializeFacebook];
-    
-    [PFGiveItem registerSubclass];
     
     return YES;
 }
