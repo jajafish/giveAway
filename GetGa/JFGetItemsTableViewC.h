@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JFGetItemsTableViewC : UIViewController
+@interface JFGetItemsTableViewC : UITableViewController
 
 @end
