@@ -61,7 +61,7 @@
                 NSLog(@"Uh oh. An error occurred: %@", error);
             }
         } else{
-            [self performSegueWithIdentifier:@"loginToGiveItemsTable" sender:self];
+            [self performSegueWithIdentifier:@"loginToMainMenuSegue" sender:self];
             [self updateUserInformation];
         }
     }];

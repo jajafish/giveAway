@@ -26,6 +26,7 @@
 		E775596D19325D8E00CD76A0 /* JFGetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E775596C19325D8E00CD76A0 /* JFGetVC.m */; };
 		E775596F1932637C00CD76A0 /* appshot.png in Resources */ = {isa = PBXBuildFile; fileRef = E775596E1932637C00CD76A0 /* appshot.png */; };
 		E7A29A02193878B00045EC83 /* JFGiveItemsTableViewC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A29A01193878B00045EC83 /* JFGiveItemsTableViewC.m */; };
+		E7BB0417193AAC6D000DEF36 /* JFMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7BB0416193AAC6D000DEF36 /* JFMainViewController.m */; };
 		E7C8AE99193700AA00856D4B /* JFGiveItemDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C8AE98193700AA00856D4B /* JFGiveItemDetailsVC.m */; };
 		E7C8AE9C19370B7C00856D4B /* JFConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C8AE9B19370B7C00856D4B /* JFConstants.m */; };
 		E7F5D2C8193831BF00B17BE0 /* JFGiveItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F5D2C7193831BF00B17BE0 /* JFGiveItemCell.m */; };
@@ -71,6 +72,8 @@
 		E775596E1932637C00CD76A0 /* appshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appshot.png; sourceTree = "<group>"; };
 		E7A29A00193878B00045EC83 /* JFGiveItemsTableViewC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFGiveItemsTableViewC.h; sourceTree = "<group>"; };
 		E7A29A01193878B00045EC83 /* JFGiveItemsTableViewC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFGiveItemsTableViewC.m; sourceTree = "<group>"; };
+		E7BB0415193AAC6D000DEF36 /* JFMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFMainViewController.h; sourceTree = "<group>"; };
+		E7BB0416193AAC6D000DEF36 /* JFMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFMainViewController.m; sourceTree = "<group>"; };
 		E7C8AE97193700AA00856D4B /* JFGiveItemDetailsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFGiveItemDetailsVC.h; sourceTree = "<group>"; };
 		E7C8AE98193700AA00856D4B /* JFGiveItemDetailsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFGiveItemDetailsVC.m; sourceTree = "<group>"; };
 		E7C8AE9A19370B7C00856D4B /* JFConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFConstants.h; sourceTree = "<group>"; };
@@ -222,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				E775594419325CC600CD76A0 /* Main.storyboard */,
+				E7BB0414193AAC4C000DEF36 /* global navigation */,
 				E705E0BC1936FDF100CD2E3A /* login */,
 				E705E0B619364C9200CD2E3A /* give */,
 				E705E0B719364C9400CD2E3A /* get */,
@@ -237,6 +241,15 @@
 				E7F5D2CA19383F4800B17BE0 /* PFGiveItem.m */,
 			);
 			name = model;
+			sourceTree = "<group>";
+		};
+		E7BB0414193AAC4C000DEF36 /* global navigation */ = {
+			isa = PBXGroup;
+			children = (
+				E7BB0415193AAC6D000DEF36 /* JFMainViewController.h */,
+				E7BB0416193AAC6D000DEF36 /* JFMainViewController.m */,
+			);
+			name = "global navigation";
 			sourceTree = "<group>";
 		};
 		E7C8AE941937006400856D4B /* give items table */ = {
@@ -410,6 +423,7 @@
 				E7F5D2C8193831BF00B17BE0 /* JFGiveItemCell.m in Sources */,
 				E7C8AE9C19370B7C00856D4B /* JFConstants.m in Sources */,
 				E705E0BF1936FDFC00CD2E3A /* JFLoginVC.m in Sources */,
+				E7BB0417193AAC6D000DEF36 /* JFMainViewController.m in Sources */,
 				E775596D19325D8E00CD76A0 /* JFGetVC.m in Sources */,
 				E775593F19325CC600CD76A0 /* main.m in Sources */,
 			);
