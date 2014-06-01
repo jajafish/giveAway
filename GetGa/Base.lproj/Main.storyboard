@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--Give Items Table ViewC-->
+        <!--Give Items Table ViewC - I'm Giving-->
         <scene sceneID="ZaD-fB-Csm">
             <objects>
                 <tableViewController id="5Np-FY-BoD" customClass="JFGiveItemsTableViewC" sceneMemberID="viewController">
@@ -44,18 +44,13 @@
                             <outlet property="delegate" destination="5Np-FY-BoD" id="HmL-Un-nRO"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="eFr-6V-8Ft">
-                        <nil key="title"/>
+                    <navigationItem key="navigationItem" title="I'm Giving" id="eFr-6V-8Ft">
                         <barButtonItem key="backBarButtonItem" title=" " id="FVu-wQ-0zj"/>
                         <barButtonItem key="leftBarButtonItem" title="show" id="Djw-fG-erx">
                             <connections>
                                 <action selector="logButtonPressed:" destination="5Np-FY-BoD" id="LQv-8O-UVs"/>
                             </connections>
                         </barButtonItem>
-                        <pageControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" id="7cp-4p-EOc">
-                            <rect key="frame" x="55" y="4" width="215" height="36"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        </pageControl>
                         <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="0u9-3Q-OF4">
                             <connections>
                                 <segue destination="p25-uW-pG8" kind="push" identifier="givePhotoToGiveDetailsSegue" id="TDO-IQ-biN"/>
@@ -78,20 +73,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8uD-1t-cEc">
-                                <rect key="frame" x="118" y="255" width="84" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="login with fb">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="loginWithFBButtonPressed:" destination="zyc-iC-kUB" eventType="touchUpInside" id="gRf-8w-Uif"/>
-                                </connections>
-                            </button>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="jDL-o3-ogw">
-                                <rect key="frame" x="150" y="116" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="loaded" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lEb-4B-wte">
                                 <rect key="frame" x="139" y="361" width="53" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -103,7 +84,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="iux-LZ-V04"/>
                     <connections>
-                        <outlet property="loginActivityIndicator" destination="jDL-o3-ogw" id="Rzx-4Y-9BZ"/>
                         <outlet property="loginWithFBButton" destination="8uD-1t-cEc" id="gAQ-4u-bQw"/>
                         <segue destination="vvN-6q-scu" kind="custom" identifier="rightMenu" customClass="AMSlideMenuLeftMenuSegue" id="zz8-3d-CSg"/>
                     </connections>
@@ -289,12 +269,49 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="zyc-iC-kUB" kind="relationship" relationship="rootViewController" id="1g3-H3-eFt"/>
+                        <segue destination="0DB-QR-tT9" kind="relationship" relationship="rootViewController" id="jIH-2G-Rsz"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zak-5P-d7g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="959" y="2790"/>
+            <point key="canvasLocation" x="725" y="2790"/>
+        </scene>
+        <!--LoginVC-->
+        <scene sceneID="4y2-H3-oU3">
+            <objects>
+                <viewController id="0DB-QR-tT9" customClass="JFLoginVC" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mk7-vo-JqP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8uD-1t-cEc">
+                                <rect key="frame" x="118" y="240" width="84" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="login with fb">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginWithFBButtonPressed:" destination="0DB-QR-tT9" eventType="touchUpInside" id="TDc-DH-M2C"/>
+                                    <action selector="loginWithFBButtonPressed:" destination="zyc-iC-kUB" eventType="touchUpInside" id="gRf-8w-Uif"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="ame-mS-2BA">
+                                <rect key="frame" x="150" y="80" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="YhX-iz-kz4"/>
+                    <connections>
+                        <outlet property="FBLoginButton" destination="8uD-1t-cEc" id="ncs-Nb-hDd"/>
+                        <outlet property="activityIndicator" destination="ame-mS-2BA" id="uhl-sc-kKa"/>
+                        <segue destination="zyc-iC-kUB" kind="push" identifier="loginToMainSegue" id="Pnu-gn-fJa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5aR-74-pZd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1262" y="2797"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
