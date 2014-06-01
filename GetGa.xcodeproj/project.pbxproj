@@ -26,6 +26,7 @@
 		E775596F1932637C00CD76A0 /* appshot.png in Resources */ = {isa = PBXBuildFile; fileRef = E775596E1932637C00CD76A0 /* appshot.png */; };
 		E799EB6B193AEBA70006B708 /* JFGetItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E799EB6A193AEBA70006B708 /* JFGetItemCell.m */; };
 		E799EB70193AEC460006B708 /* JFGetItemsTableViewC.m in Sources */ = {isa = PBXBuildFile; fileRef = E799EB6F193AEC460006B708 /* JFGetItemsTableViewC.m */; };
+		E799EB75193AF0E80006B708 /* PFGetItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E799EB74193AF0E80006B708 /* PFGetItem.m */; };
 		E7A29A02193878B00045EC83 /* JFGiveItemsTableViewC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A29A01193878B00045EC83 /* JFGiveItemsTableViewC.m */; };
 		E7BB0417193AAC6D000DEF36 /* JFMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7BB0416193AAC6D000DEF36 /* JFMainViewController.m */; };
 		E7C8AE99193700AA00856D4B /* JFGiveItemDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C8AE98193700AA00856D4B /* JFGiveItemDetailsVC.m */; };
@@ -73,6 +74,8 @@
 		E799EB6A193AEBA70006B708 /* JFGetItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFGetItemCell.m; sourceTree = "<group>"; };
 		E799EB6E193AEC460006B708 /* JFGetItemsTableViewC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFGetItemsTableViewC.h; sourceTree = "<group>"; };
 		E799EB6F193AEC460006B708 /* JFGetItemsTableViewC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFGetItemsTableViewC.m; sourceTree = "<group>"; };
+		E799EB73193AF0E80006B708 /* PFGetItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFGetItem.h; sourceTree = "<group>"; };
+		E799EB74193AF0E80006B708 /* PFGetItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFGetItem.m; sourceTree = "<group>"; };
 		E7A29A00193878B00045EC83 /* JFGiveItemsTableViewC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFGiveItemsTableViewC.h; sourceTree = "<group>"; };
 		E7A29A01193878B00045EC83 /* JFGiveItemsTableViewC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFGiveItemsTableViewC.m; sourceTree = "<group>"; };
 		E7BB0415193AAC6D000DEF36 /* JFMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFMainViewController.h; sourceTree = "<group>"; };
@@ -242,6 +245,24 @@
 			name = "get item detail page";
 			sourceTree = "<group>";
 		};
+		E799EB71193AF0D40006B708 /* give item */ = {
+			isa = PBXGroup;
+			children = (
+				E7F5D2C919383F4800B17BE0 /* PFGiveItem.h */,
+				E7F5D2CA19383F4800B17BE0 /* PFGiveItem.m */,
+			);
+			name = "give item";
+			sourceTree = "<group>";
+		};
+		E799EB72193AF0DD0006B708 /* get item */ = {
+			isa = PBXGroup;
+			children = (
+				E799EB73193AF0E80006B708 /* PFGetItem.h */,
+				E799EB74193AF0E80006B708 /* PFGetItem.m */,
+			);
+			name = "get item";
+			sourceTree = "<group>";
+		};
 		E7B3734B1937D7F300CA5EBC /* view */ = {
 			isa = PBXGroup;
 			children = (
@@ -258,8 +279,8 @@
 		E7B3734C1937D81200CA5EBC /* model */ = {
 			isa = PBXGroup;
 			children = (
-				E7F5D2C919383F4800B17BE0 /* PFGiveItem.h */,
-				E7F5D2CA19383F4800B17BE0 /* PFGiveItem.m */,
+				E799EB71193AF0D40006B708 /* give item */,
+				E799EB72193AF0DD0006B708 /* get item */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -442,6 +463,7 @@
 				E7A29A02193878B00045EC83 /* JFGiveItemsTableViewC.m in Sources */,
 				E71BDFA3193AC62F00861171 /* JFLoginVC.m in Sources */,
 				E7F5D2CB19383F4800B17BE0 /* PFGiveItem.m in Sources */,
+				E799EB75193AF0E80006B708 /* PFGetItem.m in Sources */,
 				E775594319325CC600CD76A0 /* JFAppDelegate.m in Sources */,
 				E7C8AE99193700AA00856D4B /* JFGiveItemDetailsVC.m in Sources */,
 				E7F5D2C8193831BF00B17BE0 /* JFGiveItemCell.m in Sources */,

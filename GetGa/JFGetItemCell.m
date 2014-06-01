@@ -10,8 +10,8 @@
 
 @implementation JFGetItemCell
 
-@synthesize giveItemImageView = _giveItemImageView;
-@synthesize giveItemLabel = _giveItemLabel;
+@synthesize getItemImageView = _getItemImageView;
+@synthesize getItemLabel = _getItemLabel;
 
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier

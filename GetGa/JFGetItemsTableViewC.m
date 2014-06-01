@@ -7,9 +7,13 @@
 //
 
 #import "JFGetItemsTableViewC.h"
+#import "JFGetItemCell.h"
+#import "PFGetItem.h"
 
 @interface JFGetItemsTableViewC ()
 @property (strong, nonatomic) IBOutlet UITableView *getItemsTableView;
+
+@property (strong, nonatomic) NSMutableArray *availableFreeStuff;
 
 @end
 
@@ -34,80 +38,71 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"giveItem"];
+//    [query whereKey:@"giver" notEqualTo:[PFUser currentUser]];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            self.availableFreeStuff = [[NSMutableArray alloc]init];
+            for (PFObject *object in objects) {
+                PFGetItem *newGetItem = [[PFGetItem alloc]init];
+                newGetItem = object[@"giveItemTitle"];
+                
+                // return photo files for each of the objecs
+                PFFile *giveItemImageFile = object[@"imageFile"];
+                [giveItemImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+                    if (!error) {
+                        UIImage *giveItemImageForCell = [UIImage imageWithData:imageData];
+                        newGetItem.getItemImage = giveItemImageForCell;
+                    };
+                }];
+                NSLog(@"hello");
+                
+                [self.availableFreeStuff addObject:newGetItem];
+                
+            }
+        } else {
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+        [self.getItemsTableView reloadData];
+        
+        NSLog(@"reached end of query");
+        
+    }];
+    
+}
+
+
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
-}
 
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+- (JFGetItemCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    // Configure the cell...
+    static NSString *cellIdentifier = @"getCell";
+    
+    JFGetItemCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (cell == nil){
+        cell = [[JFGetItemCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+    }
+    
+    PFGetItem *giveItem = self.availableFreeStuff[indexPath.row];
+    cell.getItemLabel.text = giveItem.getItemName;
+    cell.getItemImageView.image = giveItem.getItemImage;
     
     return cell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+    // Return the number of rows in the section.
+    return 1;
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
