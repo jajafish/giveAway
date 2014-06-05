@@ -55,20 +55,18 @@
                 newGiveItem.giveItemName = object[@"giveItemTitle"];
                 
                 // return photo files for each of the objecs
-                
-                NSString *nameOfImageFile = object[@"giveItemPhoto"];
-                
+
                 PFQuery *queryForRelatedImages = [PFQuery queryWithClassName:@"giveItemPhoto"];
-                [queryForRelatedImages whereKey:@"imageFile" equalTo:nameOfImageFile];
-                [queryForRelatedImages findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-                    
-//                    PFFile *imageFile = [objects objectAtIndex:0];
-//                    [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-//                        newGiveItem.giveItemImage = [UIImage imageWithData:data];
-//                    }];
+                [queryForRelatedImages whereKey:@"objectId" equalTo:@"pAwHU2e7aw"];
+                [queryForRelatedImages findObjectsInBackgroundWithBlock:^(NSArray *photos, NSError *error) {
+                    PFFile *imageFile = photos[0][@"imageFile"];
+                    NSLog(@"%@", imageFile);
+                    [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                        if (!error){
+                            newGiveItem.giveItemImage = [UIImage imageWithData:data];
+                        }
+                    }];
                 }];
-                
-                NSLog(@"%@", nameOfImageFile);
                 
                 [self.myGiveItems addObject:newGiveItem];
 
@@ -114,9 +112,6 @@
     PFGiveItem *giveItem = self.myGiveItems[indexPath.row];
     cell.giveItemLabel.text = giveItem.giveItemName;
     cell.giveItemImageView.image = giveItem.giveItemImage;
-
-    
-//    cell.giveItemImageView.image = [UIImage imageNamed:@"appshot.png"];
     
     return cell;
 }
