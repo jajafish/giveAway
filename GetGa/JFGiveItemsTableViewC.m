@@ -42,42 +42,41 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    self.myGiveItems = [[NSMutableArray alloc]init];
+    
     PFQuery *query = [PFQuery queryWithClassName:@"giveItem"];
     [query whereKey:@"giver" equalTo:[PFUser currentUser]];
+    [query includeKey:@"giveItemPhoto"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-            self.myGiveItems = [[NSMutableArray alloc]init];
-            
-                // create new giveItem for each returned object
             
             for (PFObject *object in objects) {
                 PFGiveItem *newGiveItem = [[PFGiveItem alloc]init];
                 newGiveItem.giveItemName = object[@"giveItemTitle"];
-                
-                // return photo files for each of the objecs
 
-                PFQuery *queryForRelatedImages = [PFQuery queryWithClassName:@"giveItemPhoto"];
-                [queryForRelatedImages whereKey:@"objectId" equalTo:@"pAwHU2e7aw"];
-                [queryForRelatedImages findObjectsInBackgroundWithBlock:^(NSArray *photos, NSError *error) {
-                    PFFile *imageFile = photos[0][@"imageFile"];
-                    NSLog(@"%@", imageFile);
-                    [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-                        if (!error){
-                            newGiveItem.giveItemImage = [UIImage imageWithData:data];
-                        }
-                    }];
-                }];
+//                PFQuery *queryForRelatedImages = [PFQuery queryWithClassName:@"giveItemPhoto"];
+//                [queryForRelatedImages whereKey:@"objectId" equalTo:@"pAwHU2e7aw"];
+//                [queryForRelatedImages findObjectsInBackgroundWithBlock:^(NSArray *photos, NSError *error) {
+//                    PFFile *imageFile = photos[0][@"imageFile"];
+//                    NSLog(@"%@", imageFile);
+//                    [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+//                        if (!error){
+//                            newGiveItem.giveItemImage = [UIImage imageWithData:data];
+//                        }
+//                    }];
+//                }];
                 
                 [self.myGiveItems addObject:newGiveItem];
-
+                
             }
         } else {
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
         [self.tableView reloadData];
     }];
-
 }
+
+
 
 
 - (void)didReceiveMemoryWarning
