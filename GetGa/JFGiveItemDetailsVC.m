@@ -7,6 +7,7 @@
 //
 
 #import "JFGiveItemDetailsVC.h"
+#import "JFGiveItemsTableViewC.h"
 
 @interface JFGiveItemDetailsVC () <UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UIImageView *giveItemPhotoImageView;
@@ -39,10 +40,7 @@
     
     [self.giveItemTitleTextField becomeFirstResponder];
 
-    
 }
-
-
 
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -61,10 +59,12 @@
     giveItem[@"giveItemTitle"] = self.giveItemTitleTextField.text;
     giveItem[@"giver"] = [PFUser currentUser];
     [giveItem setObject:giveItemPhoto forKey:@"giveItemPhoto"];
-    [giveItem saveInBackground];
+    [giveItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        [self.rootVC reloadParseData];
+    }];
     
     [self.navigationController popToRootViewControllerAnimated:YES];
-
+    
     return YES;
 }
 

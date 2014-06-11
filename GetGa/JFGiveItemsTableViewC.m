@@ -9,6 +9,7 @@
 #import "JFGiveItemsTableViewC.h"
 #import "PFGiveItem.h"
 #import "JFGiveItemCell.h"
+#import "JFGivePhotoVC.h"
 
 @interface JFGiveItemsTableViewC ()
 
@@ -42,6 +43,13 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+
+    [self reloadParseData];
+    
+}
+
+-(void)reloadParseData
+{
     self.myGiveItems = [[NSMutableArray alloc]init];
     
     PFQuery *query = [PFQuery queryWithClassName:@"giveItem"];
@@ -53,18 +61,15 @@
             for (PFObject *object in objects) {
                 PFGiveItem *newGiveItem = [[PFGiveItem alloc]init];
                 newGiveItem.giveItemName = object[@"giveItemTitle"];
-
-//                PFQuery *queryForRelatedImages = [PFQuery queryWithClassName:@"giveItemPhoto"];
-//                [queryForRelatedImages whereKey:@"objectId" equalTo:@"pAwHU2e7aw"];
-//                [queryForRelatedImages findObjectsInBackgroundWithBlock:^(NSArray *photos, NSError *error) {
-//                    PFFile *imageFile = photos[0][@"imageFile"];
-//                    NSLog(@"%@", imageFile);
-//                    [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-//                        if (!error){
-//                            newGiveItem.giveItemImage = [UIImage imageWithData:data];
-//                        }
-//                    }];
-//                }];
+                PFObject *photoObj = object[@"giveItemPhoto"];
+                PFFile *ourImageFile = photoObj[@"imageFile"];
+                
+                [ourImageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                    if (!error){
+                        newGiveItem.image = [UIImage imageWithData:data];
+                    }
+                    [self.tableView reloadData];
+                }];
                 
                 [self.myGiveItems addObject:newGiveItem];
                 
@@ -74,8 +79,20 @@
         }
         [self.tableView reloadData];
     }];
+    
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    
+    if ([segue.identifier isEqualToString:@"givePhotoToGiveDetailsSegue"]){
+        if ([segue.destinationViewController isKindOfClass:[JFGivePhotoVC class]]){
+            JFGivePhotoVC *targetVC = segue.destinationViewController;
+            targetVC.mainItemsTableVC = self;
+        }
+    }
+    
+}
 
 
 
@@ -110,11 +127,10 @@
 
     PFGiveItem *giveItem = self.myGiveItems[indexPath.row];
     cell.giveItemLabel.text = giveItem.giveItemName;
-    cell.giveItemImageView.image = giveItem.giveItemImage;
+    cell.giveItemImageView.image = giveItem.image;
     
     return cell;
 }
-
 
 
 - (IBAction)logButtonPressed:(UIBarButtonItem *)sender {
