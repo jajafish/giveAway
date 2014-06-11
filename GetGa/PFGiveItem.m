@@ -9,10 +9,15 @@
 #import "PFGiveItem.h"
 #import <Parse/PFObject+Subclass.h>
 
+
+@interface PFGiveItem()
+@end
+
+
 @implementation PFGiveItem
 
+@synthesize image;
 @dynamic giveItemName;
-@dynamic giveItemImage;
 
 +(NSString *)parseClassName
 {
