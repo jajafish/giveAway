@@ -16,8 +16,6 @@
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *filterButton;
 
-//@property (strong, nonatomic) IBOutlet UITableView *getItemsTableView;
-
 @end
 
 @implementation JFGetItemsTableViewC
@@ -37,43 +35,60 @@
     
     self.availableFreeStuff = [[NSMutableArray alloc]init];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    [self reloadParseData];
+    
+}
+
+
+-(void)reloadParseData
+{
+
     
     PFQuery *query = [PFQuery queryWithClassName:@"giveItem"];
-    [query whereKey:@"giver" equalTo:[PFUser currentUser]];
+    [query includeKey:@"giveItemPhoto"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-
+            
             for (PFObject *object in objects) {
                 PFGetItem *newGetItem = [[PFGetItem alloc]init];
-                newGetItem = object[@"giveItemTitle"];
-                NSLog(@"%@", newGetItem);
+                newGetItem.getItemName = object[@"giveItemTitle"];
+                
+                PFObject *photoObject = object[@"giveItemPhoto"];
+                PFFile *getImageFile = photoObject[@"imageFile"];
+                [getImageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                    if (!error){
+                        newGetItem.image = [UIImage imageWithData:data];
+                    }
+                    [self.tableView reloadData];
+                }];
+                
+
                 [self.availableFreeStuff addObject:newGetItem];
+
             }
         } else {
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
+        NSLog(@"%@", self.availableFreeStuff);
+        
+        for (PFGetItem *getItem in self.availableFreeStuff){
+            NSLog(@"%@", getItem.getItemName);
+        }
+        
         [self.tableView reloadData];
-        
-        NSLog(@"reached end of query");
-        
     }];
     
 }
+
 
 
 #pragma mark - Table view data source
@@ -91,8 +106,9 @@
     
     PFGetItem *getItem = self.availableFreeStuff[indexPath.row];
     cell.getItemLabel.text = getItem.getItemName;
-//    cell.getItemImageView.image = giveItem.getItemImage;
+    cell.getItemImageView.image = getItem.image;
     
+
     return cell;
 }
 
@@ -100,12 +116,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.availableFreeStuff.count;
+    return [self.availableFreeStuff count];
 }
 
 - (IBAction)filterButtonPressed:(UIBarButtonItem *)sender {
     
-    NSLog(@"%@", self.availableFreeStuff);
     
 }
 
