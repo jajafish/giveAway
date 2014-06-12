@@ -101,7 +101,7 @@
             
             [[PFUser currentUser] setObject:userProfile forKey:kJFUserProfileKey];
             [[PFUser currentUser] saveInBackground];
-            NSLog(@"%@", userProfile);
+
             
         }
         

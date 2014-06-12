@@ -12,7 +12,7 @@
 @implementation PFGetItem
 
 @dynamic getItemName;
-@dynamic getItemImage;
+@synthesize image;
 
 +(NSString *)parseClassName
 {

@@ -105,6 +105,7 @@
 #pragma mark - Table view data source
 
 
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.myGiveItems.count;
@@ -132,13 +133,6 @@
     return cell;
 }
 
-
-- (IBAction)logButtonPressed:(UIBarButtonItem *)sender {
-    
-    NSLog(@"%@", self.myGiveItems);
-    
-    
-}
 
 
 @end

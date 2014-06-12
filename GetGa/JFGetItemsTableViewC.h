@@ -10,4 +10,8 @@
 
 @interface JFGetItemsTableViewC : UITableViewController
 
+
+
+-(void)reloadParseData;
+
 @end

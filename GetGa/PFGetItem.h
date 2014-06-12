@@ -12,6 +12,6 @@
 
 +(NSString *)parseClassName;
 @property (strong, nonatomic) NSString *getItemName;
-@property (strong, nonatomic) UIImage *getItemImage;
+@property (nonatomic, strong) UIImage *image;
 
 @end
