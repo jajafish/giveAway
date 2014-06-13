@@ -7,9 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface JFAppDelegate : UIResponder <UIApplicationDelegate>
+@interface JFAppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
+@property (strong, nonatomic) NSString *latitude;
+@property (strong, nonatomic) NSString *longitude;
+
 @end
+
+

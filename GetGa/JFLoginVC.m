@@ -7,19 +7,14 @@
 //
 
 #import "JFLoginVC.h"
-#import <CoreLocation/CoreLocation.h>
 
 
-@interface JFLoginVC () <CLLocationManagerDelegate>
+
+@interface JFLoginVC ()
 
 
 @property (strong, nonatomic) IBOutlet UIButton *FBLoginButton;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
-
-@property (weak, nonatomic) NSString *latitude;
-@property (weak, nonatomic) NSString *longitude;
-@property (weak, nonatomic) NSString *zipCode;
-
 
 @end
 
@@ -45,15 +40,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    manager = [[CLLocationManager alloc]init];
-    geocoder = [[CLGeocoder alloc]init];
-    manager.delegate = self;
-    manager.desiredAccuracy = kCLLocationAccuracyBest;
     
-    [manager startUpdatingLocation];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updatedLocation:)
+                                                 name:@"newLocationNotif"
+                                               object:nil];
     
 }
+
+-(void) updatedLocation:(NSNotification*)notif {
+    CLLocation* userLocation = (CLLocation*)[[notif userInfo] valueForKey:@"newLocationResult"];
+    NSLog(@"from login, user location is %@", userLocation);
+}
+
+
 
 -(void)viewDidAppear:(BOOL)animated
 {
@@ -116,14 +116,10 @@
             if ([pictureURL absoluteString]){
                 userProfile[kJFUserProfilePictureURL] = [pictureURL absoluteString];
             }
-            if (self.zipCode){
-                userProfile[@"zipCode"] = self.zipCode;
-            }
-
-            NSLog(@"the zip is %@", self.zipCode);
             
             [[PFUser currentUser] setObject:userProfile forKey:kJFUserProfileKey];
             [[PFUser currentUser] saveInBackground];
+        
 
         }
         
@@ -152,40 +148,6 @@
             [self performSegueWithIdentifier:@"loginToMainSegue" sender:self];
             [self updateUserInformation];
         }
-    }];
-    
-}
-
-#pragma mark - CLLocationManagerDelegate Methods
-
--(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
-{
-    NSLog(@"Error: %@", error);
-    NSLog(@"Failed to get location!");
-}
-
--(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
-{
-//    NSLog(@"Location: %@", newLocation);
-    CLLocation *currentLocation = newLocation;
-    
-    if (currentLocation != nil){
-        
-        self.latitude = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.latitude];
-        self.longitude = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.longitude];
-        
-    }
-    
-    [geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
-        if (error == nil && [placemarks count] > 0){
-            placemark = [placemarks lastObject];
-            self.zipCode = [NSString stringWithFormat:@"%@", placemark.postalCode];
-        }
-        
-        else {
-            NSLog(@"%@", error.debugDescription);
-        }
-        
     }];
     
 }
