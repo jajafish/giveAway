@@ -32,7 +32,6 @@
     
     self.navigationItem.title = [PFUser currentUser][@"profile"][@"first_name"];
     
-
     
 }
 

@@ -9,7 +9,7 @@
 #import "JFGivePhotoVC.h"
 #import "JFGiveItemDetailsVC.h"
 
-@interface JFGivePhotoVC () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface JFGivePhotoVC () 
 
 @end
 
@@ -57,9 +57,9 @@
     else if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum]){
         picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
     }
-    [self presentViewController:picker animated:YES completion:nil];
     
-
+    [self.view.window.rootViewController presentViewController:picker animated:YES completion:NULL];
+    
 }
 
 
@@ -72,22 +72,31 @@
 
 
 
+
 #pragma mark - Helpers
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    
+
     UIImage *image = info[UIImagePickerControllerEditedImage];
     if(!image) image = info[UIImagePickerControllerOriginalImage];
     
+    picker.delegate = self;
 
     [self setPhotoForNextVC:image];
     
     [self dismissViewControllerAnimated:YES completion:nil];
     [self performSegueWithIdentifier:@"givePhotoToGiveDetailsSegue" sender:self];
     
-    
 }
+
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    NSLog(@"canceled");
+}
+
 
 
 

@@ -53,7 +53,6 @@
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     
-
     
     NSString *nameForGiveItem = self.giveItemTitleTextField.text;
     NSData *giveItemImageData = UIImagePNGRepresentation(self.giveItemImage);
