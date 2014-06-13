@@ -15,6 +15,7 @@
 
 @property (strong, nonatomic) IBOutlet UIButton *FBLoginButton;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (strong, nonatomic) CLLocation *currentLocation;
 
 @end
 
@@ -50,7 +51,9 @@
 
 -(void) updatedLocation:(NSNotification*)notif {
     CLLocation* userLocation = (CLLocation*)[[notif userInfo] valueForKey:@"newLocationResult"];
-    NSLog(@"from login, user location is %@", userLocation);
+//    NSLog(@"from login, user location is %@", userLocation);
+    self.currentLocation = userLocation;
+    NSLog(@"the instance variable of the user's location is %@", self.currentLocation);
 }
 
 
@@ -117,8 +120,18 @@
                 userProfile[kJFUserProfilePictureURL] = [pictureURL absoluteString];
             }
             
+            NSMutableDictionary *mostRecentCoordinates = [[NSMutableDictionary alloc]initWithCapacity:10];
+            
+            if (self.currentLocation){
+            mostRecentCoordinates[@"latitude"] = [NSString stringWithFormat:@"%.8f", self.currentLocation.coordinate.latitude];
+            mostRecentCoordinates[@"longitude"] = [NSString stringWithFormat:@"%.8f", self.currentLocation.coordinate.longitude];
+            }
+
+            
             [[PFUser currentUser] setObject:userProfile forKey:kJFUserProfileKey];
+            [[PFUser currentUser]setObject:mostRecentCoordinates forKey:@"mostRecentLocation"];
             [[PFUser currentUser] saveInBackground];
+            
         
 
         }
