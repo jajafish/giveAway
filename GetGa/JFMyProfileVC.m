@@ -31,7 +31,30 @@
 
     self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width / 2;
     self.profileImageView.clipsToBounds = YES;
-    self.profileImageView.image = [UIImage imageNamed:@"dad.png"];
+    
+//    
+//    PFFile *pictureFile = [PFUser currentUser][@"profile"]
+    
+    
+    
+    
+//    for (PFObject *object in objects) {
+//        PFGiveItem *newGiveItem = [[PFGiveItem alloc]init];
+//        newGiveItem.giveItemName = object[@"giveItemTitle"];
+//        PFObject *photoObj = object[@"giveItemPhoto"];
+//        PFFile *ourImageFile = photoObj[@"imageFile"];
+//        
+//        [ourImageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+//            if (!error){
+//                newGiveItem.image = [UIImage imageWithData:data];
+//            }
+//            [self.tableView reloadData];
+//        }];
+//        
+    
+    
+    
+//    self.profileImageView.image = [UIImage imageNamed:@"dad.png"];
     self.navigationItem.title = [PFUser currentUser][@"profile"][@"first_name"];
     
 }

@@ -12,10 +12,10 @@
 
 @interface JFLoginVC ()
 
-
 @property (strong, nonatomic) IBOutlet UIButton *FBLoginButton;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (strong, nonatomic) CLLocation *currentLocation;
+@property (strong, nonatomic) NSMutableData *imageData;
 
 @end
 
@@ -73,6 +73,34 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - IB Actions
+
+- (IBAction)loginWithFBButtonPressed:(UIButton *)sender {
+    
+    NSArray *permissionsArray = @[ @"user_about_me", @"user_relationships", @"user_birthday", @"user_location", @"user_friends"];
+    
+    [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
+        [_activityIndicator stopAnimating]; // Hide loading indicator
+        
+        if (!user) {
+            if (!error) {
+                NSLog(@"Uh oh. The user cancelled the Facebook login.");
+            } else {
+                NSLog(@"Uh oh. An error occurred: %@", error);
+            }
+        } else{
+            [self updateUserInformation];
+            [self performSegueWithIdentifier:@"loginToMainSegue" sender:self];
+        }
+    }];
+    
+}
+
+
+
+
+#pragma mark - Helpers
+
 -(void)updateUserInformation
 {
     
@@ -123,47 +151,95 @@
             NSMutableDictionary *mostRecentCoordinates = [[NSMutableDictionary alloc]initWithCapacity:10];
             
             if (self.currentLocation){
-            mostRecentCoordinates[@"latitude"] = [NSString stringWithFormat:@"%.8f", self.currentLocation.coordinate.latitude];
-            mostRecentCoordinates[@"longitude"] = [NSString stringWithFormat:@"%.8f", self.currentLocation.coordinate.longitude];
+                mostRecentCoordinates[@"latitude"] = [NSString stringWithFormat:@"%.8f", self.currentLocation.coordinate.latitude];
+                mostRecentCoordinates[@"longitude"] = [NSString stringWithFormat:@"%.8f", self.currentLocation.coordinate.longitude];
             }
-
             
             [[PFUser currentUser] setObject:userProfile forKey:kJFUserProfileKey];
             [[PFUser currentUser]setObject:mostRecentCoordinates forKey:@"mostRecentLocation"];
             [[PFUser currentUser] saveInBackground];
+            [self requestImage];
             
-        
-
+            
         }
         
     }];
     
 }
 
-#pragma mark - from initial login controller
 
-
-
-- (IBAction)loginWithFBButtonPressed:(UIButton *)sender {
+-(void)uploadPFFileToParse:(UIImage *)image
+{
     
-    NSArray *permissionsArray = @[ @"user_about_me", @"user_relationships", @"user_birthday", @"user_location", @"user_friends"];
+    NSData *imageData = UIImageJPEGRepresentation(image, 0.8);
     
-    [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
-        [_activityIndicator stopAnimating]; // Hide loading indicator
-        
-        if (!user) {
-            if (!error) {
-                NSLog(@"Uh oh. The user cancelled the Facebook login.");
-            } else {
-                NSLog(@"Uh oh. An error occurred: %@", error);
+    if (!imageData){
+        NSLog(@"imageData not found");
+        return;
+    }
+    
+    PFFile *photoFile = [PFFile fileWithData:imageData];
+    
+    [photoFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded){
+            PFObject *photo = [PFObject objectWithClassName:@"profilePhoto"];
+            [photo setObject:[PFUser currentUser] forKey:@"photoUser"];
+            [photo setObject:photoFile forKey:@"photoPictureFile"];
+            [photo saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                NSLog(@"photo saved");
+            }];
+            
+        }
+    }];
+    
+}
+
+
+-(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    [self.imageData appendData:data];
+}
+
+
+-(void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    UIImage *profileImage = [UIImage imageWithData:self.imageData];
+    [self uploadPFFileToParse:profileImage];
+}
+
+
+
+-(void)requestImage
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"profilePhoto"];
+    
+    [query whereKey:@"photoUser" equalTo:[PFUser currentUser]];
+    
+    [query countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
+        if (number == 0)
+        {
+            PFUser *user = [PFUser currentUser];
+            self.imageData = [[NSMutableData alloc] init];
+            
+            NSURL *profilePictureURL = [NSURL URLWithString:user[kJFUserProfileKey][kJFUserProfilePictureURL]];
+            
+            NSURLRequest *urlRequest = [NSURLRequest requestWithURL:profilePictureURL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:4.0f];
+            
+            NSURLConnection *urlConnection = [[NSURLConnection alloc] initWithRequest:urlRequest delegate:self];
+            
+            if (!urlConnection){
+                NSLog(@"Failed to download picture");
             }
-        } else{
-            [self performSegueWithIdentifier:@"loginToMainSegue" sender:self];
-            [self updateUserInformation];
-        }
+            
+        };
     }];
     
 }
+
+
+
+
+
 
 
 @end
