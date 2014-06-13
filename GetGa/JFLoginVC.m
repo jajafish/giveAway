@@ -53,7 +53,7 @@
     CLLocation* userLocation = (CLLocation*)[[notif userInfo] valueForKey:@"newLocationResult"];
 //    NSLog(@"from login, user location is %@", userLocation);
     self.currentLocation = userLocation;
-    NSLog(@"the instance variable of the user's location is %@", self.currentLocation);
+//    NSLog(@"the instance variable of the user's location is %@", self.currentLocation);
 }
 
 

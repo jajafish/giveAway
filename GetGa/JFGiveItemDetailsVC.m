@@ -46,8 +46,6 @@
     
     [self.giveItemTitleTextField becomeFirstResponder];
     
-    NSLog(@"this user's zip code is %@", [PFUser currentUser][@"zipCode"]);
-    
 }
 
 #pragma mark - Submit Item to Parse
@@ -70,7 +68,7 @@
     PFObject *giveItem = [PFObject objectWithClassName:@"giveItem"];
     giveItem[@"giveItemTitle"] = self.giveItemTitleTextField.text;
     giveItem[@"giver"] = [PFUser currentUser];
-    giveItem[@"zipCode"] = [PFUser currentUser][@"zipCode"];
+    giveItem[@"postedLocation"] = [PFUser currentUser][@"mostRecentLocation"];
     [giveItem setObject:giveItemPhoto forKey:@"giveItemPhoto"];
     [giveItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         [self.rootVC reloadParseData];
