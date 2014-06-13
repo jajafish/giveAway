@@ -156,6 +156,7 @@
             }
             
             [[PFUser currentUser] setObject:userProfile forKey:kJFUserProfileKey];
+            
             [[PFUser currentUser]setObject:mostRecentCoordinates forKey:@"mostRecentLocation"];
             [[PFUser currentUser] saveInBackground];
             [self requestImage];
