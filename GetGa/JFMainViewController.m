@@ -35,6 +35,11 @@
             break;
     }
     
+    if (indexPath.row == 3) {
+        [PFUser logOut];
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
+    
     return identifier;
     
 }
@@ -60,6 +65,7 @@
 {
     return YES;
 }
+
 
 
 

@@ -55,6 +55,7 @@
     
     PFQuery *query = [PFQuery queryWithClassName:@"giveItem"];
     [query includeKey:@"giveItemPhoto"];
+    [query whereKey:@"PFUser" notEqualTo:[PFUser currentUser]];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             

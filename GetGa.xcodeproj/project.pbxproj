@@ -148,8 +148,8 @@
 		E705E0B719364C9400CD2E3A /* get */ = {
 			isa = PBXGroup;
 			children = (
-				E799EB6D193AEBBF0006B708 /* get item detail page */,
 				E799EB6C193AEBAC0006B708 /* get items table */,
+				E799EB6D193AEBBF0006B708 /* get item detail page */,
 				E7F30547194A4CA8007AA625 /* get items filter */,
 			);
 			name = get;
