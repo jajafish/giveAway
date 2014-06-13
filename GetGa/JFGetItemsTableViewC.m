@@ -78,11 +78,6 @@
         } else {
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
-        NSLog(@"%@", self.availableFreeStuff);
-        
-        for (PFGetItem *getItem in self.availableFreeStuff){
-            NSLog(@"%@", getItem.getItemName);
-        }
         
         [self.tableView reloadData];
     }];
