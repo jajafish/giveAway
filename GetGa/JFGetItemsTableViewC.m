@@ -52,9 +52,11 @@
 -(void)reloadParseData
 {
 
-    
+
     PFQuery *query = [PFQuery queryWithClassName:@"giveItem"];
+    [query whereKey:@"giver" notEqualTo:[[PFUser currentUser]objectId]];
     [query includeKey:@"giveItemPhoto"];
+    
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             
@@ -77,11 +79,6 @@
             }
         } else {
             NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-        NSLog(@"%@", self.availableFreeStuff);
-        
-        for (PFGetItem *getItem in self.availableFreeStuff){
-            NSLog(@"%@", getItem.getItemName);
         }
         
         [self.tableView reloadData];

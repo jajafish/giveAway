@@ -9,7 +9,7 @@
 #import "JFGivePhotoVC.h"
 #import "JFGiveItemDetailsVC.h"
 
-@interface JFGivePhotoVC () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface JFGivePhotoVC () 
 
 @end
 
@@ -47,19 +47,10 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
     
-    UIImagePickerController *picker = [[UIImagePickerController alloc]init];
-    picker.delegate = self;
+    [self performSelector:@selector(bringUpCamera) withObject:nil afterDelay:0.05];
     
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]){
-        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    }
-    else if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum]){
-        picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-    }
-    [self presentViewController:picker animated:YES completion:nil];
-    
-
 }
 
 
@@ -72,22 +63,32 @@
 
 
 
+
 #pragma mark - Helpers
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    
+
     UIImage *image = info[UIImagePickerControllerEditedImage];
     if(!image) image = info[UIImagePickerControllerOriginalImage];
-    
 
     [self setPhotoForNextVC:image];
+        
+        [self dismissViewControllerAnimated:YES completion:nil];
+        [self performSegueWithIdentifier:@"givePhotoToGiveDetailsSegue" sender:self];
+        
     
-    [self dismissViewControllerAnimated:YES completion:nil];
-    [self performSegueWithIdentifier:@"givePhotoToGiveDetailsSegue" sender:self];
     
-    
+
 }
+
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    NSLog(@"canceled");
+}
+
 
 
 
@@ -97,6 +98,20 @@
 }
 
 
+-(void)bringUpCamera
+{
+    UIImagePickerController *picker = [[UIImagePickerController alloc]init];
+    picker.delegate = self;
+    
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]){
+        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    }
+    else if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum]){
+        picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+    }
+    
+    [self presentViewController:picker animated:YES completion:NULL];
+}
 
 
 

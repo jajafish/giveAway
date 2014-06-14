@@ -33,6 +33,22 @@
         case 2:
             identifier = @"thirdSegue";
             break;
+            
+    }
+    
+    if (indexPath.row == 3) {
+        identifier = nil;
+        
+        NSLog(@"pressed logout");
+        
+            [PFUser logOut];
+            [[PFFacebookUtils session]closeAndClearTokenInformation];
+            [[PFFacebookUtils session]close];
+            [[FBSession activeSession]closeAndClearTokenInformation];
+            [[FBSession activeSession]close];
+            [FBSession setActiveSession:nil];
+
+            [self.navigationController popToRootViewControllerAnimated:YES];
     }
     
     return identifier;
@@ -60,6 +76,7 @@
 {
     return YES;
 }
+
 
 
 

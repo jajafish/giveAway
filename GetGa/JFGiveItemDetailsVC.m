@@ -8,17 +8,21 @@
 
 #import "JFGiveItemDetailsVC.h"
 #import "JFGiveItemsTableViewC.h"
+#import <CoreLocation/CoreLocation.h>
 
 @interface JFGiveItemDetailsVC () <UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UIImageView *giveItemPhotoImageView;
 @property (strong, nonatomic) IBOutlet UITextField *giveItemTitleTextField;
 @property (strong, nonatomic) IBOutlet UITextView *giveItemDescriptionTextView;
 
+
+
 @property(nonatomic, assign) id<UIToolbarDelegate> delegate;
 
 @end
 
 @implementation JFGiveItemDetailsVC
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,6 +32,8 @@
     }
     return self;
 }
+
+#pragma mark - S
 
 - (void)viewDidLoad
 {
@@ -39,12 +45,15 @@
     self.giveItemPhotoImageView.image = self.giveItemImage;
     
     [self.giveItemTitleTextField becomeFirstResponder];
-
+    
 }
 
+#pragma mark - Submit Item to Parse
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+    
+    
     NSString *nameForGiveItem = self.giveItemTitleTextField.text;
     NSData *giveItemImageData = UIImagePNGRepresentation(self.giveItemImage);
     PFFile *giveItemImageFile = [PFFile fileWithName:nameForGiveItem data:giveItemImageData];
@@ -52,12 +61,13 @@
     giveItemPhoto[@"imageOwner"] = [PFUser currentUser];
     giveItemPhoto[@"imageName"] = nameForGiveItem;
     giveItemPhoto[@"imageFile"] = giveItemImageFile;
-
+    
     [giveItemPhoto saveInBackground];
     
     PFObject *giveItem = [PFObject objectWithClassName:@"giveItem"];
     giveItem[@"giveItemTitle"] = self.giveItemTitleTextField.text;
     giveItem[@"giver"] = [PFUser currentUser];
+    giveItem[@"postedLocation"] = [PFUser currentUser][@"mostRecentLocation"];
     [giveItem setObject:giveItemPhoto forKey:@"giveItemPhoto"];
     [giveItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         [self.rootVC reloadParseData];
@@ -67,8 +77,6 @@
     
     return YES;
 }
-
-
 
 
 

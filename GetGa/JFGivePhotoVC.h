@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "JFGiveItemsTableViewC.h"
 
-@interface JFGivePhotoVC : UIViewController
+@interface JFGivePhotoVC : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (strong ,nonatomic) UIImage *giveItemImage;
 

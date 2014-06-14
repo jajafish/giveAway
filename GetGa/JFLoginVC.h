@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JFLoginVC : UIViewController
+@interface JFLoginVC : UIViewController <NSURLConnectionDataDelegate>
 
 @end

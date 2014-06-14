@@ -108,6 +108,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    
     return self.myGiveItems.count;
 }
 
@@ -127,8 +128,10 @@
     }
 
     PFGiveItem *giveItem = self.myGiveItems[indexPath.row];
-    cell.giveItemLabel.text = giveItem.giveItemName;
+    cell.giveItemLabel.text = [NSString stringWithFormat:@"  %@", giveItem.giveItemName];
     cell.giveItemImageView.image = giveItem.image;
+    cell.giveItemLabel.shadowColor = [UIColor clearColor];
+    cell.giveItemLabel.highlighted = NO;
     
     return cell;
 }
