@@ -63,6 +63,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="logButton" destination="Djw-fG-erx" id="bgc-nm-3NR"/>
+                        <segue destination="Gy6-w4-JZE" kind="push" identifier="itemTableToDisplay" id="mBn-qn-eBz"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3t8-qw-hkp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -334,6 +335,59 @@
                 </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="4320" y="2779"/>
+        </scene>
+        <!--Item DisplayVC-->
+        <scene sceneID="mar-RP-4mh">
+            <objects>
+                <viewController id="Gy6-w4-JZE" customClass="JFItemDisplayVC" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fq5-cg-3xv">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="28K-5Z-kAz">
+                                <rect key="frame" x="-2" y="64" width="325" height="199"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mTB-gb-R5Q">
+                                <rect key="frame" x="13" y="273" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="N2r-I8-cTu">
+                                <rect key="frame" x="13" y="308" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7rA-jC-ffR">
+                                <rect key="frame" x="122" y="526" width="77" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="I Want This">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="16G-a7-3T2">
+                                <rect key="frame" x="0.0" y="337" width="320" height="181"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="CS7-Tq-9sK"/>
+                    <connections>
+                        <outlet property="iWantThisItemButton" destination="7rA-jC-ffR" id="8MT-QQ-cZS"/>
+                        <outlet property="itemDisplayDetailLabel" destination="N2r-I8-cTu" id="8Y2-Ws-XHV"/>
+                        <outlet property="itemDisplayImageView" destination="28K-5Z-kAz" id="Do7-hh-FR8"/>
+                        <outlet property="itemDisplayMap" destination="16G-a7-3T2" id="7cg-Qp-v8n"/>
+                        <outlet property="itemDisplayTitleLabel" destination="mTB-gb-R5Q" id="4Md-Yj-mCT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6DB-po-jE5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4390" y="1189"/>
         </scene>
         <!--Give PhotoVC-->
         <scene sceneID="Z6H-gc-Cf6">
