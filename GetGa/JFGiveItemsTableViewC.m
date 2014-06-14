@@ -10,12 +10,15 @@
 #import "PFGiveItem.h"
 #import "JFGiveItemCell.h"
 #import "JFGivePhotoVC.h"
+#import "JFItemDisplayVC.h"
 
 @interface JFGiveItemsTableViewC ()
 
 @property (strong, nonatomic) NSMutableArray *myGiveItems;
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *logButton;
+
+@property (strong, nonatomic) PFGiveItem *selectedItem;
 
 @end
 
@@ -61,6 +64,7 @@
             for (PFObject *object in objects) {
                 PFGiveItem *newGiveItem = [[PFGiveItem alloc]init];
                 newGiveItem.giveItemName = object[@"giveItemTitle"];
+                newGiveItem.locationData = object[@"postedLocation"];
                 PFObject *photoObj = object[@"giveItemPhoto"];
                 PFFile *ourImageFile = photoObj[@"imageFile"];
                 
@@ -90,6 +94,14 @@
             JFGivePhotoVC *targetVC = segue.destinationViewController;
             targetVC.mainItemsTableVC = self;
         }
+    }
+    if ([segue.identifier isEqualToString:@"itemTableToDisplay"])
+    {
+        if ([segue.destinationViewController isKindOfClass:[JFItemDisplayVC class]]){
+            JFItemDisplayVC *targetVC = segue.destinationViewController;
+            targetVC.giveItem = self.selectedItem;
+        }
+        
     }
     
 }
@@ -135,6 +147,15 @@
     
     return cell;
 }
+
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.selectedItem = myGiveItems[indexPath.row];
+    [self performSegueWithIdentifier:@"itemTableToDisplay" sender:self];
+}
+
+
 
 
 

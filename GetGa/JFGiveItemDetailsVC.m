@@ -10,12 +10,11 @@
 #import "JFGiveItemsTableViewC.h"
 #import <CoreLocation/CoreLocation.h>
 
-@interface JFGiveItemDetailsVC () <UITextFieldDelegate>
+@interface JFGiveItemDetailsVC () <UITextFieldDelegate, UIGestureRecognizerDelegate>
 @property (strong, nonatomic) IBOutlet UIImageView *giveItemPhotoImageView;
 @property (strong, nonatomic) IBOutlet UITextField *giveItemTitleTextField;
-@property (strong, nonatomic) IBOutlet UITextView *giveItemDescriptionTextView;
 
-
+@property (strong, nonatomic) UIPanGestureRecognizer *moveRecognizer;
 
 @property(nonatomic, assign) id<UIToolbarDelegate> delegate;
 
@@ -28,7 +27,12 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        
+        self.moveRecognizer = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(moveTextField:)];
+        self.moveRecognizer.delegate = self;
+        self.moveRecognizer.cancelsTouchesInView = YES;
+        [self.view addGestureRecognizer:self.moveRecognizer];
+        
     }
     return self;
 }
@@ -45,6 +49,12 @@
     self.giveItemPhotoImageView.image = self.giveItemImage;
     
     [self.giveItemTitleTextField becomeFirstResponder];
+    
+    self.giveItemTitleTextField.userInteractionEnabled = YES;
+    
+    UIPanGestureRecognizer *gesture = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(textFieldDragged:)];
+    [self.giveItemTitleTextField addGestureRecognizer:gesture];
+                                    
     
 }
 
@@ -84,6 +94,20 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+#pragma mark - Gestures
+
+-(void)textFieldDragged:(UIPanGestureRecognizer *)gesture
+{
+    UITextField *textField = (UITextField *)gesture.view;
+    CGPoint translation = [gesture translationInView:textField];
+    
+    textField.center = CGPointMake(textField.center.x + translation.x, textField.center.y + translation.y);
+    
+    [gesture setTranslation:CGPointZero inView:textField];
+    
 }
 
 
