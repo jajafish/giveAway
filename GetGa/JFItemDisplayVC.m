@@ -8,6 +8,7 @@
 
 #import "JFItemDisplayVC.h"
 #import <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface JFItemDisplayVC () <MKMapViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *itemDisplayImageView;
@@ -34,9 +35,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    NSLog(@"made it to the item display view");
-    NSLog(@"%@", self.giveItem.locationData);
-    
     self.itemDisplayImageView.image = self.giveItem.image;
     self.navigationItem.title = self.giveItem.giveItemName;
     
@@ -53,6 +51,8 @@
     MKMapItem *mapItem = [[MKMapItem alloc]initWithPlacemark:placemark];
     MKCoordinateRegion startRegion = MKCoordinateRegionMakeWithDistance(cord, 1500, 1500);
     [self.itemDisplayMap setRegion:startRegion animated:YES];
+    
+
     
 }
 
