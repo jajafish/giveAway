@@ -348,20 +348,6 @@
                                 <rect key="frame" x="-2" y="64" width="325" height="199"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mTB-gb-R5Q">
-                                <rect key="frame" x="13" y="273" width="296" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="N2r-I8-cTu">
-                                <rect key="frame" x="13" y="308" width="296" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7rA-jC-ffR">
                                 <rect key="frame" x="122" y="526" width="77" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -370,7 +356,7 @@
                                 </state>
                             </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="16G-a7-3T2">
-                                <rect key="frame" x="0.0" y="337" width="320" height="96"/>
+                                <rect key="frame" x="0.0" y="280" width="320" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </mapView>
                         </subviews>
@@ -379,10 +365,8 @@
                     <navigationItem key="navigationItem" id="CS7-Tq-9sK"/>
                     <connections>
                         <outlet property="iWantThisItemButton" destination="7rA-jC-ffR" id="8MT-QQ-cZS"/>
-                        <outlet property="itemDisplayDetailLabel" destination="N2r-I8-cTu" id="8Y2-Ws-XHV"/>
                         <outlet property="itemDisplayImageView" destination="28K-5Z-kAz" id="Do7-hh-FR8"/>
                         <outlet property="itemDisplayMap" destination="16G-a7-3T2" id="7cg-Qp-v8n"/>
-                        <outlet property="itemDisplayTitleLabel" destination="mTB-gb-R5Q" id="4Md-Yj-mCT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6DB-po-jE5" userLabel="First Responder" sceneMemberID="firstResponder"/>
