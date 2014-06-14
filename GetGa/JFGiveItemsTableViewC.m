@@ -64,6 +64,7 @@
             for (PFObject *object in objects) {
                 PFGiveItem *newGiveItem = [[PFGiveItem alloc]init];
                 newGiveItem.giveItemName = object[@"giveItemTitle"];
+                newGiveItem.locationData = object[@"postedLocation"];
                 PFObject *photoObj = object[@"giveItemPhoto"];
                 PFFile *ourImageFile = photoObj[@"imageFile"];
                 

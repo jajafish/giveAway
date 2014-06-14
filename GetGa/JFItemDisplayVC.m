@@ -35,10 +35,15 @@
     // Do any additional setup after loading the view.
     
     NSLog(@"made it to the item display view");
-    NSLog(@"%@", self.giveItem);
+    NSLog(@"%@", self.giveItem.locationData);
     
     self.itemDisplayImageView.image = self.giveItem.image;
     self.navigationItem.title = self.giveItem.giveItemName;
+    
+    double lat = [self.giveItem.locationData[@"latitude"] doubleValue];
+    double lng = [self.giveItem.locationData[@"longitude"] doubleValue];
+    
+    self.itemDisplayDetailLabel.text = [NSString stringWithFormat:@"%f %f", lat, lng];
     
 }
 
@@ -48,15 +53,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+
+
+
 
 @end
