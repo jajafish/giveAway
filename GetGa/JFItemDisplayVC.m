@@ -9,7 +9,7 @@
 #import "JFItemDisplayVC.h"
 #import <MapKit/MapKit.h>
 
-@interface JFItemDisplayVC ()
+@interface JFItemDisplayVC () <MKMapViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *itemDisplayImageView;
 @property (weak, nonatomic) IBOutlet UILabel *itemDisplayTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *itemDisplayDetailLabel;
@@ -44,6 +44,15 @@
     double lng = [self.giveItem.locationData[@"longitude"] doubleValue];
     
     self.itemDisplayDetailLabel.text = [NSString stringWithFormat:@"%f %f", lat, lng];
+    
+    
+    // MAP
+    self.itemDisplayMap.delegate = self;
+    CLLocationCoordinate2D cord = CLLocationCoordinate2DMake(lat, lng);
+    MKPlacemark *placemark = [[MKPlacemark alloc]initWithCoordinate:cord addressDictionary:nil];
+    MKMapItem *mapItem = [[MKMapItem alloc]initWithPlacemark:placemark];
+    MKCoordinateRegion startRegion = MKCoordinateRegionMakeWithDistance(cord, 1500, 1500);
+    [self.itemDisplayMap setRegion:startRegion animated:YES];
     
 }
 
