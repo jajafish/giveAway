@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--Give Items Table ViewC - I'm Giving-->
+        <!--Give Items Table ViewC - Free Stuff-->
         <scene sceneID="ZaD-fB-Csm">
             <objects>
                 <tableViewController id="5Np-FY-BoD" customClass="JFGiveItemsTableViewC" sceneMemberID="viewController">
@@ -14,7 +14,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="center" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="200" id="Ejc-iN-bp0" customClass="JFGiveItemCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="200"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="200"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ejc-iN-bp0" id="s93-4h-3kJ">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="199"/>
@@ -48,22 +48,68 @@
                             <outlet property="delegate" destination="5Np-FY-BoD" id="HmL-Un-nRO"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="I'm Giving" id="eFr-6V-8Ft">
+                    <navigationItem key="navigationItem" title="Free Stuff" id="eFr-6V-8Ft">
                         <barButtonItem key="backBarButtonItem" title=" " id="FVu-wQ-0zj"/>
-                        <barButtonItem key="leftBarButtonItem" title="show" id="Djw-fG-erx">
-                            <connections>
-                                <action selector="logButtonPressed:" destination="5Np-FY-BoD" id="LQv-8O-UVs"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="0u9-3Q-OF4"/>
                     </navigationItem>
-                    <connections>
-                        <outlet property="logButton" destination="Djw-fG-erx" id="bgc-nm-3NR"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3t8-qw-hkp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3859" y="1854"/>
+            <point key="canvasLocation" x="3889" y="2771"/>
+        </scene>
+        <!--Free StuffVC-->
+        <scene sceneID="45r-R2-OqY">
+            <objects>
+                <viewController id="jKr-Rc-vl6" customClass="JFFreeStuffVC" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Nfl-7u-A59">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="202" sectionHeaderHeight="22" sectionFooterHeight="22" id="o78-uR-qJd">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="497"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="202" id="t5B-2u-7EP" customClass="JFGiveItemCell">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="202"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="t5B-2u-7EP" id="3so-t6-LEd">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="201"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Is7-KB-1Tt">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="201"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Wba-8E-rjC">
+                                                    <rect key="frame" x="0.0" y="180" width="320" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PG9-F6-gHS">
+                                <rect key="frame" x="85" y="518" width="151" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Give Something Away">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="o78-uR-qJd" id="Dz0-c3-Yge"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="93G-XE-wXo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4360" y="2781"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="h12-hN-zDf">
@@ -239,7 +285,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="xED-am-X9c" kind="relationship" relationship="rootViewController" id="5Ou-eL-7lG"/>
+                        <segue destination="5Np-FY-BoD" kind="relationship" relationship="rootViewController" id="weq-kX-Dok"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Nv-MO-hAn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -249,6 +295,7 @@
         <!--Get Items Table ViewC - Free Stuff-->
         <scene sceneID="phP-l5-1iF">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jPO-jK-chC" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="xED-am-X9c" customClass="JFGetItemsTableViewC" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="200" sectionHeaderHeight="22" sectionFooterHeight="22" id="uUB-bk-hfI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -256,7 +303,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="getCell" rowHeight="200" id="GnV-rr-H7T" customClass="JFGetItemCell">
-                                <rect key="frame" x="0.0" y="86" width="320" height="200"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="200"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GnV-rr-H7T" id="LCH-74-Qj7">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="199"/>
@@ -290,7 +337,6 @@
                         <barButtonItem key="rightBarButtonItem" title="filter" id="Hs7-7o-Bu4">
                             <connections>
                                 <action selector="filterButtonPressed:" destination="xED-am-X9c" id="BJD-2Y-AQl"/>
-                                <segue destination="I0q-X0-N8w" kind="push" identifier="gettofilter" id="eC4-Xz-tOk"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -298,38 +344,8 @@
                         <outlet property="filterButton" destination="Hs7-7o-Bu4" id="Ys4-ge-WAo"/>
                     </connections>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jPO-jK-chC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3868" y="2771"/>
-        </scene>
-        <!--Get FilterVC - Filter Results-->
-        <scene sceneID="Ven-oG-NVW">
-            <objects>
-                <viewController id="I0q-X0-N8w" customClass="JFGetFilterVC" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" title="Filter Results" id="rUR-2v-nEf"/>
-                    <connections>
-                        <outlet property="searchDisplayController" destination="Q23-5A-ZyP" id="tcS-G6-l4q"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tRH-ui-Uc6" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="rKX-cZ-mde">
-                    <connections>
-                        <outlet property="delegate" destination="I0q-X0-N8w" id="JJi-Zu-DDx"/>
-                        <outlet property="searchContentsController" destination="I0q-X0-N8w" id="Wq1-vl-zxX"/>
-                        <outlet property="searchResultsDataSource" destination="I0q-X0-N8w" id="jPP-l6-Anf"/>
-                        <outlet property="searchResultsDelegate" destination="I0q-X0-N8w" id="3tA-QR-WsQ"/>
-                    </connections>
-                </searchDisplayController>
-                <searchDisplayController id="Q23-5A-ZyP">
-                    <connections>
-                        <outlet property="delegate" destination="I0q-X0-N8w" id="aWX-Y5-A8V"/>
-                        <outlet property="searchContentsController" destination="I0q-X0-N8w" id="Gcc-zH-wa6"/>
-                        <outlet property="searchResultsDataSource" destination="I0q-X0-N8w" id="Jkg-XN-4Hv"/>
-                        <outlet property="searchResultsDelegate" destination="I0q-X0-N8w" id="7ys-54-vvi"/>
-                    </connections>
-                </searchDisplayController>
-            </objects>
-            <point key="canvasLocation" x="4320" y="2779"/>
+            <point key="canvasLocation" x="4932" y="2790"/>
         </scene>
         <!--My Give Items CollectionVC-->
         <scene sceneID="9Pa-1E-zSk">
