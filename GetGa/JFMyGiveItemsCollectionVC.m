@@ -144,6 +144,12 @@
     
 }
 
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.selectedItem = myGiveItems[indexPath.row];
+    [self performSegueWithIdentifier:@"itemCollectionToDisplay" sender:self];
+}
+
 
 
 
