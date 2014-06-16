@@ -54,9 +54,9 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3t8-qw-hkp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4729" y="2797"/>
+            <point key="canvasLocation" x="4390" y="2771"/>
         </scene>
-        <!--Free StuffVC-->
+        <!--Free StuffVC - Free Stuff-->
         <scene sceneID="45r-R2-OqY">
             <objects>
                 <viewController id="jKr-Rc-vl6" customClass="JFFreeStuffVC" sceneMemberID="viewController">
@@ -103,14 +103,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="vPs-Fo-zeg"/>
+                    <navigationItem key="navigationItem" title="Free Stuff" id="gjy-jz-rnE"/>
                     <connections>
                         <outlet property="tableView" destination="o78-uR-qJd" id="Dz0-c3-Yge"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="93G-XE-wXo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3900" y="2771"/>
+            <point key="canvasLocation" x="3968" y="2763"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="h12-hN-zDf">
@@ -286,7 +286,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="jKr-Rc-vl6" kind="relationship" relationship="rootViewController" id="SHe-kK-aLM"/>
+                        <segue destination="jKr-Rc-vl6" kind="relationship" relationship="rootViewController" id="5TG-ev-9EH"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Nv-MO-hAn" userLabel="First Responder" sceneMemberID="firstResponder"/>
