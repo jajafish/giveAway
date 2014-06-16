@@ -333,10 +333,17 @@
                                 <state key="normal" title="I Want This">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="iWantButtonPressed:" destination="Gy6-w4-JZE" eventType="touchUpInside" id="tgh-ZQ-n4C"/>
+                                    <action selector="iWantThisButtonPressed:" destination="Gy6-w4-JZE" eventType="touchUpInside" id="Qvg-UF-dNZ"/>
+                                </connections>
                             </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="16G-a7-3T2">
                                 <rect key="frame" x="0.0" y="417" width="320" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Gy6-w4-JZE" id="hDm-if-3pO"/>
+                                </connections>
                             </mapView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Turkey, ham, lettuce, tomato" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YQW-Cr-d9V">
                                 <rect key="frame" x="12" y="284" width="218" height="21"/>
