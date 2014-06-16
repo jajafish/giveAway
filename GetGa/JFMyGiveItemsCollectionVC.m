@@ -19,6 +19,9 @@
 @property (strong, nonatomic) PFGiveItem *selectedItem;
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 
+@property (strong, nonatomic) IBOutlet UIImageView *profileImageView;
+@property (strong, nonatomic) UIImage *profilePicture;
+
 @end
 
 @implementation JFMyGiveItemsCollectionVC
@@ -37,12 +40,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.navigationItem.title = [PFUser currentUser][@"profile"][@"first_name"];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    
+    [self getUserProfilePicture];
     [self reloadParseData];
     
 }
@@ -150,6 +153,32 @@
     [self performSegueWithIdentifier:@"itemCollectionToDisplay" sender:self];
 }
 
+
+#pragma mark - profile data
+
+-(void)getUserProfilePicture
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"profilePhoto"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        
+        if (!error){
+            
+            PFFile *photoFile = [objects lastObject][@"photoPictureFile"];
+            [photoFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                if (!error){
+                    self.profilePicture = [UIImage imageWithData:data];
+                    self.profileImageView.image = self.profilePicture;
+                    self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width / 2;
+                    self.profileImageView.clipsToBounds = YES;
+                    NSLog(@"the picture is %@", self.profilePicture);
+                    [self.profileImageView setNeedsDisplay];
+                }
+            }];
+            
+        }
+        
+    }];
+}
 
 
 

@@ -258,7 +258,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="IpB-CW-e3D">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="516"/>
+                                <rect key="frame" x="0.0" y="215" width="320" height="301"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="WR6-ss-ga8">
@@ -302,12 +302,17 @@
                                     <segue destination="p25-uW-pG8" kind="push" identifier="itemsCollectionToGivePhoto" id="Q6g-v8-crS"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="BTS-9Y-qGh">
+                                <rect key="frame" x="100" y="78" width="120" height="120"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="3Jg-jc-xBO"/>
                     <connections>
                         <outlet property="collectionView" destination="IpB-CW-e3D" id="1xf-65-5qM"/>
+                        <outlet property="profileImageView" destination="BTS-9Y-qGh" id="6kw-ln-ciF"/>
                         <segue destination="Gy6-w4-JZE" kind="push" identifier="itemCollectionToDisplay" id="HKv-4w-Yx5"/>
                     </connections>
                 </viewController>
