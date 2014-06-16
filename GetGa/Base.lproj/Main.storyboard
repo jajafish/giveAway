@@ -14,7 +14,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="center" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="200" id="Ejc-iN-bp0" customClass="JFGiveItemCell">
-                                <rect key="frame" x="0.0" y="86" width="320" height="200"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="200"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ejc-iN-bp0" id="s93-4h-3kJ">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="199"/>
@@ -55,15 +55,10 @@
                                 <action selector="logButtonPressed:" destination="5Np-FY-BoD" id="LQv-8O-UVs"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="0u9-3Q-OF4">
-                            <connections>
-                                <segue destination="p25-uW-pG8" kind="push" identifier="givePhotoToGiveDetailsSegue" id="TDO-IQ-biN"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="0u9-3Q-OF4"/>
                     </navigationItem>
                     <connections>
                         <outlet property="logButton" destination="Djw-fG-erx" id="bgc-nm-3NR"/>
-                        <segue destination="Gy6-w4-JZE" kind="push" identifier="itemTableToDisplay" id="mBn-qn-eBz"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3t8-qw-hkp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -199,7 +194,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="5Np-FY-BoD" kind="relationship" relationship="rootViewController" id="YF0-ul-2Rq"/>
+                        <segue destination="9GF-n5-vOT" kind="relationship" relationship="rootViewController" id="dt5-WI-69h"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I5N-fz-RSD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -335,6 +330,72 @@
                 </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="4320" y="2779"/>
+        </scene>
+        <!--My Give Items CollectionVC-->
+        <scene sceneID="9Pa-1E-zSk">
+            <objects>
+                <viewController id="9GF-n5-vOT" customClass="JFMyGiveItemsCollectionVC" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="u02-lg-6KV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="IpB-CW-e3D">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="497"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="WR6-ss-ga8">
+                                    <size key="itemSize" width="100" height="100"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="itemCollectionCell" id="X78-z6-Pee" customClass="JFMyGiveItemCollectionCell">
+                                        <rect key="frame" x="0.0" y="64" width="100" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="l4r-68-ZKL">
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <outlet property="collectionCellImageView" destination="l4r-68-ZKL" id="OdW-RD-ivM"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="9GF-n5-vOT" id="cga-ls-0Yx"/>
+                                    <outlet property="delegate" destination="9GF-n5-vOT" id="s4t-1C-g2G"/>
+                                </connections>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ZaT-I6-0g0">
+                                <rect key="frame" x="85" y="518" width="151" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Give Something Away">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="p25-uW-pG8" kind="push" identifier="itemsCollectionToGivePhoto" id="Q6g-v8-crS"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="3Jg-jc-xBO"/>
+                    <connections>
+                        <outlet property="collectionView" destination="IpB-CW-e3D" id="1xf-65-5qM"/>
+                        <segue destination="Gy6-w4-JZE" kind="push" identifier="itemCollectionToDisplay" id="HKv-4w-Yx5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xKh-cr-tVN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3859" y="1172"/>
         </scene>
         <!--Item DisplayVC-->
         <scene sceneID="mar-RP-4mh">

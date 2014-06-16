@@ -15,6 +15,8 @@
 		E71BDFA3193AC62F00861171 /* JFLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E71BDFA2193AC62F00861171 /* JFLoginVC.m */; };
 		E71D7A4F194CD143007BA2F3 /* JFItemDisplayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E71D7A4E194CD143007BA2F3 /* JFItemDisplayVC.m */; };
 		E71D7A52194CD434007BA2F3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E71D7A51194CD434007BA2F3 /* MapKit.framework */; };
+		E74317A0194E9E8A007F32E5 /* JFMyGiveItemsCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E743179F194E9E8A007F32E5 /* JFMyGiveItemsCollectionVC.m */; };
+		E74317A3194EABFC007F32E5 /* JFMyGiveItemCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E74317A2194EABFC007F32E5 /* JFMyGiveItemCollectionCell.m */; };
 		E775593319325CC600CD76A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E775593219325CC600CD76A0 /* Foundation.framework */; };
 		E775593519325CC600CD76A0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E775593419325CC600CD76A0 /* CoreGraphics.framework */; };
 		E775593719325CC600CD76A0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E775593619325CC600CD76A0 /* UIKit.framework */; };
@@ -66,6 +68,10 @@
 		E71D7A4D194CD143007BA2F3 /* JFItemDisplayVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFItemDisplayVC.h; sourceTree = "<group>"; };
 		E71D7A4E194CD143007BA2F3 /* JFItemDisplayVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFItemDisplayVC.m; sourceTree = "<group>"; };
 		E71D7A51194CD434007BA2F3 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		E743179E194E9E8A007F32E5 /* JFMyGiveItemsCollectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFMyGiveItemsCollectionVC.h; sourceTree = "<group>"; };
+		E743179F194E9E8A007F32E5 /* JFMyGiveItemsCollectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFMyGiveItemsCollectionVC.m; sourceTree = "<group>"; };
+		E74317A1194EABFC007F32E5 /* JFMyGiveItemCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFMyGiveItemCollectionCell.h; sourceTree = "<group>"; };
+		E74317A2194EABFC007F32E5 /* JFMyGiveItemCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFMyGiveItemCollectionCell.m; sourceTree = "<group>"; };
 		E775592F19325CC600CD76A0 /* GetGa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GetGa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E775593219325CC600CD76A0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E775593419325CC600CD76A0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -144,6 +150,7 @@
 		E705E0B619364C9200CD2E3A /* give */ = {
 			isa = PBXGroup;
 			children = (
+				E7431796194E9283007F32E5 /* give items collection */,
 				E7C8AE941937006400856D4B /* give items table */,
 				E7C8AE951937006C00856D4B /* give new item photo */,
 				E7C8AE961937007400856D4B /* give new item details */,
@@ -187,6 +194,17 @@
 			name = "give item display";
 			sourceTree = "<group>";
 		};
+		E7431796194E9283007F32E5 /* give items collection */ = {
+			isa = PBXGroup;
+			children = (
+				E743179E194E9E8A007F32E5 /* JFMyGiveItemsCollectionVC.h */,
+				E743179F194E9E8A007F32E5 /* JFMyGiveItemsCollectionVC.m */,
+				E74317A1194EABFC007F32E5 /* JFMyGiveItemCollectionCell.h */,
+				E74317A2194EABFC007F32E5 /* JFMyGiveItemCollectionCell.m */,
+			);
+			name = "give items collection";
+			sourceTree = "<group>";
+		};
 		E775592619325CC600CD76A0 = {
 			isa = PBXGroup;
 			children = (
@@ -224,6 +242,8 @@
 		E775593819325CC600CD76A0 /* GetGa */ = {
 			isa = PBXGroup;
 			children = (
+				E775594119325CC600CD76A0 /* JFAppDelegate.h */,
+				E775594219325CC600CD76A0 /* JFAppDelegate.m */,
 				E7B3734B1937D7F300CA5EBC /* view */,
 				E7B3734C1937D81200CA5EBC /* model */,
 				E775594A19325CC600CD76A0 /* Images.xcassets */,
@@ -236,8 +256,6 @@
 			isa = PBXGroup;
 			children = (
 				E7025FEB193B142B00E0027C /* dad.png */,
-				E775594119325CC600CD76A0 /* JFAppDelegate.h */,
-				E775594219325CC600CD76A0 /* JFAppDelegate.m */,
 				E775596E1932637C00CD76A0 /* appshot.png */,
 				E775593A19325CC600CD76A0 /* GetGa-Info.plist */,
 				E775593B19325CC600CD76A0 /* InfoPlist.strings */,
@@ -513,9 +531,11 @@
 				E7025FEA193B0D9100E0027C /* JFMyProfileVC.m in Sources */,
 				E7A29A02193878B00045EC83 /* JFGiveItemsTableViewC.m in Sources */,
 				E71BDFA3193AC62F00861171 /* JFLoginVC.m in Sources */,
+				E74317A0194E9E8A007F32E5 /* JFMyGiveItemsCollectionVC.m in Sources */,
 				E7F5D2CB19383F4800B17BE0 /* PFGiveItem.m in Sources */,
 				E7F3054A194A4CC0007AA625 /* JFGetFilterVC.m in Sources */,
 				E799EB75193AF0E80006B708 /* PFGetItem.m in Sources */,
+				E74317A3194EABFC007F32E5 /* JFMyGiveItemCollectionCell.m in Sources */,
 				E775594319325CC600CD76A0 /* JFAppDelegate.m in Sources */,
 				E7C8AE99193700AA00856D4B /* JFGiveItemDetailsVC.m in Sources */,
 				E71D7A4F194CD143007BA2F3 /* JFItemDisplayVC.m in Sources */,

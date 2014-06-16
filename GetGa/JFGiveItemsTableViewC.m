@@ -92,7 +92,7 @@
     if ([segue.identifier isEqualToString:@"givePhotoToGiveDetailsSegue"]){
         if ([segue.destinationViewController isKindOfClass:[JFGivePhotoVC class]]){
             JFGivePhotoVC *targetVC = segue.destinationViewController;
-            targetVC.mainItemsTableVC = self;
+            targetVC.mainItemsCollectionVC = self;
         }
     }
     if ([segue.identifier isEqualToString:@"itemTableToDisplay"])

@@ -40,15 +40,16 @@
         identifier = nil;
         
         NSLog(@"pressed logout");
+        [PFUser logOut];
+        [[PFFacebookUtils session]closeAndClearTokenInformation];
+        [[PFFacebookUtils session]close];
+        [[FBSession activeSession]closeAndClearTokenInformation];
+        [[FBSession activeSession]close];
+        [FBSession setActiveSession:nil];
         
-            [PFUser logOut];
-            [[PFFacebookUtils session]closeAndClearTokenInformation];
-            [[PFFacebookUtils session]close];
-            [[FBSession activeSession]closeAndClearTokenInformation];
-            [[FBSession activeSession]close];
-            [FBSession setActiveSession:nil];
-
-            [self.navigationController popToRootViewControllerAnimated:YES];
+        NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage]; for(NSHTTPCookie *cookie in [storage cookies]) { NSString *domainName = [cookie domain]; NSRange domainRange = [domainName rangeOfString:@"facebook"]; if(domainRange.length > 0) { [storage deleteCookie:cookie]; } }
+        
+        [self.navigationController popToRootViewControllerAnimated:YES];
     }
     
     return identifier;
