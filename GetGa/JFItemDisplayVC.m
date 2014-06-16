@@ -55,9 +55,7 @@
     MKCoordinateRegion startRegion = MKCoordinateRegionMakeWithDistance(cord, 1500, 1500);
     [self.itemDisplayMap setRegion:startRegion animated:YES];
     
-//    [self.itemDisplayMap addOverlay:(id)itemRadius level:MKOverlayLevelAboveRoads];
-    
-    [self.itemDisplayMap addOverlay:[MKCircle circleWithCenterCoordinate:cord radius:1000]];
+    [self.itemDisplayMap addOverlay:[MKCircle circleWithCenterCoordinate:cord radius:800]];
     
     
 }
@@ -69,19 +67,12 @@
 }
 
 
-//-(MKOverlayRenderer *):(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
-//{
-//    MKCircle *itemCircle = [MKCircle circleWithCenterCoordinate:itemLocation radius:1000];
-//    MKCircleRenderer *itemRadius = [[MKCircleRenderer alloc]initWithCircle:itemCircle];
-//    itemRadius.fillColor = [UIColor blueColor];
-//    
-//    return itemRadius;
-//    
-//}
+
 
 -(MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay {
     MKCircleView *circleView = [[MKCircleView alloc] initWithCircle:(MKCircle *)overlay];
     circleView.fillColor = [UIColor blueColor];
+    circleView.alpha = 0.3;
     return circleView;
 }
 
