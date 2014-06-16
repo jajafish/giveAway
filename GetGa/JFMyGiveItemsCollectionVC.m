@@ -170,7 +170,6 @@
                     self.profileImageView.image = self.profilePicture;
                     self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width / 2;
                     self.profileImageView.clipsToBounds = YES;
-                    NSLog(@"the picture is %@", self.profilePicture);
                     [self.profileImageView setNeedsDisplay];
                 }
             }];
