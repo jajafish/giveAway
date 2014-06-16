@@ -38,7 +38,7 @@
         if ([segue.destinationViewController isKindOfClass:[JFGiveItemDetailsVC class]]){
             JFGiveItemDetailsVC *targetVC = segue.destinationViewController;
             targetVC.giveItemImage = self.giveItemImage;
-            targetVC.rootVC = self.mainItemsTableVC;
+            targetVC.rootVC = self.mainItemsCollectionVC;
         }
     }
     

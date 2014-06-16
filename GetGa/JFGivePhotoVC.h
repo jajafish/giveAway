@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "JFGiveItemsTableViewC.h"
+#import "JFMyGiveItemsCollectionVC.h"
 
 @interface JFGivePhotoVC : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (strong ,nonatomic) UIImage *giveItemImage;
 
-@property (strong, nonatomic) JFGiveItemsTableViewC *mainItemsTableVC;
+@property (strong, nonatomic) JFMyGiveItemsCollectionVC *mainItemsCollectionVC;
 
 @end
