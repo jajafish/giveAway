@@ -14,6 +14,7 @@
 
 @property (strong, nonatomic) NSMutableArray *availableFreeStuff;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) PFGiveItem *selectedItem;
 
 @end
 
@@ -99,6 +100,12 @@
     cell.giveItemLabel.highlighted = NO;
     
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.selectedItem = self.availableFreeStuff[indexPath.row];
+    [self performSegueWithIdentifier:@"itemTableToDisplay" sender:self];
 }
 
 

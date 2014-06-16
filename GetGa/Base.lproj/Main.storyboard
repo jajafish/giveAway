@@ -41,6 +41,7 @@
                                         <connections>
                                             <outlet property="giveItemImageView" destination="Is7-KB-1Tt" id="D0E-vt-Yrd"/>
                                             <outlet property="giveItemLabel" destination="Wba-8E-rjC" id="QyG-d9-vGz"/>
+                                            <segue destination="Gy6-w4-JZE" kind="push" identifier="itemTableToDisplay" id="inJ-gQ-ukm"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -539,4 +540,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="inJ-gQ-ukm"/>
+    </inferredMetricsTieBreakers>
 </document>
