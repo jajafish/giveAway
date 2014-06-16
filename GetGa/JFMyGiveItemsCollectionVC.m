@@ -11,6 +11,7 @@
 #import "JFMyGiveItemCollectionCell.h"
 #import "JFGivePhotoVC.h"
 #import "JFItemDisplayVC.h"
+#import "JFCollectionHeaderView.h"
 
 @interface JFMyGiveItemsCollectionVC ()
 
@@ -41,6 +42,8 @@
 {
     [super viewDidLoad];
     self.navigationItem.title = [PFUser currentUser][@"profile"][@"first_name"];
+    UICollectionViewFlowLayout *collectionViewLayout = (UICollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
+    collectionViewLayout.sectionInset = UIEdgeInsetsMake(20, 0, 20, 0);
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -164,6 +167,22 @@
 {
     self.selectedItem = myGiveItems[indexPath.row];
     [self performSegueWithIdentifier:@"itemCollectionToDisplay" sender:self];
+}
+
+
+-(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionReusableView *reusableView = nil;
+    
+    if (kind == UICollectionElementKindSectionHeader){
+        JFCollectionHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
+        NSString *title = [[NSString alloc]initWithFormat:@"Successfully given"];
+        headerView.sectionTitleLabel.text = title;
+        
+        reusableView = headerView;
+    }
+    
+    return reusableView;
 }
 
 
