@@ -123,12 +123,25 @@
 #pragma mark - Collection View Methods
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return 1;
+    return 2;
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
+    
     return self.myGiveItems.count;
+    
+//    switch (section) {
+//        case 0:
+//            return self.myGiveItems.count;
+//            break;
+//        case 1:
+//            return 3;
+//            break;
+//        default:
+//            break;
+//    }
+
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
