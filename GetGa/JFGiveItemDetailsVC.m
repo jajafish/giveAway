@@ -7,7 +7,7 @@
 //
 
 #import "JFGiveItemDetailsVC.h"
-#import "JFGiveItemsTableViewC.h"
+#import "JFMyGiveItemsCollectionVC.h"
 #import <CoreLocation/CoreLocation.h>
 
 @interface JFGiveItemDetailsVC () <UITextFieldDelegate, UIGestureRecognizerDelegate>
@@ -80,7 +80,7 @@
     giveItem[@"postedLocation"] = [PFUser currentUser][@"mostRecentLocation"];
     [giveItem setObject:giveItemPhoto forKey:@"giveItemPhoto"];
     [giveItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        [self.rootVC reloadParseData];
+//        [self.rootVC reloadParseData];
     }];
     
     [self.navigationController popToRootViewControllerAnimated:YES];

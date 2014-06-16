@@ -31,7 +31,6 @@
 		E775595C19325CC600CD76A0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E775595A19325CC600CD76A0 /* InfoPlist.strings */; };
 		E775595E19325CC600CD76A0 /* GetGaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E775595D19325CC600CD76A0 /* GetGaTests.m */; };
 		E775596F1932637C00CD76A0 /* appshot.png in Resources */ = {isa = PBXBuildFile; fileRef = E775596E1932637C00CD76A0 /* appshot.png */; };
-		E7A29A02193878B00045EC83 /* JFGiveItemsTableViewC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A29A01193878B00045EC83 /* JFGiveItemsTableViewC.m */; };
 		E7BB0417193AAC6D000DEF36 /* JFMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7BB0416193AAC6D000DEF36 /* JFMainViewController.m */; };
 		E7C8AE99193700AA00856D4B /* JFGiveItemDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C8AE98193700AA00856D4B /* JFGiveItemDetailsVC.m */; };
 		E7C8AE9C19370B7C00856D4B /* JFConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C8AE9B19370B7C00856D4B /* JFConstants.m */; };
@@ -87,8 +86,6 @@
 		E775595B19325CC600CD76A0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E775595D19325CC600CD76A0 /* GetGaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetGaTests.m; sourceTree = "<group>"; };
 		E775596E1932637C00CD76A0 /* appshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appshot.png; sourceTree = "<group>"; };
-		E7A29A00193878B00045EC83 /* JFGiveItemsTableViewC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFGiveItemsTableViewC.h; sourceTree = "<group>"; };
-		E7A29A01193878B00045EC83 /* JFGiveItemsTableViewC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFGiveItemsTableViewC.m; sourceTree = "<group>"; };
 		E7BB0415193AAC6D000DEF36 /* JFMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFMainViewController.h; sourceTree = "<group>"; };
 		E7BB0416193AAC6D000DEF36 /* JFMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFMainViewController.m; sourceTree = "<group>"; };
 		E7C8AE97193700AA00856D4B /* JFGiveItemDetailsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFGiveItemDetailsVC.h; sourceTree = "<group>"; };
@@ -142,7 +139,6 @@
 			isa = PBXGroup;
 			children = (
 				E7431796194E9283007F32E5 /* give items collection */,
-				E7C8AE941937006400856D4B /* give items table */,
 				E7C8AE951937006C00856D4B /* give new item photo */,
 				E7C8AE961937007400856D4B /* give new item details */,
 				E71D7A50194CD14A007BA2F3 /* give item display */,
@@ -154,7 +150,6 @@
 			isa = PBXGroup;
 			children = (
 				E799EB6C193AEBAC0006B708 /* get items table */,
-				E799EB6D193AEBBF0006B708 /* get item detail page */,
 			);
 			name = get;
 			sourceTree = "<group>";
@@ -286,13 +281,6 @@
 			name = "get items table";
 			sourceTree = "<group>";
 		};
-		E799EB6D193AEBBF0006B708 /* get item detail page */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "get item detail page";
-			sourceTree = "<group>";
-		};
 		E799EB71193AF0D40006B708 /* give item */ = {
 			isa = PBXGroup;
 			children = (
@@ -331,15 +319,6 @@
 				E7BB0416193AAC6D000DEF36 /* JFMainViewController.m */,
 			);
 			name = "global navigation";
-			sourceTree = "<group>";
-		};
-		E7C8AE941937006400856D4B /* give items table */ = {
-			isa = PBXGroup;
-			children = (
-				E7A29A00193878B00045EC83 /* JFGiveItemsTableViewC.h */,
-				E7A29A01193878B00045EC83 /* JFGiveItemsTableViewC.m */,
-			);
-			name = "give items table";
 			sourceTree = "<group>";
 		};
 		E7C8AE951937006C00856D4B /* give new item photo */ = {
@@ -498,7 +477,6 @@
 				E705E0BB19367B6A00CD2E3A /* JFGivePhotoVC.m in Sources */,
 				E7025FEA193B0D9100E0027C /* JFMyProfileVC.m in Sources */,
 				E74E84AD194ED55800755821 /* JFFreeStuffVC.m in Sources */,
-				E7A29A02193878B00045EC83 /* JFGiveItemsTableViewC.m in Sources */,
 				E71BDFA3193AC62F00861171 /* JFLoginVC.m in Sources */,
 				E74317A0194E9E8A007F32E5 /* JFMyGiveItemsCollectionVC.m in Sources */,
 				E7F5D2CB19383F4800B17BE0 /* PFGiveItem.m in Sources */,
