@@ -19,7 +19,11 @@
 
 @end
 
-@implementation JFItemDisplayVC
+@implementation JFItemDisplayVC {
+    
+    CLLocationCoordinate2D itemLocation;
+    
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -43,16 +47,16 @@
     
     self.itemDisplayDetailLabel.text = [NSString stringWithFormat:@"%f %f", lat, lng];
     
-    
     // MAP
     self.itemDisplayMap.delegate = self;
     CLLocationCoordinate2D cord = CLLocationCoordinate2DMake(lat, lng);
-    MKPlacemark *placemark = [[MKPlacemark alloc]initWithCoordinate:cord addressDictionary:nil];
-    MKMapItem *mapItem = [[MKMapItem alloc]initWithPlacemark:placemark];
+    itemLocation = cord;
+    
     MKCoordinateRegion startRegion = MKCoordinateRegionMakeWithDistance(cord, 1500, 1500);
     [self.itemDisplayMap setRegion:startRegion animated:YES];
     
-
+    [self.itemDisplayMap addOverlay:[MKCircle circleWithCenterCoordinate:cord radius:800]];
+    
     
 }
 
@@ -60,6 +64,16 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+
+
+-(MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay {
+    MKCircleView *circleView = [[MKCircleView alloc] initWithCircle:(MKCircle *)overlay];
+    circleView.fillColor = [UIColor blueColor];
+    circleView.alpha = 0.3;
+    return circleView;
 }
 
 
