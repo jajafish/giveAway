@@ -280,6 +280,8 @@
 			children = (
 				E74E84AB194ED55800755821 /* JFFreeStuffVC.h */,
 				E74E84AC194ED55800755821 /* JFFreeStuffVC.m */,
+				E7F5D2C6193831BF00B17BE0 /* JFGiveItemCell.h */,
+				E7F5D2C7193831BF00B17BE0 /* JFGiveItemCell.m */,
 			);
 			name = "get items table";
 			sourceTree = "<group>";
@@ -334,8 +336,6 @@
 		E7C8AE941937006400856D4B /* give items table */ = {
 			isa = PBXGroup;
 			children = (
-				E7F5D2C6193831BF00B17BE0 /* JFGiveItemCell.h */,
-				E7F5D2C7193831BF00B17BE0 /* JFGiveItemCell.m */,
 				E7A29A00193878B00045EC83 /* JFGiveItemsTableViewC.h */,
 				E7A29A01193878B00045EC83 /* JFGiveItemsTableViewC.m */,
 			);

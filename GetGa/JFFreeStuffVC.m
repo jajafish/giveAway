@@ -19,10 +19,13 @@
 
 @implementation JFFreeStuffVC
 
+@synthesize tableView = _tableView;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self.navigationItem setHidesBackButton:YES];
+    [self.tableView reloadData];
     //    [self.tableView setContentInset:UIEdgeInsetsMake(50,0,0,0)];
 }
 
@@ -71,7 +74,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
     return self.availableFreeStuff.count;
 }
 
@@ -99,12 +101,6 @@
     return cell;
 }
 
-//
-//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    self.selectedItem = self.availableFreeStuff[indexPath.row];
-//    [self performSegueWithIdentifier:@"itemTableToDisplay" sender:self];
-//}
 
 
 @end

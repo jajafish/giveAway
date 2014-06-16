@@ -37,10 +37,6 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.44999999999999962" height="1"/>
-                                <connections>
-                                    <outlet property="giveItemImageView" destination="ppA-g3-p8S" id="Ex1-EY-hVN"/>
-                                    <outlet property="giveItemLabel" destination="fzM-T6-5YY" id="rLR-EL-Isl"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -69,7 +65,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="202" id="t5B-2u-7EP" customClass="JFGiveItemCell">
+                                    <tableViewCell tag="150" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="202" id="t5B-2u-7EP" customClass="JFGiveItemCell">
                                         <rect key="frame" x="0.0" y="86" width="320" height="202"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="t5B-2u-7EP" id="3so-t6-LEd">
@@ -90,8 +86,16 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="giveItemImageView" destination="Is7-KB-1Tt" id="D0E-vt-Yrd"/>
+                                            <outlet property="giveItemLabel" destination="Wba-8E-rjC" id="QyG-d9-vGz"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="jKr-Rc-vl6" id="0bV-qn-KpS"/>
+                                    <outlet property="delegate" destination="jKr-Rc-vl6" id="Jbl-26-ng8"/>
+                                </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PG9-F6-gHS">
                                 <rect key="frame" x="85" y="518" width="151" height="30"/>
