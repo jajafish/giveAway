@@ -30,9 +30,6 @@
         case 1:
             identifier = @"secondSegue";
             break;
-        case 2:
-            identifier = @"thirdSegue";
-            break;
             
     }
     
