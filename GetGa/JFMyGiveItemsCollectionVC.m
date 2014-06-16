@@ -12,6 +12,7 @@
 #import "JFGivePhotoVC.h"
 #import "JFItemDisplayVC.h"
 #import "JFCollectionHeaderView.h"
+#import "CSStickyHeaderFlowLayout.h"
 
 @interface JFMyGiveItemsCollectionVC ()
 
@@ -22,6 +23,7 @@
 
 @property (strong, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (strong, nonatomic) UIImage *profilePicture;
+
 
 @end
 
@@ -44,6 +46,24 @@
     self.navigationItem.title = [PFUser currentUser][@"profile"][@"first_name"];
     UICollectionViewFlowLayout *collectionViewLayout = (UICollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
     collectionViewLayout.sectionInset = UIEdgeInsetsMake(20, 0, 20, 0);
+    
+
+    CSStickyHeaderFlowLayout *layout = (id)self.collectionView.collectionViewLayout;
+    if ([layout isKindOfClass:[CSStickyHeaderFlowLayout class]]) {
+        layout.parallaxHeaderReferenceSize = CGSizeMake(320, 200);
+//        layout.parallaxHeaderAlwaysOnTop = YES;
+    }
+    layout.disableStickyHeaders = YES;
+
+    
+    UINib *headerNib = [UINib nibWithNibName:@"CSGrowHeader" bundle:nil];
+    [self.collectionView registerNib:headerNib
+          forSupplementaryViewOfKind:CSStickyHeaderParallaxHeader
+                 withReuseIdentifier:@"header"];
+    
+    
+    
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -133,17 +153,6 @@
 {
     
     return self.myGiveItems.count;
-    
-//    switch (section) {
-//        case 0:
-//            return self.myGiveItems.count;
-//            break;
-//        case 1:
-//            return 3;
-//            break;
-//        default:
-//            break;
-//    }
 
 }
 
@@ -170,19 +179,21 @@
 }
 
 
+
 -(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionReusableView *reusableView = nil;
-    
-    if (kind == UICollectionElementKindSectionHeader){
+    if ([kind isEqualToString:CSStickyHeaderParallaxHeader]) {
+        
+        UICollectionReusableView *cell = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"header" forIndexPath:indexPath];
+        return cell;
+    } else if ([kind isEqualToString:UICollectionElementKindSectionHeader]){
         JFCollectionHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
         NSString *title = [[NSString alloc]initWithFormat:@"Successfully given"];
         headerView.sectionTitleLabel.text = title;
-        
-        reusableView = headerView;
+        return headerView;
     }
+    return nil;
     
-    return reusableView;
 }
 
 

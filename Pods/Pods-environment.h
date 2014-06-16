@@ -18,11 +18,17 @@
 #define COCOAPODS_VERSION_MINOR_Bolts 1
 #define COCOAPODS_VERSION_PATCH_Bolts 0
 
+// CSStickyHeaderFlowLayout
+#define COCOAPODS_POD_AVAILABLE_CSStickyHeaderFlowLayout
+#define COCOAPODS_VERSION_MAJOR_CSStickyHeaderFlowLayout 0
+#define COCOAPODS_VERSION_MINOR_CSStickyHeaderFlowLayout 2
+#define COCOAPODS_VERSION_PATCH_CSStickyHeaderFlowLayout 0
+
 // Facebook-iOS-SDK
 #define COCOAPODS_POD_AVAILABLE_Facebook_iOS_SDK
 #define COCOAPODS_VERSION_MAJOR_Facebook_iOS_SDK 3
-#define COCOAPODS_VERSION_MINOR_Facebook_iOS_SDK 14
-#define COCOAPODS_VERSION_PATCH_Facebook_iOS_SDK 1
+#define COCOAPODS_VERSION_MINOR_Facebook_iOS_SDK 15
+#define COCOAPODS_VERSION_PATCH_Facebook_iOS_SDK 0
 
 // Parse
 #define COCOAPODS_POD_AVAILABLE_Parse
