@@ -1,59 +1,45 @@
 //
-//  JFGiveItemsTableViewC.m
+//  JFFreeStuffVC.m
 //  GetGa
 //
-//  Created by Jared Fishman on 5/30/14.
+//  Created by Jared Fishman on 6/16/14.
 //  Copyright (c) 2014 Jared Fishman. All rights reserved.
 //
 
-#import "JFGiveItemsTableViewC.h"
-#import "PFGiveItem.h"
+#import "JFFreeStuffVC.h"
 #import "JFGiveItemCell.h"
-#import "JFGivePhotoVC.h"
-#import "JFItemDisplayVC.h"
+#import "PFGiveItem.h"
 
-@interface JFGiveItemsTableViewC ()
+@interface JFFreeStuffVC ()
 
-@property (strong, nonatomic) NSMutableArray *myGiveItems;
-
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *logButton;
-
-@property (strong, nonatomic) PFGiveItem *selectedItem;
+@property (strong, nonatomic) NSMutableArray *availableFreeStuff;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
+@implementation JFFreeStuffVC
 
-@implementation JFGiveItemsTableViewC
-
-@synthesize myGiveItems;
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+@synthesize tableView = _tableView;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self.navigationItem setHidesBackButton:YES];
-//    [self.tableView setContentInset:UIEdgeInsetsMake(50,0,0,0)];
+    [self.tableView reloadData];
+    //    [self.tableView setContentInset:UIEdgeInsetsMake(50,0,0,0)];
 }
 
 
 -(void)viewWillAppear:(BOOL)animated
 {
-
+    
     [self reloadParseData];
     
 }
 
 -(void)reloadParseData
 {
-    self.myGiveItems = [[NSMutableArray alloc]init];
+    self.availableFreeStuff = [[NSMutableArray alloc]init];
     
     PFQuery *query = [PFQuery queryWithClassName:@"giveItem"];
     [query whereKey:@"giver" equalTo:[PFUser currentUser]];
@@ -75,7 +61,7 @@
                     [self.tableView reloadData];
                 }];
                 
-                [self.myGiveItems addObject:newGiveItem];
+                [self.availableFreeStuff addObject:newGiveItem];
                 
             }
         } else {
@@ -86,42 +72,9 @@
     
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    
-    if ([segue.identifier isEqualToString:@"givePhotoToGiveDetailsSegue"]){
-        if ([segue.destinationViewController isKindOfClass:[JFGivePhotoVC class]]){
-            JFGivePhotoVC *targetVC = segue.destinationViewController;
-            targetVC.mainItemsCollectionVC = self;
-        }
-    }
-    if ([segue.identifier isEqualToString:@"itemTableToDisplay"])
-    {
-        if ([segue.destinationViewController isKindOfClass:[JFItemDisplayVC class]]){
-            JFItemDisplayVC *targetVC = segue.destinationViewController;
-            targetVC.giveItem = self.selectedItem;
-        }
-        
-    }
-    
-}
-
-
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - Table view data source
-
-
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
-    return self.myGiveItems.count;
+    return self.availableFreeStuff.count;
 }
 
 -(void)tableView:(UITableView *)tableView willDisplayFooterView:(UIView *)view forSection:(NSInteger)section
@@ -138,8 +91,8 @@
     if (cell == nil){
         cell = [[JFGiveItemCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
-
-    PFGiveItem *giveItem = self.myGiveItems[indexPath.row];
+    
+    PFGiveItem *giveItem = self.availableFreeStuff[indexPath.row];
     cell.giveItemLabel.text = [NSString stringWithFormat:@"  %@", giveItem.giveItemName];
     cell.giveItemImageView.image = giveItem.image;
     cell.giveItemLabel.shadowColor = [UIColor clearColor];
@@ -147,15 +100,6 @@
     
     return cell;
 }
-
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    self.selectedItem = myGiveItems[indexPath.row];
-    [self performSegueWithIdentifier:@"itemTableToDisplay" sender:self];
-}
-
-
 
 
 

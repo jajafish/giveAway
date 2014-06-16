@@ -11,12 +11,12 @@
 		E7025FEA193B0D9100E0027C /* JFMyProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7025FE9193B0D9100E0027C /* JFMyProfileVC.m */; };
 		E7025FEC193B142B00E0027C /* dad.png in Resources */ = {isa = PBXBuildFile; fileRef = E7025FEB193B142B00E0027C /* dad.png */; };
 		E705E0BB19367B6A00CD2E3A /* JFGivePhotoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E705E0BA19367B6A00CD2E3A /* JFGivePhotoVC.m */; };
-		E70DAE5C193AF79E001EABF4 /* JFGetItemsTableViewC.m in Sources */ = {isa = PBXBuildFile; fileRef = E70DAE5B193AF79E001EABF4 /* JFGetItemsTableViewC.m */; };
 		E71BDFA3193AC62F00861171 /* JFLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E71BDFA2193AC62F00861171 /* JFLoginVC.m */; };
 		E71D7A4F194CD143007BA2F3 /* JFItemDisplayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E71D7A4E194CD143007BA2F3 /* JFItemDisplayVC.m */; };
 		E71D7A52194CD434007BA2F3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E71D7A51194CD434007BA2F3 /* MapKit.framework */; };
 		E74317A0194E9E8A007F32E5 /* JFMyGiveItemsCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E743179F194E9E8A007F32E5 /* JFMyGiveItemsCollectionVC.m */; };
 		E74317A3194EABFC007F32E5 /* JFMyGiveItemCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E74317A2194EABFC007F32E5 /* JFMyGiveItemCollectionCell.m */; };
+		E74E84AD194ED55800755821 /* JFFreeStuffVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E74E84AC194ED55800755821 /* JFFreeStuffVC.m */; };
 		E775593319325CC600CD76A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E775593219325CC600CD76A0 /* Foundation.framework */; };
 		E775593519325CC600CD76A0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E775593419325CC600CD76A0 /* CoreGraphics.framework */; };
 		E775593719325CC600CD76A0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E775593619325CC600CD76A0 /* UIKit.framework */; };
@@ -31,13 +31,9 @@
 		E775595C19325CC600CD76A0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E775595A19325CC600CD76A0 /* InfoPlist.strings */; };
 		E775595E19325CC600CD76A0 /* GetGaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E775595D19325CC600CD76A0 /* GetGaTests.m */; };
 		E775596F1932637C00CD76A0 /* appshot.png in Resources */ = {isa = PBXBuildFile; fileRef = E775596E1932637C00CD76A0 /* appshot.png */; };
-		E799EB6B193AEBA70006B708 /* JFGetItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E799EB6A193AEBA70006B708 /* JFGetItemCell.m */; };
-		E799EB75193AF0E80006B708 /* PFGetItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E799EB74193AF0E80006B708 /* PFGetItem.m */; };
-		E7A29A02193878B00045EC83 /* JFGiveItemsTableViewC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A29A01193878B00045EC83 /* JFGiveItemsTableViewC.m */; };
 		E7BB0417193AAC6D000DEF36 /* JFMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7BB0416193AAC6D000DEF36 /* JFMainViewController.m */; };
 		E7C8AE99193700AA00856D4B /* JFGiveItemDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C8AE98193700AA00856D4B /* JFGiveItemDetailsVC.m */; };
 		E7C8AE9C19370B7C00856D4B /* JFConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C8AE9B19370B7C00856D4B /* JFConstants.m */; };
-		E7F3054A194A4CC0007AA625 /* JFGetFilterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F30549194A4CC0007AA625 /* JFGetFilterVC.m */; };
 		E7F3054C194A4F8B007AA625 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F3054B194A4F8B007AA625 /* CoreLocation.framework */; };
 		E7F5D2C8193831BF00B17BE0 /* JFGiveItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F5D2C7193831BF00B17BE0 /* JFGiveItemCell.m */; };
 		E7F5D2CB19383F4800B17BE0 /* PFGiveItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F5D2CA19383F4800B17BE0 /* PFGiveItem.m */; };
@@ -61,8 +57,6 @@
 		E7025FEB193B142B00E0027C /* dad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dad.png; sourceTree = "<group>"; };
 		E705E0B919367B6A00CD2E3A /* JFGivePhotoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFGivePhotoVC.h; sourceTree = "<group>"; };
 		E705E0BA19367B6A00CD2E3A /* JFGivePhotoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFGivePhotoVC.m; sourceTree = "<group>"; };
-		E70DAE5A193AF79E001EABF4 /* JFGetItemsTableViewC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFGetItemsTableViewC.h; sourceTree = "<group>"; };
-		E70DAE5B193AF79E001EABF4 /* JFGetItemsTableViewC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFGetItemsTableViewC.m; sourceTree = "<group>"; };
 		E71BDFA1193AC62F00861171 /* JFLoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFLoginVC.h; sourceTree = "<group>"; };
 		E71BDFA2193AC62F00861171 /* JFLoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFLoginVC.m; sourceTree = "<group>"; };
 		E71D7A4D194CD143007BA2F3 /* JFItemDisplayVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFItemDisplayVC.h; sourceTree = "<group>"; };
@@ -72,6 +66,8 @@
 		E743179F194E9E8A007F32E5 /* JFMyGiveItemsCollectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFMyGiveItemsCollectionVC.m; sourceTree = "<group>"; };
 		E74317A1194EABFC007F32E5 /* JFMyGiveItemCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFMyGiveItemCollectionCell.h; sourceTree = "<group>"; };
 		E74317A2194EABFC007F32E5 /* JFMyGiveItemCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFMyGiveItemCollectionCell.m; sourceTree = "<group>"; };
+		E74E84AB194ED55800755821 /* JFFreeStuffVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFFreeStuffVC.h; sourceTree = "<group>"; };
+		E74E84AC194ED55800755821 /* JFFreeStuffVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFFreeStuffVC.m; sourceTree = "<group>"; };
 		E775592F19325CC600CD76A0 /* GetGa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GetGa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E775593219325CC600CD76A0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E775593419325CC600CD76A0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -90,20 +86,12 @@
 		E775595B19325CC600CD76A0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E775595D19325CC600CD76A0 /* GetGaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetGaTests.m; sourceTree = "<group>"; };
 		E775596E1932637C00CD76A0 /* appshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appshot.png; sourceTree = "<group>"; };
-		E799EB69193AEBA70006B708 /* JFGetItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFGetItemCell.h; sourceTree = "<group>"; };
-		E799EB6A193AEBA70006B708 /* JFGetItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFGetItemCell.m; sourceTree = "<group>"; };
-		E799EB73193AF0E80006B708 /* PFGetItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFGetItem.h; sourceTree = "<group>"; };
-		E799EB74193AF0E80006B708 /* PFGetItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFGetItem.m; sourceTree = "<group>"; };
-		E7A29A00193878B00045EC83 /* JFGiveItemsTableViewC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFGiveItemsTableViewC.h; sourceTree = "<group>"; };
-		E7A29A01193878B00045EC83 /* JFGiveItemsTableViewC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFGiveItemsTableViewC.m; sourceTree = "<group>"; };
 		E7BB0415193AAC6D000DEF36 /* JFMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFMainViewController.h; sourceTree = "<group>"; };
 		E7BB0416193AAC6D000DEF36 /* JFMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFMainViewController.m; sourceTree = "<group>"; };
 		E7C8AE97193700AA00856D4B /* JFGiveItemDetailsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFGiveItemDetailsVC.h; sourceTree = "<group>"; };
 		E7C8AE98193700AA00856D4B /* JFGiveItemDetailsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFGiveItemDetailsVC.m; sourceTree = "<group>"; };
 		E7C8AE9A19370B7C00856D4B /* JFConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFConstants.h; sourceTree = "<group>"; };
 		E7C8AE9B19370B7C00856D4B /* JFConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFConstants.m; sourceTree = "<group>"; };
-		E7F30548194A4CC0007AA625 /* JFGetFilterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFGetFilterVC.h; sourceTree = "<group>"; };
-		E7F30549194A4CC0007AA625 /* JFGetFilterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFGetFilterVC.m; sourceTree = "<group>"; };
 		E7F3054B194A4F8B007AA625 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		E7F5D2C6193831BF00B17BE0 /* JFGiveItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFGiveItemCell.h; sourceTree = "<group>"; };
 		E7F5D2C7193831BF00B17BE0 /* JFGiveItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFGiveItemCell.m; sourceTree = "<group>"; };
@@ -151,7 +139,6 @@
 			isa = PBXGroup;
 			children = (
 				E7431796194E9283007F32E5 /* give items collection */,
-				E7C8AE941937006400856D4B /* give items table */,
 				E7C8AE951937006C00856D4B /* give new item photo */,
 				E7C8AE961937007400856D4B /* give new item details */,
 				E71D7A50194CD14A007BA2F3 /* give item display */,
@@ -163,8 +150,6 @@
 			isa = PBXGroup;
 			children = (
 				E799EB6C193AEBAC0006B708 /* get items table */,
-				E799EB6D193AEBBF0006B708 /* get item detail page */,
-				E7F30547194A4CA8007AA625 /* get items filter */,
 			);
 			name = get;
 			sourceTree = "<group>";
@@ -288,19 +273,12 @@
 		E799EB6C193AEBAC0006B708 /* get items table */ = {
 			isa = PBXGroup;
 			children = (
-				E799EB69193AEBA70006B708 /* JFGetItemCell.h */,
-				E799EB6A193AEBA70006B708 /* JFGetItemCell.m */,
-				E70DAE5A193AF79E001EABF4 /* JFGetItemsTableViewC.h */,
-				E70DAE5B193AF79E001EABF4 /* JFGetItemsTableViewC.m */,
+				E74E84AB194ED55800755821 /* JFFreeStuffVC.h */,
+				E74E84AC194ED55800755821 /* JFFreeStuffVC.m */,
+				E7F5D2C6193831BF00B17BE0 /* JFGiveItemCell.h */,
+				E7F5D2C7193831BF00B17BE0 /* JFGiveItemCell.m */,
 			);
 			name = "get items table";
-			sourceTree = "<group>";
-		};
-		E799EB6D193AEBBF0006B708 /* get item detail page */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "get item detail page";
 			sourceTree = "<group>";
 		};
 		E799EB71193AF0D40006B708 /* give item */ = {
@@ -310,15 +288,6 @@
 				E7F5D2CA19383F4800B17BE0 /* PFGiveItem.m */,
 			);
 			name = "give item";
-			sourceTree = "<group>";
-		};
-		E799EB72193AF0DD0006B708 /* get item */ = {
-			isa = PBXGroup;
-			children = (
-				E799EB73193AF0E80006B708 /* PFGetItem.h */,
-				E799EB74193AF0E80006B708 /* PFGetItem.m */,
-			);
-			name = "get item";
 			sourceTree = "<group>";
 		};
 		E7B3734B1937D7F300CA5EBC /* view */ = {
@@ -339,7 +308,6 @@
 			isa = PBXGroup;
 			children = (
 				E799EB71193AF0D40006B708 /* give item */,
-				E799EB72193AF0DD0006B708 /* get item */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -351,17 +319,6 @@
 				E7BB0416193AAC6D000DEF36 /* JFMainViewController.m */,
 			);
 			name = "global navigation";
-			sourceTree = "<group>";
-		};
-		E7C8AE941937006400856D4B /* give items table */ = {
-			isa = PBXGroup;
-			children = (
-				E7F5D2C6193831BF00B17BE0 /* JFGiveItemCell.h */,
-				E7F5D2C7193831BF00B17BE0 /* JFGiveItemCell.m */,
-				E7A29A00193878B00045EC83 /* JFGiveItemsTableViewC.h */,
-				E7A29A01193878B00045EC83 /* JFGiveItemsTableViewC.m */,
-			);
-			name = "give items table";
 			sourceTree = "<group>";
 		};
 		E7C8AE951937006C00856D4B /* give new item photo */ = {
@@ -380,15 +337,6 @@
 				E7C8AE98193700AA00856D4B /* JFGiveItemDetailsVC.m */,
 			);
 			name = "give new item details";
-			sourceTree = "<group>";
-		};
-		E7F30547194A4CA8007AA625 /* get items filter */ = {
-			isa = PBXGroup;
-			children = (
-				E7F30548194A4CC0007AA625 /* JFGetFilterVC.h */,
-				E7F30549194A4CC0007AA625 /* JFGetFilterVC.m */,
-			);
-			name = "get items filter";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -527,19 +475,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				E705E0BB19367B6A00CD2E3A /* JFGivePhotoVC.m in Sources */,
-				E799EB6B193AEBA70006B708 /* JFGetItemCell.m in Sources */,
 				E7025FEA193B0D9100E0027C /* JFMyProfileVC.m in Sources */,
-				E7A29A02193878B00045EC83 /* JFGiveItemsTableViewC.m in Sources */,
+				E74E84AD194ED55800755821 /* JFFreeStuffVC.m in Sources */,
 				E71BDFA3193AC62F00861171 /* JFLoginVC.m in Sources */,
 				E74317A0194E9E8A007F32E5 /* JFMyGiveItemsCollectionVC.m in Sources */,
 				E7F5D2CB19383F4800B17BE0 /* PFGiveItem.m in Sources */,
-				E7F3054A194A4CC0007AA625 /* JFGetFilterVC.m in Sources */,
-				E799EB75193AF0E80006B708 /* PFGetItem.m in Sources */,
 				E74317A3194EABFC007F32E5 /* JFMyGiveItemCollectionCell.m in Sources */,
 				E775594319325CC600CD76A0 /* JFAppDelegate.m in Sources */,
 				E7C8AE99193700AA00856D4B /* JFGiveItemDetailsVC.m in Sources */,
 				E71D7A4F194CD143007BA2F3 /* JFItemDisplayVC.m in Sources */,
-				E70DAE5C193AF79E001EABF4 /* JFGetItemsTableViewC.m in Sources */,
 				E7F5D2C8193831BF00B17BE0 /* JFGiveItemCell.m in Sources */,
 				E7C8AE9C19370B7C00856D4B /* JFConstants.m in Sources */,
 				E7BB0417193AAC6D000DEF36 /* JFMainViewController.m in Sources */,
