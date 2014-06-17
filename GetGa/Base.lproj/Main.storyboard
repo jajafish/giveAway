@@ -377,29 +377,48 @@
             </objects>
             <point key="canvasLocation" x="4450" y="2640"/>
         </scene>
-        <!--View Controller-->
+        <!--Give Item LogisticsVC-->
         <scene sceneID="v9b-aj-aCJ">
             <objects>
-                <viewController id="9df-RR-sSq" sceneMemberID="viewController">
+                <viewController id="9df-RR-sSq" customClass="JFGiveItemLogisticsVC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fAy-RP-Cky">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Give details about the item" id="pzj-tG-ow7">
-                                <rect key="frame" x="0.0" y="80" width="320" height="253"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="KQ2-Q0-Wb1">
+                                <rect key="frame" x="0.0" y="64" width="320" height="164"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.77534816576086962" green="0.77534816576086962" blue="0.77534816576086962" alpha="0.35999999999999999" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="byo-I1-uUX">
+                                <rect key="frame" x="28" y="245" width="265" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.77534816579999999" green="0.77534816579999999" blue="0.77534816579999999" alpha="0.35999999999999999" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="listing expires in 1 week">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details + Logistics" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZCU-wi-lf2">
+                                <rect key="frame" x="90" y="25" width="141" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="g8G-rA-7wC"/>
+                    <connections>
+                        <outlet property="logisticsTextView" destination="KQ2-Q0-Wb1" id="Mkx-wf-hAc"/>
+                        <outlet property="revealDatePickerButton" destination="byo-I1-uUX" id="CmV-kp-khe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RH0-61-W5R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5499" y="2193"/>
+            <point key="canvasLocation" x="5298" y="2186"/>
         </scene>
         <!--Give Item DetailsVC-->
         <scene sceneID="o67-Cq-oqC">
@@ -410,16 +429,16 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="16e-kv-2nP">
-                                <rect key="frame" x="0.0" y="43" width="325" height="309"/>
+                                <rect key="frame" x="0.0" y="0.0" width="325" height="309"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="what are you giving away?" minimumFontSize="17" id="4w4-Mz-Hih">
-                                <rect key="frame" x="0.0" y="322" width="320" height="30"/>
+                                <rect key="frame" x="0.0" y="309" width="320" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.65799082880434789" green="0.65799082880434789" blue="0.65799082880434789" alpha="0.27000000000000002" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                         </subviews>

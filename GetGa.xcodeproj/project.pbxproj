@@ -15,6 +15,8 @@
 		E71D7A52194CD434007BA2F3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E71D7A51194CD434007BA2F3 /* MapKit.framework */; };
 		E74317A0194E9E8A007F32E5 /* JFMyGiveItemsCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E743179F194E9E8A007F32E5 /* JFMyGiveItemsCollectionVC.m */; };
 		E74317A3194EABFC007F32E5 /* JFMyGiveItemCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E74317A2194EABFC007F32E5 /* JFMyGiveItemCollectionCell.m */; };
+		E749C2CF194FC62200A5240D /* JFGiveItemLogisticsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E749C2CE194FC62200A5240D /* JFGiveItemLogisticsVC.m */; };
+		E749C2D1194FCF4C00A5240D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E749C2D0194FCF4C00A5240D /* QuartzCore.framework */; };
 		E74E84AD194ED55800755821 /* JFFreeStuffVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E74E84AC194ED55800755821 /* JFFreeStuffVC.m */; };
 		E7583D7C194F060B00899AEF /* JFCollectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7583D7B194F060B00899AEF /* JFCollectionHeaderView.m */; };
 		E7583D7F194F0ACB00899AEF /* CSGrowHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7583D7E194F0ACB00899AEF /* CSGrowHeader.xib */; };
@@ -65,6 +67,9 @@
 		E743179F194E9E8A007F32E5 /* JFMyGiveItemsCollectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFMyGiveItemsCollectionVC.m; sourceTree = "<group>"; };
 		E74317A1194EABFC007F32E5 /* JFMyGiveItemCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFMyGiveItemCollectionCell.h; sourceTree = "<group>"; };
 		E74317A2194EABFC007F32E5 /* JFMyGiveItemCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFMyGiveItemCollectionCell.m; sourceTree = "<group>"; };
+		E749C2CD194FC62200A5240D /* JFGiveItemLogisticsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFGiveItemLogisticsVC.h; sourceTree = "<group>"; };
+		E749C2CE194FC62200A5240D /* JFGiveItemLogisticsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFGiveItemLogisticsVC.m; sourceTree = "<group>"; };
+		E749C2D0194FCF4C00A5240D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E74E84AB194ED55800755821 /* JFFreeStuffVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFFreeStuffVC.h; sourceTree = "<group>"; };
 		E74E84AC194ED55800755821 /* JFFreeStuffVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFFreeStuffVC.m; sourceTree = "<group>"; };
 		E7583D7A194F060B00899AEF /* JFCollectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFCollectionHeaderView.h; sourceTree = "<group>"; };
@@ -106,6 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E749C2D1194FCF4C00A5240D /* QuartzCore.framework in Frameworks */,
 				E71D7A52194CD434007BA2F3 /* MapKit.framework in Frameworks */,
 				E7F3054C194A4F8B007AA625 /* CoreLocation.framework in Frameworks */,
 				E775593519325CC600CD76A0 /* CoreGraphics.framework in Frameworks */,
@@ -134,6 +140,7 @@
 				E7431796194E9283007F32E5 /* give items collection */,
 				E7C8AE951937006C00856D4B /* give new item photo */,
 				E7C8AE961937007400856D4B /* give new item details */,
+				E749C2CC194FC61000A5240D /* give new item logistics */,
 				E71D7A50194CD14A007BA2F3 /* give item display */,
 			);
 			name = give;
@@ -182,6 +189,15 @@
 			name = "give items collection";
 			sourceTree = "<group>";
 		};
+		E749C2CC194FC61000A5240D /* give new item logistics */ = {
+			isa = PBXGroup;
+			children = (
+				E749C2CD194FC62200A5240D /* JFGiveItemLogisticsVC.h */,
+				E749C2CE194FC62200A5240D /* JFGiveItemLogisticsVC.m */,
+			);
+			name = "give new item logistics";
+			sourceTree = "<group>";
+		};
 		E7583D7D194F0A9600899AEF /* collection view subviews */ = {
 			isa = PBXGroup;
 			children = (
@@ -217,6 +233,7 @@
 		E775593119325CC600CD76A0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E749C2D0194FCF4C00A5240D /* QuartzCore.framework */,
 				E71D7A51194CD434007BA2F3 /* MapKit.framework */,
 				E7F3054B194A4F8B007AA625 /* CoreLocation.framework */,
 				E775593219325CC600CD76A0 /* Foundation.framework */,
@@ -486,6 +503,7 @@
 				E74317A3194EABFC007F32E5 /* JFMyGiveItemCollectionCell.m in Sources */,
 				E775594319325CC600CD76A0 /* JFAppDelegate.m in Sources */,
 				E7C8AE99193700AA00856D4B /* JFGiveItemDetailsVC.m in Sources */,
+				E749C2CF194FC62200A5240D /* JFGiveItemLogisticsVC.m in Sources */,
 				E71D7A4F194CD143007BA2F3 /* JFItemDisplayVC.m in Sources */,
 				E7F5D2C8193831BF00B17BE0 /* JFGiveItemCell.m in Sources */,
 				E7C8AE9C19370B7C00856D4B /* JFConstants.m in Sources */,
