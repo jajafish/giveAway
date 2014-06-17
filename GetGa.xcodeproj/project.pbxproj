@@ -13,6 +13,7 @@
 		E71BDFA3193AC62F00861171 /* JFLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E71BDFA2193AC62F00861171 /* JFLoginVC.m */; };
 		E71D7A4F194CD143007BA2F3 /* JFItemDisplayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E71D7A4E194CD143007BA2F3 /* JFItemDisplayVC.m */; };
 		E71D7A52194CD434007BA2F3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E71D7A51194CD434007BA2F3 /* MapKit.framework */; };
+		E7312B02194FE9BC00210849 /* JFProfilePhotoHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = E7312B01194FE9BC00210849 /* JFProfilePhotoHeader.m */; };
 		E74317A0194E9E8A007F32E5 /* JFMyGiveItemsCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E743179F194E9E8A007F32E5 /* JFMyGiveItemsCollectionVC.m */; };
 		E74317A3194EABFC007F32E5 /* JFMyGiveItemCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E74317A2194EABFC007F32E5 /* JFMyGiveItemCollectionCell.m */; };
 		E74E84AD194ED55800755821 /* JFFreeStuffVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E74E84AC194ED55800755821 /* JFFreeStuffVC.m */; };
@@ -61,6 +62,8 @@
 		E71D7A4D194CD143007BA2F3 /* JFItemDisplayVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFItemDisplayVC.h; sourceTree = "<group>"; };
 		E71D7A4E194CD143007BA2F3 /* JFItemDisplayVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFItemDisplayVC.m; sourceTree = "<group>"; };
 		E71D7A51194CD434007BA2F3 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		E7312B00194FE9BC00210849 /* JFProfilePhotoHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFProfilePhotoHeader.h; sourceTree = "<group>"; };
+		E7312B01194FE9BC00210849 /* JFProfilePhotoHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFProfilePhotoHeader.m; sourceTree = "<group>"; };
 		E743179E194E9E8A007F32E5 /* JFMyGiveItemsCollectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFMyGiveItemsCollectionVC.h; sourceTree = "<group>"; };
 		E743179F194E9E8A007F32E5 /* JFMyGiveItemsCollectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFMyGiveItemsCollectionVC.m; sourceTree = "<group>"; };
 		E74317A1194EABFC007F32E5 /* JFMyGiveItemCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFMyGiveItemCollectionCell.h; sourceTree = "<group>"; };
@@ -187,9 +190,11 @@
 			children = (
 				E74317A1194EABFC007F32E5 /* JFMyGiveItemCollectionCell.h */,
 				E74317A2194EABFC007F32E5 /* JFMyGiveItemCollectionCell.m */,
+				E7583D7E194F0ACB00899AEF /* CSGrowHeader.xib */,
+				E7312B00194FE9BC00210849 /* JFProfilePhotoHeader.h */,
+				E7312B01194FE9BC00210849 /* JFProfilePhotoHeader.m */,
 				E7583D7A194F060B00899AEF /* JFCollectionHeaderView.h */,
 				E7583D7B194F060B00899AEF /* JFCollectionHeaderView.m */,
-				E7583D7E194F0ACB00899AEF /* CSGrowHeader.xib */,
 			);
 			name = "collection view subviews";
 			sourceTree = "<group>";
@@ -489,6 +494,7 @@
 				E71D7A4F194CD143007BA2F3 /* JFItemDisplayVC.m in Sources */,
 				E7F5D2C8193831BF00B17BE0 /* JFGiveItemCell.m in Sources */,
 				E7C8AE9C19370B7C00856D4B /* JFConstants.m in Sources */,
+				E7312B02194FE9BC00210849 /* JFProfilePhotoHeader.m in Sources */,
 				E7BB0417193AAC6D000DEF36 /* JFMainViewController.m in Sources */,
 				E775593F19325CC600CD76A0 /* main.m in Sources */,
 				E7583D7C194F060B00899AEF /* JFCollectionHeaderView.m in Sources */,
