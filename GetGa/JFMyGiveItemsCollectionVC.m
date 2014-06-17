@@ -188,8 +188,22 @@
         return cell;
     } else if ([kind isEqualToString:UICollectionElementKindSectionHeader]){
         JFCollectionHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
-        NSString *title = [[NSString alloc]initWithFormat:@"Successfully given"];
-        headerView.sectionTitleLabel.text = title;
+        
+        switch (indexPath.section) {
+            case 0: {
+                NSString *title = [[NSString alloc]initWithFormat:@"Up for grabs"];
+                headerView.sectionTitleLabel.text = title;
+            }
+                break;
+            case 1: {
+                NSString *title = [[NSString alloc]initWithFormat:@"Successfully given"];
+                headerView.sectionTitleLabel.text = title;
+            }
+                break;
+            default:
+                break;
+        }
+
         return headerView;
     }
     return nil;
