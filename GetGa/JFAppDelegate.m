@@ -8,6 +8,7 @@
 
 #import "JFAppDelegate.h"
 #import "PFGiveItem.h"
+#import "BlurryModalSegue.h"
 
 
 
@@ -39,6 +40,9 @@
     self->manager.delegate = self;
     self->manager.desiredAccuracy = kCLLocationAccuracyBest;
     [manager startUpdatingLocation];
+    
+    [[BlurryModalSegue appearance] setBackingImageBlurRadius:@(20)];
+    [[BlurryModalSegue appearance] setBackingImageSaturationDeltaFactor:@(.45)];
 
     return YES;
 }

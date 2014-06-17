@@ -49,6 +49,8 @@
     self.giveItemPhotoImageView.image = self.giveItemImage;
     
     [self.giveItemTitleTextField becomeFirstResponder];
+    UIColor *color = [UIColor whiteColor];
+    self.giveItemTitleTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"What are you giving away?" attributes:@{NSForegroundColorAttributeName: color}];
     
     self.giveItemTitleTextField.userInteractionEnabled = YES;
     
@@ -83,7 +85,9 @@
 //        [self.rootVC reloadParseData];
     }];
     
-    [self.navigationController popToRootViewControllerAnimated:YES];
+//    [self.navigationController popToRootViewControllerAnimated:YES];
+    
+    [self performSegueWithIdentifier:@"giveItemDetailsToLogistics" sender:self];
     
     return YES;
 }

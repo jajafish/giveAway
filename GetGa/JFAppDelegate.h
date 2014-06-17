@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 
-@interface JFAppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate>
+@interface JFAppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate, UIAppearance>
 
 @property (strong, nonatomic) UIWindow *window;
 
