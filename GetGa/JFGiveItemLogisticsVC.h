@@ -10,4 +10,6 @@
 
 @interface JFGiveItemLogisticsVC : UIViewController
 
+@property (strong, nonatomic) NSString *detailsAndLogistics;
+
 @end

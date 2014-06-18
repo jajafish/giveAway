@@ -8,11 +8,13 @@
 
 #import "JFGiveItemLogisticsVC.h"
 #import <QuartzCore/QuartzCore.h>
+#import "JFMyGiveItemsCollectionVC.h"
 
 @interface JFGiveItemLogisticsVC () <UITextViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITextView *logisticsTextView;
 @property (strong, nonatomic) IBOutlet UIButton *revealDatePickerButton;
+@property (strong, nonatomic) IBOutlet UIButton *confirmLogisticsButton;
 
 @end
 
@@ -45,6 +47,18 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)textViewDidEndEditing:(UITextView *)textView
+{
+    NSLog(@"stopped editing");
+}
+
+- (IBAction)confirmLogisticsButtonPressed:(id)sender {
+    
+    self.detailsAndLogistics = self.logisticsTextView.text;
+    
+    JFMyGiveItemsCollectionVC *giveItemsCollectionVC = [[JFMyGiveItemsCollectionVC alloc]init];
+    [self.navigationController popToViewController:giveItemsCollectionVC animated:YES];
+}
 
 
 @end

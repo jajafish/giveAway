@@ -27,8 +27,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        
-        self.moveRecognizer = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(moveTextField:)];
+
         self.moveRecognizer.delegate = self;
         self.moveRecognizer.cancelsTouchesInView = YES;
         [self.view addGestureRecognizer:self.moveRecognizer];

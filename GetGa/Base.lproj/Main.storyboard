@@ -89,7 +89,7 @@
                     <navigationItem key="navigationItem" id="iux-LZ-V04"/>
                     <connections>
                         <outlet property="loginWithFBButton" destination="8uD-1t-cEc" id="gAQ-4u-bQw"/>
-                        <segue destination="vvN-6q-scu" kind="custom" identifier="rightMenu" customClass="AMSlideMenuLeftMenuSegue" id="zz8-3d-CSg"/>
+                        <segue destination="vvN-6q-scu" kind="custom" identifier="leftMenu" customClass="AMSlideMenuLeftMenuSegue" id="zz8-3d-CSg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bsp-MX-Gez" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -407,18 +407,29 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gUh-5T-qsV">
+                                <rect key="frame" x="107" y="291" width="107" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Give Item Away">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="confirmLogisticsButtonPressed:" destination="9df-RR-sSq" eventType="touchUpInside" id="yFF-a9-5Mn"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="g8G-rA-7wC"/>
                     <connections>
+                        <outlet property="confirmLogisticsButton" destination="gUh-5T-qsV" id="G5s-yI-bnh"/>
                         <outlet property="logisticsTextView" destination="KQ2-Q0-Wb1" id="Mkx-wf-hAc"/>
                         <outlet property="revealDatePickerButton" destination="byo-I1-uUX" id="CmV-kp-khe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RH0-61-W5R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5298" y="2186"/>
+            <point key="canvasLocation" x="5470" y="2214"/>
         </scene>
         <!--Give Item DetailsVC-->
         <scene sceneID="o67-Cq-oqC">
