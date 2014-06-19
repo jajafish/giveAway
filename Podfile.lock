@@ -1,31 +1,22 @@
 PODS:
   - AMSlideMenu (1.5.3)
-  - BlurryModalSegue (1.0.0):
-    - MZAppearance (~> 1.1.1)
-    - UIImage+BlurredFrame (~> 0.0.4)
   - Bolts (1.1.0)
   - CSStickyHeaderFlowLayout (0.2)
   - Facebook-iOS-SDK (3.15.0):
     - Bolts
-  - MZAppearance (1.1.3)
   - Parse (1.2.19):
     - Facebook-iOS-SDK (~> 3.11)
-  - UIImage+BlurredFrame (0.0.4)
 
 DEPENDENCIES:
   - AMSlideMenu (~> 1.5.3)
-  - BlurryModalSegue
   - CSStickyHeaderFlowLayout
   - Parse
 
 SPEC CHECKSUMS:
   AMSlideMenu: ab0c9313c74eac61e360d2a714d2d8202f6de916
-  BlurryModalSegue: 8f7d9d0ac4804520d86c48bbad37394232d0ac69
   Bolts: 91c2af8eae1d44e1dd75946a5b0ae04a43ea43e4
   CSStickyHeaderFlowLayout: b6530bc5f95d656b6963ddb6dd692c0f61890a98
   Facebook-iOS-SDK: d67a9aa373f28b581e00cefdfd5a1ab8f883ac14
-  MZAppearance: c88502c0c2345120630c34e09d5ff09e2969ba30
   Parse: ffebaecaddd32cb52671010f81567c298ff93d04
-  UIImage+BlurredFrame: 0c38f5760d72125c47d16001a88faaac573bd35d
 
 COCOAPODS: 0.33.1

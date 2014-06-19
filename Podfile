@@ -5,5 +5,3 @@ pod 'Parse'
 pod "AMSlideMenu", "~> 1.5.3"
 
 pod "CSStickyHeaderFlowLayout"
-
-pod "BlurryModalSegue"
