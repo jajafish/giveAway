@@ -170,6 +170,13 @@
 			name = login;
 			sourceTree = "<group>";
 		};
+		E71925001952C3E100A8201F /* user */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = user;
+			sourceTree = "<group>";
+		};
 		E71D7A50194CD14A007BA2F3 /* give item display */ = {
 			isa = PBXGroup;
 			children = (
@@ -327,6 +334,7 @@
 		E7B3734C1937D81200CA5EBC /* model */ = {
 			isa = PBXGroup;
 			children = (
+				E71925001952C3E100A8201F /* user */,
 				E799EB71193AF0D40006B708 /* give item */,
 			);
 			name = model;
