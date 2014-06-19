@@ -38,7 +38,17 @@
     self.revealDatePickerButton.layer.borderWidth = 1;
     self.revealDatePickerButton.layer.borderColor = [UIColor blackColor].CGColor;
     
+//    NSArray *viewControllers = self.navigationController.viewControllers;
+//    UIViewController *rootViewController = [viewControllers objectAtIndex:viewControllers.count - 2];
+//    NSLog(@"%@", viewControllers);
     
+    
+}
+
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    NSLog(@"the NAV CONTROLLER OF GIVE ITEM LOGISTICS VS IS %@", self.navigationController);
 }
 
 - (void)didReceiveMemoryWarning
@@ -53,12 +63,18 @@
 }
 
 - (IBAction)confirmLogisticsButtonPressed:(id)sender {
-    
     self.detailsAndLogistics = self.logisticsTextView.text;
     
-    JFMyGiveItemsCollectionVC *giveItemsCollectionVC = [[JFMyGiveItemsCollectionVC alloc]init];
-    [self.navigationController popToViewController:giveItemsCollectionVC animated:YES];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+
+
 }
 
-
 @end
+
+
+
+////
+//    JFMyGiveItemsCollectionVC *giveItemsCollectionVC = [[JFMyGiveItemsCollectionVC alloc]init];
+
+

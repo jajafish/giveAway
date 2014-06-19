@@ -62,8 +62,15 @@
                  withReuseIdentifier:@"header"];
     
     
+
     
-    
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+        NSLog(@"nav controller for ITEM COLLECTION VC is %@", self.navigationController);
+        NSLog(@"the profile Picture is %@", self.profilePicture);
+        NSLog(@"the profile picture view is %@", self.profileImageView);
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -87,6 +94,8 @@
         if ([segue.destinationViewController isKindOfClass:[JFGivePhotoVC class]]){
             JFGivePhotoVC *targetVC = segue.destinationViewController;
             targetVC.mainItemsCollectionVC = self;
+//            [self.navigationController pushViewController:targetVC animated:YES];
+//            targetVC.navController = self.navigationController;
         }
     }
     if ([segue.identifier isEqualToString:@"itemCollectionToDisplay"])

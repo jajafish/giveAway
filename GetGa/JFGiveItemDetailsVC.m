@@ -55,8 +55,13 @@
     
     UIPanGestureRecognizer *gesture = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(textFieldDragged:)];
     [self.giveItemTitleTextField addGestureRecognizer:gesture];
-                                    
+
     
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+        NSLog(@"navigation controller of GIVE ITEM DETAILS VC IS %@", self.navigationController);
 }
 
 #pragma mark - Submit Item to Parse

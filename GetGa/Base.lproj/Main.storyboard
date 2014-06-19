@@ -459,7 +459,7 @@
                     <connections>
                         <outlet property="giveItemPhotoImageView" destination="16e-kv-2nP" id="QTf-Gu-FeQ"/>
                         <outlet property="giveItemTitleTextField" destination="4w4-Mz-Hih" id="78i-w4-4qw"/>
-                        <segue destination="9df-RR-sSq" kind="custom" identifier="giveItemDetailsToLogistics" customClass="BlurryModalSegue" id="Msq-hl-XZC"/>
+                        <segue destination="9df-RR-sSq" kind="push" identifier="giveItemDetailsToLogistics" customClass="BlurryModalSegue" id="Msq-hl-XZC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yY6-kW-JkN" userLabel="First Responder" sceneMemberID="firstResponder"/>
