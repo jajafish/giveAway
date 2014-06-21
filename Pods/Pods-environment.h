@@ -30,6 +30,12 @@
 #define COCOAPODS_VERSION_MINOR_Facebook_iOS_SDK 15
 #define COCOAPODS_VERSION_PATCH_Facebook_iOS_SDK 0
 
+// ILTranslucentView
+#define COCOAPODS_POD_AVAILABLE_ILTranslucentView
+#define COCOAPODS_VERSION_MAJOR_ILTranslucentView 0
+#define COCOAPODS_VERSION_MINOR_ILTranslucentView 0
+#define COCOAPODS_VERSION_PATCH_ILTranslucentView 1
+
 // Parse
 #define COCOAPODS_POD_AVAILABLE_Parse
 #define COCOAPODS_VERSION_MAJOR_Parse 1

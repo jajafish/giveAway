@@ -9,6 +9,7 @@
 #import "JFFreeItemVC.h"
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "ILTranslucentView.h"
 
 @interface JFFreeItemVC () <MKMapViewDelegate>
 @property (strong, nonatomic) IBOutlet UIImageView *freeItemImageView;
@@ -19,6 +20,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *iWantThisItemButton;
 @property (strong, nonatomic) IBOutlet UIImageView *freeItemGiverPhoto;
 @property (strong, nonatomic) IBOutlet UILabel *freeItemGiverNameLabel;
+@property (strong, nonatomic) IBOutlet ILTranslucentView *blurView;
 
 @end
 
@@ -44,10 +46,23 @@
     self.navigationController.navigationBar.translucent = YES;
     
     self.freeItemGiverPhoto.image = [UIImage imageNamed:@"dad.png"];
-    self.freeItemGiverPhoto.layer.cornerRadius = 10.0f;
+    self.freeItemGiverPhoto.layer.cornerRadius = self.freeItemGiverPhoto.frame.size.width / 2;
+    self.freeItemGiverPhoto.clipsToBounds = YES;
+    self.freeItemGiverPhoto.layer.borderWidth = 1.5f;
+    self.freeItemGiverPhoto.layer.borderColor = [UIColor whiteColor].CGColor;
+
     
     
     self.iWantThisItemButton.backgroundColor = [UIColor colorWithRed:0/255.0f green:255/255.0f blue:143/255.0f alpha:0.2];
+    
+    self.blurView.translucentTintColor = [UIColor blackColor];
+    self.blurView.translucentAlpha = 0.2;
+    
+//    self.blurView.translucentAlpha = 0.3;
+//    self.blurView.translucentTintColor = [UIColor blackColor];
+    
+    
+    
     
     
     //    Item Map
