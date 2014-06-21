@@ -45,8 +45,9 @@
 {
     [super viewDidLoad];
     self.navigationItem.title = [PFUser currentUser][@"profile"][@"first_name"];
+//    self.navigationItem.title = [[JFGiverGetter currentUser]giveGetterName];
     UICollectionViewFlowLayout *collectionViewLayout = (UICollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
-    collectionViewLayout.sectionInset = UIEdgeInsetsMake(20, 0, 20, 0);
+    collectionViewLayout.sectionInset = UIEdgeInsetsMake(20, 5, 20, 5);
     
 
     CSStickyHeaderFlowLayout *layout = (id)self.collectionView.collectionViewLayout;

@@ -160,10 +160,10 @@
             [[PFUser currentUser] saveInBackground];
             [self requestImage];
             
-//            JFGiverGetter *currentGiverGetter = (JFGiverGetter*)[JFGiverGetter object];
-//            currentGiverGetter.giveGetterName = userDictionary[@"name"];
-//            currentGiverGetter.giveGetterLatestLocation = mostRecentCoordinates;
-//            NSLog(@"current Giver Getter name is %@ %@", currentGiverGetter.giveGetterName, currentGiverGetter.giveGetterLatestLocation);
+            JFGiverGetter *currentGiverGetter = (JFGiverGetter*)[JFGiverGetter object];
+            currentGiverGetter.giveGetterName = userDictionary[@"name"];
+            currentGiverGetter.giveGetterLatestLocation = mostRecentCoordinates;
+            NSLog(@"current Giver Getter name is %@ %@", currentGiverGetter.giveGetterName, currentGiverGetter.giveGetterLatestLocation);
         
             
         }

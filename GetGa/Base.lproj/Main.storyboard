@@ -59,7 +59,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Free Stuff" id="gjy-jz-rnE"/>
+                    <navigationItem key="navigationItem" title="Free Stuff" id="gjy-jz-rnE">
+                        <barButtonItem key="rightBarButtonItem" title="filter" id="5EM-Bj-A72"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="o78-uR-qJd" id="Dz0-c3-Yge"/>
                         <segue destination="9PR-cH-Dv9" kind="push" identifier="freeStuffToFreeItem" id="66w-wx-9Kq"/>
@@ -225,7 +227,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="516"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <inset key="contentInset" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="XA7-BE-pj2" customClass="CSStickyHeaderFlowLayout">
                                     <size key="itemSize" width="150" height="150"/>
                                     <size key="headerReferenceSize" width="50" height="50"/>
@@ -263,7 +264,7 @@
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HeaderView" id="ALz-lQ-MfJ" customClass="JFCollectionHeaderView">
-                                    <rect key="frame" x="0.0" y="0.0" width="310" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5wY-kw-T2Y">
