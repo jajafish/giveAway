@@ -49,7 +49,7 @@
     self.giveItemPhotoImageView.image = self.giveItemImage;
     
     [self.giveItemTitleTextField becomeFirstResponder];
-    UIColor *color = [UIColor whiteColor];
+    UIColor *color = [UIColor blackColor];
     self.giveItemTitleTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"What are you giving away?" attributes:@{NSForegroundColorAttributeName: color}];
     
     self.giveItemTitleTextField.userInteractionEnabled = YES;
