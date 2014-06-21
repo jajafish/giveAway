@@ -17,10 +17,13 @@
 @property (strong, nonatomic) IBOutlet UILabel *freeItemDescriptionLabel;
 @property (strong, nonatomic) IBOutlet UIButton *iWantThisItemButton;
 
-
 @end
 
-@implementation JFFreeItemVC
+@implementation JFFreeItemVC {
+    
+    CLLocationCoordinate2D itemLocation;
+    
+}
 
 @synthesize giveItem;
 
@@ -32,13 +35,42 @@
     self.navigationItem.title = self.giveItem.giveItemName;
     self.freeItemDescriptionLabel.text = self.giveItem.itemDetailsLogistics;
 
-    
     self.navigationController.navigationBar.topItem.title = @"";
+    
+    
+    
+    
+    
+    //    Item Map
+    double lat = [self.giveItem.locationData[@"latitude"] doubleValue];
+    double lng = [self.giveItem.locationData[@"longitude"] doubleValue];
+    self.freeItemMapView.delegate = self;
+    CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(lat, lng);
+    itemLocation = coord;
+    
+    MKCoordinateRegion startRegion = MKCoordinateRegionMakeWithDistance(coord, 1500, 1500);
+    [self.freeItemMapView setRegion:startRegion animated:YES];
+    [self.freeItemMapView addOverlay:[MKCircle circleWithCenterCoordinate:coord radius:800]];
+    
+    
+    
+    
 }
 
 
 - (IBAction)iWantThisItemButtonPressed:(UIButton *)sender {
 }
+
+
+-(MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id<MKOverlay>)overlay
+{
+    MKCircleView *circleView = [[MKCircleView alloc]initWithCircle:(MKCircle *)overlay];
+    circleView.fillColor = [UIColor blueColor];
+    circleView.alpha = 0.3;
+    return circleView;
+}
+
+
 
 
 @end
