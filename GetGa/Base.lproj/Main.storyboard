@@ -13,7 +13,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="202" sectionHeaderHeight="22" sectionFooterHeight="22" id="o78-uR-qJd">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="516"/>
+                                <rect key="frame" x="0.0" y="121" width="320" height="447"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -49,13 +49,26 @@
                                     <outlet property="delegate" destination="jKr-Rc-vl6" id="Jbl-26-ng8"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PG9-F6-gHS">
-                                <rect key="frame" x="85" y="524" width="151" height="30"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="ta5-ms-TJ3">
+                                <rect key="frame" x="0.0" y="64" width="320" height="146"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </mapView>
+                            <view contentMode="scaleToFill" id="yGO-3x-TuZ" customClass="ILTranslucentView">
+                                <rect key="frame" x="0.0" y="509" width="320" height="59"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Give Something Away">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wjO-sD-Q8H">
+                                        <rect key="frame" x="5" y="3" width="310" height="54"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Give Something Away">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -63,6 +76,8 @@
                         <barButtonItem key="rightBarButtonItem" title="filter" id="5EM-Bj-A72"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="blurView" destination="yGO-3x-TuZ" id="P49-Qy-OJU"/>
+                        <outlet property="giveSomethingAwayButton" destination="wjO-sD-Q8H" id="hr7-5p-e4J"/>
                         <outlet property="tableView" destination="o78-uR-qJd" id="Dz0-c3-Yge"/>
                         <segue destination="9PR-cH-Dv9" kind="push" identifier="freeStuffToFreeItem" id="66w-wx-9Kq"/>
                     </connections>

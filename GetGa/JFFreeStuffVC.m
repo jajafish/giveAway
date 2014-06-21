@@ -10,12 +10,16 @@
 #import "JFGiveItemCell.h"
 #import "PFGiveItem.h"
 #import "JFFreeItemVC.h"
+#import "ILTranslucentView.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface JFFreeStuffVC ()
 
 @property (strong, nonatomic) NSMutableArray *availableFreeStuff;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) PFGiveItem *selectedItem;
+@property (strong, nonatomic) IBOutlet UIButton *giveSomethingAwayButton;
+@property (strong, nonatomic) IBOutlet ILTranslucentView *blurView;
 
 @end
 
@@ -37,6 +41,13 @@
     
     self.navigationController.navigationBar.topItem.title = @"Free Stuff";
     [self reloadParseData];
+    self.giveSomethingAwayButton.layer.cornerRadius = 5;
+    self.giveSomethingAwayButton.layer.borderWidth = 1;
+    self.giveSomethingAwayButton.layer.borderColor = [UIColor blackColor].CGColor;
+    
+    self.blurView.translucentAlpha = 0.7;
+    
+    
     
 }
 
