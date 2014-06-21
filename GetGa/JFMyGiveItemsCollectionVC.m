@@ -131,9 +131,6 @@
                 newGiveItem.locationData = object[@"postedLocation"];
                 newGiveItem.itemDetailsLogistics = object[@"giveItemLogistics"];
                 
-                PFObject *giverUser = object[@"giver"];
-                newGiveItem.itemGiver = giverUser[@"profile"][@"first_name"];
-                
                 PFObject *photoObj = object[@"giveItemPhoto"];
                 PFFile *ourImageFile = photoObj[@"imageFile"];
                 

@@ -43,7 +43,7 @@
     self.navigationItem.title = self.giveItem.giveItemName;
     
 //    NSLog(@"%@", self.giveItem.itemDetailsLogistics);
-    NSLog(@"%@", self.giveItem.itemGiver);
+    NSLog(@"%@", self.giveItem.itemGiverName);
     
     self.giveItemLogisticsLabel.text = self.giveItem.itemDetailsLogistics;
     

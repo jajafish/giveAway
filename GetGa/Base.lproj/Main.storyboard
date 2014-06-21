@@ -41,7 +41,6 @@
                                         <connections>
                                             <outlet property="giveItemImageView" destination="Is7-KB-1Tt" id="D0E-vt-Yrd"/>
                                             <outlet property="giveItemLabel" destination="Wba-8E-rjC" id="QyG-d9-vGz"/>
-                                            <segue destination="Gy6-w4-JZE" kind="push" identifier="itemTableToDisplay" id="inJ-gQ-ukm"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -63,6 +62,7 @@
                     <navigationItem key="navigationItem" title="Free Stuff" id="gjy-jz-rnE"/>
                     <connections>
                         <outlet property="tableView" destination="o78-uR-qJd" id="Dz0-c3-Yge"/>
+                        <segue destination="9PR-cH-Dv9" kind="push" identifier="freeStuffToFreeItem" id="66w-wx-9Kq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="93G-XE-wXo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -308,9 +308,9 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7rA-jC-ffR">
-                                <rect key="frame" x="122" y="526" width="77" height="30"/>
+                                <rect key="frame" x="79" y="526" width="163" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="I Want This">
+                                <state key="normal" title="Someone Is Taking This">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -345,7 +345,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6DB-po-jE5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4450" y="1947"/>
+            <point key="canvasLocation" x="4446" y="1562"/>
         </scene>
         <!--Give PhotoVC-->
         <scene sceneID="Z6H-gc-Cf6">
@@ -363,7 +363,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ySW-3Q-TG7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4450" y="2640"/>
+            <point key="canvasLocation" x="4446" y="2254"/>
         </scene>
         <!--Give Item LogisticsVC-->
         <scene sceneID="v9b-aj-aCJ">
@@ -417,7 +417,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RH0-61-W5R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5470" y="2214"/>
+            <point key="canvasLocation" x="5466" y="1828"/>
         </scene>
         <!--Give Item DetailsVC-->
         <scene sceneID="o67-Cq-oqC">
@@ -452,7 +452,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yY6-kW-JkN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4956" y="2186"/>
+            <point key="canvasLocation" x="4952" y="1800"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Z1j-gL-5Dp">
@@ -509,13 +509,58 @@
             </objects>
             <point key="canvasLocation" x="1262" y="2797"/>
         </scene>
+        <!--Free ItemVC-->
+        <scene sceneID="ZKf-fD-PBU">
+            <objects>
+                <viewController id="9PR-cH-Dv9" customClass="JFFreeItemVC" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ais-nQ-GXA">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="arD-ja-lNH">
+                                <rect key="frame" x="-2" y="64" width="325" height="199"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="kIU-9x-4fT">
+                                <rect key="frame" x="122" y="526" width="77" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="I Want This">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="iWantThisItemButtonPressed:" destination="9PR-cH-Dv9" eventType="touchUpInside" id="P1F-61-Qbh"/>
+                                </connections>
+                            </button>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="BSL-0f-f8F">
+                                <rect key="frame" x="12" y="200" width="114" height="96"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </mapView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Turkey, ham, lettuce, tomato" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Yy2-YM-abR">
+                                <rect key="frame" x="12" y="319" width="295" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="z6f-1i-kcz"/>
+                    <connections>
+                        <outlet property="freeItemDescriptionLabel" destination="Yy2-YM-abR" id="pf0-Sl-wMo"/>
+                        <outlet property="freeItemImageView" destination="arD-ja-lNH" id="ncf-EJ-e1s"/>
+                        <outlet property="freeItemMapView" destination="BSL-0f-f8F" id="akn-Z7-hdp"/>
+                        <outlet property="iWantThisItemButton" destination="kIU-9x-4fT" id="Xp8-cC-RWy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EG0-Os-A3g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4446" y="3205"/>
+        </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="HKv-4w-Yx5"/>
-    </inferredMetricsTieBreakers>
 </document>

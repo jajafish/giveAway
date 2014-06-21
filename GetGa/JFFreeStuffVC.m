@@ -9,6 +9,7 @@
 #import "JFFreeStuffVC.h"
 #import "JFGiveItemCell.h"
 #import "PFGiveItem.h"
+#import "JFFreeItemVC.h"
 
 @interface JFFreeStuffVC ()
 
@@ -102,11 +103,27 @@
     return cell;
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"freeStuffToFreeItem"]){
+        if ([segue.destinationViewController isKindOfClass:[JFFreeItemVC class]]){
+            NSLog(@"hello making the transition:");
+            JFFreeItemVC *targetVC = segue.destinationViewController;
+            targetVC.giveItem = self.selectedItem;
+        }
+    }
+}
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.selectedItem = self.availableFreeStuff[indexPath.row];
-    [self performSegueWithIdentifier:@"itemTableToDisplay" sender:self];
+    NSLog(@"the selected item was %@", self.selectedItem);
+    [self performSegueWithIdentifier:@"freeStuffToFreeItem" sender:self];
 }
+
+
+
+
 
 
 
