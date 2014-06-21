@@ -13,6 +13,7 @@
 #import "JFItemDisplayVC.h"
 #import "JFCollectionHeaderView.h"
 #import "CSStickyHeaderFlowLayout.h"
+#import "JFProfilePhotoHeader.h"
 
 @interface JFMyGiveItemsCollectionVC ()
 
@@ -193,12 +194,27 @@
 {
     if ([kind isEqualToString:CSStickyHeaderParallaxHeader]) {
         
-        UICollectionReusableView *cell = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"header" forIndexPath:indexPath];
+        JFProfilePhotoHeader *cell = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"header" forIndexPath:indexPath];
+        cell.profilePhotoView.image = [UIImage imageNamed:@"dad.png"];
         return cell;
     } else if ([kind isEqualToString:UICollectionElementKindSectionHeader]){
         JFCollectionHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
-        NSString *title = [[NSString alloc]initWithFormat:@"Successfully given"];
-        headerView.sectionTitleLabel.text = title;
+        
+        switch (indexPath.section) {
+            case 0: {
+                NSString *title = [[NSString alloc]initWithFormat:@"Up for grabs"];
+                headerView.sectionTitleLabel.text = title;
+            }
+                break;
+            case 1: {
+                NSString *title = [[NSString alloc]initWithFormat:@"Successfully given"];
+                headerView.sectionTitleLabel.text = title;
+            }
+                break;
+            default:
+                break;
+        }
+
         return headerView;
     }
     return nil;
