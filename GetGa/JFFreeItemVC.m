@@ -31,8 +31,9 @@
     self.freeItemImageView.image = self.giveItem.image;
     self.navigationItem.title = self.giveItem.giveItemName;
     self.freeItemDescriptionLabel.text = self.giveItem.itemDetailsLogistics;
+
     
-    NSLog(@"free item vc's give item is %@", self.giveItem);
+    self.navigationController.navigationBar.topItem.title = @"";
 }
 
 
