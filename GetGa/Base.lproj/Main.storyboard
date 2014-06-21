@@ -224,7 +224,7 @@
                             <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="Ae3-lw-WAS">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="516"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="1" green="0.19618385250000001" blue="0.29282533960000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="XA7-BE-pj2" customClass="CSStickyHeaderFlowLayout">
                                     <size key="itemSize" width="150" height="150"/>
                                     <size key="headerReferenceSize" width="50" height="50"/>
@@ -331,25 +331,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Homemade" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1Qe-RK-cmp">
-                                <rect key="frame" x="12" y="360" width="90" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Half an hour old" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OQL-H5-3fi">
-                                <rect key="frame" x="12" y="400" width="122" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="CS7-Tq-9sK"/>
                     <connections>
+                        <outlet property="giveItemLogisticsLabel" destination="YQW-Cr-d9V" id="h05-7z-Lwe"/>
                         <outlet property="iWantThisItemButton" destination="7rA-jC-ffR" id="8MT-QQ-cZS"/>
                         <outlet property="itemDisplayImageView" destination="28K-5Z-kAz" id="Do7-hh-FR8"/>
                         <outlet property="itemDisplayMap" destination="16G-a7-3T2" id="7cg-Qp-v8n"/>

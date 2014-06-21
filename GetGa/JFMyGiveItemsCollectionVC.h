@@ -10,4 +10,6 @@
 
 @interface JFMyGiveItemsCollectionVC : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource>
 
+-(void)reloadParseData;
+
 @end

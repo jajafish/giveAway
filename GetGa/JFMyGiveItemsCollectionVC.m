@@ -129,6 +129,7 @@
                 PFGiveItem *newGiveItem = [[PFGiveItem alloc]init];
                 newGiveItem.giveItemName = object[@"giveItemTitle"];
                 newGiveItem.locationData = object[@"postedLocation"];
+                newGiveItem.itemDetailsLogistics = object[@"giveItemLogistics"];
                 PFObject *photoObj = object[@"giveItemPhoto"];
                 PFFile *ourImageFile = photoObj[@"imageFile"];
                 

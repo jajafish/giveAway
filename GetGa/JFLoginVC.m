@@ -161,7 +161,6 @@
             [[PFUser currentUser] saveInBackground];
             [self requestImage];
             
-            
         }
         
     }];
