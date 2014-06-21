@@ -41,10 +41,13 @@
     self.freeItemGiverNameLabel.text = self.giveItem.itemGiverName;
 
     self.navigationController.navigationBar.topItem.title = @"";
+    self.navigationController.navigationBar.translucent = YES;
+    
+    self.freeItemGiverPhoto.image = [UIImage imageNamed:@"dad.png"];
+    self.freeItemGiverPhoto.layer.cornerRadius = 10.0f;
     
     
-    
-    
+    self.iWantThisItemButton.backgroundColor = [UIColor colorWithRed:0/255.0f green:255/255.0f blue:143/255.0f alpha:0.2];
     
     
     //    Item Map

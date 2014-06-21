@@ -26,7 +26,10 @@
 {
     // Override point for customization after application launch.
     
-    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:198/255.0f green:226/255.0f blue:255/255.0f alpha:0.2]];
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:0/255.0f green:255/255.0f blue:143/255.0f alpha:0.2]];
+
+//    [[UINavigationBar appearance] setBarTintColor:[UIColor blackColor]];
+
     
     [PFGiveItem registerSubclass];
     [JFGiverGetter registerSubclass];
