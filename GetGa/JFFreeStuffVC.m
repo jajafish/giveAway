@@ -47,6 +47,7 @@
     PFQuery *query = [PFQuery queryWithClassName:@"giveItem"];
     [query whereKey:@"giver" equalTo:[PFUser currentUser]];
     [query includeKey:@"giveItemPhoto"];
+    [query includeKey:@"giver"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             
@@ -55,6 +56,15 @@
                 newGiveItem.giveItemName = object[@"giveItemTitle"];
                 newGiveItem.locationData = object[@"postedLocation"];
                 newGiveItem.itemDetailsLogistics = object[@"giveItemLogistics"];
+                
+                
+                JFGiverGetter *itemGiverGetter = (JFGiverGetter*)[JFGiverGetter object];
+                itemGiverGetter = object[@"giver"];
+                newGiveItem.itemGiver = itemGiverGetter;
+                NSString *itemGiverGetterName = [[NSString alloc]init];
+                itemGiverGetterName = itemGiverGetter[@"profile"][@"name"];
+                newGiveItem.itemGiverName = itemGiverGetterName;
+                
                 PFObject *photoObj = object[@"giveItemPhoto"];
                 PFFile *ourImageFile = photoObj[@"imageFile"];
                 

@@ -18,6 +18,7 @@
 @property (strong, nonatomic) NSString *itemDetailsLogistics;
 @property (strong, nonatomic) NSDate *itemListingExpireDate;
 @property (strong, nonatomic) NSString *itemGiverName;
+@property (strong, nonatomic) UIImage *itemGiverPhoto;
 @property (strong, nonatomic) JFGiverGetter *itemGiver;
 
 @end

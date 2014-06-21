@@ -534,11 +534,29 @@
                                 </connections>
                             </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="BSL-0f-f8F">
-                                <rect key="frame" x="12" y="200" width="114" height="96"/>
+                                <rect key="frame" x="0.0" y="355" width="114" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </mapView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Turkey, ham, lettuce, tomato" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Yy2-YM-abR">
-                                <rect key="frame" x="12" y="319" width="295" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Turkey, ham, lettuce, tomato" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Yy2-YM-abR">
+                                <rect key="frame" x="0.0" y="471" width="320" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="bOh-J3-hc5">
+                                <rect key="frame" x="9" y="276" width="68" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="offered by" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cK7-Qn-ZqM">
+                                <rect key="frame" x="85" y="298" width="224" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="blank mi away" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="C1c-QI-CCh">
+                                <rect key="frame" x="122" y="392" width="187" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -550,6 +568,9 @@
                     <navigationItem key="navigationItem" id="z6f-1i-kcz"/>
                     <connections>
                         <outlet property="freeItemDescriptionLabel" destination="Yy2-YM-abR" id="pf0-Sl-wMo"/>
+                        <outlet property="freeItemDistanceLabel" destination="C1c-QI-CCh" id="rPI-dd-6cY"/>
+                        <outlet property="freeItemGiverNameLabel" destination="cK7-Qn-ZqM" id="Z53-Vd-0RA"/>
+                        <outlet property="freeItemGiverPhoto" destination="bOh-J3-hc5" id="bsP-lY-VSt"/>
                         <outlet property="freeItemImageView" destination="arD-ja-lNH" id="ncf-EJ-e1s"/>
                         <outlet property="freeItemMapView" destination="BSL-0f-f8F" id="akn-Z7-hdp"/>
                         <outlet property="iWantThisItemButton" destination="kIU-9x-4fT" id="Xp8-cC-RWy"/>

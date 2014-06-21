@@ -13,9 +13,12 @@
 @interface JFFreeItemVC () <MKMapViewDelegate>
 @property (strong, nonatomic) IBOutlet UIImageView *freeItemImageView;
 
+@property (strong, nonatomic) IBOutlet UILabel *freeItemDistanceLabel;
 @property (strong, nonatomic) IBOutlet MKMapView *freeItemMapView;
 @property (strong, nonatomic) IBOutlet UILabel *freeItemDescriptionLabel;
 @property (strong, nonatomic) IBOutlet UIButton *iWantThisItemButton;
+@property (strong, nonatomic) IBOutlet UIImageView *freeItemGiverPhoto;
+@property (strong, nonatomic) IBOutlet UILabel *freeItemGiverNameLabel;
 
 @end
 
@@ -34,8 +37,11 @@
     self.freeItemImageView.image = self.giveItem.image;
     self.navigationItem.title = self.giveItem.giveItemName;
     self.freeItemDescriptionLabel.text = self.giveItem.itemDetailsLogistics;
+    
+    self.freeItemGiverNameLabel.text = self.giveItem.itemGiverName;
 
     self.navigationController.navigationBar.topItem.title = @"";
+    
     
     
     
