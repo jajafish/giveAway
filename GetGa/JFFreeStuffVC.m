@@ -45,7 +45,7 @@
     self.giveSomethingAwayButton.layer.borderWidth = 1;
     self.giveSomethingAwayButton.layer.borderColor = [UIColor blackColor].CGColor;
     
-    self.blurView.translucentAlpha = 0.7;
+    self.blurView.translucentAlpha = 1;
     
     
     
@@ -122,6 +122,13 @@
     cell.giveItemImageView.image = giveItem.image;
     cell.giveItemLabel.shadowColor = [UIColor clearColor];
     cell.giveItemLabel.highlighted = NO;
+    
+    
+    cell.giveItemGiverUserPhoto.image = [UIImage imageNamed:@"dad.png"];
+    cell.giveItemGiverUserPhoto.layer.cornerRadius = cell.giveItemGiverUserPhoto.frame.size.width / 2;
+    cell.giveItemGiverUserPhoto.clipsToBounds = YES;
+    cell.giveItemGiverUserPhoto.layer.borderWidth = 1.5f;
+    cell.giveItemGiverUserPhoto.layer.borderColor = [UIColor whiteColor].CGColor;
     
     return cell;
 }

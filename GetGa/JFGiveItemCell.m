@@ -12,6 +12,7 @@
 
 @synthesize giveItemImageView = _giveItemImageView;
 @synthesize giveItemLabel = _giveItemLabel;
+@synthesize giveItemGiverUserPhoto = _giveItemGiverUserPhoto;
 
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
