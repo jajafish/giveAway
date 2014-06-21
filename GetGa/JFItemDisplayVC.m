@@ -42,7 +42,8 @@
     self.itemDisplayImageView.image = self.giveItem.image;
     self.navigationItem.title = self.giveItem.giveItemName;
     
-    NSLog(@"%@", self.giveItem.itemDetailsLogistics);
+//    NSLog(@"%@", self.giveItem.itemDetailsLogistics);
+    NSLog(@"%@", self.giveItem.itemGiver);
     
     self.giveItemLogisticsLabel.text = self.giveItem.itemDetailsLogistics;
     
@@ -61,6 +62,8 @@
     [self.itemDisplayMap setRegion:startRegion animated:YES];
     
     [self.itemDisplayMap addOverlay:[MKCircle circleWithCenterCoordinate:cord radius:800]];
+    
+    self.navigationController.navigationBar.backItem.hidesBackButton = YES;
     
     
 }

@@ -16,5 +16,6 @@
 @property (strong, nonatomic) NSDictionary *locationData;
 @property (strong, nonatomic) NSString *itemDetailsLogistics;
 @property (strong, nonatomic) NSDate *itemListingExpireDate;
+@property (strong, nonatomic) PFUser *itemGiver;
 
 @end
