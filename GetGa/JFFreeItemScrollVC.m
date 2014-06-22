@@ -40,17 +40,6 @@
     
     [super viewDidLoad];
     
-    self.navBackgroundImage = [self.navigationController.navigationBar backgroundImageForBarMetrics:(UIBarMetricsDefault)];
-    self.navBackgroundShadowImage = [self.navigationController.navigationBar shadowImage];
-    self.navBackgroundColor = [self.navigationController.view backgroundColor];
-    
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
-                                                  forBarMetrics:UIBarMetricsDefault];
-    self.navigationController.navigationBar.shadowImage = [UIImage new];
-    self.navigationController.view.backgroundColor = [UIColor clearColor];
-    
-    
-    
     [self.scoller setScrollEnabled:YES];
     [self.scoller setContentSize:CGSizeMake(320, 936)];
     
@@ -104,6 +93,17 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    
+    self.navBackgroundImage = [self.navigationController.navigationBar backgroundImageForBarMetrics:(UIBarMetricsDefault)];
+    self.navBackgroundShadowImage = [self.navigationController.navigationBar shadowImage];
+    self.navBackgroundColor = [self.navigationController.view backgroundColor];
+    
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
+                                                  forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    self.navigationController.view.backgroundColor = [UIColor clearColor];
+    
+    
     [self textViewDidChange:self.freeItemLogisticsTextView];
 }
 

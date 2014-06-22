@@ -46,12 +46,14 @@
     self.giveSomethingAwayButton.layer.borderColor = [UIColor blackColor].CGColor;
     
     self.blurView.translucentAlpha = 1;
+
     
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
     [self reloadParseData];
+    self.title = @"Free Stuff";
 }
 
 -(void)reloadParseData
@@ -144,6 +146,9 @@
             NSLog(@"hello making the transition:");
             JFFreeItemScrollVC *targetVC = segue.destinationViewController;
             targetVC.giveItem = self.selectedItem;
+            
+            self.title = @"";
+            
         }
     }
 }
