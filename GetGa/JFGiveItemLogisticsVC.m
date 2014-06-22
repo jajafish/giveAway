@@ -39,6 +39,10 @@
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     
+    self.confirmLogisticsButton.layer.cornerRadius = 5;
+    self.confirmLogisticsButton.layer.borderWidth = 1;
+    self.confirmLogisticsButton.layer.borderColor = [UIColor blackColor].CGColor;
+    
     
 }
 

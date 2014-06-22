@@ -8,6 +8,7 @@
 
 #import "JFGiveItemCategorySelectVC.h"
 #import "JFGiveItemCategoryCell.h"
+#import "JFGiveItemLogisticsVC.h"
 
 @implementation JFGiveItemCategorySelectVC
 
@@ -71,6 +72,18 @@
     [self performSegueWithIdentifier:@"itemCategoryToItemLogistics" sender:self];
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    
+    if ([segue.identifier isEqualToString:@"itemCategoryToItemLogistics"]){
+        if ([segue.destinationViewController isKindOfClass:[JFGiveItemLogisticsVC class]]){
+            JFGiveItemLogisticsVC *targetVC = segue.destinationViewController;
+            targetVC.giveItemImageFromDetails = self.giveItemImageFromDetails;
+            targetVC.giveItemNameFromDetails = self.giveItemNameFromDetails;
+        }
+    }
+    
+}
 
 
 

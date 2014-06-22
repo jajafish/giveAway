@@ -451,11 +451,22 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Wh8-yP-bki">
+                                <rect key="frame" x="4" y="281" width="310" height="54"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Give This Item">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="confirmLogisticsButtonPressed:" destination="i65-sg-xno" eventType="touchUpInside" id="0X7-gC-j9d"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="item details + pickup logistics" prompt="Anything else?" id="OVu-iF-haL"/>
                     <connections>
+                        <outlet property="confirmLogisticsButton" destination="Wh8-yP-bki" id="Bjr-xx-hr2"/>
                         <outlet property="logisticsTextView" destination="who-zI-5Vf" id="9FY-6O-ki7"/>
                     </connections>
                 </viewController>

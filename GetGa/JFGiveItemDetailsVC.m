@@ -8,7 +8,7 @@
 
 #import "JFGiveItemDetailsVC.h"
 #import "JFMyGiveItemsCollectionVC.h"
-#import "JFGiveItemLogisticsVC.h"
+#import "JFGiveItemCategorySelectVC.h"
 #import <CoreLocation/CoreLocation.h>
 #import "UIImage+ImageEffects.h"
 
@@ -110,9 +110,9 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"giveItemDetailsToLogistics"]){
-        if ([segue.destinationViewController isKindOfClass:[JFGiveItemLogisticsVC class]]){
-            JFGiveItemLogisticsVC *targetVC = segue.destinationViewController;
+    if ([segue.identifier isEqualToString:@"itemDetailsToItemTags"]){
+        if ([segue.destinationViewController isKindOfClass:[JFGiveItemCategorySelectVC class]]){
+            JFGiveItemCategorySelectVC *targetVC = segue.destinationViewController;
             targetVC.giveItemNameFromDetails = self.giveItemTitleTextField.text;
             targetVC.giveItemImageFromDetails = self.giveItemImage;
         }
