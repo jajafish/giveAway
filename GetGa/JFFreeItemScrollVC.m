@@ -11,7 +11,7 @@
 #import <ILTranslucentView.h>
 #import <CoreLocation/CoreLocation.h>
 
-@interface JFFreeItemScrollVC () <MKMapViewDelegate>
+@interface JFFreeItemScrollVC () <MKMapViewDelegate, UITextViewDelegate>
 @property (strong, nonatomic) IBOutlet UIImageView *freeItemImageView;
 @property (strong, nonatomic) IBOutlet UILabel *freeItemImageNameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *freeItemCategoryLabel;
@@ -33,10 +33,14 @@
 
 -(void)viewDidLoad
 {
+    
     [super viewDidLoad];
     
     [self.scoller setScrollEnabled:YES];
     [self.scoller setContentSize:CGSizeMake(320, 936)];
+    
+    self.freeItemLogisticsTextView.delegate = self;
+
     
     self.freeItemImageView.image = self.giveItem.image;
 //    self.freeItemImageView.image = [UIImage imageNamed:@"dad.png"];
@@ -52,6 +56,7 @@
     
     NSLog(@"%@", NSStringFromCGRect(self.iWantThisFreeItemButton.frame));
     
+
     
     
 //    ITEM ON MAP
@@ -68,8 +73,11 @@
     [self.freeItemLocationMapView addOverlay:[MKCircle circleWithCenterCoordinate:cord radius:800]];
     
     
-    
-    
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self textViewDidChange:self.freeItemLogisticsTextView];
 }
 
 
@@ -92,6 +100,8 @@
     newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
     _freeItemLogisticsTextView.frame = newFrame;
 }
+
+
 
 
 @end
