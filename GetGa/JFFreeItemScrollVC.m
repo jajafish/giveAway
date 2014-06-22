@@ -22,6 +22,10 @@
 @property (strong, nonatomic) IBOutlet UIButton *iWantThisFreeItemButton;
 @property (strong, nonatomic) IBOutlet UIView *scrollContentView;
 
+@property (strong, nonatomic) UIImage *navBackgroundImage;
+@property (strong, nonatomic) UIImage *navBackgroundShadowImage;
+@property (strong, nonatomic) UIColor *navBackgroundColor;
+
 @end
 
 @implementation JFFreeItemScrollVC {
@@ -35,6 +39,17 @@
 {
     
     [super viewDidLoad];
+    
+    self.navBackgroundImage = [self.navigationController.navigationBar backgroundImageForBarMetrics:(UIBarMetricsDefault)];
+    self.navBackgroundShadowImage = [self.navigationController.navigationBar shadowImage];
+    self.navBackgroundColor = [self.navigationController.view backgroundColor];
+    
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
+                                                  forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    self.navigationController.view.backgroundColor = [UIColor clearColor];
+    
+    
     
     [self.scoller setScrollEnabled:YES];
     [self.scoller setContentSize:CGSizeMake(320, 936)];
@@ -74,6 +89,18 @@
     
     
 }
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [self.navigationController.navigationBar setBackgroundImage:self.navBackgroundImage
+                                                  forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = self.navBackgroundShadowImage;
+    self.navigationController.view.backgroundColor = self.navBackgroundColor;
+    
+
+    
+}
+
 
 -(void)viewWillAppear:(BOOL)animated
 {
