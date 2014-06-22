@@ -5,6 +5,9 @@ PODS:
   - Facebook-iOS-SDK (3.15.0):
     - Bolts
   - ILTranslucentView (0.0.1)
+  - JSQMessagesViewController (5.0.4):
+    - JSQSystemSoundPlayer
+  - JSQSystemSoundPlayer (1.5.2)
   - Parse (1.2.19):
     - Facebook-iOS-SDK (~> 3.11)
 
@@ -12,6 +15,7 @@ DEPENDENCIES:
   - AMSlideMenu (~> 1.5.3)
   - CSStickyHeaderFlowLayout
   - ILTranslucentView (~> 0.0.1)
+  - JSQMessagesViewController
   - Parse
 
 SPEC CHECKSUMS:
@@ -20,6 +24,8 @@ SPEC CHECKSUMS:
   CSStickyHeaderFlowLayout: b6530bc5f95d656b6963ddb6dd692c0f61890a98
   Facebook-iOS-SDK: d67a9aa373f28b581e00cefdfd5a1ab8f883ac14
   ILTranslucentView: fa20cc89ceb451b54ae3d993c7dfb789873ef153
+  JSQMessagesViewController: 70be735cbe86b74961870d1d9a2948af7ea2da9d
+  JSQSystemSoundPlayer: c24914bc96ff5365b5d28b59d7ecffd60d1c5587
   Parse: ffebaecaddd32cb52671010f81567c298ff93d04
 
 COCOAPODS: 0.33.1

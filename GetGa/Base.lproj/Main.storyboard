@@ -577,6 +577,7 @@
                                 </state>
                                 <connections>
                                     <action selector="iWantThisFreeItemButtonPressed:" destination="H3L-uM-9tS" eventType="touchUpInside" id="CEQ-ru-Bey"/>
+                                    <segue destination="QRO-CD-Xcs" kind="push" id="Q7t-ew-KdC"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -602,39 +603,22 @@
             </objects>
             <point key="canvasLocation" x="4440" y="3081"/>
         </scene>
-        <!--Test AutoVC-->
-        <scene sceneID="9xf-wF-fxU">
+        <!--View Controller-->
+        <scene sceneID="GKw-qK-juC">
             <objects>
-                <viewController id="I5O-Wz-8S6" customClass="JFTestAutoVC" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="da8-CM-vO9">
+                <viewController id="QRO-CD-Xcs" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3cf-1J-c7F">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="X4M-4D-Lvu">
-                                <rect key="frame" x="137" y="99" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4BP-DD-Mv2">
-                                <rect key="frame" x="20" y="179" width="280" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <connections>
-                        <outlet property="button" destination="X4M-4D-Lvu" id="Kwg-Hn-j16"/>
-                        <outlet property="label" destination="4BP-DD-Mv2" id="nL8-Ou-lzd"/>
-                    </connections>
+                    <navigationItem key="navigationItem" id="ex5-ru-c9B"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <size key="freeformSize" width="320" height="1000"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="OLM-XH-qQ7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Spv-09-xTS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5048" y="3375"/>
+            <point key="canvasLocation" x="5074" y="3232"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

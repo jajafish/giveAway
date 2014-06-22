@@ -7,3 +7,5 @@ pod "AMSlideMenu", "~> 1.5.3"
 pod "CSStickyHeaderFlowLayout"
 
 pod "ILTranslucentView", "~> 0.0.1"
+
+pod 'JSQMessagesViewController'
