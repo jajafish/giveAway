@@ -8,6 +8,7 @@
 
 #import "JFGiveItemDetailsVC.h"
 #import "JFMyGiveItemsCollectionVC.h"
+#import "JFGiveItemLogisticsVC.h"
 #import <CoreLocation/CoreLocation.h>
 
 @interface JFGiveItemDetailsVC () <UITextFieldDelegate, UIGestureRecognizerDelegate>
@@ -28,10 +29,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
 
-        self.moveRecognizer.delegate = self;
-        self.moveRecognizer.cancelsTouchesInView = YES;
-        [self.view addGestureRecognizer:self.moveRecognizer];
-        
     }
     return self;
 }
@@ -48,13 +45,12 @@
     self.giveItemPhotoImageView.image = self.giveItemImage;
     
     [self.giveItemTitleTextField becomeFirstResponder];
-    UIColor *color = [UIColor whiteColor];
+    UIColor *color = [UIColor blackColor];
     self.giveItemTitleTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"What are you giving away?" attributes:@{NSForegroundColorAttributeName: color}];
     
     self.giveItemTitleTextField.userInteractionEnabled = YES;
     
-    UIPanGestureRecognizer *gesture = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(textFieldDragged:)];
-    [self.giveItemTitleTextField addGestureRecognizer:gesture];
+
 
     
 }
@@ -70,24 +66,24 @@
 {
     
     
-    NSString *nameForGiveItem = self.giveItemTitleTextField.text;
-    NSData *giveItemImageData = UIImagePNGRepresentation(self.giveItemImage);
-    PFFile *giveItemImageFile = [PFFile fileWithName:nameForGiveItem data:giveItemImageData];
-    PFObject *giveItemPhoto = [PFObject objectWithClassName:@"giveItemPhoto"];
-    giveItemPhoto[@"imageOwner"] = [PFUser currentUser];
-    giveItemPhoto[@"imageName"] = nameForGiveItem;
-    giveItemPhoto[@"imageFile"] = giveItemImageFile;
-    
-    [giveItemPhoto saveInBackground];
-    
-    PFObject *giveItem = [PFObject objectWithClassName:@"giveItem"];
-    giveItem[@"giveItemTitle"] = self.giveItemTitleTextField.text;
-    giveItem[@"giver"] = [PFUser currentUser];
-    giveItem[@"postedLocation"] = [PFUser currentUser][@"mostRecentLocation"];
-    [giveItem setObject:giveItemPhoto forKey:@"giveItemPhoto"];
-    [giveItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//    NSString *nameForGiveItem = self.giveItemTitleTextField.text;
+//    NSData *giveItemImageData = UIImagePNGRepresentation(self.giveItemImage);
+//    PFFile *giveItemImageFile = [PFFile fileWithName:nameForGiveItem data:giveItemImageData];
+//    PFObject *giveItemPhoto = [PFObject objectWithClassName:@"giveItemPhoto"];
+//    giveItemPhoto[@"imageOwner"] = [PFUser currentUser];
+//    giveItemPhoto[@"imageName"] = nameForGiveItem;
+//    giveItemPhoto[@"imageFile"] = giveItemImageFile;
+//    
+//    [giveItemPhoto saveInBackground];
+//    
+//    PFObject *giveItem = [PFObject objectWithClassName:@"giveItem"];
+//    giveItem[@"giveItemTitle"] = self.giveItemTitleTextField.text;
+//    giveItem[@"giver"] = [PFUser currentUser];
+//    giveItem[@"postedLocation"] = [PFUser currentUser][@"mostRecentLocation"];
+//    [giveItem setObject:giveItemPhoto forKey:@"giveItemPhoto"];
+//    [giveItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
 //        [self.rootVC reloadParseData];
-    }];
+//    }];
     
 //    [self.navigationController popToRootViewControllerAnimated:YES];
     
@@ -105,17 +101,17 @@
 }
 
 
-#pragma mark - Gestures
 
--(void)textFieldDragged:(UIPanGestureRecognizer *)gesture
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    UITextField *textField = (UITextField *)gesture.view;
-    CGPoint translation = [gesture translationInView:textField];
-    
-    textField.center = CGPointMake(textField.center.x + translation.x, textField.center.y + translation.y);
-    
-    [gesture setTranslation:CGPointZero inView:textField];
-    
+    if ([segue.identifier isEqualToString:@"giveItemDetailsToLogistics"]){
+        if ([segue.destinationViewController isKindOfClass:[JFGiveItemLogisticsVC class]]){
+            JFGiveItemLogisticsVC *targetVC = segue.destinationViewController;
+            targetVC.giveItemNameFromDetails = self.giveItemTitleTextField.text;
+            targetVC.giveItemImageFromDetails = self.giveItemImage;
+        }
+    }
 }
 
 

@@ -7,6 +7,7 @@
 //
 
 #import <Parse/Parse.h>
+#import "JFGiverGetter.h"
 
 @interface PFGiveItem : PFObject <PFSubclassing>
 
@@ -14,5 +15,10 @@
 @property (strong, nonatomic) NSString *giveItemName;
 @property (nonatomic, strong) UIImage *image;
 @property (strong, nonatomic) NSDictionary *locationData;
+@property (strong, nonatomic) NSString *itemDetailsLogistics;
+@property (strong, nonatomic) NSDate *itemListingExpireDate;
+@property (strong, nonatomic) NSString *itemGiverName;
+@property (strong, nonatomic) UIImage *itemGiverPhoto;
+@property (strong, nonatomic) JFGiverGetter *itemGiver;
 
 @end

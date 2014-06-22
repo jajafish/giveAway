@@ -14,7 +14,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
+        self.profilePhotoView.layer.cornerRadius = 10.0f;
     }
     return self;
 }

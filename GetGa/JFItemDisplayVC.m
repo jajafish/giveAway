@@ -12,8 +12,8 @@
 
 @interface JFItemDisplayVC () <MKMapViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *itemDisplayImageView;
-@property (weak, nonatomic) IBOutlet UILabel *itemDisplayTitleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *itemDisplayDetailLabel;
+@property (strong, nonatomic) IBOutlet UILabel *giveItemLogisticsLabel;
+
 @property (strong, nonatomic) IBOutlet MKMapView *itemDisplayMap;
 @property (weak, nonatomic) IBOutlet UIButton *iWantThisItemButton;
 
@@ -42,10 +42,16 @@
     self.itemDisplayImageView.image = self.giveItem.image;
     self.navigationItem.title = self.giveItem.giveItemName;
     
+//    NSLog(@"%@", self.giveItem.itemDetailsLogistics);
+    NSLog(@"%@", self.giveItem.itemGiverName);
+    
+    self.giveItemLogisticsLabel.text = self.giveItem.itemDetailsLogistics;
+    
     double lat = [self.giveItem.locationData[@"latitude"] doubleValue];
     double lng = [self.giveItem.locationData[@"longitude"] doubleValue];
     
-    self.itemDisplayDetailLabel.text = [NSString stringWithFormat:@"%f %f", lat, lng];
+//    self.itemDisplayDetailLabel.text = [NSString stringWithFormat:@"%f %f", lat, lng];
+//
     
     // MAP
     self.itemDisplayMap.delegate = self;
@@ -56,6 +62,8 @@
     [self.itemDisplayMap setRegion:startRegion animated:YES];
     
     [self.itemDisplayMap addOverlay:[MKCircle circleWithCenterCoordinate:cord radius:800]];
+    
+    self.navigationController.navigationBar.backItem.hidesBackButton = YES;
     
     
 }

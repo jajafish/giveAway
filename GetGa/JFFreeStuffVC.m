@@ -9,12 +9,17 @@
 #import "JFFreeStuffVC.h"
 #import "JFGiveItemCell.h"
 #import "PFGiveItem.h"
+#import "JFFreeItemVC.h"
+#import "ILTranslucentView.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface JFFreeStuffVC ()
 
 @property (strong, nonatomic) NSMutableArray *availableFreeStuff;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) PFGiveItem *selectedItem;
+@property (strong, nonatomic) IBOutlet UIButton *giveSomethingAwayButton;
+@property (strong, nonatomic) IBOutlet ILTranslucentView *blurView;
 
 @end
 
@@ -34,7 +39,15 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     
+    self.navigationController.navigationBar.topItem.title = @"Free Stuff";
     [self reloadParseData];
+    self.giveSomethingAwayButton.layer.cornerRadius = 5;
+    self.giveSomethingAwayButton.layer.borderWidth = 1;
+    self.giveSomethingAwayButton.layer.borderColor = [UIColor blackColor].CGColor;
+    
+    self.blurView.translucentAlpha = 1;
+    
+    
     
 }
 
@@ -45,6 +58,7 @@
     PFQuery *query = [PFQuery queryWithClassName:@"giveItem"];
     [query whereKey:@"giver" equalTo:[PFUser currentUser]];
     [query includeKey:@"giveItemPhoto"];
+    [query includeKey:@"giver"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             
@@ -52,6 +66,16 @@
                 PFGiveItem *newGiveItem = [[PFGiveItem alloc]init];
                 newGiveItem.giveItemName = object[@"giveItemTitle"];
                 newGiveItem.locationData = object[@"postedLocation"];
+                newGiveItem.itemDetailsLogistics = object[@"giveItemLogistics"];
+                
+                
+                JFGiverGetter *itemGiverGetter = (JFGiverGetter*)[JFGiverGetter object];
+                itemGiverGetter = object[@"giver"];
+                newGiveItem.itemGiver = itemGiverGetter;
+                NSString *itemGiverGetterName = [[NSString alloc]init];
+                itemGiverGetterName = itemGiverGetter[@"profile"][@"name"];
+                newGiveItem.itemGiverName = itemGiverGetterName;
+                
                 PFObject *photoObj = object[@"giveItemPhoto"];
                 PFFile *ourImageFile = photoObj[@"imageFile"];
                 
@@ -99,14 +123,37 @@
     cell.giveItemLabel.shadowColor = [UIColor clearColor];
     cell.giveItemLabel.highlighted = NO;
     
+    
+    cell.giveItemGiverUserPhoto.image = [UIImage imageNamed:@"dad.png"];
+    cell.giveItemGiverUserPhoto.layer.cornerRadius = cell.giveItemGiverUserPhoto.frame.size.width / 2;
+    cell.giveItemGiverUserPhoto.clipsToBounds = YES;
+    cell.giveItemGiverUserPhoto.layer.borderWidth = 1.5f;
+    cell.giveItemGiverUserPhoto.layer.borderColor = [UIColor whiteColor].CGColor;
+    
     return cell;
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"freeStuffToFreeItem"]){
+        if ([segue.destinationViewController isKindOfClass:[JFFreeItemVC class]]){
+            NSLog(@"hello making the transition:");
+            JFFreeItemVC *targetVC = segue.destinationViewController;
+            targetVC.giveItem = self.selectedItem;
+        }
+    }
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.selectedItem = self.availableFreeStuff[indexPath.row];
-    [self performSegueWithIdentifier:@"itemTableToDisplay" sender:self];
+    NSLog(@"the selected item was %@", self.selectedItem);
+    [self performSegueWithIdentifier:@"freeStuffToFreeItem" sender:self];
 }
+
+
+
+
 
 
 

@@ -4,12 +4,14 @@ PODS:
   - CSStickyHeaderFlowLayout (0.2)
   - Facebook-iOS-SDK (3.15.0):
     - Bolts
+  - ILTranslucentView (0.0.1)
   - Parse (1.2.19):
     - Facebook-iOS-SDK (~> 3.11)
 
 DEPENDENCIES:
   - AMSlideMenu (~> 1.5.3)
   - CSStickyHeaderFlowLayout
+  - ILTranslucentView (~> 0.0.1)
   - Parse
 
 SPEC CHECKSUMS:
@@ -17,6 +19,7 @@ SPEC CHECKSUMS:
   Bolts: 91c2af8eae1d44e1dd75946a5b0ae04a43ea43e4
   CSStickyHeaderFlowLayout: b6530bc5f95d656b6963ddb6dd692c0f61890a98
   Facebook-iOS-SDK: d67a9aa373f28b581e00cefdfd5a1ab8f883ac14
+  ILTranslucentView: fa20cc89ceb451b54ae3d993c7dfb789873ef153
   Parse: ffebaecaddd32cb52671010f81567c298ff93d04
 
 COCOAPODS: 0.33.1
