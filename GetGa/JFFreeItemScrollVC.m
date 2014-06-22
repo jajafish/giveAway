@@ -50,7 +50,7 @@
     
     self.scoller.delegate = self;
     
-
+    NSLog(@"%@", NSStringFromCGRect(self.iWantThisFreeItemButton.frame));
     
     
     
