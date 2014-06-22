@@ -7,8 +7,58 @@
 //
 
 #import "JFGiveItemCategorySelectVC.h"
+#import "JFGiveItemCategoryCell.h"
 
 @implementation JFGiveItemCategorySelectVC
+
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 8;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    static NSString *cellIdentifier = @"CategoryCell";
+    
+    JFGiveItemCategoryCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (cell == nil){
+        cell = [[JFGiveItemCategoryCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    }
+    
+    switch (indexPath.row) {
+        case 0:
+            cell.textLabel.text = @"books";
+            break;
+        case 1:
+            cell.textLabel.text = @"children's";
+            break;
+        case 2:
+            cell.textLabel.text = @"clothing";
+            break;
+        case 3:
+            cell.textLabel.text = @"electronics";
+            break;
+        case 4:
+            cell.textLabel.text = @"furntiture";
+            break;
+        case 5:
+            cell.textLabel.text = @"home appliances";
+            break;
+        case 6:
+            cell.textLabel.text = @"sporting goods";
+            break;
+        case 7:
+            cell.textLabel.text = @"other";
+            break;
+        default:
+            break;
+    }
+    
+    
+    return cell;
+}
 
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
