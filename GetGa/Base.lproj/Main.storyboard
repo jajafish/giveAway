@@ -213,6 +213,20 @@
             </objects>
             <point key="canvasLocation" x="3272" y="2286"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="fJ9-lT-Vg7">
+            <objects>
+                <viewController id="QJX-a4-Veg" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Dbc-lU-Y5z">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xt6-96-mHT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2598" y="3895"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="njH-zt-SJK">
             <objects>
@@ -398,14 +412,14 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="KQ2-Q0-Wb1">
-                                <rect key="frame" x="0.0" y="64" width="320" height="164"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="112"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.77534816576086962" green="0.77534816576086962" blue="0.77534816576086962" alpha="0.35999999999999999" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="byo-I1-uUX">
-                                <rect key="frame" x="28" y="245" width="265" height="30"/>
+                                <rect key="frame" x="26" y="199" width="265" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.77534816579999999" green="0.77534816579999999" blue="0.77534816579999999" alpha="0.35999999999999999" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="listing expires in 1 week">
@@ -420,7 +434,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gUh-5T-qsV">
-                                <rect key="frame" x="107" y="291" width="107" height="30"/>
+                                <rect key="frame" x="107" y="245" width="107" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Give Item Away">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -582,8 +596,8 @@
                                     <action selector="iWantThisItemButtonPressed:" destination="9PR-cH-Dv9" eventType="touchUpInside" id="P1F-61-Qbh"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Turkey, ham, lettuce, tomato" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Yy2-YM-abR">
-                                <rect key="frame" x="-2" y="487" width="320" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Turkey, ham, lettuce, tomato" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Yy2-YM-abR">
+                                <rect key="frame" x="-2" y="397" width="320" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>

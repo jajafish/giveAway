@@ -29,10 +29,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
 
-        self.moveRecognizer.delegate = self;
-        self.moveRecognizer.cancelsTouchesInView = YES;
-        [self.view addGestureRecognizer:self.moveRecognizer];
-        
     }
     return self;
 }
@@ -54,8 +50,7 @@
     
     self.giveItemTitleTextField.userInteractionEnabled = YES;
     
-    UIPanGestureRecognizer *gesture = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(textFieldDragged:)];
-    [self.giveItemTitleTextField addGestureRecognizer:gesture];
+
 
     
 }
@@ -106,18 +101,6 @@
 }
 
 
-#pragma mark - Gestures
-
--(void)textFieldDragged:(UIPanGestureRecognizer *)gesture
-{
-    UITextField *textField = (UITextField *)gesture.view;
-    CGPoint translation = [gesture translationInView:textField];
-    
-    textField.center = CGPointMake(textField.center.x + translation.x, textField.center.y + translation.y);
-    
-    [gesture setTranslation:CGPointZero inView:textField];
-    
-}
 
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
