@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PFGiveItem.h"
 
-@interface JFFreeItemScrollVC : UIViewController
+@interface JFFreeItemScrollVC : UIViewController <UIScrollViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scoller;
+@property (strong, nonatomic) PFGiveItem *giveItem;
 
 @end

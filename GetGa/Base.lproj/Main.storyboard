@@ -88,6 +88,7 @@
                         <outlet property="giveSomethingAwayButton" destination="wjO-sD-Q8H" id="hr7-5p-e4J"/>
                         <outlet property="tableView" destination="o78-uR-qJd" id="Dz0-c3-Yge"/>
                         <segue destination="9PR-cH-Dv9" kind="push" identifier="freeStuffToFreeItem" id="66w-wx-9Kq"/>
+                        <segue destination="H3L-uM-9tS" kind="push" identifier="freeStuffToFreeItemScroll" id="hFO-oh-gGr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="93G-XE-wXo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -636,7 +637,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EG0-Os-A3g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4446" y="3205"/>
+            <point key="canvasLocation" x="4408" y="2865"/>
         </scene>
         <!--Free Item ScrollVC-->
         <scene sceneID="YF2-mZ-KFf">
@@ -647,33 +648,83 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Nuf-gH-3iT">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="1000"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="936"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Tj1-Gz-1GL">
-                                        <rect key="frame" x="120" y="656" width="46" height="30"/>
+                                    <view contentMode="scaleToFill" id="pjr-Th-TVe">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="936"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="No7-xi-a6Y">
-                                        <rect key="frame" x="134" y="238" width="118" height="31"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </slider>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="qpC-f0-8E7">
+                                                <rect key="frame" x="-1" y="0.0" width="320" height="244"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            </imageView>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xFy-sG-3Au">
+                                                <rect key="frame" x="13" y="458" width="293" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8eT-W6-IhB">
+                                                <rect key="frame" x="13" y="458" width="293" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="qPc-gh-trS">
+                                                <rect key="frame" x="0.0" y="364" width="320" height="208"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="aO3-eB-mTM">
+                                                <rect key="frame" x="40" y="404" width="240" height="128"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Giver Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xpP-qn-A1I">
+                                                <rect key="frame" x="114" y="458" width="91" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
                                 </subviews>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gcq-kj-216">
+                                <rect key="frame" x="5" y="944" width="310" height="54"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="I Want This">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="iWantThisFreeItemButtonPressed:" destination="H3L-uM-9tS" eventType="touchUpInside" id="CEQ-ru-Bey"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="cPv-4o-PZQ"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="freeItemCategoryLabel" destination="8eT-W6-IhB" id="BqA-8v-qpT"/>
+                        <outlet property="freeItemGiverName" destination="xpP-qn-A1I" id="KhB-zs-yUf"/>
+                        <outlet property="freeItemGiverPhoto" destination="aO3-eB-mTM" id="NKN-s8-36u"/>
+                        <outlet property="freeItemImageNameLabel" destination="xFy-sG-3Au" id="3Hw-oF-5d5"/>
+                        <outlet property="freeItemImageView" destination="qpC-f0-8E7" id="GEg-sj-jJw"/>
+                        <outlet property="freeItemLogisticsTextView" destination="qPc-gh-trS" id="gZ8-Nu-9aj"/>
+                        <outlet property="iWantThisFreeItemButton" destination="gcq-kj-216" id="rdu-bd-FZN"/>
                         <outlet property="scoller" destination="Nuf-gH-3iT" id="L8Z-OJ-KEF"/>
+                        <outlet property="scrollContentView" destination="pjr-Th-TVe" id="uL8-34-77m"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NC4-Lu-Ite" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5117" y="3405"/>
+            <point key="canvasLocation" x="4388" y="3599"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

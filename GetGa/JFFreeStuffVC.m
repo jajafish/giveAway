@@ -9,7 +9,7 @@
 #import "JFFreeStuffVC.h"
 #import "JFGiveItemCell.h"
 #import "PFGiveItem.h"
-#import "JFFreeItemVC.h"
+#import "JFFreeItemScrollVC.h"
 #import "ILTranslucentView.h"
 #import <QuartzCore/QuartzCore.h>
 
@@ -136,10 +136,10 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"freeStuffToFreeItem"]){
-        if ([segue.destinationViewController isKindOfClass:[JFFreeItemVC class]]){
+    if ([segue.identifier isEqualToString:@"freeStuffToFreeItemScroll"]){
+        if ([segue.destinationViewController isKindOfClass:[JFFreeItemScrollVC class]]){
             NSLog(@"hello making the transition:");
-            JFFreeItemVC *targetVC = segue.destinationViewController;
+            JFFreeItemScrollVC *targetVC = segue.destinationViewController;
             targetVC.giveItem = self.selectedItem;
         }
     }
@@ -149,7 +149,7 @@
 {
     self.selectedItem = self.availableFreeStuff[indexPath.row];
     NSLog(@"the selected item was %@", self.selectedItem);
-    [self performSegueWithIdentifier:@"freeStuffToFreeItem" sender:self];
+    [self performSegueWithIdentifier:@"freeStuffToFreeItemScroll" sender:self];
 }
 
 
