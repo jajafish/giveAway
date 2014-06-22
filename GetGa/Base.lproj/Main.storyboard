@@ -403,59 +403,76 @@
             </objects>
             <point key="canvasLocation" x="4446" y="2254"/>
         </scene>
-        <!--Give Item LogisticsVC-->
-        <scene sceneID="v9b-aj-aCJ">
+        <!--Give Item Category SelectVC - What kind of item is this?-->
+        <scene sceneID="kjB-m3-C6x">
             <objects>
-                <viewController id="9df-RR-sSq" customClass="JFGiveItemLogisticsVC" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="fAy-RP-Cky">
+                <tableViewController id="zld-30-RIC" customClass="JFGiveItemCategorySelectVC" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="dId-0G-srr">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CategoryCell" id="aqZ-g9-aC0" customClass="JFGiveItemCategoryCell">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aqZ-g9-aC0" id="OnT-KH-CoM">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="zld-30-RIC" id="TQc-qb-WRs"/>
+                            <outlet property="delegate" destination="zld-30-RIC" id="bgs-r3-8ZB"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="What kind of item is this?" id="akH-UZ-OVo"/>
+                    <connections>
+                        <segue destination="i65-sg-xno" kind="push" identifier="itemCategoryToItemLogistics" id="4Es-xH-wwl"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rLd-0M-t7D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5425" y="1799"/>
+        </scene>
+        <!--Give Item LogisticsVC - item details + pickup logistics-->
+        <scene sceneID="icy-NY-J9M">
+            <objects>
+                <viewController id="i65-sg-xno" customClass="JFGiveItemLogisticsVC" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="38i-ww-NcM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="KQ2-Q0-Wb1">
-                                <rect key="frame" x="0.0" y="64" width="320" height="112"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.77534816576086962" green="0.77534816576086962" blue="0.77534816576086962" alpha="0.35999999999999999" colorSpace="calibratedRGB"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="who-zI-5Vf">
+                                <rect key="frame" x="0.0" y="95" width="320" height="188"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="byo-I1-uUX">
-                                <rect key="frame" x="26" y="199" width="265" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Wh8-yP-bki">
+                                <rect key="frame" x="4" y="281" width="310" height="54"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.77534816579999999" green="0.77534816579999999" blue="0.77534816579999999" alpha="0.35999999999999999" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="listing expires in 1 week">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details + Logistics" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZCU-wi-lf2">
-                                <rect key="frame" x="90" y="25" width="141" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gUh-5T-qsV">
-                                <rect key="frame" x="107" y="245" width="107" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Give Item Away">
+                                <state key="normal" title="Give This Item">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="confirmLogisticsButtonPressed:" destination="9df-RR-sSq" eventType="touchUpInside" id="yFF-a9-5Mn"/>
+                                    <action selector="confirmLogisticsButtonPressed:" destination="i65-sg-xno" eventType="touchUpInside" id="0X7-gC-j9d"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="g8G-rA-7wC"/>
+                    <navigationItem key="navigationItem" title="item details + pickup logistics" prompt="Anything else?" id="OVu-iF-haL"/>
                     <connections>
-                        <outlet property="confirmLogisticsButton" destination="gUh-5T-qsV" id="G5s-yI-bnh"/>
-                        <outlet property="logisticsTextView" destination="KQ2-Q0-Wb1" id="Mkx-wf-hAc"/>
-                        <outlet property="revealDatePickerButton" destination="byo-I1-uUX" id="CmV-kp-khe"/>
+                        <outlet property="confirmLogisticsButton" destination="Wh8-yP-bki" id="Bjr-xx-hr2"/>
+                        <outlet property="logisticsTextView" destination="who-zI-5Vf" id="9FY-6O-ki7"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RH0-61-W5R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rYm-aa-c0F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5466" y="1828"/>
+            <point key="canvasLocation" x="5902" y="1799"/>
         </scene>
         <!--Give Item DetailsVC-->
         <scene sceneID="o67-Cq-oqC">
@@ -465,12 +482,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="16e-kv-2nP">
-                                <rect key="frame" x="0.0" y="0.0" width="325" height="309"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="16e-kv-2nP">
+                                <rect key="frame" x="-2" y="-2" width="325" height="576"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="what are you giving away?" minimumFontSize="17" id="4w4-Mz-Hih">
-                                <rect key="frame" x="0.0" y="313" width="320" height="30"/>
+                                <rect key="frame" x="10" y="80" width="300" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -484,7 +501,7 @@
                     <connections>
                         <outlet property="giveItemPhotoImageView" destination="16e-kv-2nP" id="QTf-Gu-FeQ"/>
                         <outlet property="giveItemTitleTextField" destination="4w4-Mz-Hih" id="78i-w4-4qw"/>
-                        <segue destination="9df-RR-sSq" kind="push" identifier="giveItemDetailsToLogistics" customClass="BlurryModalSegue" id="Msq-hl-XZC"/>
+                        <segue destination="zld-30-RIC" kind="push" identifier="itemDetailsToItemTags" id="Me4-qn-wtC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yY6-kW-JkN" userLabel="First Responder" sceneMemberID="firstResponder"/>

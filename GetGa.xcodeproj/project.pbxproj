@@ -35,6 +35,9 @@
 		E775595C19325CC600CD76A0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E775595A19325CC600CD76A0 /* InfoPlist.strings */; };
 		E775595E19325CC600CD76A0 /* GetGaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E775595D19325CC600CD76A0 /* GetGaTests.m */; };
 		E775596F1932637C00CD76A0 /* appshot.png in Resources */ = {isa = PBXBuildFile; fileRef = E775596E1932637C00CD76A0 /* appshot.png */; };
+		E7ADA1F21956AD2700FA17CF /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = E7ADA1F11956AD2700FA17CF /* UIImage+ImageEffects.m */; };
+		E7ADA1F61956BD2100FA17CF /* JFGiveItemCategorySelectVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7ADA1F51956BD2100FA17CF /* JFGiveItemCategorySelectVC.m */; };
+		E7ADA1F91956C00500FA17CF /* JFGiveItemCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7ADA1F81956C00500FA17CF /* JFGiveItemCategoryCell.m */; };
 		E7B7775919555E140027D6B5 /* JFGiverGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B7775819555E140027D6B5 /* JFGiverGetter.m */; };
 		E7B7775D195567320027D6B5 /* JFFreeItemVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B7775C195567320027D6B5 /* JFFreeItemVC.m */; };
 		E7BB0417193AAC6D000DEF36 /* JFMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7BB0416193AAC6D000DEF36 /* JFMainViewController.m */; };
@@ -98,6 +101,12 @@
 		E775595B19325CC600CD76A0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E775595D19325CC600CD76A0 /* GetGaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetGaTests.m; sourceTree = "<group>"; };
 		E775596E1932637C00CD76A0 /* appshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appshot.png; sourceTree = "<group>"; };
+		E7ADA1F01956AD2700FA17CF /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		E7ADA1F11956AD2700FA17CF /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		E7ADA1F41956BD2100FA17CF /* JFGiveItemCategorySelectVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFGiveItemCategorySelectVC.h; sourceTree = "<group>"; };
+		E7ADA1F51956BD2100FA17CF /* JFGiveItemCategorySelectVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFGiveItemCategorySelectVC.m; sourceTree = "<group>"; };
+		E7ADA1F71956C00500FA17CF /* JFGiveItemCategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFGiveItemCategoryCell.h; sourceTree = "<group>"; };
+		E7ADA1F81956C00500FA17CF /* JFGiveItemCategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFGiveItemCategoryCell.m; sourceTree = "<group>"; };
 		E7B7775719555E140027D6B5 /* JFGiverGetter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFGiverGetter.h; sourceTree = "<group>"; };
 		E7B7775819555E140027D6B5 /* JFGiverGetter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFGiverGetter.m; sourceTree = "<group>"; };
 		E7B7775B195567320027D6B5 /* JFFreeItemVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFFreeItemVC.h; sourceTree = "<group>"; };
@@ -149,6 +158,7 @@
 				E7431796194E9283007F32E5 /* give items collection */,
 				E7C8AE951937006C00856D4B /* give new item photo */,
 				E7C8AE961937007400856D4B /* give new item details */,
+				E7ADA1F31956BD0700FA17CF /* give item category select */,
 				E749C2CC194FC61000A5240D /* give new item logistics */,
 				E71D7A50194CD14A007BA2F3 /* give item display */,
 			);
@@ -282,6 +292,8 @@
 		E775593919325CC600CD76A0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E7ADA1F01956AD2700FA17CF /* UIImage+ImageEffects.h */,
+				E7ADA1F11956AD2700FA17CF /* UIImage+ImageEffects.m */,
 				E7025FEB193B142B00E0027C /* dad.png */,
 				E775596E1932637C00CD76A0 /* appshot.png */,
 				E775593A19325CC600CD76A0 /* GetGa-Info.plist */,
@@ -330,6 +342,17 @@
 				E7F5D2CA19383F4800B17BE0 /* PFGiveItem.m */,
 			);
 			name = "give item";
+			sourceTree = "<group>";
+		};
+		E7ADA1F31956BD0700FA17CF /* give item category select */ = {
+			isa = PBXGroup;
+			children = (
+				E7ADA1F41956BD2100FA17CF /* JFGiveItemCategorySelectVC.h */,
+				E7ADA1F51956BD2100FA17CF /* JFGiveItemCategorySelectVC.m */,
+				E7ADA1F71956C00500FA17CF /* JFGiveItemCategoryCell.h */,
+				E7ADA1F81956C00500FA17CF /* JFGiveItemCategoryCell.m */,
+			);
+			name = "give item category select";
 			sourceTree = "<group>";
 		};
 		E7B3734B1937D7F300CA5EBC /* view */ = {
@@ -528,17 +551,20 @@
 			files = (
 				E705E0BB19367B6A00CD2E3A /* JFGivePhotoVC.m in Sources */,
 				E7B7775919555E140027D6B5 /* JFGiverGetter.m in Sources */,
+				E7ADA1F21956AD2700FA17CF /* UIImage+ImageEffects.m in Sources */,
 				E74E84AD194ED55800755821 /* JFFreeStuffVC.m in Sources */,
 				E71BDFA3193AC62F00861171 /* JFLoginVC.m in Sources */,
 				E74317A0194E9E8A007F32E5 /* JFMyGiveItemsCollectionVC.m in Sources */,
 				E7F5D2CB19383F4800B17BE0 /* PFGiveItem.m in Sources */,
 				E74317A3194EABFC007F32E5 /* JFMyGiveItemCollectionCell.m in Sources */,
+				E7ADA1F61956BD2100FA17CF /* JFGiveItemCategorySelectVC.m in Sources */,
 				E775594319325CC600CD76A0 /* JFAppDelegate.m in Sources */,
 				E7C8AE99193700AA00856D4B /* JFGiveItemDetailsVC.m in Sources */,
 				E749C2CF194FC62200A5240D /* JFGiveItemLogisticsVC.m in Sources */,
 				E71D7A4F194CD143007BA2F3 /* JFItemDisplayVC.m in Sources */,
 				E7B7775D195567320027D6B5 /* JFFreeItemVC.m in Sources */,
 				E7F5D2C8193831BF00B17BE0 /* JFGiveItemCell.m in Sources */,
+				E7ADA1F91956C00500FA17CF /* JFGiveItemCategoryCell.m in Sources */,
 				E7C8AE9C19370B7C00856D4B /* JFConstants.m in Sources */,
 				E7312B02194FE9BC00210849 /* JFProfilePhotoHeader.m in Sources */,
 				E7BB0417193AAC6D000DEF36 /* JFMainViewController.m in Sources */,

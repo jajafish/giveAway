@@ -67,6 +67,7 @@
                 newGiveItem.giveItemName = object[@"giveItemTitle"];
                 newGiveItem.locationData = object[@"postedLocation"];
                 newGiveItem.itemDetailsLogistics = object[@"giveItemLogistics"];
+                newGiveItem.itemCategory = object[@"itemCategory"];
                 
                 
                 JFGiverGetter *itemGiverGetter = (JFGiverGetter*)[JFGiverGetter object];

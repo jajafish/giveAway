@@ -13,7 +13,6 @@
 @interface JFGiveItemLogisticsVC () <UITextViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITextView *logisticsTextView;
-@property (strong, nonatomic) IBOutlet UIButton *revealDatePickerButton;
 @property (strong, nonatomic) IBOutlet UIButton *confirmLogisticsButton;
 
 @end
@@ -34,16 +33,15 @@
     [super viewDidLoad];
     [self.logisticsTextView becomeFirstResponder];
     
-    self.revealDatePickerButton.layer.cornerRadius = 2;
-    self.revealDatePickerButton.layer.borderWidth = 1;
-    self.revealDatePickerButton.layer.borderColor = [UIColor blackColor].CGColor;
-
-    
 //    NSArray *viewControllers = self.navigationController.viewControllers;
 //    UIViewController *rootViewController = [viewControllers objectAtIndex:viewControllers.count - 2];
 //    NSLog(@"%@", viewControllers);
     
     self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    self.confirmLogisticsButton.layer.cornerRadius = 5;
+    self.confirmLogisticsButton.layer.borderWidth = 1;
+    self.confirmLogisticsButton.layer.borderColor = [UIColor blackColor].CGColor;
     
     
 }
@@ -75,6 +73,7 @@
     giveItemPhoto[@"imageOwner"] = [PFUser currentUser];
     giveItemPhoto[@"imageName"] = nameForGiveItem;
     giveItemPhoto[@"imageFile"] = giveItemImageFile;
+
     
     [giveItemPhoto saveInBackground];
     
@@ -83,6 +82,7 @@
     giveItem[@"giver"] = [PFUser currentUser];
     giveItem[@"giveItemLogistics"] = self.detailsAndLogistics;
     giveItem[@"postedLocation"] = [PFUser currentUser][@"mostRecentLocation"];
+    giveItem[@"itemCategory"] = self.giveItemCategory;
     [giveItem setObject:giveItemPhoto forKey:@"giveItemPhoto"];
     [giveItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         [self.rootVC reloadParseData];

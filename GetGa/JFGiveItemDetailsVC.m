@@ -8,8 +8,9 @@
 
 #import "JFGiveItemDetailsVC.h"
 #import "JFMyGiveItemsCollectionVC.h"
-#import "JFGiveItemLogisticsVC.h"
+#import "JFGiveItemCategorySelectVC.h"
 #import <CoreLocation/CoreLocation.h>
+#import "UIImage+ImageEffects.h"
 
 @interface JFGiveItemDetailsVC () <UITextFieldDelegate, UIGestureRecognizerDelegate>
 @property (strong, nonatomic) IBOutlet UIImageView *giveItemPhotoImageView;
@@ -50,6 +51,10 @@
     
     self.giveItemTitleTextField.userInteractionEnabled = YES;
     
+    UIImage *effectImage = nil;
+    effectImage = [self.giveItemImage applyLightEffect];
+    self.giveItemPhotoImageView.image = effectImage;
+    
 
 
     
@@ -87,7 +92,7 @@
     
 //    [self.navigationController popToRootViewControllerAnimated:YES];
     
-    [self performSegueWithIdentifier:@"giveItemDetailsToLogistics" sender:self];
+    [self performSegueWithIdentifier:@"itemDetailsToItemTags" sender:self];
     
     return YES;
 }
@@ -105,9 +110,9 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"giveItemDetailsToLogistics"]){
-        if ([segue.destinationViewController isKindOfClass:[JFGiveItemLogisticsVC class]]){
-            JFGiveItemLogisticsVC *targetVC = segue.destinationViewController;
+    if ([segue.identifier isEqualToString:@"itemDetailsToItemTags"]){
+        if ([segue.destinationViewController isKindOfClass:[JFGiveItemCategorySelectVC class]]){
+            JFGiveItemCategorySelectVC *targetVC = segue.destinationViewController;
             targetVC.giveItemNameFromDetails = self.giveItemTitleTextField.text;
             targetVC.giveItemImageFromDetails = self.giveItemImage;
         }
