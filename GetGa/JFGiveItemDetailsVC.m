@@ -10,6 +10,7 @@
 #import "JFMyGiveItemsCollectionVC.h"
 #import "JFGiveItemLogisticsVC.h"
 #import <CoreLocation/CoreLocation.h>
+#import "UIImage+ImageEffects.h"
 
 @interface JFGiveItemDetailsVC () <UITextFieldDelegate, UIGestureRecognizerDelegate>
 @property (strong, nonatomic) IBOutlet UIImageView *giveItemPhotoImageView;
@@ -50,6 +51,10 @@
     
     self.giveItemTitleTextField.userInteractionEnabled = YES;
     
+    UIImage *effectImage = nil;
+    effectImage = [self.giveItemImage applyLightEffect];
+    self.giveItemPhotoImageView.image = effectImage;
+    
 
 
     
@@ -87,7 +92,7 @@
     
 //    [self.navigationController popToRootViewControllerAnimated:YES];
     
-    [self performSegueWithIdentifier:@"giveItemDetailsToLogistics" sender:self];
+    [self performSegueWithIdentifier:@"itemDetailsToItemTags" sender:self];
     
     return YES;
 }

@@ -13,7 +13,6 @@
 @interface JFGiveItemLogisticsVC () <UITextViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITextView *logisticsTextView;
-@property (strong, nonatomic) IBOutlet UIButton *revealDatePickerButton;
 @property (strong, nonatomic) IBOutlet UIButton *confirmLogisticsButton;
 
 @end
@@ -33,11 +32,6 @@
 {
     [super viewDidLoad];
     [self.logisticsTextView becomeFirstResponder];
-    
-    self.revealDatePickerButton.layer.cornerRadius = 2;
-    self.revealDatePickerButton.layer.borderWidth = 1;
-    self.revealDatePickerButton.layer.borderColor = [UIColor blackColor].CGColor;
-
     
 //    NSArray *viewControllers = self.navigationController.viewControllers;
 //    UIViewController *rootViewController = [viewControllers objectAtIndex:viewControllers.count - 2];

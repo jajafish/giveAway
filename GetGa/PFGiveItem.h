@@ -14,6 +14,7 @@
 +(NSString *)parseClassName;
 @property (strong, nonatomic) NSString *giveItemName;
 @property (nonatomic, strong) UIImage *image;
+@property (strong, nonatomic) NSString *itemCategory;
 @property (strong, nonatomic) NSDictionary *locationData;
 @property (strong, nonatomic) NSString *itemDetailsLogistics;
 @property (strong, nonatomic) NSDate *itemListingExpireDate;
