@@ -50,6 +50,9 @@
     
     self.scoller.delegate = self;
     
+
+    
+    
     
 //    ITEM ON MAP
     double lat = [self.giveItem.locationData[@"latitude"] doubleValue];
@@ -79,6 +82,15 @@
     circleView.fillColor = [UIColor blueColor];
     circleView.alpha = 0.3;
     return circleView;
+}
+
+- (void)textViewDidChange:(UITextView *)textView
+{
+    CGFloat fixedWidth = _freeItemLogisticsTextView.frame.size.width;
+    CGSize newSize = [_freeItemLogisticsTextView sizeThatFits:CGSizeMake(fixedWidth, MAXFLOAT)];
+    CGRect newFrame = _freeItemLogisticsTextView.frame;
+    newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
+    _freeItemLogisticsTextView.frame = newFrame;
 }
 
 
