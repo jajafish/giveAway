@@ -577,7 +577,6 @@
                                 </state>
                                 <connections>
                                     <action selector="iWantThisFreeItemButtonPressed:" destination="H3L-uM-9tS" eventType="touchUpInside" id="CEQ-ru-Bey"/>
-                                    <segue destination="QRO-CD-Xcs" kind="push" id="Q7t-ew-KdC"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -597,16 +596,17 @@
                         <outlet property="iWantThisFreeItemButton" destination="gcq-kj-216" id="rdu-bd-FZN"/>
                         <outlet property="scoller" destination="Nuf-gH-3iT" id="L8Z-OJ-KEF"/>
                         <outlet property="scrollContentView" destination="pjr-Th-TVe" id="uL8-34-77m"/>
+                        <segue destination="QRO-CD-Xcs" kind="push" identifier="itemToItemChatSegue" id="ysJ-n3-VSf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NC4-Lu-Ite" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4440" y="3081"/>
+            <point key="canvasLocation" x="4527" y="2924"/>
         </scene>
-        <!--View Controller-->
+        <!--Item ChatVC-->
         <scene sceneID="GKw-qK-juC">
             <objects>
-                <viewController id="QRO-CD-Xcs" sceneMemberID="viewController">
+                <viewController id="QRO-CD-Xcs" customClass="JFItemChatVC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3cf-1J-c7F">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

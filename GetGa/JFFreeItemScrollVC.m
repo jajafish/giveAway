@@ -78,6 +78,9 @@
     
     [self.freeItemLocationMapView addOverlay:[MKCircle circleWithCenterCoordinate:cord radius:800]];
     
+    NSLog(@"the item giver is %@", self.giveItem.itemGiver);
+    NSLog(@"and the current user is %@", [PFUser currentUser]);
+    
     
 }
 
@@ -111,6 +114,9 @@
 
 
 - (IBAction)iWantThisFreeItemButtonPressed:(UIButton *)sender {
+    
+    [self createChatRoom];
+    
 }
 
 
@@ -130,6 +136,31 @@
     _freeItemLogisticsTextView.frame = newFrame;
 }
 
+
+-(void)createChatRoom
+{
+    PFQuery *queryForChatRoom = [PFQuery queryWithClassName:@"ChatRoom"];
+    [queryForChatRoom whereKey:@"user1" equalTo:[PFUser currentUser]];
+    [queryForChatRoom whereKey:@"user2" equalTo:self.giveItem.itemGiver];
+    
+    PFQuery *queryForChatRoomInverse = [PFQuery queryWithClassName:@"ChatRoom"];
+    [queryForChatRoomInverse whereKey:@"user1" equalTo:self.giveItem.itemGiver];
+    [queryForChatRoomInverse whereKey:@"user2" equalTo:[PFUser currentUser]];
+    
+    PFQuery *combinedChatRoomQuery = [PFQuery orQueryWithSubqueries:@[queryForChatRoom, queryForChatRoomInverse]];
+    
+    [combinedChatRoomQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if ([objects count] == 0){
+            PFObject *chatRoom = [PFObject objectWithClassName:@"ChatRoom"];
+            [chatRoom setObject:[PFUser currentUser] forKey:@"user1"];
+            [chatRoom setObject:self.giveItem.itemGiver forKey:@"user2"];
+            [chatRoom saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                [self performSegueWithIdentifier:@"itemToItemChatSegue" sender:nil];
+            }];
+        }
+    }];
+
+}
 
 
 
