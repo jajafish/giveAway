@@ -8,6 +8,7 @@
 
 #import "JFFreeItemScrollVC.h"
 #import <MapKit/MapKit.h>
+#import <ILTranslucentView.h>
 
 @interface JFFreeItemScrollVC () <MKMapViewDelegate>
 @property (strong, nonatomic) IBOutlet UIImageView *freeItemImageView;
@@ -42,6 +43,10 @@
                              animated:NO];
     
     self.scoller.delegate = self;
+
+    
+    
+    
     
     
 }
