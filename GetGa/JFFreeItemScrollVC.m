@@ -52,6 +52,8 @@
     self.freeItemImageNameLabel.text = self.giveItem.giveItemName;
     self.freeItemCategoryLabel.text = self.giveItem.itemCategory;
     self.freeItemLogisticsTextView.text = self.giveItem.itemDetailsLogistics;
+//    self.freeItemGiverName.text = self.giveItem.itemGiverName;
+    self.freeItemGiverName.text = self.giveItem.itemGiver.giveGetterName;
     
     [self.scoller setContentOffset:CGPointMake(self.scoller.contentOffset.x, 0)
                              animated:NO];

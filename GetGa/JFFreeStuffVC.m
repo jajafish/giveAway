@@ -74,12 +74,12 @@
                 newGiveItem.itemDetailsLogistics = object[@"giveItemLogistics"];
                 newGiveItem.itemCategory = object[@"itemCategory"];
                 
-                
                 JFGiverGetter *itemGiverGetter = (JFGiverGetter*)[JFGiverGetter object];
                 itemGiverGetter = object[@"giver"];
                 newGiveItem.itemGiver = itemGiverGetter;
                 NSString *itemGiverGetterName = [[NSString alloc]init];
                 itemGiverGetterName = itemGiverGetter[@"profile"][@"name"];
+                newGiveItem.itemGiver.giveGetterName = itemGiverGetterName;
                 newGiveItem.itemGiverName = itemGiverGetterName;
                 
                 PFObject *photoObj = object[@"giveItemPhoto"];
