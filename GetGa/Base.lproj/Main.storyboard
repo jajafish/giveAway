@@ -73,6 +73,9 @@
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="p25-uW-pG8" kind="push" id="jRi-ro-QqA"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -190,8 +193,7 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <segue destination="B62-AF-fID" kind="custom" identifier="firstSegue" customClass="AMSlideMenuContentSegue" id="1zQ-z0-Xaz"/>
-                        <segue destination="vD3-uk-CKc" kind="custom" identifier="secondSegue" customClass="AMSlideMenuContentSegue" id="Kqi-7F-YKW"/>
+                        <segue destination="vD3-uk-CKc" kind="custom" identifier="firstSegue" customClass="AMSlideMenuContentSegue" id="Kqi-7F-YKW"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AHl-oq-qL2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -256,9 +258,6 @@
                                 <state key="normal" title="Give Something Away">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="p25-uW-pG8" kind="push" id="UtW-hb-Zwl"/>
-                                </connections>
                             </button>
                             <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="Ae3-lw-WAS">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="516"/>
@@ -326,64 +325,11 @@
                     <navigationItem key="navigationItem" id="3Jg-jc-xBO"/>
                     <connections>
                         <outlet property="collectionView" destination="Ae3-lw-WAS" id="4fc-Vg-AQA"/>
-                        <segue destination="Gy6-w4-JZE" kind="push" identifier="itemCollectionToDisplay" id="HKv-4w-Yx5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xKh-cr-tVN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3809" y="2274"/>
-        </scene>
-        <!--Item DisplayVC-->
-        <scene sceneID="mar-RP-4mh">
-            <objects>
-                <viewController id="Gy6-w4-JZE" customClass="JFItemDisplayVC" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="fq5-cg-3xv">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="28K-5Z-kAz">
-                                <rect key="frame" x="-2" y="64" width="325" height="199"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7rA-jC-ffR">
-                                <rect key="frame" x="79" y="526" width="163" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Someone Is Taking This">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="iWantButtonPressed:" destination="Gy6-w4-JZE" eventType="touchUpInside" id="tgh-ZQ-n4C"/>
-                                    <action selector="iWantThisButtonPressed:" destination="Gy6-w4-JZE" eventType="touchUpInside" id="Qvg-UF-dNZ"/>
-                                </connections>
-                            </button>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="16G-a7-3T2">
-                                <rect key="frame" x="12" y="200" width="114" height="96"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <connections>
-                                    <outlet property="delegate" destination="Gy6-w4-JZE" id="hDm-if-3pO"/>
-                                </connections>
-                            </mapView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Turkey, ham, lettuce, tomato" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YQW-Cr-d9V">
-                                <rect key="frame" x="12" y="319" width="295" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="CS7-Tq-9sK"/>
-                    <connections>
-                        <outlet property="giveItemLogisticsLabel" destination="YQW-Cr-d9V" id="h05-7z-Lwe"/>
-                        <outlet property="iWantThisItemButton" destination="7rA-jC-ffR" id="8MT-QQ-cZS"/>
-                        <outlet property="itemDisplayImageView" destination="28K-5Z-kAz" id="Do7-hh-FR8"/>
-                        <outlet property="itemDisplayMap" destination="16G-a7-3T2" id="7cg-Qp-v8n"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6DB-po-jE5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4446" y="1562"/>
         </scene>
         <!--Give PhotoVC-->
         <scene sceneID="Z6H-gc-Cf6">
@@ -401,7 +347,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ySW-3Q-TG7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4446" y="2254"/>
+            <point key="canvasLocation" x="4470" y="2286"/>
         </scene>
         <!--Give Item Category SelectVC - What kind of item is this?-->
         <scene sceneID="kjB-m3-C6x">

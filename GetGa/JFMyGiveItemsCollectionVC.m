@@ -10,7 +10,6 @@
 #import "PFGiveItem.h"
 #import "JFMyGiveItemCollectionCell.h"
 #import "JFGivePhotoVC.h"
-#import "JFItemDisplayVC.h"
 #import "JFCollectionHeaderView.h"
 #import "CSStickyHeaderFlowLayout.h"
 #import "JFProfilePhotoHeader.h"
@@ -100,14 +99,7 @@
 //            targetVC.navController = self.navigationController;
         }
     }
-    if ([segue.identifier isEqualToString:@"itemCollectionToDisplay"])
-    {
-        if ([segue.destinationViewController isKindOfClass:[JFItemDisplayVC class]]){
-            JFItemDisplayVC *targetVC = segue.destinationViewController;
-            targetVC.giveItem = self.selectedItem;
-        }
-        
-    }
+
     
 }
 

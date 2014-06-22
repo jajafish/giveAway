@@ -11,7 +11,6 @@
 		E7025FEC193B142B00E0027C /* dad.png in Resources */ = {isa = PBXBuildFile; fileRef = E7025FEB193B142B00E0027C /* dad.png */; };
 		E705E0BB19367B6A00CD2E3A /* JFGivePhotoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E705E0BA19367B6A00CD2E3A /* JFGivePhotoVC.m */; };
 		E71BDFA3193AC62F00861171 /* JFLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E71BDFA2193AC62F00861171 /* JFLoginVC.m */; };
-		E71D7A4F194CD143007BA2F3 /* JFItemDisplayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E71D7A4E194CD143007BA2F3 /* JFItemDisplayVC.m */; };
 		E71D7A52194CD434007BA2F3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E71D7A51194CD434007BA2F3 /* MapKit.framework */; };
 		E7312B02194FE9BC00210849 /* JFProfilePhotoHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = E7312B01194FE9BC00210849 /* JFProfilePhotoHeader.m */; };
 		E74317A0194E9E8A007F32E5 /* JFMyGiveItemsCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E743179F194E9E8A007F32E5 /* JFMyGiveItemsCollectionVC.m */; };
@@ -66,8 +65,6 @@
 		E705E0BA19367B6A00CD2E3A /* JFGivePhotoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFGivePhotoVC.m; sourceTree = "<group>"; };
 		E71BDFA1193AC62F00861171 /* JFLoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFLoginVC.h; sourceTree = "<group>"; };
 		E71BDFA2193AC62F00861171 /* JFLoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFLoginVC.m; sourceTree = "<group>"; };
-		E71D7A4D194CD143007BA2F3 /* JFItemDisplayVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFItemDisplayVC.h; sourceTree = "<group>"; };
-		E71D7A4E194CD143007BA2F3 /* JFItemDisplayVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFItemDisplayVC.m; sourceTree = "<group>"; };
 		E71D7A51194CD434007BA2F3 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		E7312B00194FE9BC00210849 /* JFProfilePhotoHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFProfilePhotoHeader.h; sourceTree = "<group>"; };
 		E7312B01194FE9BC00210849 /* JFProfilePhotoHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFProfilePhotoHeader.m; sourceTree = "<group>"; };
@@ -160,7 +157,6 @@
 				E7C8AE961937007400856D4B /* give new item details */,
 				E7ADA1F31956BD0700FA17CF /* give item category select */,
 				E749C2CC194FC61000A5240D /* give new item logistics */,
-				E71D7A50194CD14A007BA2F3 /* give item display */,
 			);
 			name = give;
 			sourceTree = "<group>";
@@ -197,15 +193,6 @@
 				E7B7775819555E140027D6B5 /* JFGiverGetter.m */,
 			);
 			name = user;
-			sourceTree = "<group>";
-		};
-		E71D7A50194CD14A007BA2F3 /* give item display */ = {
-			isa = PBXGroup;
-			children = (
-				E71D7A4D194CD143007BA2F3 /* JFItemDisplayVC.h */,
-				E71D7A4E194CD143007BA2F3 /* JFItemDisplayVC.m */,
-			);
-			name = "give item display";
 			sourceTree = "<group>";
 		};
 		E7431796194E9283007F32E5 /* give items collection */ = {
@@ -562,7 +549,6 @@
 				E7C8AE99193700AA00856D4B /* JFGiveItemDetailsVC.m in Sources */,
 				E749C2CF194FC62200A5240D /* JFGiveItemLogisticsVC.m in Sources */,
 				E789BFE61956CAA300486BBE /* JFFreeItemScrollVC.m in Sources */,
-				E71D7A4F194CD143007BA2F3 /* JFItemDisplayVC.m in Sources */,
 				E7F5D2C8193831BF00B17BE0 /* JFGiveItemCell.m in Sources */,
 				E7ADA1F91956C00500FA17CF /* JFGiveItemCategoryCell.m in Sources */,
 				E7C8AE9C19370B7C00856D4B /* JFConstants.m in Sources */,

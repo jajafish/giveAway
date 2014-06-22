@@ -40,15 +40,17 @@
 {
     
     self.navigationController.navigationBar.topItem.title = @"Free Stuff";
-    [self reloadParseData];
     self.giveSomethingAwayButton.layer.cornerRadius = 5;
     self.giveSomethingAwayButton.layer.borderWidth = 1;
     self.giveSomethingAwayButton.layer.borderColor = [UIColor blackColor].CGColor;
     
     self.blurView.translucentAlpha = 1;
     
-    
-    
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [self reloadParseData];
 }
 
 -(void)reloadParseData
