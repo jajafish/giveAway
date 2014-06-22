@@ -11,7 +11,7 @@
 #import <ILTranslucentView.h>
 #import <CoreLocation/CoreLocation.h>
 
-@interface JFFreeItemScrollVC () <MKMapViewDelegate>
+@interface JFFreeItemScrollVC () <MKMapViewDelegate, UITextViewDelegate>
 @property (strong, nonatomic) IBOutlet UIImageView *freeItemImageView;
 @property (strong, nonatomic) IBOutlet UILabel *freeItemImageNameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *freeItemCategoryLabel;
@@ -21,6 +21,10 @@
 @property (strong, nonatomic) IBOutlet UILabel *freeItemGiverName;
 @property (strong, nonatomic) IBOutlet UIButton *iWantThisFreeItemButton;
 @property (strong, nonatomic) IBOutlet UIView *scrollContentView;
+
+@property (strong, nonatomic) UIImage *navBackgroundImage;
+@property (strong, nonatomic) UIImage *navBackgroundShadowImage;
+@property (strong, nonatomic) UIColor *navBackgroundColor;
 
 @end
 
@@ -33,10 +37,14 @@
 
 -(void)viewDidLoad
 {
+    
     [super viewDidLoad];
     
     [self.scoller setScrollEnabled:YES];
     [self.scoller setContentSize:CGSizeMake(320, 936)];
+    
+    self.freeItemLogisticsTextView.delegate = self;
+
     
     self.freeItemImageView.image = self.giveItem.image;
 //    self.freeItemImageView.image = [UIImage imageNamed:@"dad.png"];
@@ -44,14 +52,17 @@
     self.freeItemImageNameLabel.text = self.giveItem.giveItemName;
     self.freeItemCategoryLabel.text = self.giveItem.itemCategory;
     self.freeItemLogisticsTextView.text = self.giveItem.itemDetailsLogistics;
+//    self.freeItemGiverName.text = self.giveItem.itemGiverName;
+    self.freeItemGiverName.text = self.giveItem.itemGiver.giveGetterName;
     
     [self.scoller setContentOffset:CGPointMake(self.scoller.contentOffset.x, 0)
                              animated:NO];
     
     self.scoller.delegate = self;
     
-
+    NSLog(@"%@", NSStringFromCGRect(self.iWantThisFreeItemButton.frame));
     
+
     
     
 //    ITEM ON MAP
@@ -68,8 +79,34 @@
     [self.freeItemLocationMapView addOverlay:[MKCircle circleWithCenterCoordinate:cord radius:800]];
     
     
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [self.navigationController.navigationBar setBackgroundImage:self.navBackgroundImage
+                                                  forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = self.navBackgroundShadowImage;
+    self.navigationController.view.backgroundColor = self.navBackgroundColor;
+    
+
+    
+}
+
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    
+    self.navBackgroundImage = [self.navigationController.navigationBar backgroundImageForBarMetrics:(UIBarMetricsDefault)];
+    self.navBackgroundShadowImage = [self.navigationController.navigationBar shadowImage];
+    self.navBackgroundColor = [self.navigationController.view backgroundColor];
+    
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
+                                                  forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    self.navigationController.view.backgroundColor = [UIColor clearColor];
     
     
+    [self textViewDidChange:self.freeItemLogisticsTextView];
 }
 
 
@@ -92,6 +129,8 @@
     newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
     _freeItemLogisticsTextView.frame = newFrame;
 }
+
+
 
 
 @end

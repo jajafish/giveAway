@@ -33,6 +33,7 @@
     [self.navigationItem setHidesBackButton:YES];
     [self.tableView reloadData];
     //    [self.tableView setContentInset:UIEdgeInsetsMake(50,0,0,0)];
+    
 }
 
 
@@ -40,15 +41,19 @@
 {
     
     self.navigationController.navigationBar.topItem.title = @"Free Stuff";
-    [self reloadParseData];
     self.giveSomethingAwayButton.layer.cornerRadius = 5;
     self.giveSomethingAwayButton.layer.borderWidth = 1;
     self.giveSomethingAwayButton.layer.borderColor = [UIColor blackColor].CGColor;
     
     self.blurView.translucentAlpha = 1;
+
     
-    
-    
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [self reloadParseData];
+    self.title = @"Free Stuff";
 }
 
 -(void)reloadParseData
@@ -69,12 +74,12 @@
                 newGiveItem.itemDetailsLogistics = object[@"giveItemLogistics"];
                 newGiveItem.itemCategory = object[@"itemCategory"];
                 
-                
                 JFGiverGetter *itemGiverGetter = (JFGiverGetter*)[JFGiverGetter object];
                 itemGiverGetter = object[@"giver"];
                 newGiveItem.itemGiver = itemGiverGetter;
                 NSString *itemGiverGetterName = [[NSString alloc]init];
                 itemGiverGetterName = itemGiverGetter[@"profile"][@"name"];
+                newGiveItem.itemGiver.giveGetterName = itemGiverGetterName;
                 newGiveItem.itemGiverName = itemGiverGetterName;
                 
                 PFObject *photoObj = object[@"giveItemPhoto"];
@@ -141,6 +146,9 @@
             NSLog(@"hello making the transition:");
             JFFreeItemScrollVC *targetVC = segue.destinationViewController;
             targetVC.giveItem = self.selectedItem;
+            
+            self.title = @"";
+            
         }
     }
 }

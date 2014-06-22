@@ -45,7 +45,7 @@
     
     self.giveItemPhotoImageView.image = self.giveItemImage;
     
-    [self.giveItemTitleTextField becomeFirstResponder];
+
     UIColor *color = [UIColor blackColor];
     self.giveItemTitleTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"What are you giving away?" attributes:@{NSForegroundColorAttributeName: color}];
     
@@ -58,6 +58,13 @@
 
 
     
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self.giveItemTitleTextField becomeFirstResponder];
 }
 
 -(void)viewDidAppear:(BOOL)animated
