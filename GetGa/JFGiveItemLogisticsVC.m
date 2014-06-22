@@ -73,6 +73,7 @@
     giveItemPhoto[@"imageOwner"] = [PFUser currentUser];
     giveItemPhoto[@"imageName"] = nameForGiveItem;
     giveItemPhoto[@"imageFile"] = giveItemImageFile;
+
     
     [giveItemPhoto saveInBackground];
     
@@ -81,6 +82,7 @@
     giveItem[@"giver"] = [PFUser currentUser];
     giveItem[@"giveItemLogistics"] = self.detailsAndLogistics;
     giveItem[@"postedLocation"] = [PFUser currentUser][@"mostRecentLocation"];
+    giveItem[@"itemCategory"] = self.giveItemCategory;
     [giveItem setObject:giveItemPhoto forKey:@"giveItemPhoto"];
     [giveItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         [self.rootVC reloadParseData];

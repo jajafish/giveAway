@@ -80,6 +80,7 @@
             JFGiveItemLogisticsVC *targetVC = segue.destinationViewController;
             targetVC.giveItemImageFromDetails = self.giveItemImageFromDetails;
             targetVC.giveItemNameFromDetails = self.giveItemNameFromDetails;
+            targetVC.giveItemCategory = self.selectedCategory;
         }
     }
     

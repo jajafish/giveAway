@@ -14,6 +14,7 @@
 @property (strong, nonatomic) NSString *detailsAndLogistics;
 @property (strong, nonatomic) UIImage *giveItemImageFromDetails;
 @property (strong, nonatomic) NSString *giveItemNameFromDetails;
+@property (strong, nonatomic) NSString *giveItemCategory;
 
 @property (weak, nonatomic) JFMyGiveItemsCollectionVC *rootVC;
 
