@@ -720,6 +720,7 @@
                         <outlet property="freeItemGiverPhoto" destination="aO3-eB-mTM" id="NKN-s8-36u"/>
                         <outlet property="freeItemImageNameLabel" destination="xFy-sG-3Au" id="3Hw-oF-5d5"/>
                         <outlet property="freeItemImageView" destination="qpC-f0-8E7" id="GEg-sj-jJw"/>
+                        <outlet property="freeItemLocationMapView" destination="fOn-1o-cK5" id="KJ0-0U-Ma7"/>
                         <outlet property="freeItemLogisticsTextView" destination="qPc-gh-trS" id="gZ8-Nu-9aj"/>
                         <outlet property="iWantThisFreeItemButton" destination="gcq-kj-216" id="rdu-bd-FZN"/>
                         <outlet property="scoller" destination="Nuf-gH-3iT" id="L8Z-OJ-KEF"/>

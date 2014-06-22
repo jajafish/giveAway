@@ -9,6 +9,7 @@
 #import "JFFreeItemScrollVC.h"
 #import <MapKit/MapKit.h>
 #import <ILTranslucentView.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface JFFreeItemScrollVC () <MKMapViewDelegate>
 @property (strong, nonatomic) IBOutlet UIImageView *freeItemImageView;
@@ -23,7 +24,12 @@
 
 @end
 
-@implementation JFFreeItemScrollVC
+@implementation JFFreeItemScrollVC {
+    
+    CLLocationCoordinate2D itemLocation;
+    
+    
+}
 
 -(void)viewDidLoad
 {
@@ -43,8 +49,20 @@
                              animated:NO];
     
     self.scoller.delegate = self;
-
     
+    
+//    ITEM ON MAP
+    double lat = [self.giveItem.locationData[@"latitude"] doubleValue];
+    double lng = [self.giveItem.locationData[@"longitude"] doubleValue];
+    
+    self.freeItemLocationMapView.delegate = self;
+    CLLocationCoordinate2D cord = CLLocationCoordinate2DMake(lat, lng);
+    itemLocation = cord;
+    
+    MKCoordinateRegion startRegion = MKCoordinateRegionMakeWithDistance(cord, 1500, 1500);
+    [self.freeItemLocationMapView setRegion:startRegion animated:YES];
+    
+    [self.freeItemLocationMapView addOverlay:[MKCircle circleWithCenterCoordinate:cord radius:800]];
     
     
     
@@ -54,5 +72,14 @@
 
 - (IBAction)iWantThisFreeItemButtonPressed:(UIButton *)sender {
 }
+
+
+-(MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay {
+    MKCircleView *circleView = [[MKCircleView alloc] initWithCircle:(MKCircle *)overlay];
+    circleView.fillColor = [UIColor blueColor];
+    circleView.alpha = 0.3;
+    return circleView;
+}
+
 
 @end
