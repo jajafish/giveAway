@@ -8,15 +8,6 @@
 
 #import "JFChatListNavCell.h"
 
-@interface JFChatListNavCell ()
-
-@property (strong, nonatomic) IBOutlet UIImageView *userTwoChatImage;
-@property (strong, nonatomic) IBOutlet UILabel *user2ChatName;
-@property (strong, nonatomic) IBOutlet UILabel *user2ChatLatestItemlabel;
-@property (strong, nonatomic) IBOutlet UILabel *latestMessageChatLabel;
-
-@end
-
 @implementation JFChatListNavCell
 
 @end

@@ -10,4 +10,10 @@
 
 @interface JFChatListNavCell : UITableViewCell
 
+@property (strong, nonatomic) IBOutlet UIImageView *chatListCellBackgroundImageView;
+@property (strong, nonatomic) IBOutlet UIImageView *chatListCellUserTwoImageView;
+@property (strong, nonatomic) IBOutlet UILabel *chatListUserTwoNameLabel;
+@property (strong, nonatomic) IBOutlet UILabel *chatListItemNameLabel;
+@property (strong, nonatomic) IBOutlet UILabel *chatListLatestMessageLabel;
+
 @end
