@@ -8,6 +8,8 @@
 
 #import "JSQMessagesViewController.h"
 
-@interface JFItemChatVC : JSQMessagesViewController
+@interface JFItemChatVC : JSQMessagesViewController <JSQMessagesCollectionViewDataSource, JSQMessagesCollectionViewDelegateFlowLayout>
+
+@property (strong, nonatomic) PFObject *chatRoom;
 
 @end
