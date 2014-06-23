@@ -56,6 +56,26 @@
 }
 
 
+
+-(NSString *)segueIdentifierForIndexPathInRightMenu:(NSIndexPath *)indexPath
+{
+    NSString *identifier;
+    switch (indexPath.row) {
+        case 0:
+            identifier = @"firstRightSegue";
+            break;
+    }
+
+    return identifier;
+    
+}
+
+
+
+
+
+
+
 -(void)configureLeftMenuButton:(UIButton *)button
 {
     

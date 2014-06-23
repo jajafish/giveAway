@@ -771,32 +771,19 @@ static NSMutableArray *allInstances;
         if (!self.leftMenu)
             return;
         
+        NSString *identifier = [self segueIdentifierForIndexPathInLeftMenu:indexPath];
         [self.leftMenu.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
-        
-        if ([self respondsToSelector:@selector(navigationControllerForIndexPathInLeftMenu:)]) {
-            UINavigationController *navController = [self navigationControllerForIndexPathInLeftMenu:indexPath];
-            AMSlideMenuContentSegue *segue = [[AMSlideMenuContentSegue alloc] initWithIdentifier:@"ContentSugue" source:self.leftMenu destination:navController];
-            [segue perform];
-        } else {
-            NSString *identifier = [self segueIdentifierForIndexPathInLeftMenu:indexPath];
-            [self.leftMenu performSegueWithIdentifier:identifier sender:self.leftMenu];
-        }
+        [self.leftMenu performSegueWithIdentifier:identifier sender:self.leftMenu];
     }
     else if (menu == AMSlideMenuRight)
     {
         if (!self.rightMenu)
             return;
         
-        [self.rightMenu.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
+        NSString *identifier = [self segueIdentifierForIndexPathInRightMenu:indexPath];
         
-        if ([self respondsToSelector:@selector(navigationControllerForIndexPathInRightMenu:)]) {
-            UINavigationController *navController = [self navigationControllerForIndexPathInRightMenu:indexPath];
-            AMSlideMenuContentSegue *segue = [[AMSlideMenuContentSegue alloc] initWithIdentifier:@"ContentSugue" source:self.rightMenu destination:navController];
-            [segue perform];
-        } else {
-            NSString *identifier = [self segueIdentifierForIndexPathInRightMenu:indexPath];
-            [self.rightMenu performSegueWithIdentifier:identifier sender:self.rightMenu];
-        }
+        [self.rightMenu.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
+        [self.rightMenu performSegueWithIdentifier:identifier sender:self.rightMenu];
     }
 }
 
