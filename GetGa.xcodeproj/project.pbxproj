@@ -12,6 +12,8 @@
 		E705E0BB19367B6A00CD2E3A /* JFGivePhotoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E705E0BA19367B6A00CD2E3A /* JFGivePhotoVC.m */; };
 		E71BDFA3193AC62F00861171 /* JFLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E71BDFA2193AC62F00861171 /* JFLoginVC.m */; };
 		E71D7A52194CD434007BA2F3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E71D7A51194CD434007BA2F3 /* MapKit.framework */; };
+		E72773CC19581A7A0088178F /* JFChatListNavVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E72773CB19581A7A0088178F /* JFChatListNavVC.m */; };
+		E72773D119581C9F0088178F /* JFChatListNavCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E72773D019581C9F0088178F /* JFChatListNavCell.m */; };
 		E7312B02194FE9BC00210849 /* JFProfilePhotoHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = E7312B01194FE9BC00210849 /* JFProfilePhotoHeader.m */; };
 		E74317A0194E9E8A007F32E5 /* JFMyGiveItemsCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E743179F194E9E8A007F32E5 /* JFMyGiveItemsCollectionVC.m */; };
 		E74317A3194EABFC007F32E5 /* JFMyGiveItemCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E74317A2194EABFC007F32E5 /* JFMyGiveItemCollectionCell.m */; };
@@ -67,6 +69,10 @@
 		E71BDFA1193AC62F00861171 /* JFLoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFLoginVC.h; sourceTree = "<group>"; };
 		E71BDFA2193AC62F00861171 /* JFLoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFLoginVC.m; sourceTree = "<group>"; };
 		E71D7A51194CD434007BA2F3 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		E72773CA19581A7A0088178F /* JFChatListNavVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFChatListNavVC.h; sourceTree = "<group>"; };
+		E72773CB19581A7A0088178F /* JFChatListNavVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFChatListNavVC.m; sourceTree = "<group>"; };
+		E72773CF19581C9F0088178F /* JFChatListNavCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFChatListNavCell.h; sourceTree = "<group>"; };
+		E72773D019581C9F0088178F /* JFChatListNavCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFChatListNavCell.m; sourceTree = "<group>"; };
 		E7312B00194FE9BC00210849 /* JFProfilePhotoHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFProfilePhotoHeader.h; sourceTree = "<group>"; };
 		E7312B01194FE9BC00210849 /* JFProfilePhotoHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFProfilePhotoHeader.m; sourceTree = "<group>"; };
 		E743179E194E9E8A007F32E5 /* JFMyGiveItemsCollectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFMyGiveItemsCollectionVC.h; sourceTree = "<group>"; };
@@ -191,6 +197,26 @@
 			name = user;
 			sourceTree = "<group>";
 		};
+		E72773CD19581C710088178F /* chat nav */ = {
+			isa = PBXGroup;
+			children = (
+				E72773CA19581A7A0088178F /* JFChatListNavVC.h */,
+				E72773CB19581A7A0088178F /* JFChatListNavVC.m */,
+				E72773CF19581C9F0088178F /* JFChatListNavCell.h */,
+				E72773D019581C9F0088178F /* JFChatListNavCell.m */,
+			);
+			name = "chat nav";
+			sourceTree = "<group>";
+		};
+		E72773CE19581C760088178F /* chat room */ = {
+			isa = PBXGroup;
+			children = (
+				E7F35CD41957675800B1221D /* JFItemChatVC.h */,
+				E7F35CD51957675800B1221D /* JFItemChatVC.m */,
+			);
+			name = "chat room";
+			sourceTree = "<group>";
+		};
 		E7431796194E9283007F32E5 /* give items collection */ = {
 			isa = PBXGroup;
 			children = (
@@ -310,8 +336,8 @@
 		E784B12E1957655D0064AF1D /* chat */ = {
 			isa = PBXGroup;
 			children = (
-				E7F35CD41957675800B1221D /* JFItemChatVC.h */,
-				E7F35CD51957675800B1221D /* JFItemChatVC.m */,
+				E72773CD19581C710088178F /* chat nav */,
+				E72773CE19581C760088178F /* chat room */,
 			);
 			name = chat;
 			sourceTree = "<group>";
@@ -555,6 +581,7 @@
 				E7C8AE99193700AA00856D4B /* JFGiveItemDetailsVC.m in Sources */,
 				E749C2CF194FC62200A5240D /* JFGiveItemLogisticsVC.m in Sources */,
 				E789BFE61956CAA300486BBE /* JFFreeItemScrollVC.m in Sources */,
+				E72773CC19581A7A0088178F /* JFChatListNavVC.m in Sources */,
 				E7F5D2C8193831BF00B17BE0 /* JFGiveItemCell.m in Sources */,
 				E7ADA1F91956C00500FA17CF /* JFGiveItemCategoryCell.m in Sources */,
 				E7C8AE9C19370B7C00856D4B /* JFConstants.m in Sources */,
@@ -562,6 +589,7 @@
 				E7BB0417193AAC6D000DEF36 /* JFMainViewController.m in Sources */,
 				E775593F19325CC600CD76A0 /* main.m in Sources */,
 				E7583D7C194F060B00899AEF /* JFCollectionHeaderView.m in Sources */,
+				E72773D119581C9F0088178F /* JFChatListNavCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
