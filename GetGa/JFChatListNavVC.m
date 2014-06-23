@@ -30,8 +30,12 @@
     chatCell.chatListCellUserTwoImageView.image = [UIImage imageNamed:@"appshot.png"];
 
     return chatCell;
-
     
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self performSegueWithIdentifier:@"firstRightSegue" sender:self];
 }
 
 
