@@ -45,7 +45,6 @@
 		E7C8AE99193700AA00856D4B /* JFGiveItemDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C8AE98193700AA00856D4B /* JFGiveItemDetailsVC.m */; };
 		E7C8AE9C19370B7C00856D4B /* JFConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C8AE9B19370B7C00856D4B /* JFConstants.m */; };
 		E7F3054C194A4F8B007AA625 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F3054B194A4F8B007AA625 /* CoreLocation.framework */; };
-		E7F35CD61957675800B1221D /* JFItemChatVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F35CD51957675800B1221D /* JFItemChatVC.m */; };
 		E7F5D2C8193831BF00B17BE0 /* JFGiveItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F5D2C7193831BF00B17BE0 /* JFGiveItemCell.m */; };
 		E7F5D2CB19383F4800B17BE0 /* PFGiveItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F5D2CA19383F4800B17BE0 /* PFGiveItem.m */; };
 /* End PBXBuildFile section */
@@ -122,8 +121,6 @@
 		E7C8AE9A19370B7C00856D4B /* JFConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFConstants.h; sourceTree = "<group>"; };
 		E7C8AE9B19370B7C00856D4B /* JFConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFConstants.m; sourceTree = "<group>"; };
 		E7F3054B194A4F8B007AA625 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		E7F35CD41957675800B1221D /* JFItemChatVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFItemChatVC.h; sourceTree = "<group>"; };
-		E7F35CD51957675800B1221D /* JFItemChatVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFItemChatVC.m; sourceTree = "<group>"; };
 		E7F5D2C6193831BF00B17BE0 /* JFGiveItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFGiveItemCell.h; sourceTree = "<group>"; };
 		E7F5D2C7193831BF00B17BE0 /* JFGiveItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFGiveItemCell.m; sourceTree = "<group>"; };
 		E7F5D2C919383F4800B17BE0 /* PFGiveItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFGiveItem.h; sourceTree = "<group>"; };
@@ -211,8 +208,6 @@
 		E72773CE19581C760088178F /* chat room */ = {
 			isa = PBXGroup;
 			children = (
-				E7F35CD41957675800B1221D /* JFItemChatVC.h */,
-				E7F35CD51957675800B1221D /* JFItemChatVC.m */,
 			);
 			name = "chat room";
 			sourceTree = "<group>";
@@ -576,7 +571,6 @@
 				E7F5D2CB19383F4800B17BE0 /* PFGiveItem.m in Sources */,
 				E74317A3194EABFC007F32E5 /* JFMyGiveItemCollectionCell.m in Sources */,
 				E7ADA1F61956BD2100FA17CF /* JFGiveItemCategorySelectVC.m in Sources */,
-				E7F35CD61957675800B1221D /* JFItemChatVC.m in Sources */,
 				E775594319325CC600CD76A0 /* JFAppDelegate.m in Sources */,
 				E7C8AE99193700AA00856D4B /* JFGiveItemDetailsVC.m in Sources */,
 				E749C2CF194FC62200A5240D /* JFGiveItemLogisticsVC.m in Sources */,

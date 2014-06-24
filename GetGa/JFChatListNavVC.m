@@ -8,7 +8,6 @@
 
 #import "JFChatListNavVC.h"
 #import "JFChatListNavCell.h"
-#import "JFItemChatVC.h"
 
 @interface JFChatListNavVC ()
 
@@ -80,21 +79,13 @@
     
     
 
-//    chatCell.chatListItemNameLabel.text = @"Baseball bat";
-//    chatCell.chatListLatestMessageLabel.text = @"still want it?";
-//    chatCell.chatListUserTwoNameLabel.text = @"Billy Bob";
-//    chatCell.chatListCellBackgroundImageView.image = [UIImage imageNamed:@"dad.png"];
-//    chatCell.chatListCellUserTwoImageView.image = [UIImage imageNamed:@"appshot.png"];
-
     return chatCell;
     
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    JFItemChatVC *chatVC = segue.destinationViewController;
-    NSIndexPath *indexPath = sender;
-    chatVC.chatRoom = [self.availableChatRooms objectAtIndex:indexPath.row];
+
 }
 
 
