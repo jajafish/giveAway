@@ -570,10 +570,10 @@
             </objects>
             <point key="canvasLocation" x="3006" y="4042"/>
         </scene>
-        <!--View Controller-->
+        <!--Simple Chat Room-->
         <scene sceneID="QZV-Em-3lh">
             <objects>
-                <viewController id="Jy0-6S-Bhp" sceneMemberID="viewController">
+                <viewController id="Jy0-6S-Bhp" customClass="JFSimpleChatRoom" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1lZ-iX-6VU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
