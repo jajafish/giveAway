@@ -22,6 +22,8 @@
     [self presentViewController:_chatController animated:YES completion:nil];
     self.chatTitle = @"hello";
     
+    NSLog(@"we're in the chatroom vc now, and this is the chat room of %@", self.chatRoom);
+    
 }
 
 

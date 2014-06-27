@@ -67,9 +67,7 @@
     
     NSLog(@"giver is %@ and user is %@", self.giveItem.itemGiver, [PFUser currentUser]);
 
-    
 
-    
     
 //    ITEM ON MAP
     double lat = [self.giveItem.locationData[@"latitude"] doubleValue];
@@ -84,7 +82,7 @@
     
     [self.freeItemLocationMapView addOverlay:[MKCircle circleWithCenterCoordinate:cord radius:800]];
     
-
+    [self chatRoomQuery];
     
 }
 
@@ -119,7 +117,7 @@
 
 - (IBAction)iWantThisFreeItemButtonPressed:(UIButton *)sender {
     
-    [self createChatRoom];
+    [self goToChatRoom];
     
 }
 
@@ -141,7 +139,15 @@
 }
 
 
--(void)createChatRoom
+-(void)goToChatRoom
+{
+    
+    [self performSegueWithIdentifier:@"freeItemScrollToChatModal" sender:nil];
+
+}
+
+
+-(void)chatRoomQuery
 {
     
     PFQuery *queryForChatRoom = [PFQuery queryWithClassName:@"ChatRoom"];
@@ -155,24 +161,34 @@
     PFQuery *combinedChatRoomQuery = [PFQuery orQueryWithSubqueries:@[queryForChatRoom, queryForChatRoomInverse]];
     
     [combinedChatRoomQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if ([objects count] == 0){
+        if (![objects count] == 0) {
+            [self.iWantThisFreeItemButton setTitle:@"chat with Jared" forState:UIControlStateNormal];
+            self.selectedChat = objects[0];
+            NSLog(@"the chat is %@", self.selectedChat);
+        }
+        else if ([objects count] == 0){
+            [self.iWantThisFreeItemButton setTitle:@"i want this item" forState:UIControlStateNormal];
             [PFCloud callFunctionInBackground:@"addUsersToChatRoom" withParameters:@{@"user1" : [PFUser currentUser].objectId, @"user2" : self.giveItem.itemGiver.objectId} block:^(id object, NSError *error) {
-                [self performSegueWithIdentifier:@"freeItemScrollToChatModal" sender:nil];
-
             }];
-        
-            
         };
     }];
-
+    
+    
 }
 
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-
     
-      NSLog(@"selected chat is %@", self.selectedChat);
+    
+    
+    NSLog(@"selected chat is %@", self.selectedChat);
+    
+    JFSimpleChatRoom *chatVC = segue.destinationViewController;
+    chatVC.chatRoom = self.selectedChat;
+
+
+
 }
 
 
