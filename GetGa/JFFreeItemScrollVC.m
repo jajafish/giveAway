@@ -9,6 +9,7 @@
 #import "JFFreeItemScrollVC.h"
 #import <MapKit/MapKit.h>
 #import <ILTranslucentView.h>
+#import <QuartzCore/QuartzCore.h>
 #import <CoreLocation/CoreLocation.h>
 
 @interface JFFreeItemScrollVC () <MKMapViewDelegate, UITextViewDelegate>
@@ -26,6 +27,8 @@
 @property (strong, nonatomic) UIImage *navBackgroundShadowImage;
 @property (strong, nonatomic) UIColor *navBackgroundColor;
 
+@property (strong, nonatomic) IBOutlet ILTranslucentView *blurView;
+
 @end
 
 @implementation JFFreeItemScrollVC {
@@ -39,6 +42,10 @@
 {
     
     [super viewDidLoad];
+    
+    NSLog(@"item giver is %@", self.giveItem.itemGiver.objectId);
+    
+    
     
     [self.scoller setScrollEnabled:YES];
     [self.scoller setContentSize:CGSizeMake(320, 936)];
@@ -62,7 +69,18 @@
     
     NSLog(@"%@", NSStringFromCGRect(self.iWantThisFreeItemButton.frame));
     
-
+    
+    self.blurView.translucentAlpha = 0.8;
+    self.blurView.translucentStyle = UIBarStyleBlack;
+    self.blurView.translucentTintColor = [UIColor clearColor];
+    
+    
+    self.iWantThisFreeItemButton.layer.cornerRadius = 5;
+    self.iWantThisFreeItemButton.layer.borderWidth = 1;
+    self.iWantThisFreeItemButton.layer.borderColor = [UIColor blackColor].CGColor;
+    
+    
+    self.freeItemGiverPhoto.image = self.giveItem.itemGiver.giveGetterProfileImage;
     
     
 //    ITEM ON MAP
@@ -77,6 +95,13 @@
     [self.freeItemLocationMapView setRegion:startRegion animated:YES];
     
     [self.freeItemLocationMapView addOverlay:[MKCircle circleWithCenterCoordinate:cord radius:800]];
+    
+    
+    [self queryForItemGiverProfilePhoto];
+    self.freeItemGiverPhoto.layer.cornerRadius = self.freeItemGiverPhoto.frame.size.width / 2;
+    self.freeItemGiverPhoto.clipsToBounds = YES;
+    self.freeItemGiverPhoto.layer.borderWidth = 1.5f;
+    self.freeItemGiverPhoto.layer.borderColor = [UIColor blackColor].CGColor;
     
     
 }
@@ -131,6 +156,21 @@
 }
 
 
+-(void)queryForItemGiverProfilePhoto {
+    PFQuery *profilePhotoQuery = [PFQuery queryWithClassName:@"profilePhoto"];
+    [profilePhotoQuery whereKey:@"photoUser" equalTo:self.giveItem.itemGiver];
+    [profilePhotoQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        
+        PFObject *theOnlyPhoto = objects[0];
+        
+        PFFile *photoFile = theOnlyPhoto[@"photoPictureFile"];
+        [photoFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+            self.freeItemGiverPhoto.image = [UIImage imageWithData:data];
+        }];
+        
+    }];
+    
+}
 
 
 @end
