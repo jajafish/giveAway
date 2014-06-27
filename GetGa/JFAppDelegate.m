@@ -8,6 +8,7 @@
 
 #import "JFAppDelegate.h"
 #import "PFGiveItem.h"
+#import "PFChatRoom.h"
 
 
 @implementation JFAppDelegate
@@ -33,6 +34,8 @@
     
     [PFGiveItem registerSubclass];
     [JFGiverGetter registerSubclass];
+    [PFChatRoom registerSubclass];
+    
     
     [Parse setApplicationId:@"IjFRIlLu8yBBxiUQYcal76jTJv631Y9vJF5XMugI"
                   clientKey:@"1nZesjcYElee33M9iWCCw2f3eKXhkMJNyivEuDbQ"];

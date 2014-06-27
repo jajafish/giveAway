@@ -546,11 +546,12 @@
                         <outlet property="iWantThisFreeItemButton" destination="gcq-kj-216" id="rdu-bd-FZN"/>
                         <outlet property="scoller" destination="Nuf-gH-3iT" id="L8Z-OJ-KEF"/>
                         <outlet property="scrollContentView" destination="pjr-Th-TVe" id="uL8-34-77m"/>
+                        <segue destination="Jy0-6S-Bhp" kind="push" identifier="freeItemScrollToChatModal" id="VSv-ol-RGI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NC4-Lu-Ite" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4527" y="2924"/>
+            <point key="canvasLocation" x="4513" y="3152"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kdO-aG-cJe">
@@ -580,10 +581,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="zau-fw-imE"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YAH-Ky-DK5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3566" y="3994"/>
+            <point key="canvasLocation" x="3750" y="4076"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -591,4 +593,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="VSv-ol-RGI"/>
+    </inferredMetricsTieBreakers>
 </document>

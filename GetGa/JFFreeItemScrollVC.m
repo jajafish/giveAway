@@ -10,6 +10,8 @@
 #import <MapKit/MapKit.h>
 #import <ILTranslucentView.h>
 #import <CoreLocation/CoreLocation.h>
+#import "JFSimpleChatRoom.h"
+#import "PFChatRoom.h"
 
 @interface JFFreeItemScrollVC () <MKMapViewDelegate, UITextViewDelegate>
 @property (strong, nonatomic) IBOutlet UIImageView *freeItemImageView;
@@ -25,6 +27,8 @@
 @property (strong, nonatomic) UIImage *navBackgroundImage;
 @property (strong, nonatomic) UIImage *navBackgroundShadowImage;
 @property (strong, nonatomic) UIColor *navBackgroundColor;
+
+@property (strong, nonatomic) PFChatRoom *selectedChat;
 
 @end
 
@@ -60,7 +64,9 @@
     
     self.scoller.delegate = self;
     
-    NSLog(@"%@", NSStringFromCGRect(self.iWantThisFreeItemButton.frame));
+    
+    NSLog(@"giver is %@ and user is %@", self.giveItem.itemGiver, [PFUser currentUser]);
+
     
 
     
@@ -78,9 +84,7 @@
     
     [self.freeItemLocationMapView addOverlay:[MKCircle circleWithCenterCoordinate:cord radius:800]];
     
-    NSLog(@"the item giver is %@", self.giveItem.itemGiver);
-    NSLog(@"and the current user is %@", [PFUser currentUser]);
-    
+
     
 }
 
@@ -139,6 +143,7 @@
 
 -(void)createChatRoom
 {
+    
     PFQuery *queryForChatRoom = [PFQuery queryWithClassName:@"ChatRoom"];
     [queryForChatRoom whereKey:@"user1" equalTo:[PFUser currentUser]];
     [queryForChatRoom whereKey:@"user2" equalTo:self.giveItem.itemGiver];
@@ -151,17 +156,25 @@
     
     [combinedChatRoomQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if ([objects count] == 0){
-            PFObject *chatRoom = [PFObject objectWithClassName:@"ChatRoom"];
-            [chatRoom setObject:[PFUser currentUser] forKey:@"user1"];
-            [chatRoom setObject:self.giveItem.itemGiver forKey:@"user2"];
-            [chatRoom saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                [self performSegueWithIdentifier:@"itemToItemChatSegue" sender:nil];
+            
+            PFChatRoom *ChatRoom = [PFChatRoom objectWithClassName:@"ChatRoom"];
+            [ChatRoom setObject:[PFUser currentUser] forKey:@"user1"];
+//            [ChatRoom setObject:self.giveItem.itemGiver forKey:@"user2"];
+            [ChatRoom saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                [self performSegueWithIdentifier:@"freeItemScrollToChatModal" sender:nil];
             }];
         }
     }];
 
 }
 
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+
+    
+      NSLog(@"selected chat is %@", self.selectedChat);
+}
 
 
 @end

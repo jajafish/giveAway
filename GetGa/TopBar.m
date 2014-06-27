@@ -119,7 +119,7 @@
 
 - (void) setTitle:(NSString *)title {
     if (_middleBtn) [_middleBtn setTitle:title forState:UIControlStateNormal];
-    _title = title;
+    _title = @"hello";
 }
 
 - (void) setTintColor:(UIColor *)tintColor {

@@ -33,6 +33,7 @@
     [self.navigationItem setHidesBackButton:YES];
     [self.tableView reloadData];
     //    [self.tableView setContentInset:UIEdgeInsetsMake(50,0,0,0)];
+//    NSLog(@"Login: the current user is %@", [[PFUser currentUser]objectId]);
     
 }
 
@@ -61,7 +62,7 @@
     self.availableFreeStuff = [[NSMutableArray alloc]init];
     
     PFQuery *query = [PFQuery queryWithClassName:@"giveItem"];
-    [query whereKey:@"giver" equalTo:[PFUser currentUser]];
+    [query whereKey:@"giver" notEqualTo:[PFUser currentUser]];
     [query includeKey:@"giveItemPhoto"];
     [query includeKey:@"giver"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -130,11 +131,11 @@
     cell.giveItemLabel.highlighted = NO;
     
     
-    cell.giveItemGiverUserPhoto.image = [UIImage imageNamed:@"dad.png"];
-    cell.giveItemGiverUserPhoto.layer.cornerRadius = cell.giveItemGiverUserPhoto.frame.size.width / 2;
-    cell.giveItemGiverUserPhoto.clipsToBounds = YES;
-    cell.giveItemGiverUserPhoto.layer.borderWidth = 1.5f;
-    cell.giveItemGiverUserPhoto.layer.borderColor = [UIColor whiteColor].CGColor;
+//    cell.giveItemGiverUserPhoto.image = [UIImage imageNamed:@"dad.png"];
+//    cell.giveItemGiverUserPhoto.layer.cornerRadius = cell.giveItemGiverUserPhoto.frame.size.width / 2;
+//    cell.giveItemGiverUserPhoto.clipsToBounds = YES;
+//    cell.giveItemGiverUserPhoto.layer.borderWidth = 1.5f;
+//    cell.giveItemGiverUserPhoto.layer.borderColor = [UIColor whiteColor].CGColor;
     
     return cell;
 }
@@ -143,10 +144,9 @@
 {
     if ([segue.identifier isEqualToString:@"freeStuffToFreeItemScroll"]){
         if ([segue.destinationViewController isKindOfClass:[JFFreeItemScrollVC class]]){
-            NSLog(@"hello making the transition:");
+//            NSLog(@"hello making the transition:");
             JFFreeItemScrollVC *targetVC = segue.destinationViewController;
             targetVC.giveItem = self.selectedItem;
-            
             self.title = @"";
             
         }
@@ -156,7 +156,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.selectedItem = self.availableFreeStuff[indexPath.row];
-    NSLog(@"the selected item was %@", self.selectedItem);
+//    NSLog(@"the selected item was %@", self.selectedItem);
     [self performSegueWithIdentifier:@"freeStuffToFreeItemScroll" sender:self];
 }
 

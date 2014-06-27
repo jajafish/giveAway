@@ -20,6 +20,7 @@
     _chatController.delegate = self;
     _chatController.opponentImg = [UIImage imageNamed:@"tempUser.png"];
     [self presentViewController:_chatController animated:YES completion:nil];
+    self.chatTitle = @"hello";
     
 }
 
@@ -33,7 +34,6 @@
     
     [_chatController addNewMessage:message];
 }
-
 
 
 

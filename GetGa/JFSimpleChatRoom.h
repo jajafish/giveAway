@@ -8,9 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "ChatController.h"
+#import "PFChatRoom.h"
 
 @interface JFSimpleChatRoom : UIViewController <ChatControllerDelegate>
 
 @property (strong, nonatomic) ChatController *chatController;
+@property (strong, nonatomic) NSString * chatTitle;
+
+@property (strong, nonatomic) PFChatRoom *chatRoom;
+
+@property (strong, nonatomic) PFUser *user1;
+@property (strong, nonatomic) PFUser *user2;
 
 @end
