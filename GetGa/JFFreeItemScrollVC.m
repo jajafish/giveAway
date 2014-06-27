@@ -43,6 +43,10 @@
     
     [super viewDidLoad];
     
+    NSLog(@"item giver is %@", self.giveItem.itemGiver.objectId);
+    
+    
+    
     [self.scoller setScrollEnabled:YES];
     [self.scoller setContentSize:CGSizeMake(320, 936)];
     
@@ -76,7 +80,7 @@
     self.iWantThisFreeItemButton.layer.borderColor = [UIColor blackColor].CGColor;
     
     
-
+    self.freeItemGiverPhoto.image = self.giveItem.itemGiver.giveGetterProfileImage;
     
     
 //    ITEM ON MAP
@@ -91,6 +95,9 @@
     [self.freeItemLocationMapView setRegion:startRegion animated:YES];
     
     [self.freeItemLocationMapView addOverlay:[MKCircle circleWithCenterCoordinate:cord radius:800]];
+    
+    
+    [self queryForItemGiverProfilePhoto];
     
     
 }
@@ -145,6 +152,21 @@
 }
 
 
+-(void)queryForItemGiverProfilePhoto {
+    PFQuery *profilePhotoQuery = [PFQuery queryWithClassName:@"profilePhoto"];
+    [profilePhotoQuery whereKey:@"photoUser" equalTo:self.giveItem.itemGiver];
+    [profilePhotoQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        
+        PFObject *theOnlyPhoto = objects[0];
+        
+        PFFile *photoFile = theOnlyPhoto[@"photoPictureFile"];
+        [photoFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+            self.freeItemGiverPhoto.image = [UIImage imageWithData:data];
+        }];
+        
+    }];
+    
+}
 
 
 @end

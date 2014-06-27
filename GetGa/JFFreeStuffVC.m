@@ -143,7 +143,6 @@
 {
     if ([segue.identifier isEqualToString:@"freeStuffToFreeItemScroll"]){
         if ([segue.destinationViewController isKindOfClass:[JFFreeItemScrollVC class]]){
-            NSLog(@"hello making the transition:");
             JFFreeItemScrollVC *targetVC = segue.destinationViewController;
             targetVC.giveItem = self.selectedItem;
             
