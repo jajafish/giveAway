@@ -157,13 +157,13 @@
     [combinedChatRoomQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if ([objects count] == 0){
             
-            PFChatRoom *ChatRoom = [PFChatRoom objectWithClassName:@"ChatRoom"];
-            [ChatRoom setObject:[PFUser currentUser] forKey:@"user1"];
-//            [ChatRoom setObject:self.giveItem.itemGiver forKey:@"user2"];
-            [ChatRoom saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//            PFChatRoom *ChatRoom = [PFChatRoom objectWithClassName:@"ChatRoom"];
+    
+            [PFCloud callFunctionInBackground:@"addUsersToChatRoom" withParameters:@{@"user1" : [PFUser currentUser], @"user2" : self.giveItem.itemGiver} block:^(id object, NSError *error) {
                 [self performSegueWithIdentifier:@"freeItemScrollToChatModal" sender:nil];
             }];
-        }
+            
+        };
     }];
 
 }
