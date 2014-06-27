@@ -44,7 +44,6 @@
 		E775595E19325CC600CD76A0 /* GetGaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E775595D19325CC600CD76A0 /* GetGaTests.m */; };
 		E775596F1932637C00CD76A0 /* appshot.png in Resources */ = {isa = PBXBuildFile; fileRef = E775596E1932637C00CD76A0 /* appshot.png */; };
 		E77BE7CA195C870000DAB268 /* PFChatRoom.m in Sources */ = {isa = PBXBuildFile; fileRef = E77BE7C9195C870000DAB268 /* PFChatRoom.m */; };
-		E77BE7CD195D221C00DAB268 /* main.js in Sources */ = {isa = PBXBuildFile; fileRef = E77BE7CC195D221C00DAB268 /* main.js */; };
 		E789BFE61956CAA300486BBE /* JFFreeItemScrollVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E789BFE51956CAA300486BBE /* JFFreeItemScrollVC.m */; };
 		E7ADA1F21956AD2700FA17CF /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = E7ADA1F11956AD2700FA17CF /* UIImage+ImageEffects.m */; };
 		E7ADA1F61956BD2100FA17CF /* JFGiveItemCategorySelectVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7ADA1F51956BD2100FA17CF /* JFGiveItemCategorySelectVC.m */; };
@@ -128,7 +127,6 @@
 		E775596E1932637C00CD76A0 /* appshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appshot.png; sourceTree = "<group>"; };
 		E77BE7C8195C870000DAB268 /* PFChatRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFChatRoom.h; sourceTree = "<group>"; };
 		E77BE7C9195C870000DAB268 /* PFChatRoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFChatRoom.m; sourceTree = "<group>"; };
-		E77BE7CC195D221C00DAB268 /* main.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main.js; sourceTree = "<group>"; };
 		E789BFE41956CAA300486BBE /* JFFreeItemScrollVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFFreeItemScrollVC.h; sourceTree = "<group>"; };
 		E789BFE51956CAA300486BBE /* JFFreeItemScrollVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFFreeItemScrollVC.m; sourceTree = "<group>"; };
 		E7ADA1F01956AD2700FA17CF /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
@@ -341,7 +339,6 @@
 		E775593919325CC600CD76A0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				E77BE7CC195D221C00DAB268 /* main.js */,
 				E7ADA1F01956AD2700FA17CF /* UIImage+ImageEffects.h */,
 				E7ADA1F11956AD2700FA17CF /* UIImage+ImageEffects.m */,
 				E7025FEB193B142B00E0027C /* dad.png */,
@@ -629,7 +626,6 @@
 				E749E9EE195A059D002472F6 /* ChatController.m in Sources */,
 				E71BDFA3193AC62F00861171 /* JFLoginVC.m in Sources */,
 				E749E9EF195A059D002472F6 /* ChatInput.m in Sources */,
-				E77BE7CD195D221C00DAB268 /* main.js in Sources */,
 				E74317A0194E9E8A007F32E5 /* JFMyGiveItemsCollectionVC.m in Sources */,
 				E7F5D2CB19383F4800B17BE0 /* PFGiveItem.m in Sources */,
 				E749E9F3195A059D002472F6 /* TopBar.m in Sources */,
