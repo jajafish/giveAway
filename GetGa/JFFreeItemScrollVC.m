@@ -98,6 +98,10 @@
     
     
     [self queryForItemGiverProfilePhoto];
+    self.freeItemGiverPhoto.layer.cornerRadius = self.freeItemGiverPhoto.frame.size.width / 2;
+    self.freeItemGiverPhoto.clipsToBounds = YES;
+    self.freeItemGiverPhoto.layer.borderWidth = 1.5f;
+    self.freeItemGiverPhoto.layer.borderColor = [UIColor blackColor].CGColor;
     
     
 }
