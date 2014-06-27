@@ -9,6 +9,7 @@
 #import "JFFreeItemScrollVC.h"
 #import <MapKit/MapKit.h>
 #import <ILTranslucentView.h>
+#import <QuartzCore/QuartzCore.h>
 #import <CoreLocation/CoreLocation.h>
 
 @interface JFFreeItemScrollVC () <MKMapViewDelegate, UITextViewDelegate>
@@ -25,6 +26,8 @@
 @property (strong, nonatomic) UIImage *navBackgroundImage;
 @property (strong, nonatomic) UIImage *navBackgroundShadowImage;
 @property (strong, nonatomic) UIColor *navBackgroundColor;
+
+@property (strong, nonatomic) IBOutlet ILTranslucentView *blurView;
 
 @end
 
@@ -61,6 +64,17 @@
     self.scoller.delegate = self;
     
     NSLog(@"%@", NSStringFromCGRect(self.iWantThisFreeItemButton.frame));
+    
+    
+    self.blurView.translucentAlpha = 0.8;
+    self.blurView.translucentStyle = UIBarStyleBlack;
+    self.blurView.translucentTintColor = [UIColor clearColor];
+    
+    
+    self.iWantThisFreeItemButton.layer.cornerRadius = 5;
+    self.iWantThisFreeItemButton.layer.borderWidth = 1;
+    self.iWantThisFreeItemButton.layer.borderColor = [UIColor blackColor].CGColor;
+    
     
 
     
