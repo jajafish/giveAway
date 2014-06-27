@@ -156,7 +156,7 @@
     
     [combinedChatRoomQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if ([objects count] == 0){
-            [PFCloud callFunctionInBackground:@"addUsersToChatRoom" withParameters:@{@"user1" : [PFUser currentUser].objectId} block:^(id object, NSError *error) {
+            [PFCloud callFunctionInBackground:@"addUsersToChatRoom" withParameters:@{@"user1" : [PFUser currentUser].objectId, @"user2" : self.giveItem.itemGiver.objectId} block:^(id object, NSError *error) {
                 [self performSegueWithIdentifier:@"freeItemScrollToChatModal" sender:nil];
             }];
             
