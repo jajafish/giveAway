@@ -81,8 +81,7 @@
     [self.freeItemLocationMapView setRegion:startRegion animated:YES];
     
     [self.freeItemLocationMapView addOverlay:[MKCircle circleWithCenterCoordinate:cord radius:800]];
-    
-    [self chatRoomQuery];
+
     
 }
 
@@ -100,6 +99,8 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    
+    [self chatRoomQuery];
     
     self.navBackgroundImage = [self.navigationController.navigationBar backgroundImageForBarMetrics:(UIBarMetricsDefault)];
     self.navBackgroundShadowImage = [self.navigationController.navigationBar shadowImage];
@@ -162,13 +163,15 @@
     
     [combinedChatRoomQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (![objects count] == 0) {
-            [self.iWantThisFreeItemButton setTitle:@"chat with Jared" forState:UIControlStateNormal];
+            [self.iWantThisFreeItemButton setTitle:@"continue chat with this user" forState:UIControlStateNormal];
             self.selectedChat = objects[0];
-            NSLog(@"the chat is %@", self.selectedChat);
         }
         else if ([objects count] == 0){
-            [self.iWantThisFreeItemButton setTitle:@"i want this item" forState:UIControlStateNormal];
+            [self.iWantThisFreeItemButton setTitle:@"create new chat" forState:UIControlStateNormal];
             [PFCloud callFunctionInBackground:@"addUsersToChatRoom" withParameters:@{@"user1" : [PFUser currentUser].objectId, @"user2" : self.giveItem.itemGiver.objectId} block:^(id object, NSError *error) {
+                NSLog(@"the object is %@", object);
+                self.selectedChat = object;
+                NSLog(@"the returned object from making the chat room is %@", self.selectedChat);
             }];
         };
     }];
@@ -181,12 +184,10 @@
 {
     
     
-    
     NSLog(@"selected chat is %@", self.selectedChat);
     
     JFSimpleChatRoom *chatVC = segue.destinationViewController;
     chatVC.chatRoom = self.selectedChat;
-
 
 
 }
