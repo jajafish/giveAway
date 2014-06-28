@@ -102,12 +102,15 @@ static int chatInputStartingHeight = 40;
                                                object:nil];
     
     
+
+    
+    
     self.user1 = self.chatRoom[@"user1"];
     self.user2 = self.chatRoom[@"user2"];
+    self.chatRoomObjectID = [self.chatRoom objectId];
     
-//    self.chatRoomObjectID = [self.chatRoom objectId];
-    
-    
+
+
     
 }
 
@@ -123,6 +126,8 @@ static int chatInputStartingHeight = 40;
     
     // Scroll CollectionView Before We Start
     [self.view addSubview:_chatInput];
+    
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -235,10 +240,14 @@ static int chatInputStartingHeight = 40;
     chatMessage[@"messageText"] = message[kMessageContent];
     chatMessage[@"messageTime"] = message[kMessageTimestamp];
     chatMessage[@"chatRoom"] = self.chatRoom;
-    [chatMessage saveInBackground];
+    [chatMessage saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        [self queryForParseChatMessages];
+    }];
 
 
-    NSLog(@"the messages array is %@", self.messagesArray);
+
+    
+//    [self queryForParseChatMessages];
 }
 
 #pragma mark KEYBOARD NOTIFICATIONS
@@ -447,11 +456,6 @@ static int chatInputStartingHeight = 40;
 }
 
 
-
-
-
-
-
 #pragma mark SETTERS | GETTERS
 
 - (void) setMessagesArray:(NSMutableArray *)messagesArray {
@@ -479,5 +483,38 @@ static int chatInputStartingHeight = 40;
     _topBar.tintColor = tintColor;
     _tintColor = tintColor;
 }
+
+#pragma mark - Parse methods
+
+-(void)queryForParseChatMessages {
+    
+    NSLog(@"the chatRood Id for this query is %@", self.chatRoomObjectID);
+    
+    PFQuery *messagesQuery = [PFQuery queryWithClassName:@"chatMessage"];
+    [messagesQuery whereKey:@"chatRoom" equalTo:self.chatRoomObjectID];
+    [messagesQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        
+        
+        if (!error){
+            
+            NSLog(@"here are the objects %@", objects);
+            
+            self.messagesArray = [objects mutableCopy];
+            
+            NSLog(@"the Parse chats are %@", self.messagesArray);
+            
+        } else if (error) {
+            NSLog(@"the error is %@", error);
+        }
+        
+
+        
+    }];
+    
+
+}
+
+
+
 
 @end
