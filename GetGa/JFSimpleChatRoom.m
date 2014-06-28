@@ -25,8 +25,10 @@
     self.user2 = self.chatRoom[@"user2"];
     
     
-//    NSLog(@"we're in the chatroom vc now, and this is the chat room of %@", self.chatRoom);
     NSLog(@"the users involved in this chatroom are %@ and %@", self.user1, self.user2);
+    NSLog(@"this chatroom is %@", self.chatRoom);
+    NSString *objectID = self.chatRoom[@"objectId"];
+    NSLog(@"the object ID of this chatRoom is %@", objectID);
     
 }
 
@@ -42,6 +44,7 @@
     
 
     [chatMessage setObject:[PFUser currentUser] forKey:@"from"];
+    [chatMessage setObject:self.user2 forKey:@"to"];
 
     chatMessage[@"messageText"] = message[kMessageContent];
     chatMessage[@"messageTime"] = message[kMessageTimestamp];

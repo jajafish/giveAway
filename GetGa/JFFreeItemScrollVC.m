@@ -63,10 +63,6 @@
                              animated:NO];
     
     self.scoller.delegate = self;
-    
-    
-    NSLog(@"giver is %@ and user is %@", self.giveItem.itemGiver, [PFUser currentUser]);
-
 
     
 //    ITEM ON MAP
@@ -171,7 +167,6 @@
             [PFCloud callFunctionInBackground:@"addUsersToChatRoom" withParameters:@{@"user1" : [PFUser currentUser].objectId, @"user2" : self.giveItem.itemGiver.objectId} block:^(id object, NSError *error) {
                 NSLog(@"the object is %@", object);
                 self.selectedChat = object;
-                NSLog(@"the returned object from making the chat room is %@", self.selectedChat);
             }];
         };
     }];
@@ -182,9 +177,6 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    
-    
-    NSLog(@"selected chat is %@", self.selectedChat);
     
     JFSimpleChatRoom *chatVC = segue.destinationViewController;
     chatVC.chatRoom = self.selectedChat;
