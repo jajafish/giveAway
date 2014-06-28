@@ -213,6 +213,8 @@ static int chatInputStartingHeight = 40;
     
     // show us the message
     [self scrollToBottom];
+    
+    NSLog(@"the messages array is %@", self.messagesArray);
 }
 
 #pragma mark KEYBOARD NOTIFICATIONS
@@ -425,6 +427,7 @@ static int chatInputStartingHeight = 40;
 - (void) setMessagesArray:(NSMutableArray *)messagesArray {
     _messagesArray = messagesArray;
     
+
     // Fix if we receive Null
     if (![_messagesArray.class isSubclassOfClass:[NSArray class]]) {
         _messagesArray = [NSMutableArray new];
@@ -432,6 +435,9 @@ static int chatInputStartingHeight = 40;
     
     [_myCollectionView reloadData];
 }
+
+
+
 
 - (void) setChatTitle:(NSString *)chatTitle{
     _topBar.title = chatTitle;

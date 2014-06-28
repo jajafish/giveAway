@@ -31,10 +31,12 @@
     self.user2 = self.chatRoom[@"user2"];
     
     
-    NSLog(@"the users involved in this chatroom are %@ and %@", self.user1, self.user2);
-    NSLog(@"this chatroom is %@", self.chatRoom);
+//    NSLog(@"the users involved in this chatroom are %@ and %@", self.user1, self.user2);
+//    NSLog(@"this chatroom is %@", self.chatRoom);
     self.chatRoomObjectID = [self.chatRoom objectId];
-    NSLog(@"the object ID of this chatRoom is %@", self.chatRoomObjectID);
+//    NSLog(@"the object ID of this chatRoom is %@", self.chatRoomObjectID);
+    
+//    NSLog(@"before query the chats are %@", self.chats);
     
     [self queryForChatRoomMessages];
     
@@ -53,35 +55,27 @@
 
     [chatMessage setObject:[PFUser currentUser] forKey:@"from"];
     [chatMessage setObject:self.user2 forKey:@"to"];
-
     chatMessage[@"messageText"] = message[kMessageContent];
     chatMessage[@"messageTime"] = message[kMessageTimestamp];
     chatMessage[@"chatRoom"] = self.chatRoom;
+    
     [chatMessage saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         [self.chats addObject:chatMessage];
         [_chatController addNewMessage:message];
     }];
 
-    
-
 }
 
 -(void)queryForChatRoomMessages {
     
-    int oldChatCount = [self.chats count];
-    
     PFQuery *messagesQuery = [PFQuery queryWithClassName:@"chatMessage"];
-    [messagesQuery whereKey:@"chatRoom" equalTo:self.chatRoomObjectID];
-    [messagesQuery orderByAscending:@"createdAt"];
+//    [messagesQuery whereKey:@"chatRoom" equalTo:self.chatRoomObjectID];
     [messagesQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         
-        if (!error){
-            if (oldChatCount != [objects count]) {
-                self.chats = [objects mutableCopy];
-                [self.chatController setMessagesArray:self.chats];
-            }
-        }
-        
+        self.chats = [objects mutableCopy];
+        [self.chatController setMessagesArray:self.chats];
+        NSLog(@"the chats are %@", self.chats);
+
     }];
     
 }
