@@ -100,6 +100,15 @@ static int chatInputStartingHeight = 40;
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
+    
+    
+    self.user1 = self.chatRoom[@"user1"];
+    self.user2 = self.chatRoom[@"user2"];
+    
+//    self.chatRoomObjectID = [self.chatRoom objectId];
+    
+    
+    
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -169,15 +178,22 @@ static int chatInputStartingHeight = 40;
     
     NSMutableDictionary * newMessageOb = [NSMutableDictionary new];
     newMessageOb[kMessageContent] = messageString;
-//    newMessageOb[kMessageSize] = [NSNumber numberWithInteger:([newMessageOb[kMessageContent] length])];
     newMessageOb[kMessageTimestamp] = TimeStamp();
     
-    if ([(NSObject *)_delegate respondsToSelector:@selector(chatController:didSendMessage:)]) {
-        [_delegate chatController:self didSendMessage:newMessageOb];
-    }
-    else {
-        NSLog(@"ChatController: ** DELEGATE OR PROTOCOL METHOD NOT SET ** ");
-    }
+    
+    //    NSLog(@"Message Contents: %@", message[kMessageContent]);
+    //    NSLog(@"Timestamp: %@", message[kMessageTimestamp]);
+    //
+    //    // Evaluate or add to the message here for example, if we wanted to assign the current userId:
+    //    message[@"sentByUserId"] = @"currentUserId";
+    
+    // Must add message to controller for it to show
+    
+    [self addNewMessage:newMessageOb];
+    NSLog(@"just added the message %@", newMessageOb);
+    NSLog(@"now the chats are %@", _messagesArray);
+
+
 }
 
 #pragma mark TOP BAR DELEGATE

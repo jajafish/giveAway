@@ -25,7 +25,6 @@
 		E749E9F1195A059D002472F6 /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E749E9E9195A059D002472F6 /* MessageCell.m */; };
 		E749E9F2195A059D002472F6 /* Previous.png in Resources */ = {isa = PBXBuildFile; fileRef = E749E9EB195A059D002472F6 /* Previous.png */; };
 		E749E9F3195A059D002472F6 /* TopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = E749E9ED195A059D002472F6 /* TopBar.m */; };
-		E749E9F6195A05BE002472F6 /* JFSimpleChatRoom.m in Sources */ = {isa = PBXBuildFile; fileRef = E749E9F5195A05BE002472F6 /* JFSimpleChatRoom.m */; };
 		E74E84AD194ED55800755821 /* JFFreeStuffVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E74E84AC194ED55800755821 /* JFFreeStuffVC.m */; };
 		E7583D7C194F060B00899AEF /* JFCollectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7583D7B194F060B00899AEF /* JFCollectionHeaderView.m */; };
 		E7583D7F194F0ACB00899AEF /* CSGrowHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7583D7E194F0ACB00899AEF /* CSGrowHeader.xib */; };
@@ -100,8 +99,6 @@
 		E749E9EB195A059D002472F6 /* Previous.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Previous.png; sourceTree = "<group>"; };
 		E749E9EC195A059D002472F6 /* TopBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopBar.h; sourceTree = "<group>"; };
 		E749E9ED195A059D002472F6 /* TopBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopBar.m; sourceTree = "<group>"; };
-		E749E9F4195A05BE002472F6 /* JFSimpleChatRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFSimpleChatRoom.h; sourceTree = "<group>"; };
-		E749E9F5195A05BE002472F6 /* JFSimpleChatRoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFSimpleChatRoom.m; sourceTree = "<group>"; };
 		E74E84AB194ED55800755821 /* JFFreeStuffVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFFreeStuffVC.h; sourceTree = "<group>"; };
 		E74E84AC194ED55800755821 /* JFFreeStuffVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFFreeStuffVC.m; sourceTree = "<group>"; };
 		E7583D7A194F060B00899AEF /* JFCollectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFCollectionHeaderView.h; sourceTree = "<group>"; };
@@ -226,15 +223,6 @@
 				E72773D019581C9F0088178F /* JFChatListNavCell.m */,
 			);
 			name = "chat nav";
-			sourceTree = "<group>";
-		};
-		E72773CE19581C760088178F /* chat room */ = {
-			isa = PBXGroup;
-			children = (
-				E749E9F4195A05BE002472F6 /* JFSimpleChatRoom.h */,
-				E749E9F5195A05BE002472F6 /* JFSimpleChatRoom.m */,
-			);
-			name = "chat room";
 			sourceTree = "<group>";
 		};
 		E7431796194E9283007F32E5 /* give items collection */ = {
@@ -385,7 +373,6 @@
 			children = (
 				E749E9E2195A058D002472F6 /* simpleChat */,
 				E72773CD19581C710088178F /* chat nav */,
-				E72773CE19581C760088178F /* chat room */,
 			);
 			name = chat;
 			sourceTree = "<group>";
@@ -640,7 +627,6 @@
 				E7F5D2C8193831BF00B17BE0 /* JFGiveItemCell.m in Sources */,
 				E7ADA1F91956C00500FA17CF /* JFGiveItemCategoryCell.m in Sources */,
 				E7C8AE9C19370B7C00856D4B /* JFConstants.m in Sources */,
-				E749E9F6195A05BE002472F6 /* JFSimpleChatRoom.m in Sources */,
 				E7312B02194FE9BC00210849 /* JFProfilePhotoHeader.m in Sources */,
 				E7BB0417193AAC6D000DEF36 /* JFMainViewController.m in Sources */,
 				E775593F19325CC600CD76A0 /* main.m in Sources */,

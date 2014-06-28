@@ -10,7 +10,7 @@
 #import <MapKit/MapKit.h>
 #import <ILTranslucentView.h>
 #import <CoreLocation/CoreLocation.h>
-#import "JFSimpleChatRoom.h"
+#import "ChatController.h"
 #import "PFChatRoom.h"
 
 @interface JFFreeItemScrollVC () <MKMapViewDelegate, UITextViewDelegate>
@@ -178,7 +178,7 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     
-    JFSimpleChatRoom *chatVC = segue.destinationViewController;
+    ChatController *chatVC = segue.destinationViewController;
     chatVC.chatRoom = self.selectedChat;
 
 

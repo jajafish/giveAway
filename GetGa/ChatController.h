@@ -16,6 +16,7 @@
 #import <UIKit/UIKit.h>
 #import "TopBar.h"
 #import "ChatInput.h"
+#import "PFChatRoom.h"
 
 // Message Dictionary Keys (defined in MessageCell)
 FOUNDATION_EXPORT NSString * const kMessageSize;
@@ -44,6 +45,15 @@ FOUNDATION_EXPORT NSString * const kMessageTimestamp;
 @property (retain, nonatomic) id<ChatControllerDelegate>delegate;
 
 #pragma mark PROPERTIES
+
+
+
+@property (strong, nonatomic) PFChatRoom *chatRoom;
+@property (strong, nonatomic) PFUser *user1;
+@property (strong, nonatomic) PFUser *user2;
+
+
+
 
 /*!
  The color of the user's chat bubbles
