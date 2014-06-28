@@ -8,6 +8,12 @@
 
 #import "JFSimpleChatRoom.h"
 
+@interface JFSimpleChatRoom ()
+
+@property (strong, nonatomic) NSString *chatRoomObjectID;
+
+@end
+
 @implementation JFSimpleChatRoom
 
 - (void)viewDidLoad
@@ -27,8 +33,10 @@
     
     NSLog(@"the users involved in this chatroom are %@ and %@", self.user1, self.user2);
     NSLog(@"this chatroom is %@", self.chatRoom);
-    NSString *objectID = self.chatRoom[@"objectId"];
-    NSLog(@"the object ID of this chatRoom is %@", objectID);
+    self.chatRoomObjectID = [self.chatRoom objectId];
+    NSLog(@"the object ID of this chatRoom is %@", self.chatRoomObjectID);
+    
+    [self queryForChatRoomMessages];
     
 }
 
@@ -58,13 +66,26 @@
 
 }
 
-//-(void)queryForChatRoomMessages {
-//    
-//    PFQuery *messagesQuery = [PFQuery queryWithClassName:@"chatMessage"];
-//    [messagesQuery whereKey:@" equalTo:<#(id)#>]
-//    
-//}
-//
+-(void)queryForChatRoomMessages {
+    
+    int oldChatCount = [self.chats count];
+    
+    PFQuery *messagesQuery = [PFQuery queryWithClassName:@"chatMessage"];
+    [messagesQuery whereKey:@"chatRoom" equalTo:self.chatRoomObjectID];
+    [messagesQuery orderByAscending:@"createdAt"];
+    [messagesQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        
+        if (!error){
+            if (oldChatCount != [objects count]) {
+                self.chats = [objects mutableCopy];
+                [self.chatController setMessagesArray:self.chats];
+            }
+        }
+        
+    }];
+    
+}
+
 
 
 @end
