@@ -26,6 +26,12 @@
     _chatController.delegate = self;
     _chatController.opponentImg = [UIImage imageNamed:@"tempUser.png"];
     [self presentViewController:_chatController animated:YES completion:nil];
+    
+    
+    
+    
+    
+    
     self.chatTitle = @"hello";
     self.user1 = self.chatRoom[@"user1"];
     self.user2 = self.chatRoom[@"user2"];

@@ -16,7 +16,6 @@
 @property (strong, nonatomic) NSString * chatTitle;
 
 @property (strong, nonatomic) PFChatRoom *chatRoom;
-@property (strong, nonatomic) NSMutableArray *chats;
 
 @property (strong, nonatomic) PFUser *user1;
 @property (strong, nonatomic) PFUser *user2;
