@@ -190,9 +190,6 @@ static int chatInputStartingHeight = 40;
     // Must add message to controller for it to show
     
     [self addNewMessage:newMessageOb];
-    NSLog(@"just added the message %@", newMessageOb);
-    NSLog(@"now the chats are %@", _messagesArray);
-
 
 }
 
@@ -231,6 +228,16 @@ static int chatInputStartingHeight = 40;
     // show us the message
     [self scrollToBottom];
     
+    
+    PFObject *chatMessage = [PFObject objectWithClassName:@"chatMessage"];
+    [chatMessage setObject:[PFUser currentUser] forKey:@"from"];
+    [chatMessage setObject:self.user2 forKey:@"to"];
+    chatMessage[@"messageText"] = message[kMessageContent];
+    chatMessage[@"messageTime"] = message[kMessageTimestamp];
+    chatMessage[@"chatRoom"] = self.chatRoom;
+    [chatMessage saveInBackground];
+
+
     NSLog(@"the messages array is %@", self.messagesArray);
 }
 
@@ -438,6 +445,12 @@ static int chatInputStartingHeight = 40;
     return cell;
      
 }
+
+
+
+
+
+
 
 #pragma mark SETTERS | GETTERS
 
