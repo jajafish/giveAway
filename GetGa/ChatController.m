@@ -169,6 +169,7 @@ static int chatInputStartingHeight = 40;
     
     NSMutableDictionary * newMessageOb = [NSMutableDictionary new];
     newMessageOb[kMessageContent] = messageString;
+//    newMessageOb[kMessageSize] = [NSNumber numberWithInteger:([newMessageOb[kMessageContent] length])];
     newMessageOb[kMessageTimestamp] = TimeStamp();
     
     if ([(NSObject *)_delegate respondsToSelector:@selector(chatController:didSendMessage:)]) {

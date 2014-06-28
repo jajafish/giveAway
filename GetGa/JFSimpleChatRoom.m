@@ -38,7 +38,7 @@
     
 //    NSLog(@"before query the chats are %@", self.chats);
     
-    [self queryForChatRoomMessages];
+//    [self queryForChatRoomMessages];
     
 }
 
@@ -49,36 +49,33 @@
     NSLog(@"Timestamp: %@", message[kMessageTimestamp]);
     
     message[@"sentByUserId"] = @"currentUserId";
+    [_chatController addNewMessage:message];
     
-    PFObject *chatMessage = [PFObject objectWithClassName:@"chatMessage"];
-    
-
-    [chatMessage setObject:[PFUser currentUser] forKey:@"from"];
-    [chatMessage setObject:self.user2 forKey:@"to"];
-    chatMessage[@"messageText"] = message[kMessageContent];
-    chatMessage[@"messageTime"] = message[kMessageTimestamp];
-    chatMessage[@"chatRoom"] = self.chatRoom;
-    
-    [chatMessage saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        [self.chats addObject:chatMessage];
-        [_chatController addNewMessage:message];
-    }];
+//    PFObject *chatMessage = [PFObject objectWithClassName:@"chatMessage"];
+//    [chatMessage setObject:[PFUser currentUser] forKey:@"from"];
+//    [chatMessage setObject:self.user2 forKey:@"to"];
+//    chatMessage[@"messageText"] = message[kMessageContent];
+//    chatMessage[@"messageTime"] = message[kMessageTimestamp];
+//    chatMessage[@"chatRoom"] = self.chatRoom;
+//    [chatMessage saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//        [self.chats addObject:chatMessage];
+//    }];
 
 }
 
--(void)queryForChatRoomMessages {
-    
-    PFQuery *messagesQuery = [PFQuery queryWithClassName:@"chatMessage"];
-//    [messagesQuery whereKey:@"chatRoom" equalTo:self.chatRoomObjectID];
-    [messagesQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        
-        self.chats = [objects mutableCopy];
-        [self.chatController setMessagesArray:self.chats];
-        NSLog(@"the chats are %@", self.chats);
-
-    }];
-    
-}
+//-(void)queryForChatRoomMessages {
+//    
+//    PFQuery *messagesQuery = [PFQuery queryWithClassName:@"chatMessage"];
+////    [messagesQuery whereKey:@"chatRoom" equalTo:self.chatRoomObjectID];
+//    [messagesQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//        
+//        self.chats = [objects mutableCopy];
+////        [self.chatController setMessagesArray:self.chats];
+//        NSLog(@"the chats are %@", self.chats);
+//
+//    }];
+//    
+//}
 
 
 
