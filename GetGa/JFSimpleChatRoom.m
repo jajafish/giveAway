@@ -48,6 +48,7 @@
 
     chatMessage[@"messageText"] = message[kMessageContent];
     chatMessage[@"messageTime"] = message[kMessageTimestamp];
+    chatMessage[@"chatRoom"] = self.chatRoom;
     [chatMessage saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         [self.chats addObject:chatMessage];
         [_chatController addNewMessage:message];
@@ -57,6 +58,13 @@
 
 }
 
+//-(void)queryForChatRoomMessages {
+//    
+//    PFQuery *messagesQuery = [PFQuery queryWithClassName:@"chatMessage"];
+//    [messagesQuery whereKey:@" equalTo:<#(id)#>]
+//    
+//}
+//
 
 
 @end
