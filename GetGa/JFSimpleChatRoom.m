@@ -21,8 +21,12 @@
     _chatController.opponentImg = [UIImage imageNamed:@"tempUser.png"];
     [self presentViewController:_chatController animated:YES completion:nil];
     self.chatTitle = @"hello";
+    self.user1 = self.chatRoom[@"user1"];
+    self.user2 = self.chatRoom[@"user2"];
     
-    NSLog(@"we're in the chatroom vc now, and this is the chat room of %@", self.chatRoom);
+    
+//    NSLog(@"we're in the chatroom vc now, and this is the chat room of %@", self.chatRoom);
+    NSLog(@"the users involved in this chatroom are %@ and %@", self.user1, self.user2);
     
 }
 
@@ -34,7 +38,20 @@
     
     message[@"sentByUserId"] = @"currentUserId";
     
-    [_chatController addNewMessage:message];
+    PFObject *chatMessage = [PFObject objectWithClassName:@"chatMessage"];
+    
+
+    [chatMessage setObject:[PFUser currentUser] forKey:@"from"];
+
+    chatMessage[@"messageText"] = message[kMessageContent];
+    chatMessage[@"messageTime"] = message[kMessageTimestamp];
+    [chatMessage saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        [self.chats addObject:chatMessage];
+        [_chatController addNewMessage:message];
+    }];
+
+    
+
 }
 
 
