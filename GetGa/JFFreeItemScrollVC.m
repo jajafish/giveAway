@@ -29,11 +29,11 @@
 @property (strong, nonatomic) UIImage *navBackgroundShadowImage;
 @property (strong, nonatomic) UIColor *navBackgroundColor;
 
-<<<<<<< HEAD
+
 @property (strong, nonatomic) IBOutlet ILTranslucentView *blurView;
-=======
+
 @property (strong, nonatomic) PFChatRoom *selectedChat;
->>>>>>> chat
+
 
 @end
 
@@ -72,7 +72,7 @@
                              animated:NO];
     
     self.scoller.delegate = self;
-<<<<<<< HEAD
+
     
     NSLog(@"%@", NSStringFromCGRect(self.iWantThisFreeItemButton.frame));
     
@@ -88,9 +88,7 @@
     
     
     self.freeItemGiverPhoto.image = self.giveItem.itemGiver.giveGetterProfileImage;
-=======
 
->>>>>>> chat
     
 //    ITEM ON MAP
     double lat = [self.giveItem.locationData[@"latitude"] doubleValue];
@@ -170,7 +168,7 @@
 }
 
 
-<<<<<<< HEAD
+
 -(void)queryForItemGiverProfilePhoto {
     PFQuery *profilePhotoQuery = [PFQuery queryWithClassName:@"profilePhoto"];
     [profilePhotoQuery whereKey:@"photoUser" equalTo:self.giveItem.itemGiver];
@@ -185,7 +183,8 @@
         
     }];
     
-=======
+}
+
 -(void)goToChatRoom
 {
     
@@ -232,7 +231,7 @@
     chatVC.chatRoom = self.selectedChat;
 
 
->>>>>>> chat
+
 }
 
 
