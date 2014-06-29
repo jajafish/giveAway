@@ -83,7 +83,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Free Stuff" id="gjy-jz-rnE"/>
+                    <navigationItem key="navigationItem" title="Free Stuff" id="gjy-jz-rnE">
+                        <barButtonItem key="rightBarButtonItem" title="filter" id="0xh-Pk-W2V">
+                            <connections>
+                                <segue destination="K9q-vk-2fp" kind="modal" id="unx-w6-fka"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="blurView" destination="yGO-3x-TuZ" id="P49-Qy-OJU"/>
                         <outlet property="giveSomethingAwayButton" destination="wjO-sD-Q8H" id="hr7-5p-e4J"/>
@@ -279,6 +285,20 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Nv-MO-hAn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3274" y="3195"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Pb2-ty-0Ex">
+            <objects>
+                <viewController id="K9q-vk-2fp" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DND-5X-cR1">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2UU-iv-ENu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3882" y="2452"/>
         </scene>
         <!--Give PhotoVC-->
         <scene sceneID="Z6H-gc-Cf6">
