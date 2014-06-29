@@ -11,6 +11,8 @@
 #import <ILTranslucentView.h>
 #import <QuartzCore/QuartzCore.h>
 #import <CoreLocation/CoreLocation.h>
+#import "ChatController.h"
+#import "PFChatRoom.h"
 
 @interface JFFreeItemScrollVC () <MKMapViewDelegate, UITextViewDelegate>
 @property (strong, nonatomic) IBOutlet UIImageView *freeItemImageView;
@@ -27,7 +29,11 @@
 @property (strong, nonatomic) UIImage *navBackgroundShadowImage;
 @property (strong, nonatomic) UIColor *navBackgroundColor;
 
+<<<<<<< HEAD
 @property (strong, nonatomic) IBOutlet ILTranslucentView *blurView;
+=======
+@property (strong, nonatomic) PFChatRoom *selectedChat;
+>>>>>>> chat
 
 @end
 
@@ -66,6 +72,7 @@
                              animated:NO];
     
     self.scoller.delegate = self;
+<<<<<<< HEAD
     
     NSLog(@"%@", NSStringFromCGRect(self.iWantThisFreeItemButton.frame));
     
@@ -81,7 +88,9 @@
     
     
     self.freeItemGiverPhoto.image = self.giveItem.itemGiver.giveGetterProfileImage;
-    
+=======
+
+>>>>>>> chat
     
 //    ITEM ON MAP
     double lat = [self.giveItem.locationData[@"latitude"] doubleValue];
@@ -95,7 +104,7 @@
     [self.freeItemLocationMapView setRegion:startRegion animated:YES];
     
     [self.freeItemLocationMapView addOverlay:[MKCircle circleWithCenterCoordinate:cord radius:800]];
-    
+
     
     [self queryForItemGiverProfilePhoto];
     self.freeItemGiverPhoto.layer.cornerRadius = self.freeItemGiverPhoto.frame.size.width / 2;
@@ -121,6 +130,8 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     
+    [self chatRoomQuery];
+    
     self.navBackgroundImage = [self.navigationController.navigationBar backgroundImageForBarMetrics:(UIBarMetricsDefault)];
     self.navBackgroundShadowImage = [self.navigationController.navigationBar shadowImage];
     self.navBackgroundColor = [self.navigationController.view backgroundColor];
@@ -136,6 +147,9 @@
 
 
 - (IBAction)iWantThisFreeItemButtonPressed:(UIButton *)sender {
+    
+    [self goToChatRoom];
+    
 }
 
 
@@ -156,6 +170,7 @@
 }
 
 
+<<<<<<< HEAD
 -(void)queryForItemGiverProfilePhoto {
     PFQuery *profilePhotoQuery = [PFQuery queryWithClassName:@"profilePhoto"];
     [profilePhotoQuery whereKey:@"photoUser" equalTo:self.giveItem.itemGiver];
@@ -170,6 +185,54 @@
         
     }];
     
+=======
+-(void)goToChatRoom
+{
+    
+    [self performSegueWithIdentifier:@"freeItemScrollToChatModal" sender:nil];
+
+}
+
+
+-(void)chatRoomQuery
+{
+    
+    PFQuery *queryForChatRoom = [PFQuery queryWithClassName:@"ChatRoom"];
+    [queryForChatRoom whereKey:@"user1" equalTo:[PFUser currentUser]];
+    [queryForChatRoom whereKey:@"user2" equalTo:self.giveItem.itemGiver];
+    
+    PFQuery *queryForChatRoomInverse = [PFQuery queryWithClassName:@"ChatRoom"];
+    [queryForChatRoomInverse whereKey:@"user1" equalTo:self.giveItem.itemGiver];
+    [queryForChatRoomInverse whereKey:@"user2" equalTo:[PFUser currentUser]];
+    
+    PFQuery *combinedChatRoomQuery = [PFQuery orQueryWithSubqueries:@[queryForChatRoom, queryForChatRoomInverse]];
+    
+    [combinedChatRoomQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (![objects count] == 0) {
+            [self.iWantThisFreeItemButton setTitle:@"continue chat with this user" forState:UIControlStateNormal];
+            self.selectedChat = objects[0];
+        }
+        else if ([objects count] == 0){
+            [self.iWantThisFreeItemButton setTitle:@"create new chat" forState:UIControlStateNormal];
+            [PFCloud callFunctionInBackground:@"addUsersToChatRoom" withParameters:@{@"user1" : [PFUser currentUser].objectId, @"user2" : self.giveItem.itemGiver.objectId} block:^(id object, NSError *error) {
+                NSLog(@"the object is %@", object);
+                self.selectedChat = object;
+            }];
+        };
+    }];
+    
+    
+}
+
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    
+    ChatController *chatVC = segue.destinationViewController;
+    chatVC.chatRoom = self.selectedChat;
+
+
+>>>>>>> chat
 }
 
 

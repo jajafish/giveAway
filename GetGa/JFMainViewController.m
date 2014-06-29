@@ -56,6 +56,21 @@
 }
 
 
+
+-(NSString *)segueIdentifierForIndexPathInRightMenu:(NSIndexPath *)indexPath
+{
+    NSString *identifier;
+    switch (indexPath.row) {
+        case 0:
+            identifier = @"firstRightSegue";
+            break;
+    }
+
+    return identifier;
+    
+}
+
+
 -(void)configureLeftMenuButton:(UIButton *)button
 {
     
@@ -66,6 +81,16 @@
     button.frame = frame;
     
 }
+
+-(void)configureRightMenuButton:(UIButton *)button
+{
+    CGRect frame = button.frame;
+    frame.origin = (CGPoint){0, 0};
+    frame.size = (CGSize){40,40};
+    
+    button.frame = frame;
+}
+
 
 -(BOOL)deepnessForLeftMenu
 {
