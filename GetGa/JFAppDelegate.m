@@ -10,7 +10,6 @@
 #import "PFGiveItem.h"
 
 
-
 @implementation JFAppDelegate
 
 {
@@ -27,7 +26,13 @@
 {
     // Override point for customization after application launch.
     
+//    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:195/255.0f green:255/255.0f blue:232/255.0f alpha:0.2]];
+
+//    [[UINavigationBar appearance] setBarTintColor:[UIColor blackColor]];
+
+    
     [PFGiveItem registerSubclass];
+    [JFGiverGetter registerSubclass];
     
     [Parse setApplicationId:@"IjFRIlLu8yBBxiUQYcal76jTJv631Y9vJF5XMugI"
                   clientKey:@"1nZesjcYElee33M9iWCCw2f3eKXhkMJNyivEuDbQ"];
@@ -39,6 +44,8 @@
     self->manager.delegate = self;
     self->manager.desiredAccuracy = kCLLocationAccuracyBest;
     [manager startUpdatingLocation];
+
+    
 
     return YES;
 }

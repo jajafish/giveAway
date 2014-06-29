@@ -8,7 +8,9 @@
 
 #import "JFGiveItemDetailsVC.h"
 #import "JFMyGiveItemsCollectionVC.h"
+#import "JFGiveItemCategorySelectVC.h"
 #import <CoreLocation/CoreLocation.h>
+#import "UIImage+ImageEffects.h"
 
 @interface JFGiveItemDetailsVC () <UITextFieldDelegate, UIGestureRecognizerDelegate>
 @property (strong, nonatomic) IBOutlet UIImageView *giveItemPhotoImageView;
@@ -27,12 +29,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        
-        self.moveRecognizer = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(moveTextField:)];
-        self.moveRecognizer.delegate = self;
-        self.moveRecognizer.cancelsTouchesInView = YES;
-        [self.view addGestureRecognizer:self.moveRecognizer];
-        
+
     }
     return self;
 }
@@ -48,14 +45,31 @@
     
     self.giveItemPhotoImageView.image = self.giveItemImage;
     
-    [self.giveItemTitleTextField becomeFirstResponder];
+
+    UIColor *color = [UIColor blackColor];
+    self.giveItemTitleTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"What are you giving away?" attributes:@{NSForegroundColorAttributeName: color}];
     
     self.giveItemTitleTextField.userInteractionEnabled = YES;
     
-    UIPanGestureRecognizer *gesture = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(textFieldDragged:)];
-    [self.giveItemTitleTextField addGestureRecognizer:gesture];
-                                    
+    UIImage *effectImage = nil;
+    effectImage = [self.giveItemImage applyLightEffect];
+    self.giveItemPhotoImageView.image = effectImage;
     
+
+
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self.giveItemTitleTextField becomeFirstResponder];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+        NSLog(@"navigation controller of GIVE ITEM DETAILS VC IS %@", self.navigationController);
 }
 
 #pragma mark - Submit Item to Parse
@@ -64,26 +78,28 @@
 {
     
     
-    NSString *nameForGiveItem = self.giveItemTitleTextField.text;
-    NSData *giveItemImageData = UIImagePNGRepresentation(self.giveItemImage);
-    PFFile *giveItemImageFile = [PFFile fileWithName:nameForGiveItem data:giveItemImageData];
-    PFObject *giveItemPhoto = [PFObject objectWithClassName:@"giveItemPhoto"];
-    giveItemPhoto[@"imageOwner"] = [PFUser currentUser];
-    giveItemPhoto[@"imageName"] = nameForGiveItem;
-    giveItemPhoto[@"imageFile"] = giveItemImageFile;
-    
-    [giveItemPhoto saveInBackground];
-    
-    PFObject *giveItem = [PFObject objectWithClassName:@"giveItem"];
-    giveItem[@"giveItemTitle"] = self.giveItemTitleTextField.text;
-    giveItem[@"giver"] = [PFUser currentUser];
-    giveItem[@"postedLocation"] = [PFUser currentUser][@"mostRecentLocation"];
-    [giveItem setObject:giveItemPhoto forKey:@"giveItemPhoto"];
-    [giveItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//    NSString *nameForGiveItem = self.giveItemTitleTextField.text;
+//    NSData *giveItemImageData = UIImagePNGRepresentation(self.giveItemImage);
+//    PFFile *giveItemImageFile = [PFFile fileWithName:nameForGiveItem data:giveItemImageData];
+//    PFObject *giveItemPhoto = [PFObject objectWithClassName:@"giveItemPhoto"];
+//    giveItemPhoto[@"imageOwner"] = [PFUser currentUser];
+//    giveItemPhoto[@"imageName"] = nameForGiveItem;
+//    giveItemPhoto[@"imageFile"] = giveItemImageFile;
+//    
+//    [giveItemPhoto saveInBackground];
+//    
+//    PFObject *giveItem = [PFObject objectWithClassName:@"giveItem"];
+//    giveItem[@"giveItemTitle"] = self.giveItemTitleTextField.text;
+//    giveItem[@"giver"] = [PFUser currentUser];
+//    giveItem[@"postedLocation"] = [PFUser currentUser][@"mostRecentLocation"];
+//    [giveItem setObject:giveItemPhoto forKey:@"giveItemPhoto"];
+//    [giveItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
 //        [self.rootVC reloadParseData];
-    }];
+//    }];
     
-    [self.navigationController popToRootViewControllerAnimated:YES];
+//    [self.navigationController popToRootViewControllerAnimated:YES];
+    
+    [self performSegueWithIdentifier:@"itemDetailsToItemTags" sender:self];
     
     return YES;
 }
@@ -97,17 +113,17 @@
 }
 
 
-#pragma mark - Gestures
 
--(void)textFieldDragged:(UIPanGestureRecognizer *)gesture
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    UITextField *textField = (UITextField *)gesture.view;
-    CGPoint translation = [gesture translationInView:textField];
-    
-    textField.center = CGPointMake(textField.center.x + translation.x, textField.center.y + translation.y);
-    
-    [gesture setTranslation:CGPointZero inView:textField];
-    
+    if ([segue.identifier isEqualToString:@"itemDetailsToItemTags"]){
+        if ([segue.destinationViewController isKindOfClass:[JFGiveItemCategorySelectVC class]]){
+            JFGiveItemCategorySelectVC *targetVC = segue.destinationViewController;
+            targetVC.giveItemNameFromDetails = self.giveItemTitleTextField.text;
+            targetVC.giveItemImageFromDetails = self.giveItemImage;
+        }
+    }
 }
 
 

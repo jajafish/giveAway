@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "JFGiverGetter.h"
 
 @interface JFAppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate>
 

@@ -10,7 +10,6 @@
 #import "PFGiveItem.h"
 #import "JFMyGiveItemCollectionCell.h"
 #import "JFGivePhotoVC.h"
-#import "JFItemDisplayVC.h"
 #import "JFCollectionHeaderView.h"
 #import "CSStickyHeaderFlowLayout.h"
 #import "JFProfilePhotoHeader.h"
@@ -45,8 +44,9 @@
 {
     [super viewDidLoad];
     self.navigationItem.title = [PFUser currentUser][@"profile"][@"first_name"];
+//    self.navigationItem.title = [[JFGiverGetter currentUser]giveGetterName];
     UICollectionViewFlowLayout *collectionViewLayout = (UICollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
-    collectionViewLayout.sectionInset = UIEdgeInsetsMake(20, 0, 20, 0);
+    collectionViewLayout.sectionInset = UIEdgeInsetsMake(20, 5, 20, 5);
     
 
     CSStickyHeaderFlowLayout *layout = (id)self.collectionView.collectionViewLayout;
@@ -63,8 +63,15 @@
                  withReuseIdentifier:@"header"];
     
     
+
     
-    
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+        NSLog(@"nav controller for ITEM COLLECTION VC is %@", self.navigationController);
+        NSLog(@"the profile Picture is %@", self.profilePicture);
+        NSLog(@"the profile picture view is %@", self.profileImageView);
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -88,16 +95,11 @@
         if ([segue.destinationViewController isKindOfClass:[JFGivePhotoVC class]]){
             JFGivePhotoVC *targetVC = segue.destinationViewController;
             targetVC.mainItemsCollectionVC = self;
+//            [self.navigationController pushViewController:targetVC animated:YES];
+//            targetVC.navController = self.navigationController;
         }
     }
-    if ([segue.identifier isEqualToString:@"itemCollectionToDisplay"])
-    {
-        if ([segue.destinationViewController isKindOfClass:[JFItemDisplayVC class]]){
-            JFItemDisplayVC *targetVC = segue.destinationViewController;
-            targetVC.giveItem = self.selectedItem;
-        }
-        
-    }
+
     
 }
 
@@ -120,6 +122,8 @@
                 PFGiveItem *newGiveItem = [[PFGiveItem alloc]init];
                 newGiveItem.giveItemName = object[@"giveItemTitle"];
                 newGiveItem.locationData = object[@"postedLocation"];
+                newGiveItem.itemDetailsLogistics = object[@"giveItemLogistics"];
+                
                 PFObject *photoObj = object[@"giveItemPhoto"];
                 PFFile *ourImageFile = photoObj[@"imageFile"];
                 
@@ -187,6 +191,7 @@
         
         JFProfilePhotoHeader *cell = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"header" forIndexPath:indexPath];
         cell.profilePhotoView.image = [UIImage imageNamed:@"dad.png"];
+
         return cell;
     } else if ([kind isEqualToString:UICollectionElementKindSectionHeader]){
         JFCollectionHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];

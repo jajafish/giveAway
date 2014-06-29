@@ -9,12 +9,17 @@
 #import "JFFreeStuffVC.h"
 #import "JFGiveItemCell.h"
 #import "PFGiveItem.h"
+#import "JFFreeItemScrollVC.h"
+#import "ILTranslucentView.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface JFFreeStuffVC ()
 
 @property (strong, nonatomic) NSMutableArray *availableFreeStuff;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) PFGiveItem *selectedItem;
+@property (strong, nonatomic) IBOutlet UIButton *giveSomethingAwayButton;
+@property (strong, nonatomic) IBOutlet ILTranslucentView *blurView;
 
 @end
 
@@ -28,14 +33,27 @@
     [self.navigationItem setHidesBackButton:YES];
     [self.tableView reloadData];
     //    [self.tableView setContentInset:UIEdgeInsetsMake(50,0,0,0)];
+    
 }
 
 
 -(void)viewWillAppear:(BOOL)animated
 {
     
-    [self reloadParseData];
+    self.navigationController.navigationBar.topItem.title = @"Free Stuff";
+    self.giveSomethingAwayButton.layer.cornerRadius = 5;
+    self.giveSomethingAwayButton.layer.borderWidth = 1;
+    self.giveSomethingAwayButton.layer.borderColor = [UIColor blackColor].CGColor;
     
+    self.blurView.translucentAlpha = 1;
+
+    
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [self reloadParseData];
+    self.title = @"Free Stuff";
 }
 
 -(void)reloadParseData
@@ -43,8 +61,9 @@
     self.availableFreeStuff = [[NSMutableArray alloc]init];
     
     PFQuery *query = [PFQuery queryWithClassName:@"giveItem"];
-    [query whereKey:@"giver" equalTo:[PFUser currentUser]];
+    [query whereKey:@"giver" notEqualTo:[PFUser currentUser]];
     [query includeKey:@"giveItemPhoto"];
+    [query includeKey:@"giver"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             
@@ -52,6 +71,17 @@
                 PFGiveItem *newGiveItem = [[PFGiveItem alloc]init];
                 newGiveItem.giveItemName = object[@"giveItemTitle"];
                 newGiveItem.locationData = object[@"postedLocation"];
+                newGiveItem.itemDetailsLogistics = object[@"giveItemLogistics"];
+                newGiveItem.itemCategory = object[@"itemCategory"];
+                
+                JFGiverGetter *itemGiverGetter = (JFGiverGetter*)[JFGiverGetter object];
+                itemGiverGetter = object[@"giver"];
+                newGiveItem.itemGiver = itemGiverGetter;
+                NSString *itemGiverGetterName = [[NSString alloc]init];
+                itemGiverGetterName = itemGiverGetter[@"profile"][@"name"];
+                newGiveItem.itemGiver.giveGetterName = itemGiverGetterName;
+                newGiveItem.itemGiverName = itemGiverGetterName;
+                
                 PFObject *photoObj = object[@"giveItemPhoto"];
                 PFFile *ourImageFile = photoObj[@"imageFile"];
                 
@@ -99,14 +129,39 @@
     cell.giveItemLabel.shadowColor = [UIColor clearColor];
     cell.giveItemLabel.highlighted = NO;
     
+    
+    cell.giveItemGiverUserPhoto.image = [UIImage imageNamed:@"dad.png"];
+    cell.giveItemGiverUserPhoto.layer.cornerRadius = cell.giveItemGiverUserPhoto.frame.size.width / 2;
+    cell.giveItemGiverUserPhoto.clipsToBounds = YES;
+    cell.giveItemGiverUserPhoto.layer.borderWidth = 1.5f;
+    cell.giveItemGiverUserPhoto.layer.borderColor = [UIColor whiteColor].CGColor;
+    
     return cell;
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"freeStuffToFreeItemScroll"]){
+        if ([segue.destinationViewController isKindOfClass:[JFFreeItemScrollVC class]]){
+            JFFreeItemScrollVC *targetVC = segue.destinationViewController;
+            targetVC.giveItem = self.selectedItem;
+            
+            self.title = @"";
+            
+        }
+    }
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.selectedItem = self.availableFreeStuff[indexPath.row];
-    [self performSegueWithIdentifier:@"itemTableToDisplay" sender:self];
+    NSLog(@"the selected item was %@", self.selectedItem);
+    [self performSegueWithIdentifier:@"freeStuffToFreeItemScroll" sender:self];
 }
+
+
+
+
 
 
 

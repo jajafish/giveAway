@@ -33,8 +33,8 @@
             
     }
     
-    if (indexPath.row == 3) {
-        identifier = nil;
+    if (indexPath.row == 2) {
+
         
         NSLog(@"pressed logout");
         [PFUser logOut];
@@ -47,6 +47,8 @@
         NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage]; for(NSHTTPCookie *cookie in [storage cookies]) { NSString *domainName = [cookie domain]; NSRange domainRange = [domainName rangeOfString:@"facebook"]; if(domainRange.length > 0) { [storage deleteCookie:cookie]; } }
         
         [self.navigationController popToRootViewControllerAnimated:YES];
+        
+        identifier = nil;
     }
     
     return identifier;

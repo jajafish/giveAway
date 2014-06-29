@@ -15,4 +15,6 @@
 
 @property (strong, nonatomic) JFMyGiveItemsCollectionVC *mainItemsCollectionVC;
 
+@property (weak, nonatomic) UINavigationController *navController;
+
 @end

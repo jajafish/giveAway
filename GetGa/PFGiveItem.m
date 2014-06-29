@@ -11,8 +11,7 @@
 
 @implementation PFGiveItem
 
-@synthesize image;
-@dynamic giveItemName;
+@synthesize image, itemDetailsLogistics, itemListingExpireDate, locationData, itemCategory, giveItemName, itemGiverName, itemGiver;
 
 +(NSString *)parseClassName
 {

@@ -15,6 +15,8 @@
 
 @implementation JFGivePhotoVC
 
+
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -28,7 +30,11 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+   
+    
+    
 }
+
 
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -50,6 +56,8 @@
     [super viewDidAppear:animated];
     
     [self performSelector:@selector(bringUpCamera) withObject:nil afterDelay:0.05];
+    
+    NSLog(@"nav controller of GIVE PHOTO VC is %@", self.navigationController);
     
 }
 
