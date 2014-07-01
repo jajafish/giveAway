@@ -16,7 +16,15 @@
 @property (strong, nonatomic) PFUser *from;
 @property (strong, nonatomic) PFUser *to;
 @property (strong, nonatomic) NSString *messageText;
-@property (strong, nonatomic) NSValue *messageSize;
+@property int *messageSize;
+
+
+
+
+
 //@property (strong, nonatomic) NSDate *messageTime;
 
+
+
 @end
+

@@ -408,7 +408,9 @@ static int chatInputStartingHeight = 40;
                                             options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
                                             context:nil];
         
-        message.messageSize = [NSValue valueWithCGSize:rect.size];
+        NSLog(@"the rect size is %@", rect.size);
+        
+//        message.messageSize = rect.size;
         
         return CGSizeMake(width(_myCollectionView), rect.size.height + offset);
     }
