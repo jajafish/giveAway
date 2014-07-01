@@ -77,8 +77,6 @@
 //    }];
     
     
-    
-
     return chatCell;
     
 }
@@ -94,6 +92,13 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self performSegueWithIdentifier:@"firstRightSegue" sender:indexPath];
+}
+
+
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
 }
 
 

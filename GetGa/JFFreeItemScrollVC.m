@@ -110,6 +110,8 @@
     self.freeItemGiverPhoto.layer.borderWidth = 1.5f;
     self.freeItemGiverPhoto.layer.borderColor = [UIColor blackColor].CGColor;
     
+    self.freeItemLogisticsTextView.editable = NO;
+    
     
 }
 

@@ -186,7 +186,8 @@ static int chatInputStartingHeight = 40;
     newMessageOb[kMessageTimestamp] = TimeStamp();
     
     
-    //    NSLog(@"Message Contents: %@", message[kMessageContent]);
+
+    NSLog(@"Message Contents: %@", newMessageOb[kMessageContent]);
     //    NSLog(@"Timestamp: %@", message[kMessageTimestamp]);
     //
     //    // Evaluate or add to the message here for example, if we wanted to assign the current userId:
@@ -241,7 +242,7 @@ static int chatInputStartingHeight = 40;
     chatMessage[@"messageTime"] = message[kMessageTimestamp];
     chatMessage[@"chatRoom"] = self.chatRoom;
     [chatMessage saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        [self queryForParseChatMessages];
+//        [self queryForParseChatMessages];
     }];
 
 
@@ -491,7 +492,7 @@ static int chatInputStartingHeight = 40;
     NSLog(@"the chatRood Id for this query is %@", self.chatRoomObjectID);
     
     PFQuery *messagesQuery = [PFQuery queryWithClassName:@"chatMessage"];
-    [messagesQuery whereKey:@"chatRoom" equalTo:self.chatRoomObjectID];
+//    [messagesQuery whereKey:@"chatRoom" equalTo:self.chatRoomObjectID];
     [messagesQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         
         
