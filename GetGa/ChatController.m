@@ -388,7 +388,7 @@ static int chatInputStartingHeight = 40;
     
     static int offset = 20;
     
-    if (!message[kMessageSize]) {
+    if (!message.messageSize) {
         NSString * content = message.messageText;
         
         NSMutableDictionary * attributes = [NSMutableDictionary new];
@@ -408,14 +408,14 @@ static int chatInputStartingHeight = 40;
                                             options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
                                             context:nil];
         
-        NSLog(@"the rect size is %@", rect.size);
+//        NSLog(@"the rect size is %@", rect.size);
         
-//        message.messageSize = rect.size;
+        message.messageSize = [NSValue valueWithCGSize:rect.size];
         
         return CGSizeMake(width(_myCollectionView), rect.size.height + offset);
     }
     else {
-        return CGSizeMake(_myCollectionView.bounds.size.width, [message[kMessageSize] CGSizeValue].height + offset);
+        return CGSizeMake(_myCollectionView.bounds.size.width, [message.messageSize CGSizeValue].height + offset);
     }
 }
 
