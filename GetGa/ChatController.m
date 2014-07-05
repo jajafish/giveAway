@@ -410,7 +410,11 @@ static int chatInputStartingHeight = 40;
         
 //        NSLog(@"the rect size is %@", rect.size);
         
-        message.messageSize = [NSValue valueWithCGSize:rect.size];
+        CGRect myRect = CGRectMake(40, 30, 20, 60);
+        CGSize mySize = myRect.size;
+        message.messageSize = [NSValue valueWithCGSize:mySize];
+        
+//        message.messageSize = [NSValue valueWithCGSize:rect.size];
         
         return CGSizeMake(width(_myCollectionView), rect.size.height + offset);
     }
@@ -494,7 +498,7 @@ static int chatInputStartingHeight = 40;
 
 -(void)queryForParseChatMessages {
     
-    NSLog(@"the chatRood Id for this query is %@", self.chatRoomObjectID);
+//    NSLog(@"the chatRood Id for this query is %@", self.chatRoomObjectID);
     
     PFQuery *messagesQuery = [PFQuery queryWithClassName:@"chatMessage"];
 //    [messagesQuery whereKey:@"chatRoom" equalTo:self.chatRoomObjectID];
@@ -502,7 +506,7 @@ static int chatInputStartingHeight = 40;
         
         if (!error){
             
-            NSLog(@"here are the objects %@", objects);
+//            NSLog(@"here are the objects %@", objects);
             
             for (PFObject *object in objects){
                 
@@ -516,7 +520,7 @@ static int chatInputStartingHeight = 40;
                 self.messagesArray = [[NSMutableArray alloc]init];
                 [self.messagesArray addObject:pfChatMessage];
                 
-                NSLog(@"in the middle of the query here is a pfChatMessage: %@", pfChatMessage);
+//                NSLog(@"in the middle of the query here is a pfChatMessage: %@", pfChatMessage);
                 
             }
             
@@ -524,7 +528,7 @@ static int chatInputStartingHeight = 40;
             NSLog(@"the error is %@", error);
         }
         
-        NSLog(@"the messages array is now, at the end of the query %@", self.messagesArray);
+//        NSLog(@"the messages array is now, at the end of the query %@", self.messagesArray);
     }];
     
 

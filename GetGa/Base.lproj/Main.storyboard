@@ -53,6 +53,7 @@
                                             <outlet property="giveItemGiverUserPhoto" destination="yQj-ES-xjt" id="m84-75-g9a"/>
                                             <outlet property="giveItemImageView" destination="Is7-KB-1Tt" id="D0E-vt-Yrd"/>
                                             <outlet property="giveItemLabel" destination="Wba-8E-rjC" id="QyG-d9-vGz"/>
+                                            <outlet property="labelBackgroundView" destination="hvo-Wa-tTI" id="w1E-FC-QDd"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

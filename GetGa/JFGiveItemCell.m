@@ -29,7 +29,15 @@
 
 - (void)awakeFromNib
 {
-    // Initialization code
+
+    CAGradientLayer *layer = [CAGradientLayer layer];
+    layer.frame = _labelBackgroundView.bounds;
+    layer.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithRed:0 green:0 blue:0 alpha:0] CGColor], (id)[[UIColor colorWithRed:0 green:0 blue:0 alpha:1] CGColor], nil];
+    layer.startPoint = CGPointMake(0.0f, 0.0f);
+    layer.endPoint = CGPointMake(1.0f, 1.0f);
+    
+    _labelBackgroundView.layer.mask = layer;
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

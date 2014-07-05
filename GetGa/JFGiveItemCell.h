@@ -16,5 +16,6 @@
 
 @property (strong, nonatomic) IBOutlet UIImageView *giveItemGiverUserPhoto;
 
+@property (strong, nonatomic) IBOutlet UIView *labelBackgroundView;
 
 @end
