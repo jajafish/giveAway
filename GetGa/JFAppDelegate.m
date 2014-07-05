@@ -9,6 +9,7 @@
 #import "JFAppDelegate.h"
 #import "PFGiveItem.h"
 #import "PFChatRoom.h"
+#import "PFChatMessage.h"
 
 
 @implementation JFAppDelegate
@@ -35,6 +36,7 @@
     [PFGiveItem registerSubclass];
     [JFGiverGetter registerSubclass];
     [PFChatRoom registerSubclass];
+    [PFChatMessage registerSubclass];
     
     
     [Parse setApplicationId:@"IjFRIlLu8yBBxiUQYcal76jTJv631Y9vJF5XMugI"

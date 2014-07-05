@@ -26,6 +26,7 @@
 		E749E9F2195A059D002472F6 /* Previous.png in Resources */ = {isa = PBXBuildFile; fileRef = E749E9EB195A059D002472F6 /* Previous.png */; };
 		E749E9F3195A059D002472F6 /* TopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = E749E9ED195A059D002472F6 /* TopBar.m */; };
 		E74E84AD194ED55800755821 /* JFFreeStuffVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E74E84AC194ED55800755821 /* JFFreeStuffVC.m */; };
+		E74EE5BE1962F0DD005D1606 /* PFChatMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = E74EE5BD1962F0DD005D1606 /* PFChatMessage.m */; };
 		E7583D7C194F060B00899AEF /* JFCollectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7583D7B194F060B00899AEF /* JFCollectionHeaderView.m */; };
 		E7583D7F194F0ACB00899AEF /* CSGrowHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7583D7E194F0ACB00899AEF /* CSGrowHeader.xib */; };
 		E775593319325CC600CD76A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E775593219325CC600CD76A0 /* Foundation.framework */; };
@@ -101,6 +102,8 @@
 		E749E9ED195A059D002472F6 /* TopBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopBar.m; sourceTree = "<group>"; };
 		E74E84AB194ED55800755821 /* JFFreeStuffVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFFreeStuffVC.h; sourceTree = "<group>"; };
 		E74E84AC194ED55800755821 /* JFFreeStuffVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFFreeStuffVC.m; sourceTree = "<group>"; };
+		E74EE5BC1962F0DD005D1606 /* PFChatMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFChatMessage.h; sourceTree = "<group>"; };
+		E74EE5BD1962F0DD005D1606 /* PFChatMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFChatMessage.m; sourceTree = "<group>"; };
 		E7583D7A194F060B00899AEF /* JFCollectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFCollectionHeaderView.h; sourceTree = "<group>"; };
 		E7583D7B194F060B00899AEF /* JFCollectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFCollectionHeaderView.m; sourceTree = "<group>"; };
 		E7583D7E194F0ACB00899AEF /* CSGrowHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CSGrowHeader.xib; sourceTree = "<group>"; };
@@ -364,6 +367,8 @@
 			children = (
 				E77BE7C8195C870000DAB268 /* PFChatRoom.h */,
 				E77BE7C9195C870000DAB268 /* PFChatRoom.m */,
+				E74EE5BC1962F0DD005D1606 /* PFChatMessage.h */,
+				E74EE5BD1962F0DD005D1606 /* PFChatMessage.m */,
 			);
 			name = "chat room";
 			sourceTree = "<group>";
@@ -626,6 +631,7 @@
 				E72773CC19581A7A0088178F /* JFChatListNavVC.m in Sources */,
 				E7F5D2C8193831BF00B17BE0 /* JFGiveItemCell.m in Sources */,
 				E7ADA1F91956C00500FA17CF /* JFGiveItemCategoryCell.m in Sources */,
+				E74EE5BE1962F0DD005D1606 /* PFChatMessage.m in Sources */,
 				E7C8AE9C19370B7C00856D4B /* JFConstants.m in Sources */,
 				E7312B02194FE9BC00210849 /* JFProfilePhotoHeader.m in Sources */,
 				E7BB0417193AAC6D000DEF36 /* JFMainViewController.m in Sources */,

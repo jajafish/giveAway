@@ -16,6 +16,7 @@
 #import "ChatController.h"
 #import "MessageCell.h"
 #import "MyMacros.h"
+#import "PFChatMessage.h"
 
 static NSString * kMessageCellReuseIdentifier = @"MessageCell";
 static int connectionStatusViewTag = 1701;
@@ -127,6 +128,8 @@ static int chatInputStartingHeight = 40;
     // Scroll CollectionView Before We Start
     [self.view addSubview:_chatInput];
     
+    [self queryForParseChatMessages];
+    
 
 }
 
@@ -186,7 +189,8 @@ static int chatInputStartingHeight = 40;
     newMessageOb[kMessageTimestamp] = TimeStamp();
     
     
-    //    NSLog(@"Message Contents: %@", message[kMessageContent]);
+
+    NSLog(@"Message Contents: %@", newMessageOb[kMessageContent]);
     //    NSLog(@"Timestamp: %@", message[kMessageTimestamp]);
     //
     //    // Evaluate or add to the message here for example, if we wanted to assign the current userId:
@@ -241,7 +245,7 @@ static int chatInputStartingHeight = 40;
     chatMessage[@"messageTime"] = message[kMessageTimestamp];
     chatMessage[@"chatRoom"] = self.chatRoom;
     [chatMessage saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        [self queryForParseChatMessages];
+        NSLog(@"saved this message to Parse");
     }];
 
 
@@ -380,12 +384,12 @@ static int chatInputStartingHeight = 40;
                   layout:(UICollectionViewLayout*)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSMutableDictionary * message = _messagesArray[[indexPath indexAtPosition:1]];
+    PFChatMessage * message = _messagesArray[[indexPath indexAtPosition:1]];
     
     static int offset = 20;
     
-    if (!message[kMessageSize]) {
-        NSString * content = [message objectForKey:kMessageContent];
+    if (!message.messageSize) {
+        NSString * content = message.messageText;
         
         NSMutableDictionary * attributes = [NSMutableDictionary new];
         attributes[NSFontAttributeName] = [UIFont systemFontOfSize:15.0f];
@@ -404,12 +408,18 @@ static int chatInputStartingHeight = 40;
                                             options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
                                             context:nil];
         
-        message[kMessageSize] = [NSValue valueWithCGSize:rect.size];
+//        NSLog(@"the rect size is %@", rect.size);
+        
+        CGRect myRect = CGRectMake(40, 30, 20, 60);
+        CGSize mySize = myRect.size;
+        message.messageSize = [NSValue valueWithCGSize:mySize];
+        
+//        message.messageSize = [NSValue valueWithCGSize:rect.size];
         
         return CGSizeMake(width(_myCollectionView), rect.size.height + offset);
     }
     else {
-        return CGSizeMake(_myCollectionView.bounds.size.width, [message[kMessageSize] CGSizeValue].height + offset);
+        return CGSizeMake(_myCollectionView.bounds.size.width, [message.messageSize CGSizeValue].height + offset);
     }
 }
 
@@ -488,32 +498,41 @@ static int chatInputStartingHeight = 40;
 
 -(void)queryForParseChatMessages {
     
-    NSLog(@"the chatRood Id for this query is %@", self.chatRoomObjectID);
+//    NSLog(@"the chatRood Id for this query is %@", self.chatRoomObjectID);
     
     PFQuery *messagesQuery = [PFQuery queryWithClassName:@"chatMessage"];
-    [messagesQuery whereKey:@"chatRoom" equalTo:self.chatRoomObjectID];
+//    [messagesQuery whereKey:@"chatRoom" equalTo:self.chatRoomObjectID];
     [messagesQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        
         
         if (!error){
             
-            NSLog(@"here are the objects %@", objects);
+//            NSLog(@"here are the objects %@", objects);
             
-            self.messagesArray = [objects mutableCopy];
+            for (PFObject *object in objects){
+                
+                PFChatMessage *pfChatMessage = [[PFChatMessage alloc]init];
             
-            NSLog(@"the Parse chats are %@", self.messagesArray);
+                pfChatMessage.messageText = object[@"messageText"];
+                pfChatMessage.chatRoom = self.chatRoom;
+                pfChatMessage.from = object[@"from"];
+                pfChatMessage.to = object[@"to"];
+                
+                self.messagesArray = [[NSMutableArray alloc]init];
+                [self.messagesArray addObject:pfChatMessage];
+                
+//                NSLog(@"in the middle of the query here is a pfChatMessage: %@", pfChatMessage);
+                
+            }
             
         } else if (error) {
             NSLog(@"the error is %@", error);
         }
         
-
-        
+//        NSLog(@"the messages array is now, at the end of the query %@", self.messagesArray);
     }];
     
 
 }
-
 
 
 

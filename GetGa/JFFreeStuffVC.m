@@ -20,6 +20,8 @@
 @property (strong, nonatomic) PFGiveItem *selectedItem;
 @property (strong, nonatomic) IBOutlet UIButton *giveSomethingAwayButton;
 @property (strong, nonatomic) IBOutlet ILTranslucentView *blurView;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *filterFreeStuffButton;
+
 
 @end
 
@@ -34,6 +36,10 @@
     [self.tableView reloadData];
     //    [self.tableView setContentInset:UIEdgeInsetsMake(50,0,0,0)];
 //    NSLog(@"Login: the current user is %@", [[PFUser currentUser]objectId]);
+    
+    
+    [self.searchDisplayController.searchBar setBackgroundImage:[UIImage imageNamed:@"dad.png"]];
+
     
 }
 
@@ -106,7 +112,10 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+
     return self.availableFreeStuff.count;
+
+    
 }
 
 -(void)tableView:(UITableView *)tableView willDisplayFooterView:(UIView *)view forSection:(NSInteger)section
@@ -124,18 +133,14 @@
         cell = [[JFGiveItemCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
     
+
     PFGiveItem *giveItem = self.availableFreeStuff[indexPath.row];
     cell.giveItemLabel.text = [NSString stringWithFormat:@"  %@", giveItem.giveItemName];
     cell.giveItemImageView.image = giveItem.image;
     cell.giveItemLabel.shadowColor = [UIColor clearColor];
     cell.giveItemLabel.highlighted = NO;
+
     
-    
-//    cell.giveItemGiverUserPhoto.image = [UIImage imageNamed:@"dad.png"];
-//    cell.giveItemGiverUserPhoto.layer.cornerRadius = cell.giveItemGiverUserPhoto.frame.size.width / 2;
-//    cell.giveItemGiverUserPhoto.clipsToBounds = YES;
-//    cell.giveItemGiverUserPhoto.layer.borderWidth = 1.5f;
-//    cell.giveItemGiverUserPhoto.layer.borderColor = [UIColor whiteColor].CGColor;
     
     return cell;
 }
@@ -159,6 +164,10 @@
     [self performSegueWithIdentifier:@"freeStuffToFreeItemScroll" sender:self];
 }
 
+- (IBAction)filterFreeStuffButtonPressed:(UIBarButtonItem *)sender {
+    
+    NSLog(@"someone pressed filter");
+}
 
 
 

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JFFreeStuffVC : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface JFFreeStuffVC : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UISearchDisplayDelegate>
 
 @end

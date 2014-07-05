@@ -60,25 +60,23 @@
         chattingUser = [chatRoom objectForKey:@"user1"];
     }
     
-    chatCell.chatListUserTwoNameLabel.text = chattingUser[@"profile"][@"name"];
+    chatCell.chatListUserTwoNameLabel.text = chattingUser[@"profile"][@"first_name"];
     chatCell.chatListCellBackgroundImageView.contentMode = UIViewContentModeScaleAspectFit;
     
-//    PFQuery *queryForPhoto = [[PFQuery alloc]initWithClassName:@"profilePhoto"];
-//    [queryForPhoto whereKey:@"photoUser" equalTo:chattingUser];
-//    [queryForPhoto findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-//        if ([objects count] > 0){
-//            PFObject *photo = objects[0];
-//            PFFile *pictureFile = photo[@"photoPictureFile"];
-//            [pictureFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-//                chatCell.chatListCellUserTwoImageView.image = [UIImage imageWithData:data];
-//                chatCell.chatListCellBackgroundImageView.contentMode = UIViewContentModeScaleAspectFit;
-//            }];
-//        }
-//    }];
+    PFQuery *queryForPhoto = [[PFQuery alloc]initWithClassName:@"profilePhoto"];
+    [queryForPhoto whereKey:@"photoUser" equalTo:chattingUser];
+    [queryForPhoto findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if ([objects count] > 0){
+            PFObject *photo = objects[0];
+            PFFile *pictureFile = photo[@"photoPictureFile"];
+            [pictureFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                chatCell.chatListCellUserTwoImageView.image = [UIImage imageWithData:data];
+                chatCell.chatListCellBackgroundImageView.contentMode = UIViewContentModeScaleAspectFit;
+            }];
+        }
+    }];
     
     
-    
-
     return chatCell;
     
 }
@@ -94,6 +92,13 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self performSegueWithIdentifier:@"firstRightSegue" sender:indexPath];
+}
+
+
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
 }
 
 

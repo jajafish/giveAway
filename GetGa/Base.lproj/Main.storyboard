@@ -53,6 +53,7 @@
                                             <outlet property="giveItemGiverUserPhoto" destination="yQj-ES-xjt" id="m84-75-g9a"/>
                                             <outlet property="giveItemImageView" destination="Is7-KB-1Tt" id="D0E-vt-Yrd"/>
                                             <outlet property="giveItemLabel" destination="Wba-8E-rjC" id="QyG-d9-vGz"/>
+                                            <outlet property="labelBackgroundView" destination="hvo-Wa-tTI" id="w1E-FC-QDd"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -83,15 +84,32 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Free Stuff" id="gjy-jz-rnE"/>
+                    <navigationItem key="navigationItem" title="Free Stuff" id="gjy-jz-rnE">
+                        <barButtonItem key="rightBarButtonItem" title="filter" id="0xh-Pk-W2V">
+                            <connections>
+                                <action selector="filterFreeStuffButtonPressed:" destination="jKr-Rc-vl6" id="5B8-5d-tRg"/>
+                                <segue destination="K9q-vk-2fp" kind="modal" id="unx-w6-fka"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="blurView" destination="yGO-3x-TuZ" id="P49-Qy-OJU"/>
+                        <outlet property="filterFreeStuffButton" destination="0xh-Pk-W2V" id="q9f-ev-Kue"/>
                         <outlet property="giveSomethingAwayButton" destination="wjO-sD-Q8H" id="hr7-5p-e4J"/>
+                        <outlet property="searchDisplayController" destination="7q7-CS-dnw" id="APh-pW-f04"/>
                         <outlet property="tableView" destination="o78-uR-qJd" id="Dz0-c3-Yge"/>
                         <segue destination="H3L-uM-9tS" kind="push" identifier="freeStuffToFreeItemScroll" id="hFO-oh-gGr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="93G-XE-wXo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="7q7-CS-dnw">
+                    <connections>
+                        <outlet property="delegate" destination="jKr-Rc-vl6" id="dLi-qu-0N4"/>
+                        <outlet property="searchContentsController" destination="jKr-Rc-vl6" id="FCd-4Q-CSZ"/>
+                        <outlet property="searchResultsDataSource" destination="jKr-Rc-vl6" id="xbK-gU-FNf"/>
+                        <outlet property="searchResultsDelegate" destination="jKr-Rc-vl6" id="dQc-v4-lke"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="3882" y="3205"/>
         </scene>
@@ -280,6 +298,20 @@
             </objects>
             <point key="canvasLocation" x="3274" y="3195"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="Pb2-ty-0Ex">
+            <objects>
+                <viewController id="K9q-vk-2fp" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DND-5X-cR1">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2UU-iv-ENu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4474" y="2000"/>
+        </scene>
         <!--Give PhotoVC-->
         <scene sceneID="Z6H-gc-Cf6">
             <objects>
@@ -296,7 +328,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ySW-3Q-TG7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4470" y="2286"/>
+            <point key="canvasLocation" x="5622" y="1882"/>
         </scene>
         <!--Give Item Category SelectVC - What kind of item is this?-->
         <scene sceneID="kjB-m3-C6x">
@@ -329,7 +361,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rLd-0M-t7D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5425" y="1799"/>
+            <point key="canvasLocation" x="6577" y="1395"/>
         </scene>
         <!--Give Item LogisticsVC - item details + pickup logistics-->
         <scene sceneID="icy-NY-J9M">
@@ -367,7 +399,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rYm-aa-c0F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5902" y="1799"/>
+            <point key="canvasLocation" x="7054" y="1395"/>
         </scene>
         <!--Give Item DetailsVC-->
         <scene sceneID="o67-Cq-oqC">
@@ -401,7 +433,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yY6-kW-JkN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4952" y="1800"/>
+            <point key="canvasLocation" x="6104" y="1396"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Z1j-gL-5Dp">
@@ -560,7 +592,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NC4-Lu-Ite" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4513" y="3152"/>
+            <point key="canvasLocation" x="4961" y="3552"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kdO-aG-cJe">
