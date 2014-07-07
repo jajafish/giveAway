@@ -154,7 +154,7 @@ static int minimumHeight = 30;
     _textSize = CGSizeMake(320, 50);
     
     [_message[@"messageSize"] CGSizeValue];
-    _textLabel.text = @"hello lets have another chat tomorrow";
+    _textLabel.text = _message[@"messageText"];
     _sentBy = [_message[kMessageRuntimeSentBy] intValue];
     
     // the height that we want our text bubble to be
