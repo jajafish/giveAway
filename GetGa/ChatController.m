@@ -389,7 +389,7 @@ static int chatInputStartingHeight = 40;
     static int offset = 20;
     
     if (!message[@"messageSize"]) {
-        NSString * content = @"hello ashish empty string";
+        NSString * content = message[@"messageText"];
         
         NSMutableDictionary * attributes = [NSMutableDictionary new];
         attributes[NSFontAttributeName] = [UIFont systemFontOfSize:15.0f];
@@ -412,6 +412,7 @@ static int chatInputStartingHeight = 40;
         
         CGSize mySize = rect.size;
         message[@"messageHeight"] = [NSNumber numberWithDouble:mySize.height];
+        message[@"messageWidth"] = [NSNumber numberWithDouble:mySize.width];
         
 //        message.messageSize = [NSValue valueWithCGSize:rect.size];
         

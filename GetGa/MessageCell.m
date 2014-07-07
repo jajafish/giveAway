@@ -151,7 +151,11 @@ static int minimumHeight = 30;
 - (void) drawCell {
     
     // Get Our Stuff
-    _textSize = CGSizeMake(320, 50);
+    
+    NSNumber *h = _message[@"messageHeight"];
+    NSNumber *w = _message[@"messageWidth"];
+    
+    _textSize = CGSizeMake([w doubleValue], [h doubleValue]);
     
     [_message[@"messageSize"] CGSizeValue];
     _textLabel.text = _message[@"messageText"];
