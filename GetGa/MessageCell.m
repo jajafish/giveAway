@@ -151,8 +151,10 @@ static int minimumHeight = 30;
 - (void) drawCell {
     
     // Get Our Stuff
-    _textSize = [_message[kMessageSize] CGSizeValue];
-    _textLabel.text = _message[kMessageContent];
+    _textSize = CGSizeMake(320, 50);
+    
+    [_message[@"messageSize"] CGSizeValue];
+    _textLabel.text = @"hello lets have another chat tomorrow";
     _sentBy = [_message[kMessageRuntimeSentBy] intValue];
     
     // the height that we want our text bubble to be

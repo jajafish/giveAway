@@ -16,7 +16,8 @@
 @property (strong, nonatomic) PFUser *from;
 @property (strong, nonatomic) PFUser *to;
 @property (strong, nonatomic) NSString *messageText;
-@property (strong, nonatomic) NSValue *messageSize;
+@property (strong, nonatomic) NSNumber *messageHeight;
+@property (strong, nonatomic) NSNumber *messageWidth;
 //@property CGSize *messageSize;
 
 
