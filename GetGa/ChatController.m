@@ -229,10 +229,10 @@ static int chatInputStartingHeight = 40;
     if (_messagesArray == nil)  _messagesArray = [NSMutableArray new];
     
     // preload message into array;
-    [_messagesArray addObject:message];
+//    [_messagesArray addObject:message];
     
     // add extra cell, and load it into view;
-    [_myCollectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:_messagesArray.count -1 inSection:0]]];
+//    [_myCollectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:_messagesArray.count -1 inSection:0]]];
     
     // show us the message
     [self scrollToBottom];
@@ -249,8 +249,6 @@ static int chatInputStartingHeight = 40;
     }];
 
 
-
-    
 //    [self queryForParseChatMessages];
 }
 
