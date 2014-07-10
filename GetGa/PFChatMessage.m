@@ -11,7 +11,7 @@
 
 @implementation PFChatMessage
 
-@dynamic chatRoom, from, to, messageText;
+@dynamic chatRoom, from, to, messageText, messageHeight;
 
 +(NSString *)parseClassName
 {

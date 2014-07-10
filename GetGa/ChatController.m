@@ -229,10 +229,10 @@ static int chatInputStartingHeight = 40;
     if (_messagesArray == nil)  _messagesArray = [NSMutableArray new];
     
     // preload message into array;
-    [_messagesArray addObject:message];
+//    [_messagesArray addObject:message];
     
     // add extra cell, and load it into view;
-    [_myCollectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:_messagesArray.count -1 inSection:0]]];
+//    [_myCollectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:_messagesArray.count -1 inSection:0]]];
     
     // show us the message
     [self scrollToBottom];
@@ -249,8 +249,6 @@ static int chatInputStartingHeight = 40;
     }];
 
 
-
-    
 //    [self queryForParseChatMessages];
 }
 
@@ -388,8 +386,8 @@ static int chatInputStartingHeight = 40;
     
     static int offset = 20;
     
-    if (!message.messageSize) {
-        NSString * content = message.messageText;
+    if (!message[@"messageSize"]) {
+        NSString * content = message[@"messageText"];
         
         NSMutableDictionary * attributes = [NSMutableDictionary new];
         attributes[NSFontAttributeName] = [UIFont systemFontOfSize:15.0f];
@@ -410,16 +408,16 @@ static int chatInputStartingHeight = 40;
         
 //        NSLog(@"the rect size is %@", rect.size);
         
-        CGRect myRect = CGRectMake(40, 30, 20, 60);
-        CGSize mySize = myRect.size;
-        message.messageSize = [NSValue valueWithCGSize:mySize];
+        CGSize mySize = rect.size;
+        message[@"messageHeight"] = [NSNumber numberWithDouble:mySize.height];
+        message[@"messageWidth"] = [NSNumber numberWithDouble:mySize.width];
         
 //        message.messageSize = [NSValue valueWithCGSize:rect.size];
         
         return CGSizeMake(width(_myCollectionView), rect.size.height + offset);
     }
     else {
-        return CGSizeMake(_myCollectionView.bounds.size.width, [message.messageSize CGSizeValue].height + offset);
+        return CGSizeMake(_myCollectionView.bounds.size.width, [message[@"messageHeight"] doubleValue] + offset);
     }
 }
 
@@ -508,6 +506,8 @@ static int chatInputStartingHeight = 40;
             
 //            NSLog(@"here are the objects %@", objects);
             
+            self.messagesArray = [[NSMutableArray alloc]init];
+            
             for (PFObject *object in objects){
                 
                 PFChatMessage *pfChatMessage = [[PFChatMessage alloc]init];
@@ -517,12 +517,16 @@ static int chatInputStartingHeight = 40;
                 pfChatMessage.from = object[@"from"];
                 pfChatMessage.to = object[@"to"];
                 
-                self.messagesArray = [[NSMutableArray alloc]init];
+
                 [self.messagesArray addObject:pfChatMessage];
+                
+
                 
 //                NSLog(@"in the middle of the query here is a pfChatMessage: %@", pfChatMessage);
                 
             }
+            
+            NSLog(@"messages Array: %@", _messagesArray);
             
         } else if (error) {
             NSLog(@"the error is %@", error);

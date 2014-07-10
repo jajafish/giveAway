@@ -27,9 +27,6 @@
         case 0:
             identifier = @"firstSegue";
             break;
-        case 1:
-            identifier = @"secondSegue";
-            break;
             
     }
     
@@ -50,6 +47,7 @@
         
         identifier = nil;
     }
+    
     
     return identifier;
     

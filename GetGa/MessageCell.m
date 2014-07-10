@@ -151,8 +151,14 @@ static int minimumHeight = 30;
 - (void) drawCell {
     
     // Get Our Stuff
-    _textSize = [_message[kMessageSize] CGSizeValue];
-    _textLabel.text = _message[kMessageContent];
+    
+    NSNumber *h = _message[@"messageHeight"];
+    NSNumber *w = _message[@"messageWidth"];
+    
+    _textSize = CGSizeMake([w doubleValue], [h doubleValue]);
+    
+    [_message[@"messageSize"] CGSizeValue];
+    _textLabel.text = _message[@"messageText"];
     _sentBy = [_message[kMessageRuntimeSentBy] intValue];
     
     // the height that we want our text bubble to be
