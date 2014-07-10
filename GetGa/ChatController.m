@@ -60,7 +60,7 @@ static int chatInputStartingHeight = 40;
     
     // TopBar
     _topBar = [[TopBar alloc]init];
-    _topBar.title = @"Chat Controller";
+    _topBar.title = @"Welcome to chat";
     _topBar.backgroundColor = [UIColor colorWithWhite:1 alpha:0.5];
     _topBar.delegate = self;
     
@@ -109,6 +109,13 @@ static int chatInputStartingHeight = 40;
     self.user1 = self.chatRoom[@"user1"];
     self.user2 = self.chatRoom[@"user2"];
     self.chatRoomObjectID = [self.chatRoom objectId];
+    
+    
+    self.navigationController.view.backgroundColor = [UIColor redColor];
+    
+    self.navigationItem.title = self.chatRoomTitle;
+    
+
     
 
 

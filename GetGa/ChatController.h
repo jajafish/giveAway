@@ -52,6 +52,7 @@ FOUNDATION_EXPORT NSString * const kMessageTimestamp;
 @property (strong, nonatomic) PFUser *user1;
 @property (strong, nonatomic) PFUser *user2;
 @property (strong, nonatomic) NSString *chatRoomObjectID;
+@property (strong, nonatomic) NSString *chatRoomTitle;
 
 
 

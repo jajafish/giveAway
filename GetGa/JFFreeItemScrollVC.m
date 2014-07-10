@@ -141,6 +141,8 @@
     self.navigationController.navigationBar.shadowImage = [UIImage new];
     self.navigationController.view.backgroundColor = [UIColor clearColor];
     
+ 
+    
     
     [self textViewDidChange:self.freeItemLogisticsTextView];
 }
@@ -231,6 +233,8 @@
     
     ChatController *chatVC = segue.destinationViewController;
     chatVC.chatRoom = self.selectedChat;
+    chatVC.chatRoomTitle =  self.giveItem.itemGiver.giveGetterName;
+    
 
 
 
