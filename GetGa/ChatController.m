@@ -235,7 +235,7 @@ static int chatInputStartingHeight = 40;
 //    [_myCollectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:_messagesArray.count -1 inSection:0]]];
     
     // show us the message
-    [self scrollToBottom];
+
     
     
     PFObject *chatMessage = [PFObject objectWithClassName:@"chatMessage"];
@@ -250,6 +250,8 @@ static int chatInputStartingHeight = 40;
 
 
     [self queryForParseChatMessages];
+    
+
 }
 
 #pragma mark KEYBOARD NOTIFICATIONS
@@ -442,15 +444,15 @@ static int chatInputStartingHeight = 40;
         int sentByNumb = arc4random() % 2;
         message[kMessageRuntimeSentBy] = [NSNumber numberWithInt:(sentByNumb == 0) ? kSentByOpponent : kSentByUser];
         
-        /* EXAMPLE IMPLEMENTATION
+
          // See if the sentBy associated with the message matches our currentUserId
-         if ([_currentUserId isEqualToString:message[@"sentByUserId"]]) {
-            message[kMessageRuntimeSentBy] = [NSNumber numberWithInt:kSentByUser];
-         }
-         else {
+         if ([_currentUserId isEqualToString:message[@"from"]]) {
             message[kMessageRuntimeSentBy] = [NSNumber numberWithInt:kSentByOpponent];
          }
-         */
+         else {
+            message[kMessageRuntimeSentBy] = [NSNumber numberWithInt:kSentByUser];
+         }
+
     }
     
     // Set the cell
@@ -533,6 +535,7 @@ static int chatInputStartingHeight = 40;
         }
         
         [_myCollectionView reloadData];
+        [self scrollToBottom];
         
         
         
