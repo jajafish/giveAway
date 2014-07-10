@@ -249,7 +249,7 @@ static int chatInputStartingHeight = 40;
     }];
 
 
-//    [self queryForParseChatMessages];
+    [self queryForParseChatMessages];
 }
 
 #pragma mark KEYBOARD NOTIFICATIONS
@@ -531,6 +531,10 @@ static int chatInputStartingHeight = 40;
         } else if (error) {
             NSLog(@"the error is %@", error);
         }
+        
+        [_myCollectionView reloadData];
+        
+        
         
 //        NSLog(@"the messages array is now, at the end of the query %@", self.messagesArray);
     }];
