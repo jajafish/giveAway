@@ -113,6 +113,10 @@
     self.freeItemLogisticsTextView.editable = NO;
     
     
+    self.navigationController.view.backgroundColor = [UIColor blackColor];
+    self.navigationItem.title = self.giveItem.giveItemName;
+    
+    
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -136,10 +140,10 @@
     self.navBackgroundShadowImage = [self.navigationController.navigationBar shadowImage];
     self.navBackgroundColor = [self.navigationController.view backgroundColor];
     
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
-                                                  forBarMetrics:UIBarMetricsDefault];
-    self.navigationController.navigationBar.shadowImage = [UIImage new];
-    self.navigationController.view.backgroundColor = [UIColor clearColor];
+//    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
+//                                                  forBarMetrics:UIBarMetricsDefault];
+//    self.navigationController.navigationBar.shadowImage = [UIImage new];
+
     
  
     
