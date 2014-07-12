@@ -13,7 +13,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="202" sectionHeaderHeight="22" sectionFooterHeight="22" id="o78-uR-qJd">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="501"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -67,7 +67,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wjO-sD-Q8H">
-                                        <rect key="frame" x="5" y="3" width="310" height="54"/>
+                                        <rect key="frame" x="5" y="2" width="310" height="54"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Give Something Away">
@@ -385,7 +385,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Wh8-yP-bki">
-                                <rect key="frame" x="4" y="281" width="310" height="54"/>
+                                <rect key="frame" x="5" y="188" width="310" height="54"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Give This Item">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -500,61 +500,41 @@
         <scene sceneID="YF2-mZ-KFf">
             <objects>
                 <viewController id="H3L-uM-9tS" customClass="JFFreeItemScrollVC" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="aBS-EV-ZdE">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="1000"/>
+                    <view key="view" contentMode="scaleAspectFit" id="aBS-EV-ZdE">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="956"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Nuf-gH-3iT">
-                                <rect key="frame" x="0.0" y="-64" width="320" height="997"/>
+                                <rect key="frame" x="0.0" y="-64" width="320" height="958"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="pjr-Th-TVe">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="936"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="832"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="qpC-f0-8E7">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="244"/>
+                                                <rect key="frame" x="-1" y="63" width="320" height="244"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             </imageView>
-                                            <view contentMode="scaleToFill" id="z0Q-H9-bzA" customClass="ILTranslucentView">
-                                                <rect key="frame" x="0.0" y="190" width="320" height="54"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <subviews>
-                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xFy-sG-3Au">
-                                                        <rect key="frame" x="7" y="0.0" width="293" height="47"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            </view>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8eT-W6-IhB">
-                                                <rect key="frame" x="13" y="252" width="293" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="qPc-gh-trS">
-                                                <rect key="frame" x="0.0" y="281" width="320" height="116"/>
+                                                <rect key="frame" x="-1" y="308" width="320" height="90"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="aO3-eB-mTM">
-                                                <rect key="frame" x="95" y="754" width="128" height="128"/>
+                                                <rect key="frame" x="94" y="650" width="128" height="128"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Giver Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xpP-qn-A1I">
-                                                <rect key="frame" x="20" y="895" width="280" height="21"/>
+                                                <rect key="frame" x="19" y="791" width="280" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="fOn-1o-cK5">
-                                                <rect key="frame" x="-1" y="514" width="321" height="226"/>
+                                                <rect key="frame" x="-2" y="410" width="321" height="226"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             </mapView>
                                         </subviews>
@@ -564,7 +544,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gcq-kj-216">
-                                <rect key="frame" x="5" y="941" width="310" height="54"/>
+                                <rect key="frame" x="5" y="902" width="310" height="54"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="I Want This">
@@ -579,14 +559,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="cPv-4o-PZQ"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="1000"/>
+                    <size key="freeformSize" width="320" height="956"/>
                     <connections>
-                        <outlet property="blurView" destination="z0Q-H9-bzA" id="9sS-Qy-grU"/>
-                        <outlet property="freeItemCategoryLabel" destination="8eT-W6-IhB" id="BqA-8v-qpT"/>
                         <outlet property="freeItemGiverName" destination="xpP-qn-A1I" id="KhB-zs-yUf"/>
                         <outlet property="freeItemGiverPhoto" destination="aO3-eB-mTM" id="NKN-s8-36u"/>
-                        <outlet property="freeItemImageNameLabel" destination="xFy-sG-3Au" id="3Hw-oF-5d5"/>
                         <outlet property="freeItemImageView" destination="qpC-f0-8E7" id="GEg-sj-jJw"/>
                         <outlet property="freeItemLocationMapView" destination="fOn-1o-cK5" id="KJ0-0U-Ma7"/>
                         <outlet property="freeItemLogisticsTextView" destination="qPc-gh-trS" id="gZ8-Nu-9aj"/>

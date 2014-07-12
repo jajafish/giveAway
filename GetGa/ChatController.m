@@ -60,7 +60,7 @@ static int chatInputStartingHeight = 40;
     
     // TopBar
     _topBar = [[TopBar alloc]init];
-    _topBar.title = @"Chat Controller";
+    _topBar.title = @"Welcome to chat";
     _topBar.backgroundColor = [UIColor colorWithWhite:1 alpha:0.5];
     _topBar.delegate = self;
     
@@ -109,6 +109,13 @@ static int chatInputStartingHeight = 40;
     self.user1 = self.chatRoom[@"user1"];
     self.user2 = self.chatRoom[@"user2"];
     self.chatRoomObjectID = [self.chatRoom objectId];
+    
+    
+    self.navigationController.view.backgroundColor = [UIColor redColor];
+    
+    self.navigationItem.title = self.chatRoomTitle;
+    
+
     
 
 
@@ -235,7 +242,7 @@ static int chatInputStartingHeight = 40;
 //    [_myCollectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:_messagesArray.count -1 inSection:0]]];
     
     // show us the message
-    [self scrollToBottom];
+
     
     
     PFObject *chatMessage = [PFObject objectWithClassName:@"chatMessage"];
@@ -249,7 +256,9 @@ static int chatInputStartingHeight = 40;
     }];
 
 
-//    [self queryForParseChatMessages];
+    [self queryForParseChatMessages];
+    
+
 }
 
 #pragma mark KEYBOARD NOTIFICATIONS
@@ -442,15 +451,15 @@ static int chatInputStartingHeight = 40;
         int sentByNumb = arc4random() % 2;
         message[kMessageRuntimeSentBy] = [NSNumber numberWithInt:(sentByNumb == 0) ? kSentByOpponent : kSentByUser];
         
-        /* EXAMPLE IMPLEMENTATION
+
          // See if the sentBy associated with the message matches our currentUserId
-         if ([_currentUserId isEqualToString:message[@"sentByUserId"]]) {
-            message[kMessageRuntimeSentBy] = [NSNumber numberWithInt:kSentByUser];
-         }
-         else {
+         if ([_currentUserId isEqualToString:message[@"from"]]) {
             message[kMessageRuntimeSentBy] = [NSNumber numberWithInt:kSentByOpponent];
          }
-         */
+         else {
+            message[kMessageRuntimeSentBy] = [NSNumber numberWithInt:kSentByUser];
+         }
+
     }
     
     // Set the cell
@@ -531,6 +540,11 @@ static int chatInputStartingHeight = 40;
         } else if (error) {
             NSLog(@"the error is %@", error);
         }
+        
+        [_myCollectionView reloadData];
+        [self scrollToBottom];
+        
+        
         
 //        NSLog(@"the messages array is now, at the end of the query %@", self.messagesArray);
     }];
