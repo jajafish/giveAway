@@ -69,7 +69,7 @@
     self.availableFreeStuff = [[NSMutableArray alloc]init];
     
     PFQuery *query = [PFQuery queryWithClassName:@"giveItem"];
-//    [query whereKey:@"giver" notEqualTo:[PFUser currentUser]];
+    [query whereKey:@"giver" notEqualTo:[PFUser currentUser]];
     [query includeKey:@"giveItemPhoto"];
     [query includeKey:@"giver"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {

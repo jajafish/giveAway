@@ -84,10 +84,7 @@ FOUNDATION_EXPORT NSString * const kMessageTimestamp;
  */
 @property (strong, nonatomic) NSMutableArray * messagesArray;
 
-/*!
- The current user's Id - This is not currently in use, it is put here for an example use
- */
-@property (strong, nonatomic) NSString * currentUserId;
+
 
 #pragma mark ADD NEW MESSAGE
 

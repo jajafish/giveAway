@@ -108,7 +108,7 @@ static int chatInputStartingHeight = 40;
     
     self.user1 = self.chatRoom[@"user1"];
     self.user2 = self.chatRoom[@"user2"];
-    self.chatRoomObjectID = [self.chatRoom objectId];
+
     
     
     self.navigationController.view.backgroundColor = [UIColor redColor];
@@ -119,6 +119,8 @@ static int chatInputStartingHeight = 40;
     NSLog(@"user 1 is %@", _user1);
     NSLog(@"user 2 of this chatroom is %@", _user2);
     
+    
+    [self queryForParseChatMessages];
     
     
 }
@@ -136,9 +138,12 @@ static int chatInputStartingHeight = 40;
     // Scroll CollectionView Before We Start
     [self.view addSubview:_chatInput];
     
-    [self queryForParseChatMessages];
+    self.chatRoomObjectID = [self.chatRoom objectId];
     
+    NSLog(@"the chatRoom is %@", _chatRoom);
+    NSLog(@"the chatRoom Object ID is %@", _chatRoomObjectID);
 
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -196,7 +201,6 @@ static int chatInputStartingHeight = 40;
     newMessageOb[kMessageContent] = messageString;
     newMessageOb[kMessageTimestamp] = TimeStamp();
     
-    
 
     NSLog(@"Message Contents: %@", newMessageOb[kMessageContent]);
     //    NSLog(@"Timestamp: %@", message[kMessageTimestamp]);
@@ -236,16 +240,6 @@ static int chatInputStartingHeight = 40;
     
     if (_messagesArray == nil)  _messagesArray = [NSMutableArray new];
     
-    // preload message into array;
-//    [_messagesArray addObject:message];
-    
-    // add extra cell, and load it into view;
-//    [_myCollectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:_messagesArray.count -1 inSection:0]]];
-    
-    // show us the message
-
-    
-    
     PFObject *chatMessage = [PFObject objectWithClassName:@"chatMessage"];
     [chatMessage setObject:_user1 forKey:@"from"];
     [chatMessage setObject:self.user2 forKey:@"to"];
@@ -259,7 +253,6 @@ static int chatInputStartingHeight = 40;
 
     [self queryForParseChatMessages];
     
-
 }
 
 #pragma mark KEYBOARD NOTIFICATIONS
@@ -448,19 +441,13 @@ static int chatInputStartingHeight = 40;
     NSMutableDictionary * message = _messagesArray[[indexPath indexAtPosition:1]];
     if (!message[kMessageRuntimeSentBy]) {
         
-        // Random just for now, set at runtime
-        int sentByNumb = arc4random() % 2;
-        message[kMessageRuntimeSentBy] = [NSNumber numberWithInt:(sentByNumb == 0) ? kSentByOpponent : kSentByUser];
-        
-
-         // See if the sentBy associated with the message matches our currentUserId
-         if ([_currentUserId isEqualToString:message[@"from"]]) {
-            message[kMessageRuntimeSentBy] = [NSNumber numberWithInt:kSentByOpponent];
-         }
-         else {
+         if (message[@"from"] == [[PFUser currentUser]objectId]) {
             message[kMessageRuntimeSentBy] = [NSNumber numberWithInt:kSentByUser];
          }
-
+         else {
+            message[kMessageRuntimeSentBy] = [NSNumber numberWithInt:kSentByOpponent];
+         }
+    
     }
     
     // Set the cell
@@ -489,8 +476,6 @@ static int chatInputStartingHeight = 40;
 }
 
 
-
-
 - (void) setChatTitle:(NSString *)chatTitle{
     _topBar.title = chatTitle;
     _chatTitle = chatTitle;
@@ -506,15 +491,13 @@ static int chatInputStartingHeight = 40;
 
 -(void)queryForParseChatMessages {
     
-//    NSLog(@"the chatRood Id for this query is %@", self.chatRoomObjectID);
     
     PFQuery *messagesQuery = [PFQuery queryWithClassName:@"chatMessage"];
-//    [messagesQuery whereKey:@"chatRoom" equalTo:self.chatRoomObjectID];
+    [messagesQuery whereKey:@"chatRoom" equalTo:_chatRoom];
     [messagesQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         
         if (!error){
             
-//            NSLog(@"here are the objects %@", objects);
             
             self.messagesArray = [[NSMutableArray alloc]init];
             
@@ -526,33 +509,28 @@ static int chatInputStartingHeight = 40;
                 pfChatMessage.chatRoom = self.chatRoom;
                 pfChatMessage.from = object[@"from"];
                 pfChatMessage.to = object[@"to"];
-                
 
                 [self.messagesArray addObject:pfChatMessage];
-                
 
-                
-//                NSLog(@"in the middle of the query here is a pfChatMessage: %@", pfChatMessage);
-                
             }
-            
-            NSLog(@"messages Array: %@", _messagesArray);
             
         } else if (error) {
             NSLog(@"the error is %@", error);
         }
         
+//        [self performSelector:@selector(logChatsAfterDelay) withObject:nil afterDelay:10];
+        
         [_myCollectionView reloadData];
         [self scrollToBottom];
         
-        
-        
-//        NSLog(@"the messages array is now, at the end of the query %@", self.messagesArray);
     }];
     
 
 }
 
+-(void)logChatsAfterDelay {
+    NSLog(@"here, after a delay is the messages array: %@", _messagesArray);
+}
 
 
 @end
