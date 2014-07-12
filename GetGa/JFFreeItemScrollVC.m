@@ -238,9 +238,6 @@
     ChatController *chatVC = segue.destinationViewController;
     chatVC.chatRoom = self.selectedChat;
     chatVC.chatRoomTitle =  self.giveItem.itemGiver.giveGetterName;
-    
-
-
 
 }
 

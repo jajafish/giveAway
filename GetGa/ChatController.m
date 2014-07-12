@@ -115,10 +115,11 @@ static int chatInputStartingHeight = 40;
     
     self.navigationItem.title = self.chatRoomTitle;
     
-
+    NSLog(@"current user is %@", [PFUser currentUser]);
+    NSLog(@"user 1 is %@", _user1);
+    NSLog(@"user 2 of this chatroom is %@", _user2);
     
-
-
+    
     
 }
 
@@ -246,7 +247,7 @@ static int chatInputStartingHeight = 40;
     
     
     PFObject *chatMessage = [PFObject objectWithClassName:@"chatMessage"];
-    [chatMessage setObject:[PFUser currentUser] forKey:@"from"];
+    [chatMessage setObject:_user1 forKey:@"from"];
     [chatMessage setObject:self.user2 forKey:@"to"];
     chatMessage[@"messageText"] = message[kMessageContent];
     chatMessage[@"messageTime"] = message[kMessageTimestamp];

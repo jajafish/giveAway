@@ -53,13 +53,14 @@
     self.giveSomethingAwayButton.layer.borderColor = [UIColor blackColor].CGColor;
     
     self.blurView.translucentAlpha = 1;
+    
+    [self reloadParseData];
 
     
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    [self reloadParseData];
     self.title = @"Free Stuff";
 }
 
@@ -68,7 +69,7 @@
     self.availableFreeStuff = [[NSMutableArray alloc]init];
     
     PFQuery *query = [PFQuery queryWithClassName:@"giveItem"];
-    [query whereKey:@"giver" notEqualTo:[PFUser currentUser]];
+//    [query whereKey:@"giver" notEqualTo:[PFUser currentUser]];
     [query includeKey:@"giveItemPhoto"];
     [query includeKey:@"giver"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
