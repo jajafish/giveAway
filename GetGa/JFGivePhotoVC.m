@@ -86,8 +86,6 @@
         [self performSegueWithIdentifier:@"givePhotoToGiveDetailsSegue" sender:self];
         
     
-    
-
 }
 
 

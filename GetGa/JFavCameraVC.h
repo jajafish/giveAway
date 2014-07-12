@@ -13,7 +13,7 @@
 #import <ImageIO/ImageIO.h>
 #import <QuartzCore/QuartzCore.h>
 
-@interface JFavCameraVC : UIViewController
+@interface JFavCameraVC : UIViewController <UINavigationControllerDelegate>
 
 @property (nonatomic, retain) IBOutlet UIView *vImagePreview;
 
@@ -22,5 +22,7 @@
 @property(nonatomic, retain) AVCaptureStillImageOutput *stillImageOutput;
 
 @property (strong, nonatomic) IBOutlet UIImageView *outputImageView;
+
+@property (strong, nonatomic) UIImage *imageForNext;
 
 @end

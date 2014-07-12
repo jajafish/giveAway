@@ -7,6 +7,7 @@
 //
 
 #import "JFavCameraVC.h"
+#import "JFGiveItemDetailsVC.h"
 
 
 @interface JFavCameraVC ()
@@ -98,9 +99,28 @@
         
         NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
         UIImage *image = [[UIImage alloc]initWithData:imageData];
+        _imageForNext = image;
         
-        _outputImageView.image = image;
+        
+        
+        [self performSegueWithIdentifier:@"givePhotoToGiveDetailsSegue" sender:self];
+        
+//        _outputImageView.image = image;
     }];
+    
+}
+
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    
+    if ([segue.identifier isEqualToString:@"givePhotoToGiveDetailsSegue"]){
+        if ([segue.destinationViewController isKindOfClass:[JFGiveItemDetailsVC class]]){
+            JFGiveItemDetailsVC *targetVC = segue.destinationViewController;
+            targetVC.giveItemImage = _imageForNext;
+//            targetVC.rootVC = self.mainItemsCollectionVC;
+        }
+    }
     
 }
 

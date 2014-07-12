@@ -342,8 +342,6 @@
 				E7B3734C1937D81200CA5EBC /* model */,
 				E775594A19325CC600CD76A0 /* Images.xcassets */,
 				E775593919325CC600CD76A0 /* Supporting Files */,
-				E73837161970D5D700F8398C /* JFavCameraVC.h */,
-				E73837171970D5D700F8398C /* JFavCameraVC.m */,
 			);
 			path = GetGa;
 			sourceTree = "<group>";
@@ -480,6 +478,8 @@
 			children = (
 				E705E0B919367B6A00CD2E3A /* JFGivePhotoVC.h */,
 				E705E0BA19367B6A00CD2E3A /* JFGivePhotoVC.m */,
+				E73837161970D5D700F8398C /* JFavCameraVC.h */,
+				E73837171970D5D700F8398C /* JFavCameraVC.m */,
 			);
 			name = "give new item photo";
 			sourceTree = "<group>";
