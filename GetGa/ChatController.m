@@ -246,13 +246,17 @@ static int chatInputStartingHeight = 40;
     chatMessage[@"messageText"] = message[kMessageContent];
     chatMessage[@"messageTime"] = message[kMessageTimestamp];
     chatMessage[@"chatRoom"] = self.chatRoom;
-    [chatMessage saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        NSLog(@"saved this message to Parse");
-    }];
-
-
+    
+//    [chatMessage saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//        NSLog(@"saved this message to Parse");
+//        [self queryForParseChatMessages];
+//    }];
+    
+    [chatMessage save];
     [self queryForParseChatMessages];
     
+
+
 }
 
 #pragma mark KEYBOARD NOTIFICATIONS
@@ -439,6 +443,7 @@ static int chatInputStartingHeight = 40;
 
     // Set Who Sent Message
     NSMutableDictionary * message = _messagesArray[[indexPath indexAtPosition:1]];
+    
     if (!message[kMessageRuntimeSentBy]) {
         
          if (message[@"from"] == [[PFUser currentUser]objectId]) {
