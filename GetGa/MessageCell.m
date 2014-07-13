@@ -15,6 +15,7 @@
 
 #import "MessageCell.h"
 #import "MyMacros.h"
+#import "PFChatMessage.h"
 
 // External Constants
 int const outlineSpace = 22; // 11 px on each side for border
@@ -143,7 +144,7 @@ static int minimumHeight = 30;
     _userColor = userColor;
 }
 
-- (void) setMessage:(NSDictionary *)message {
+- (void) setMessage:(PFChatMessage *)message {
     _message = message;
     [self drawCell];
 }

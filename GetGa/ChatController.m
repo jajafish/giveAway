@@ -142,6 +142,8 @@ static int chatInputStartingHeight = 40;
     
     NSLog(@"the chatRoom is %@", _chatRoom);
     NSLog(@"the chatRoom Object ID is %@", _chatRoomObjectID);
+    
+
 
     
 }
@@ -442,11 +444,13 @@ static int chatInputStartingHeight = 40;
                                                                   forIndexPath:indexPath];
 
     // Set Who Sent Message
-    NSMutableDictionary * message = _messagesArray[[indexPath indexAtPosition:1]];
+    PFChatMessage * message = _messagesArray[[indexPath indexAtPosition:1]];
     
     if (!message[kMessageRuntimeSentBy]) {
         
-         if (message[@"from"] == [[PFUser currentUser]objectId]) {
+//        if (self.newlyCreatedObject.creator.objectId == [PFUser currentUser].objectId)
+        
+         if ([message.from.objectId isEqualToString:[PFUser currentUser].objectId]) {
             message[kMessageRuntimeSentBy] = [NSNumber numberWithInt:kSentByUser];
          }
          else {
