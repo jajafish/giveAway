@@ -8,10 +8,12 @@
 
 #import "JFChatListNavVC.h"
 #import "JFChatListNavCell.h"
+#import "ChatController.h"
 
 @interface JFChatListNavVC ()
 
 @property (strong, nonatomic) NSMutableArray *availableChatRooms;
+@property (strong, nonatomic) PFChatRoom *selectedChat;
 
 @end
 
@@ -83,6 +85,22 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    
+    if ([segue.destinationViewController isKindOfClass:[UINavigationController class]]){
+//        
+//        if ([segue.destinationViewController isKindOfClass:[ChatController class]]){
+//            ChatController *chatVC = segue.destinationViewController;
+//            chatVC.chatRoom = self.selectedChat;
+//            //    chatVC.chatRoomTitle =  self.giveItem.itemGiver.giveGetterName;
+//            NSLog(@"preparing segue for class of %@", [chatVC class]);
+//        }
+        
+        UINavigationController *navController = segue.destinationViewController;
+        ChatController *chatVC = (ChatController*)navController.topViewController;
+        chatVC.chatRoom = self.selectedChat;
+    
+    }
+
 
 }
 
@@ -91,6 +109,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    _selectedChat = _availableChatRooms[indexPath.row];
     [self performSegueWithIdentifier:@"firstRightSegue" sender:indexPath];
 }
 

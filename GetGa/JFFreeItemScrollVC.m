@@ -60,12 +60,10 @@
 
     
     self.freeItemImageView.image = self.giveItem.image;
-//    self.freeItemImageView.image = [UIImage imageNamed:@"dad.png"];
     
     self.freeItemImageNameLabel.text = self.giveItem.giveItemName;
     self.freeItemCategoryLabel.text = self.giveItem.itemCategory;
     self.freeItemLogisticsTextView.text = self.giveItem.itemDetailsLogistics;
-//    self.freeItemGiverName.text = self.giveItem.itemGiverName;
     self.freeItemGiverName.text = self.giveItem.itemGiver.giveGetterName;
     
     [self.scoller setContentOffset:CGPointMake(self.scoller.contentOffset.x, 0)
@@ -88,6 +86,9 @@
     
     
     self.freeItemGiverPhoto.image = self.giveItem.itemGiver.giveGetterProfileImage;
+    
+    self.navigationController.view.backgroundColor = [UIColor blackColor];
+    self.navigationItem.title = self.giveItem.giveItemName;
 
     
 //    ITEM ON MAP
@@ -101,7 +102,7 @@
     MKCoordinateRegion startRegion = MKCoordinateRegionMakeWithDistance(cord, 1500, 1500);
     [self.freeItemLocationMapView setRegion:startRegion animated:YES];
     
-    [self.freeItemLocationMapView addOverlay:[MKCircle circleWithCenterCoordinate:cord radius:800]];
+    [self.freeItemLocationMapView addOverlay:[MKCircle circleWithCenterCoordinate:cord radius:200]];
 
     
     [self queryForItemGiverProfilePhoto];
@@ -112,12 +113,12 @@
     
     self.freeItemLogisticsTextView.editable = NO;
     
-    
-    self.navigationController.view.backgroundColor = [UIColor blackColor];
-    self.navigationItem.title = self.giveItem.giveItemName;
-    
-    
+
 }
+
+
+
+
 
 -(void)viewWillDisappear:(BOOL)animated
 {
@@ -157,6 +158,26 @@
     [self goToChatRoom];
     
 }
+
+
+//-(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+//{
+//    static NSString *identifier = @"Current";
+//    MKAnnotationView *annotationView = (MKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
+//    
+//    if (annotationView == nil){
+//        annotationView = [[MKAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:identifier];
+//    }
+//    
+//    if (annotation == mapView.userLocation)
+//        return nil;
+//    
+//    annotationView.image = [UIImage imageNamed:@"dad.png"];
+//    annotationView.annotation = annotation;
+//    annotationView.canShowCallout = YES;
+//    return annotationView;
+//    
+//}
 
 
 -(MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay {
@@ -238,9 +259,6 @@
     ChatController *chatVC = segue.destinationViewController;
     chatVC.chatRoom = self.selectedChat;
     chatVC.chatRoomTitle =  self.giveItem.itemGiver.giveGetterName;
-    
-
-
 
 }
 

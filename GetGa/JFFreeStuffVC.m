@@ -53,13 +53,14 @@
     self.giveSomethingAwayButton.layer.borderColor = [UIColor blackColor].CGColor;
     
     self.blurView.translucentAlpha = 1;
+    
+    [self reloadParseData];
 
     
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    [self reloadParseData];
     self.title = @"Free Stuff";
 }
 

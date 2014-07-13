@@ -14,6 +14,7 @@
 
 
 #import <UIKit/UIKit.h>
+#import "PFChatMessage.h"
 
 /*!
  Who sent the message
@@ -45,7 +46,7 @@ FOUNDATION_EXPORT NSString * const kMessageContent;
 /*
  Message Property
  */
-@property (strong, nonatomic) NSDictionary * message;
+@property (strong, nonatomic) PFChatMessage * message;
 
 /*!
  Opponent bubble color
