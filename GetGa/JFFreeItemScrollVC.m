@@ -7,6 +7,7 @@
 //
 
 #import "JFFreeItemScrollVC.h"
+#import "JFFreeItemDescriptionTextView.h"
 #import <MapKit/MapKit.h>
 #import <ILTranslucentView.h>
 #import <QuartzCore/QuartzCore.h>
@@ -18,7 +19,7 @@
 @property (strong, nonatomic) IBOutlet UIImageView *freeItemImageView;
 @property (strong, nonatomic) IBOutlet UILabel *freeItemImageNameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *freeItemCategoryLabel;
-@property (strong, nonatomic) IBOutlet UITextView *freeItemLogisticsTextView;
+@property (strong, nonatomic) IBOutlet JFFreeItemDescriptionTextView *freeItemLogisticsTextView;
 @property (strong, nonatomic) IBOutlet MKMapView *freeItemLocationMapView;
 @property (strong, nonatomic) IBOutlet UIImageView *freeItemGiverPhoto;
 @property (strong, nonatomic) IBOutlet UILabel *freeItemGiverName;
@@ -146,10 +147,8 @@
 //    self.navigationController.navigationBar.shadowImage = [UIImage new];
 
     
- 
     
-    
-    [self textViewDidChange:self.freeItemLogisticsTextView];
+//    [self textViewDidChange:self.freeItemLogisticsTextView];
 }
 
 
@@ -187,7 +186,7 @@
     return circleView;
 }
 
-- (void)textViewDidChange:(UITextView *)textView
+- (void)textViewDidChange:(JFFreeItemDescriptionTextView *)textView
 {
     CGFloat fixedWidth = _freeItemLogisticsTextView.frame.size.width;
     CGSize newSize = [_freeItemLogisticsTextView sizeThatFits:CGSizeMake(fixedWidth, MAXFLOAT)];
