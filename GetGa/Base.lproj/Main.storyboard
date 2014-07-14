@@ -536,7 +536,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="qPc-gh-trS" customClass="JFFreeItemDescriptionTextView">
-                                                    <rect key="frame" x="7" y="-11" width="305" height="90"/>
+                                                    <rect key="frame" x="7" y="-12" width="305" height="90"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="1" green="0.55299124749999995" blue="0.41401602599999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -544,6 +544,9 @@
                                                 </textView>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="freeItemLogisticsTextView" destination="qPc-gh-trS" id="yXv-ee-hqB"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell2" rowHeight="245" id="O0a-Lm-c7c" customClass="JFFreeItemMapTableViewCell">
                                         <rect key="frame" x="0.0" y="100" width="319" height="245"/>
@@ -558,6 +561,9 @@
                                                 </mapView>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="freeItemLocationMapView" destination="fOn-1o-cK5" id="d0J-iY-xTy"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell3" rowHeight="128" id="2V1-AH-Cov" customClass="JFFreeItemGiverTableViewCell">
                                         <rect key="frame" x="0.0" y="345" width="319" height="128"/>
@@ -578,6 +584,10 @@
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="freeItemGiverName" destination="xpP-qn-A1I" id="q4n-ST-O6b"/>
+                                            <outlet property="freeItemGiverPhoto" destination="aO3-eB-mTM" id="2fK-eX-U7U"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
 @interface JFFreeItemMapTableViewCell : UITableViewCell
 
-//@property (strong, nonatomic) IBOutlet MKMapView *freeItemLocationMapView;
+@property (strong, nonatomic) IBOutlet MKMapView *freeItemLocationMapView;
 
 @end

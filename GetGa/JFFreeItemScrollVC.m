@@ -91,12 +91,11 @@
     self.iWantThisFreeItemButton.layer.borderColor = [UIColor blackColor].CGColor;
     
     
-//    self.freeItemGiverPhoto.image = self.giveItem.itemGiver.giveGetterProfileImage;
-//    
-//    self.navigationController.view.backgroundColor = [UIColor blackColor];
-//    self.navigationItem.title = self.giveItem.giveItemName;
-//    
-//    self.freeItemLogisticsTextView.editable = NO;
+
+  
+    self.navigationController.view.backgroundColor = [UIColor blackColor];
+    self.navigationItem.title = self.giveItem.giveItemName;
+
     
 
     
@@ -133,17 +132,62 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-        static NSString *cellID = @"Cell";
-        JFFreeItemDescriptionTableViewCell *cell = [_freeItemDataTable dequeueReusableCellWithIdentifier:cellID];
-        
-        if (cell == nil){
-            cell = [[JFFreeItemDescriptionTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+    UITableViewCell *cell;
+    
+    
+    switch (indexPath.row) {
+        case 0: {
+            
+            static NSString *cellID = @"Cell1";
+            JFFreeItemDescriptionTableViewCell *cell = [_freeItemDataTable dequeueReusableCellWithIdentifier:cellID];
+            
+            if (cell == nil){
+                cell = [[JFFreeItemDescriptionTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+            }
+            
+            cell.freeItemLogisticsTextView.text = self.giveItem.itemDetailsLogistics;
+            
+            return cell;
+            
+            break;
         }
         
-        cell.textLabel.text = @"I love everybody!";
-        
-            return  cell;
+            
+        case 1: {
+            
+            static NSString *cellID = @"Cell2";
+            JFFreeItemMapTableViewCell *cell = [_freeItemDataTable dequeueReusableCellWithIdentifier:cellID];
+            
+            if (cell == nil){
+                cell = [[JFFreeItemMapTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+            }
+            
+            cell.textLabel.text = @"I love ABSOLUTELY everybody!";
+            
+            return cell;
     
+        }
+            
+        case 2: {
+        
+            static NSString *cellID = @"Cell3";
+            JFFreeItemGiverTableViewCell *cell = [_freeItemDataTable dequeueReusableCellWithIdentifier:cellID];
+            if (cell == nil){
+                cell = [[JFFreeItemGiverTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+            }
+            cell.freeItemGiverName.text = self.giveItem.itemGiverName;
+//            cell.freeItemGiverPhoto.image = self.giveItem.itemGiver.giveGetterProfileImage;
+            cell.freeItemGiverPhoto.image = [UIImage imageNamed:@"dad.png"];
+            
+            return cell;
+            
+        }
+            
+        default:
+            break;
+    }
+    
+    return cell;
     
 }
 
