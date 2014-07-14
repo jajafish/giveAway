@@ -520,50 +520,69 @@
             <objects>
                 <viewController id="H3L-uM-9tS" customClass="JFFreeItemScrollVC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleAspectFit" id="aBS-EV-ZdE">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="956"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="742"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Nuf-gH-3iT">
-                                <rect key="frame" x="0.0" y="-64" width="320" height="958"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="5JZ-o8-ato">
+                                <rect key="frame" x="1" y="209" width="319" height="471"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" id="pjr-Th-TVe">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="832"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="qpC-f0-8E7">
-                                                <rect key="frame" x="-1" y="63" width="322" height="244"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            </imageView>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="qPc-gh-trS" customClass="JFFreeItemDescriptionTextView">
-                                                <rect key="frame" x="-1" y="308" width="320" height="90"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="1" green="0.55299124749999995" blue="0.41401602599999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                            </textView>
-                                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="fOn-1o-cK5">
-                                                <rect key="frame" x="0.0" y="436" width="321" height="160"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            </mapView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="aO3-eB-mTM">
-                                                <rect key="frame" x="6" y="452" width="128" height="128"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            </imageView>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="offered by" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xpP-qn-A1I">
-                                                <rect key="frame" x="6" y="604" width="305" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </view>
-                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </scrollView>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell1" rowHeight="78" id="ctV-zW-eyk" customClass="JFFreeItemDescriptionTableViewCell">
+                                        <rect key="frame" x="0.0" y="22" width="319" height="78"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ctV-zW-eyk" id="3GQ-TT-Fy6">
+                                            <rect key="frame" x="0.0" y="0.0" width="319" height="78"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="qPc-gh-trS" customClass="JFFreeItemDescriptionTextView">
+                                                    <rect key="frame" x="7" y="-11" width="305" height="90"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="1" green="0.55299124749999995" blue="0.41401602599999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell2" rowHeight="245" id="O0a-Lm-c7c" customClass="JFFreeItemMapTableViewCell">
+                                        <rect key="frame" x="0.0" y="100" width="319" height="245"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O0a-Lm-c7c" id="26O-fH-duc">
+                                            <rect key="frame" x="0.0" y="0.0" width="319" height="245"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="fOn-1o-cK5">
+                                                    <rect key="frame" x="7" y="53" width="305" height="160"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                </mapView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell3" rowHeight="128" id="2V1-AH-Cov" customClass="JFFreeItemGiverTableViewCell">
+                                        <rect key="frame" x="0.0" y="345" width="319" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2V1-AH-Cov" id="27L-l2-yhc">
+                                            <rect key="frame" x="0.0" y="0.0" width="319" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="offered by" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xpP-qn-A1I">
+                                                    <rect key="frame" x="-75" y="53" width="305" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="aO3-eB-mTM">
+                                                    <rect key="frame" x="158" y="0.0" width="128" height="128"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gcq-kj-216">
-                                <rect key="frame" x="5" y="902" width="310" height="54"/>
+                                <rect key="frame" x="5" y="688" width="310" height="54"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="I Want This">
@@ -574,6 +593,10 @@
                                     <action selector="iWantThisFreeItemButtonPressed:" destination="H3L-uM-9tS" eventType="touchUpInside" id="CEQ-ru-Bey"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="qpC-f0-8E7">
+                                <rect key="frame" x="-2" y="0.0" width="322" height="201"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -581,22 +604,17 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="956"/>
+                    <size key="freeformSize" width="320" height="742"/>
                     <connections>
-                        <outlet property="freeItemGiverName" destination="xpP-qn-A1I" id="KhB-zs-yUf"/>
-                        <outlet property="freeItemGiverPhoto" destination="aO3-eB-mTM" id="NKN-s8-36u"/>
+                        <outlet property="freeItemDataTable" destination="5JZ-o8-ato" id="Nei-Fj-aul"/>
                         <outlet property="freeItemImageView" destination="qpC-f0-8E7" id="GEg-sj-jJw"/>
-                        <outlet property="freeItemLocationMapView" destination="fOn-1o-cK5" id="KJ0-0U-Ma7"/>
-                        <outlet property="freeItemLogisticsTextView" destination="qPc-gh-trS" id="gZ8-Nu-9aj"/>
                         <outlet property="iWantThisFreeItemButton" destination="gcq-kj-216" id="rdu-bd-FZN"/>
-                        <outlet property="scoller" destination="Nuf-gH-3iT" id="L8Z-OJ-KEF"/>
-                        <outlet property="scrollContentView" destination="pjr-Th-TVe" id="uL8-34-77m"/>
                         <segue destination="Jy0-6S-Bhp" kind="push" identifier="freeItemScrollToChatModal" id="VSv-ol-RGI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NC4-Lu-Ite" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4961" y="3552"/>
+            <point key="canvasLocation" x="4955" y="3552"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kdO-aG-cJe">

@@ -14,15 +14,17 @@
 #import <CoreLocation/CoreLocation.h>
 #import "ChatController.h"
 #import "PFChatRoom.h"
+#import "JFFreeItemDescriptionTableViewCell.h"
+#import "JFFreeItemMapTableViewCell.h"
+#import "JFFreeItemGiverTableViewCell.h"
 
-@interface JFFreeItemScrollVC () <MKMapViewDelegate, UITextViewDelegate>
+@interface JFFreeItemScrollVC () <MKMapViewDelegate, UITextViewDelegate, UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UIImageView *freeItemImageView;
 @property (strong, nonatomic) IBOutlet UILabel *freeItemImageNameLabel;
-@property (strong, nonatomic) IBOutlet UILabel *freeItemCategoryLabel;
-@property (strong, nonatomic) IBOutlet JFFreeItemDescriptionTextView *freeItemLogisticsTextView;
-@property (strong, nonatomic) IBOutlet MKMapView *freeItemLocationMapView;
-@property (strong, nonatomic) IBOutlet UIImageView *freeItemGiverPhoto;
-@property (strong, nonatomic) IBOutlet UILabel *freeItemGiverName;
+
+@property (strong, nonatomic) IBOutlet UITableView *freeItemDataTable;
+
+
 @property (strong, nonatomic) IBOutlet UIButton *iWantThisFreeItemButton;
 @property (strong, nonatomic) IBOutlet UIView *scrollContentView;
 
@@ -57,15 +59,18 @@
     [self.scoller setScrollEnabled:YES];
     [self.scoller setContentSize:CGSizeMake(320, 936)];
     
-    self.freeItemLogisticsTextView.delegate = self;
+//    self.freeItemLogisticsTextView.delegate = self;
+    
+    self.freeItemDataTable.delegate = self;
+    self.freeItemDataTable.dataSource = self;
 
     
-    self.freeItemImageView.image = self.giveItem.image;
-    
-    self.freeItemImageNameLabel.text = self.giveItem.giveItemName;
-    self.freeItemCategoryLabel.text = self.giveItem.itemCategory;
-    self.freeItemLogisticsTextView.text = self.giveItem.itemDetailsLogistics;
-    self.freeItemGiverName.text = self.giveItem.itemGiver.giveGetterName;
+//    self.freeItemImageView.image = self.giveItem.image;
+//    
+//    self.freeItemImageNameLabel.text = self.giveItem.giveItemName;
+//    self.freeItemCategoryLabel.text = self.giveItem.itemCategory;
+//    self.freeItemLogisticsTextView.text = self.giveItem.itemDetailsLogistics;
+//    self.freeItemGiverName.text = self.giveItem.itemGiver.giveGetterName;
     
     [self.scoller setContentOffset:CGPointMake(self.scoller.contentOffset.x, 0)
                              animated:NO];
@@ -86,37 +91,71 @@
     self.iWantThisFreeItemButton.layer.borderColor = [UIColor blackColor].CGColor;
     
     
-    self.freeItemGiverPhoto.image = self.giveItem.itemGiver.giveGetterProfileImage;
-    
-    self.navigationController.view.backgroundColor = [UIColor blackColor];
-    self.navigationItem.title = self.giveItem.giveItemName;
-
-    
-//    ITEM ON MAP
-    double lat = [self.giveItem.locationData[@"latitude"] doubleValue];
-    double lng = [self.giveItem.locationData[@"longitude"] doubleValue];
-    
-    self.freeItemLocationMapView.delegate = self;
-    CLLocationCoordinate2D cord = CLLocationCoordinate2DMake(lat, lng);
-    itemLocation = cord;
-    
-    MKCoordinateRegion startRegion = MKCoordinateRegionMakeWithDistance(cord, 1500, 1500);
-    [self.freeItemLocationMapView setRegion:startRegion animated:YES];
-    
-    [self.freeItemLocationMapView addOverlay:[MKCircle circleWithCenterCoordinate:cord radius:200]];
-
-    
-    [self queryForItemGiverProfilePhoto];
-    self.freeItemGiverPhoto.layer.cornerRadius = self.freeItemGiverPhoto.frame.size.width / 2;
-    self.freeItemGiverPhoto.clipsToBounds = YES;
-    self.freeItemGiverPhoto.layer.borderWidth = 1.5f;
-    self.freeItemGiverPhoto.layer.borderColor = [UIColor blackColor].CGColor;
-    
-    self.freeItemLogisticsTextView.editable = NO;
+//    self.freeItemGiverPhoto.image = self.giveItem.itemGiver.giveGetterProfileImage;
+//    
+//    self.navigationController.view.backgroundColor = [UIColor blackColor];
+//    self.navigationItem.title = self.giveItem.giveItemName;
+//    
+//    self.freeItemLogisticsTextView.editable = NO;
     
 
+    
+////    ITEM ON MAP
+//    double lat = [self.giveItem.locationData[@"latitude"] doubleValue];
+//    double lng = [self.giveItem.locationData[@"longitude"] doubleValue];
+//    self.freeItemLocationMapView.delegate = self;
+//    CLLocationCoordinate2D cord = CLLocationCoordinate2DMake(lat, lng);
+//    itemLocation = cord;
+//    MKCoordinateRegion startRegion = MKCoordinateRegionMakeWithDistance(cord, 1500, 1500);
+//    [self.freeItemLocationMapView setRegion:startRegion animated:YES];
+//    [self.freeItemLocationMapView addOverlay:[MKCircle circleWithCenterCoordinate:cord radius:200]];
+//
+////    QUERY FOR GIVER PHOTO
+//    [self queryForItemGiverProfilePhoto];
+//    self.freeItemGiverPhoto.layer.cornerRadius = self.freeItemGiverPhoto.frame.size.width / 2;
+//    self.freeItemGiverPhoto.clipsToBounds = YES;
+//    self.freeItemGiverPhoto.layer.borderWidth = 1.5f;
+//    self.freeItemGiverPhoto.layer.borderColor = [UIColor blackColor].CGColor;
+    
+    
+//    PARALLAX SCROLL EFFECT
+    UIView *tableHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, 180.0)];
+    UIView *blackBorderView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 179.0, self.view.frame.size.width, 1.0)];
+    blackBorderView.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8];
+    [tableHeaderView addSubview:blackBorderView];
+    
 }
 
+
+
+#pragma mark - Table View
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+        static NSString *cellID = @"Cell";
+        JFFreeItemDescriptionTableViewCell *cell = [_freeItemDataTable dequeueReusableCellWithIdentifier:cellID];
+        
+        if (cell == nil){
+            cell = [[JFFreeItemDescriptionTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+        }
+        
+        cell.textLabel.text = @"I love everybody!";
+        
+            return  cell;
+    
+    
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 3;
+}
 
 
 
@@ -145,7 +184,6 @@
 //    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
 //                                                  forBarMetrics:UIBarMetricsDefault];
 //    self.navigationController.navigationBar.shadowImage = [UIImage new];
-
     
     
 //    [self textViewDidChange:self.freeItemLogisticsTextView];
@@ -159,25 +197,6 @@
 }
 
 
-//-(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
-//{
-//    static NSString *identifier = @"Current";
-//    MKAnnotationView *annotationView = (MKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
-//    
-//    if (annotationView == nil){
-//        annotationView = [[MKAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:identifier];
-//    }
-//    
-//    if (annotation == mapView.userLocation)
-//        return nil;
-//    
-//    annotationView.image = [UIImage imageNamed:@"dad.png"];
-//    annotationView.annotation = annotation;
-//    annotationView.canShowCallout = YES;
-//    return annotationView;
-//    
-//}
-
 
 -(MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay {
     MKCircleView *circleView = [[MKCircleView alloc] initWithCircle:(MKCircle *)overlay];
@@ -188,11 +207,11 @@
 
 - (void)textViewDidChange:(JFFreeItemDescriptionTextView *)textView
 {
-    CGFloat fixedWidth = _freeItemLogisticsTextView.frame.size.width;
-    CGSize newSize = [_freeItemLogisticsTextView sizeThatFits:CGSizeMake(fixedWidth, MAXFLOAT)];
-    CGRect newFrame = _freeItemLogisticsTextView.frame;
-    newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
-    _freeItemLogisticsTextView.frame = newFrame;
+  //  CGFloat fixedWidth = _freeItemLogisticsTextView.frame.size.width;
+   // CGSize newSize = [_freeItemLogisticsTextView sizeThatFits:CGSizeMake(fixedWidth, MAXFLOAT)];
+ //   CGRect newFrame = _freeItemLogisticsTextView.frame;
+   // newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
+//    _freeItemLogisticsTextView.frame = newFrame;
 }
 
 
@@ -206,12 +225,14 @@
         
         PFFile *photoFile = theOnlyPhoto[@"photoPictureFile"];
         [photoFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-            self.freeItemGiverPhoto.image = [UIImage imageWithData:data];
+     //       self.freeItemGiverPhoto.image = [UIImage imageWithData:data];
         }];
         
     }];
     
 }
+
+
 
 -(void)goToChatRoom
 {
