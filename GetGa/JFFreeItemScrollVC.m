@@ -18,7 +18,7 @@
 #import "JFFreeItemMapTableViewCell.h"
 #import "JFFreeItemGiverTableViewCell.h"
 
-@interface JFFreeItemScrollVC () <MKMapViewDelegate, UITextViewDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface JFFreeItemScrollVC () <MKMapViewDelegate, UITextViewDelegate, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
 @property (strong, nonatomic) IBOutlet UIImageView *freeItemImageView;
 @property (strong, nonatomic) IBOutlet UILabel *freeItemImageNameLabel;
 
@@ -26,7 +26,7 @@
 
 
 @property (strong, nonatomic) IBOutlet UIButton *iWantThisFreeItemButton;
-@property (strong, nonatomic) IBOutlet UIView *scrollContentView;
+
 
 @property (strong, nonatomic) UIImage *navBackgroundImage;
 @property (strong, nonatomic) UIImage *navBackgroundShadowImage;
@@ -36,6 +36,10 @@
 @property (strong, nonatomic) IBOutlet ILTranslucentView *blurView;
 
 @property (strong, nonatomic) PFChatRoom *selectedChat;
+
+@property double headerImageYOffset;
+
+@property (strong, nonatomic) UIImageView *headerImageView;
 
 
 @end
@@ -51,35 +55,17 @@
 {
     
     [super viewDidLoad];
-    
-    NSLog(@"item giver is %@", self.giveItem.itemGiver.objectId);
-    
-    
-    
-    [self.scoller setScrollEnabled:YES];
-    [self.scoller setContentSize:CGSizeMake(320, 936)];
-    
-//    self.freeItemLogisticsTextView.delegate = self;
+
     
     self.freeItemDataTable.delegate = self;
     self.freeItemDataTable.dataSource = self;
 
     
-//    self.freeItemImageView.image = self.giveItem.image;
-//    
-//    self.freeItemImageNameLabel.text = self.giveItem.giveItemName;
-//    self.freeItemCategoryLabel.text = self.giveItem.itemCategory;
-//    self.freeItemLogisticsTextView.text = self.giveItem.itemDetailsLogistics;
-//    self.freeItemGiverName.text = self.giveItem.itemGiver.giveGetterName;
-    
-    [self.scoller setContentOffset:CGPointMake(self.scoller.contentOffset.x, 0)
-                             animated:NO];
-    
-    self.scoller.delegate = self;
+    self.freeItemImageView.image = [UIImage imageNamed:@"dad.png"];
 
+    self.freeItemImageNameLabel.text = self.giveItem.giveItemName;
     
     NSLog(@"%@", NSStringFromCGRect(self.iWantThisFreeItemButton.frame));
-    
     
     self.blurView.translucentAlpha = 0.8;
     self.blurView.translucentStyle = UIBarStyleBlack;
@@ -96,6 +82,27 @@
     self.navigationController.view.backgroundColor = [UIColor blackColor];
     self.navigationItem.title = self.giveItem.giveItemName;
 
+    
+    
+    // PARALLAX Scroll
+    
+    
+    UIView *tableHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, 180.0)];
+    UIView *blackBorderView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 179.0, self.view.frame.size.width, 1.0)];
+    blackBorderView.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8];
+    [tableHeaderView addSubview:blackBorderView];
+    _freeItemDataTable.tableHeaderView = tableHeaderView;
+    
+    _headerImageYOffset = -150.0;
+    _headerImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"dad.png"]];
+    CGRect headerImageFrame = _headerImageView.frame;
+    headerImageFrame.origin.y = _headerImageYOffset;
+    _headerImageView.frame = headerImageFrame;
+//    _freeItemDataTable.tableHeaderView = _headerImageView;
+    [self.view insertSubview:_headerImageView belowSubview:_freeItemDataTable];
+    
+    
+    
     
 
     
@@ -117,14 +124,25 @@
 //    self.freeItemGiverPhoto.layer.borderColor = [UIColor blackColor].CGColor;
     
     
-//    PARALLAX SCROLL EFFECT
-    UIView *tableHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, 180.0)];
-    UIView *blackBorderView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 179.0, self.view.frame.size.width, 1.0)];
-    blackBorderView.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8];
-    [tableHeaderView addSubview:blackBorderView];
+
     
 }
 
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGFloat scrollOffset = scrollView.contentOffset.y;
+    CGRect headerImageFrame = _headerImageView.frame;
+    
+    if (scrollOffset < 0){
+        headerImageFrame.origin.y = _headerImageYOffset - ((scrollOffset / 3));
+    } else {
+        headerImageFrame.origin.y = _headerImageYOffset - scrollOffset;
+    }
+    
+    _headerImageView.frame = headerImageFrame;
+    
+}
 
 
 #pragma mark - Table View
@@ -133,7 +151,6 @@
 {
     
     UITableViewCell *cell;
-    
     
     switch (indexPath.row) {
         case 0: {
@@ -146,6 +163,7 @@
             }
             
             cell.freeItemLogisticsTextView.text = self.giveItem.itemDetailsLogistics;
+
             
             return cell;
             
@@ -162,7 +180,6 @@
                 cell = [[JFFreeItemMapTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
             }
             
-            cell.textLabel.text = @"I love ABSOLUTELY everybody!";
             
             return cell;
     
@@ -176,7 +193,6 @@
                 cell = [[JFFreeItemGiverTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
             }
             cell.freeItemGiverName.text = self.giveItem.itemGiverName;
-//            cell.freeItemGiverPhoto.image = self.giveItem.itemGiver.giveGetterProfileImage;
             cell.freeItemGiverPhoto.image = [UIImage imageNamed:@"dad.png"];
             
             return cell;
