@@ -15,23 +15,14 @@
 @implementation JFAppDelegate
 
 {
-    
     CLLocationManager *manager;
     CLGeocoder *geocoder;
     CLPlacemark *placemark;
-
-    
 }
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
-    
-//    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:195/255.0f green:255/255.0f blue:232/255.0f alpha:0.2]];
-
-//    [[UINavigationBar appearance] setBarTintColor:[UIColor blackColor]];
-
     
     [PFGiveItem registerSubclass];
     [JFGiverGetter registerSubclass];
@@ -67,8 +58,6 @@
 
 
 
-
-
 #pragma mark - CLLocationManagerDelegate Methods
 
 -(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
@@ -81,7 +70,6 @@
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray *)locations {
     CLLocation * newLocation = [locations lastObject];
-    // post notification that a new location has been found
     [[NSNotificationCenter defaultCenter] postNotificationName:@"newLocationNotif"
                                                         object:self
                                                       userInfo:[NSDictionary dictionaryWithObject:newLocation

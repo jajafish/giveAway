@@ -21,24 +21,14 @@
 @interface JFFreeItemScrollVC () <MKMapViewDelegate, UITextViewDelegate, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
 @property (strong, nonatomic) IBOutlet UIImageView *freeItemImageView;
 @property (strong, nonatomic) IBOutlet UILabel *freeItemImageNameLabel;
-
 @property (strong, nonatomic) IBOutlet UITableView *freeItemDataTable;
-
-
 @property (strong, nonatomic) IBOutlet UIButton *iWantThisFreeItemButton;
-
-
 @property (strong, nonatomic) UIImage *navBackgroundImage;
 @property (strong, nonatomic) UIImage *navBackgroundShadowImage;
 @property (strong, nonatomic) UIColor *navBackgroundColor;
-
-
 @property (strong, nonatomic) IBOutlet ILTranslucentView *blurView;
-
 @property (strong, nonatomic) PFChatRoom *selectedChat;
-
 @property double headerImageYOffset;
-
 @property (strong, nonatomic) UIImageView *headerImageView;
 
 
@@ -81,8 +71,6 @@
     
     
     // PARALLAX Scroll
-    
-//    
 //    UIView *tableHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, 180.0)];
 //    UIView *blackBorderView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 179.0, self.view.frame.size.width, 1.0)];
 //    blackBorderView.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.2];
@@ -103,16 +91,7 @@
     
 
     
-////    ITEM ON MAP
-//    double lat = [self.giveItem.locationData[@"latitude"] doubleValue];
-//    double lng = [self.giveItem.locationData[@"longitude"] doubleValue];
-//    self.freeItemLocationMapView.delegate = self;
-//    CLLocationCoordinate2D cord = CLLocationCoordinate2DMake(lat, lng);
-//    itemLocation = cord;
-//    MKCoordinateRegion startRegion = MKCoordinateRegionMakeWithDistance(cord, 1500, 1500);
-//    [self.freeItemLocationMapView setRegion:startRegion animated:YES];
-//    [self.freeItemLocationMapView addOverlay:[MKCircle circleWithCenterCoordinate:cord radius:200]];
-//
+
 ////    QUERY FOR GIVER PHOTO
 //    [self queryForItemGiverProfilePhoto];
 //    self.freeItemGiverPhoto.layer.cornerRadius = self.freeItemGiverPhoto.frame.size.width / 2;
@@ -121,7 +100,11 @@
 //    self.freeItemGiverPhoto.layer.borderColor = [UIColor blackColor].CGColor;
     
     
+    
 }
+
+
+
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
@@ -151,13 +134,13 @@
     if (scrollOffset < 0){
         headerImageFrame.origin.y = _headerImageYOffset - ((scrollOffset / 3));
     } else {
-//        headerImageFrame.origin.y = _headerImageYOffset - scrollOffset;
+        headerImageFrame.origin.y = _headerImageYOffset - scrollOffset;
         tableViewFrame.origin.y = scrollOffset;
 
     }
     
-    _freeItemDataTable.frame = tableViewFrame;
-//    _headerImageView.frame = headerImageFrame;
+//    _freeItemDataTable.frame = tableViewFrame;
+    _headerImageView.frame = headerImageFrame;
     
 }
 
@@ -197,7 +180,17 @@
                 cell = [[JFFreeItemMapTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
             }
             
-            
+            //    ITEM ON MAP
+            double lat = [self.giveItem.locationData[@"latitude"] doubleValue];
+            double lng = [self.giveItem.locationData[@"longitude"] doubleValue];
+            cell.freeItemLocationMapView.delegate = self;
+            CLLocationCoordinate2D cord = CLLocationCoordinate2DMake(lat, lng);
+            itemLocation = cord;
+            MKCoordinateRegion startRegion = MKCoordinateRegionMakeWithDistance(cord, 1500, 1500);
+            NSLog(@"item location is hello hello");
+            [cell.freeItemLocationMapView setRegion:startRegion animated:YES];
+            [cell.freeItemLocationMapView addOverlay:[MKCircle circleWithCenterCoordinate:cord radius:200]];
+
             return cell;
     
         }
@@ -224,6 +217,13 @@
     
 }
 
+-(MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay {
+    MKCircleView *circleView = [[MKCircleView alloc] initWithCircle:(MKCircle *)overlay];
+    circleView.fillColor = [UIColor blueColor];
+    circleView.alpha = 0.3;
+    return circleView;
+}
+
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -235,16 +235,12 @@
 }
 
 
-
-
 -(void)viewWillDisappear:(BOOL)animated
 {
     [self.navigationController.navigationBar setBackgroundImage:self.navBackgroundImage
                                                   forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.shadowImage = self.navBackgroundShadowImage;
     self.navigationController.view.backgroundColor = self.navBackgroundColor;
-    
-
     
 }
 
@@ -275,12 +271,7 @@
 
 
 
--(MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay {
-    MKCircleView *circleView = [[MKCircleView alloc] initWithCircle:(MKCircle *)overlay];
-    circleView.fillColor = [UIColor blueColor];
-    circleView.alpha = 0.3;
-    return circleView;
-}
+
 
 - (void)textViewDidChange:(JFFreeItemDescriptionTextView *)textView
 {
