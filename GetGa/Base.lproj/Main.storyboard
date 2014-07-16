@@ -606,12 +606,11 @@
                         <outlet property="freeItemDataTable" destination="5JZ-o8-ato" id="Nei-Fj-aul"/>
                         <outlet property="freeItemImageView" destination="qpC-f0-8E7" id="GEg-sj-jJw"/>
                         <outlet property="iWantThisFreeItemButton" destination="gcq-kj-216" id="rdu-bd-FZN"/>
-                        <segue destination="Jy0-6S-Bhp" kind="push" identifier="freeItemScrollToChatModal" id="VSv-ol-RGI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NC4-Lu-Ite" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4481" y="3506"/>
+            <point key="canvasLocation" x="5727" y="3432"/>
         </scene>
         <!--Free Item ScrollVC-->
         <scene sceneID="FC7-A3-Pyy">
@@ -622,11 +621,14 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="N8y-84-cSP">
-                                <rect key="frame" x="137" y="518" width="46" height="30"/>
+                                <rect key="frame" x="11" y="518" width="289" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="iWantThisFreeItemButtonPressed:" destination="geA-Sg-hmW" eventType="touchUpInside" id="sbP-NS-Kxv"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="200" sectionHeaderHeight="10" sectionFooterHeight="10" id="r8j-Lb-1Hb">
                                 <rect key="frame" x="0.0" y="187" width="320" height="304"/>
@@ -634,15 +636,15 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell1" rowHeight="160" id="n1V-Js-SNN" customClass="JFFreeItemDescriptionTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell1" rowHeight="160" id="n1V-Js-SNN" customClass="JFFreeItemDescriptionTableViewCell">
                                         <rect key="frame" x="0.0" y="55" width="320" height="160"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="n1V-Js-SNN" id="hA5-2C-CvL">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="160"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="160"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" id="Fbj-gn-FKx" customClass="JFFreeItemDescriptionTextView">
-                                                    <rect key="frame" x="15" y="20" width="290" height="99"/>
+                                                    <rect key="frame" x="15" y="20" width="257" height="99"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -653,6 +655,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="freeItemLogisticsTextView" destination="Fbj-gn-FKx" id="7ob-jJ-AtV"/>
+                                            <segue destination="Jy0-6S-Bhp" kind="push" identifier="freeItemScrollToChatModal" id="IfJ-gJ-axR"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell2" rowHeight="136" id="VzM-EC-1BK" customClass="JFFreeItemMapTableViewCell">
@@ -703,11 +706,12 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="freeItemDataTable" destination="r8j-Lb-1Hb" id="3RG-8G-rZA"/>
+                        <outlet property="iWantThisFreeItemButton" destination="N8y-84-cSP" id="gdD-Qc-7DB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yz2-i0-TTR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5033" y="3742"/>
+            <point key="canvasLocation" x="4639" y="3774"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kdO-aG-cJe">
@@ -750,6 +754,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="VSv-ol-RGI"/>
+        <segue reference="IfJ-gJ-axR"/>
     </inferredMetricsTieBreakers>
 </document>

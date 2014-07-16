@@ -187,7 +187,6 @@
             CLLocationCoordinate2D cord = CLLocationCoordinate2DMake(lat, lng);
             itemLocation = cord;
             MKCoordinateRegion startRegion = MKCoordinateRegionMakeWithDistance(cord, 1500, 1500);
-            NSLog(@"item location is hello hello");
             [cell.freeItemLocationMapView setRegion:startRegion animated:YES];
             [cell.freeItemLocationMapView addOverlay:[MKCircle circleWithCenterCoordinate:cord radius:200]];
 
@@ -241,7 +240,6 @@
                                                   forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.shadowImage = self.navBackgroundShadowImage;
     self.navigationController.view.backgroundColor = self.navBackgroundColor;
-    
 }
 
 
@@ -268,8 +266,6 @@
     [self goToChatRoom];
     
 }
-
-
 
 
 
@@ -343,11 +339,9 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    
     ChatController *chatVC = segue.destinationViewController;
     chatVC.chatRoom = self.selectedChat;
     chatVC.chatRoomTitle =  self.giveItem.itemGiver.giveGetterName;
-
 }
 
 
