@@ -82,15 +82,15 @@
     
     // PARALLAX Scroll
     
-    
-    UIView *tableHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, 180.0)];
+//    
+//    UIView *tableHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, 180.0)];
 //    UIView *blackBorderView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 179.0, self.view.frame.size.width, 1.0)];
 //    blackBorderView.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.2];
-    tableHeaderView.backgroundColor = [UIColor clearColor];
+//    tableHeaderView.backgroundColor = [UIColor clearColor];
 //    [tableHeaderView addSubview:blackBorderView];
 //    _freeItemDataTable.tableHeaderView = tableHeaderView;
     
-    _headerImageYOffset = 150.0;
+    _headerImageYOffset = -150.0;
     _headerImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"dad.png"]];
     CGRect headerImageFrame = _headerImageView.frame;
     headerImageFrame.origin.y = _headerImageYOffset;
@@ -145,14 +145,19 @@
 {
     CGFloat scrollOffset = scrollView.contentOffset.y;
     CGRect headerImageFrame = _headerImageView.frame;
+    CGRect tableViewFrame = _freeItemDataTable.frame;
+    CGFloat initialTableViewYOrigin = tableViewFrame.origin.y;
     
     if (scrollOffset < 0){
         headerImageFrame.origin.y = _headerImageYOffset - ((scrollOffset / 3));
     } else {
-        headerImageFrame.origin.y = _headerImageYOffset - scrollOffset;
+//        headerImageFrame.origin.y = _headerImageYOffset - scrollOffset;
+        tableViewFrame.origin.y = scrollOffset;
+
     }
     
-    _headerImageView.frame = headerImageFrame;
+    _freeItemDataTable.frame = tableViewFrame;
+//    _headerImageView.frame = headerImageFrame;
     
 }
 
