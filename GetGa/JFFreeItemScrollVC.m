@@ -48,8 +48,8 @@
     
     CLLocationCoordinate2D itemLocation;
     
-    
 }
+
 
 -(void)viewDidLoad
 {
@@ -59,7 +59,6 @@
     
     self.freeItemDataTable.delegate = self;
     self.freeItemDataTable.dataSource = self;
-
     
     self.freeItemImageView.image = [UIImage imageNamed:@"dad.png"];
 
@@ -71,14 +70,11 @@
     self.blurView.translucentStyle = UIBarStyleBlack;
     self.blurView.translucentTintColor = [UIColor clearColor];
     
-    
     self.iWantThisFreeItemButton.layer.cornerRadius = 5;
     self.iWantThisFreeItemButton.layer.borderWidth = 1;
     self.iWantThisFreeItemButton.layer.borderColor = [UIColor blackColor].CGColor;
     
     
-
-  
     self.navigationController.view.backgroundColor = [UIColor blackColor];
     self.navigationItem.title = self.giveItem.giveItemName;
 
@@ -88,19 +84,20 @@
     
     
     UIView *tableHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, 180.0)];
-    UIView *blackBorderView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 179.0, self.view.frame.size.width, 1.0)];
-    blackBorderView.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8];
-    [tableHeaderView addSubview:blackBorderView];
-    _freeItemDataTable.tableHeaderView = tableHeaderView;
+//    UIView *blackBorderView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 179.0, self.view.frame.size.width, 1.0)];
+//    blackBorderView.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.2];
+    tableHeaderView.backgroundColor = [UIColor clearColor];
+//    [tableHeaderView addSubview:blackBorderView];
+//    _freeItemDataTable.tableHeaderView = tableHeaderView;
     
-    _headerImageYOffset = -150.0;
+    _headerImageYOffset = 150.0;
     _headerImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"dad.png"]];
     CGRect headerImageFrame = _headerImageView.frame;
     headerImageFrame.origin.y = _headerImageYOffset;
     _headerImageView.frame = headerImageFrame;
 //    _freeItemDataTable.tableHeaderView = _headerImageView;
     [self.view insertSubview:_headerImageView belowSubview:_freeItemDataTable];
-    
+    _freeItemDataTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     
     
@@ -124,8 +121,23 @@
 //    self.freeItemGiverPhoto.layer.borderColor = [UIColor blackColor].CGColor;
     
     
+}
 
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+
+    return nil;
+    [_freeItemDataTable reloadData];
     
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (section == 0){
+        return 1.0f;
+    }
+    return 32.0f;
+
 }
 
 
