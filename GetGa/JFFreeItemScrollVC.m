@@ -208,12 +208,12 @@
     
 }
 
-//-(MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay {
-//    MKCircleView *circleView = [[MKCircleView alloc] initWithCircle:(MKCircle *)overlay];
-//    circleView.fillColor = [UIColor blueColor];
-//    circleView.alpha = 0.3;
-//    return circleView;
-//}
+-(MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay {
+    MKCircleView *circleView = [[MKCircleView alloc] initWithCircle:(MKCircle *)overlay];
+    circleView.fillColor = [UIColor blueColor];
+    circleView.alpha = 0.3;
+    return circleView;
+}
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
