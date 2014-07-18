@@ -39,12 +39,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     self.giveItemTitleTextField.delegate = self;
     
     self.giveItemPhotoImageView.image = self.giveItemImage;
-    
 
     UIColor *color = [UIColor blackColor];
     self.giveItemTitleTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"What are you giving away?" attributes:@{NSForegroundColorAttributeName: color}];
@@ -54,9 +52,6 @@
     UIImage *effectImage = nil;
     effectImage = [self.giveItemImage applyLightEffect];
     self.giveItemPhotoImageView.image = effectImage;
-    
-
-
     
 }
 
@@ -76,43 +71,16 @@
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    
-    
-//    NSString *nameForGiveItem = self.giveItemTitleTextField.text;
-//    NSData *giveItemImageData = UIImagePNGRepresentation(self.giveItemImage);
-//    PFFile *giveItemImageFile = [PFFile fileWithName:nameForGiveItem data:giveItemImageData];
-//    PFObject *giveItemPhoto = [PFObject objectWithClassName:@"giveItemPhoto"];
-//    giveItemPhoto[@"imageOwner"] = [PFUser currentUser];
-//    giveItemPhoto[@"imageName"] = nameForGiveItem;
-//    giveItemPhoto[@"imageFile"] = giveItemImageFile;
-//    
-//    [giveItemPhoto saveInBackground];
-//    
-//    PFObject *giveItem = [PFObject objectWithClassName:@"giveItem"];
-//    giveItem[@"giveItemTitle"] = self.giveItemTitleTextField.text;
-//    giveItem[@"giver"] = [PFUser currentUser];
-//    giveItem[@"postedLocation"] = [PFUser currentUser][@"mostRecentLocation"];
-//    [giveItem setObject:giveItemPhoto forKey:@"giveItemPhoto"];
-//    [giveItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//        [self.rootVC reloadParseData];
-//    }];
-    
-//    [self.navigationController popToRootViewControllerAnimated:YES];
-    
     [self performSegueWithIdentifier:@"itemDetailsToItemTags" sender:self];
     
     return YES;
 }
 
 
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
-
-
 
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

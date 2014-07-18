@@ -10,7 +10,7 @@
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 
-@interface JFFreeItemMapTableViewCell : UITableViewCell
+@interface JFFreeItemMapTableViewCell : UITableViewCell <MKMapViewDelegate>
 
 @property (strong, nonatomic) IBOutlet MKMapView *freeItemLocationMapView;
 

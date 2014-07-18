@@ -18,7 +18,7 @@
 #import "JFFreeItemMapTableViewCell.h"
 #import "JFFreeItemGiverTableViewCell.h"
 
-@interface JFFreeItemScrollVC () <MKMapViewDelegate, UITextViewDelegate, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
+@interface JFFreeItemScrollVC () <UITextViewDelegate, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
 @property (strong, nonatomic) IBOutlet UIImageView *freeItemImageView;
 @property (strong, nonatomic) IBOutlet UILabel *freeItemImageNameLabel;
 @property (strong, nonatomic) IBOutlet UITableView *freeItemDataTable;
@@ -68,22 +68,13 @@
     self.navigationController.view.backgroundColor = [UIColor blackColor];
     self.navigationItem.title = self.giveItem.giveItemName;
 
-    
-    
-    // PARALLAX Scroll
-//    UIView *tableHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, 180.0)];
-//    UIView *blackBorderView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 179.0, self.view.frame.size.width, 1.0)];
-//    blackBorderView.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.2];
-//    tableHeaderView.backgroundColor = [UIColor clearColor];
-//    [tableHeaderView addSubview:blackBorderView];
-//    _freeItemDataTable.tableHeaderView = tableHeaderView;
+
     
     _headerImageYOffset = -150.0;
     _headerImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"dad.png"]];
     CGRect headerImageFrame = _headerImageView.frame;
     headerImageFrame.origin.y = _headerImageYOffset;
     _headerImageView.frame = headerImageFrame;
-//    _freeItemDataTable.tableHeaderView = _headerImageView;
     [self.view insertSubview:_headerImageView belowSubview:_freeItemDataTable];
     _freeItemDataTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     
@@ -181,9 +172,10 @@
             }
             
             //    ITEM ON MAP
+            cell.freeItemLocationMapView.delegate = cell;
             double lat = [self.giveItem.locationData[@"latitude"] doubleValue];
             double lng = [self.giveItem.locationData[@"longitude"] doubleValue];
-            cell.freeItemLocationMapView.delegate = self;
+            cell.freeItemLocationMapView.delegate = cell;
             CLLocationCoordinate2D cord = CLLocationCoordinate2DMake(lat, lng);
             itemLocation = cord;
             MKCoordinateRegion startRegion = MKCoordinateRegionMakeWithDistance(cord, 1500, 1500);
@@ -216,12 +208,12 @@
     
 }
 
--(MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay {
-    MKCircleView *circleView = [[MKCircleView alloc] initWithCircle:(MKCircle *)overlay];
-    circleView.fillColor = [UIColor blueColor];
-    circleView.alpha = 0.3;
-    return circleView;
-}
+//-(MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay {
+//    MKCircleView *circleView = [[MKCircleView alloc] initWithCircle:(MKCircle *)overlay];
+//    circleView.fillColor = [UIColor blueColor];
+//    circleView.alpha = 0.3;
+//    return circleView;
+//}
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -251,13 +243,7 @@
     self.navBackgroundImage = [self.navigationController.navigationBar backgroundImageForBarMetrics:(UIBarMetricsDefault)];
     self.navBackgroundShadowImage = [self.navigationController.navigationBar shadowImage];
     self.navBackgroundColor = [self.navigationController.view backgroundColor];
-    
-//    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
-//                                                  forBarMetrics:UIBarMetricsDefault];
-//    self.navigationController.navigationBar.shadowImage = [UIImage new];
-    
-    
-//    [self textViewDidChange:self.freeItemLogisticsTextView];
+
 }
 
 
@@ -265,17 +251,6 @@
     
     [self goToChatRoom];
     
-}
-
-
-
-- (void)textViewDidChange:(JFFreeItemDescriptionTextView *)textView
-{
-  //  CGFloat fixedWidth = _freeItemLogisticsTextView.frame.size.width;
-   // CGSize newSize = [_freeItemLogisticsTextView sizeThatFits:CGSizeMake(fixedWidth, MAXFLOAT)];
- //   CGRect newFrame = _freeItemLogisticsTextView.frame;
-   // newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
-//    _freeItemLogisticsTextView.frame = newFrame;
 }
 
 
