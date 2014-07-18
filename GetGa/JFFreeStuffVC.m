@@ -37,9 +37,7 @@
     //    [self.tableView setContentInset:UIEdgeInsetsMake(50,0,0,0)];
 //    NSLog(@"Login: the current user is %@", [[PFUser currentUser]objectId]);
     
-    
     [self.searchDisplayController.searchBar setBackgroundImage:[UIImage imageNamed:@"dad.png"]];
-
     
 }
 
@@ -48,7 +46,7 @@
 {
     
     self.navigationController.navigationBar.topItem.title = @"Free Stuff";
-    self.giveSomethingAwayButton.layer.cornerRadius = 5;
+    self.giveSomethingAwayButton.layer.cornerRadius = 13;
     self.giveSomethingAwayButton.layer.borderWidth = 1;
     self.giveSomethingAwayButton.layer.borderColor = [UIColor blackColor].CGColor;
     
@@ -56,7 +54,6 @@
     
     [self reloadParseData];
 
-    
 }
 
 -(void)viewDidAppear:(BOOL)animated

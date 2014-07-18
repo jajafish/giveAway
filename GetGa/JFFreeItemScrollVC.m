@@ -60,9 +60,12 @@
     self.blurView.translucentStyle = UIBarStyleBlack;
     self.blurView.translucentTintColor = [UIColor clearColor];
     
-    self.iWantThisFreeItemButton.layer.cornerRadius = 5;
+    self.iWantThisFreeItemButton.layer.cornerRadius = 13;
     self.iWantThisFreeItemButton.layer.borderWidth = 1;
     self.iWantThisFreeItemButton.layer.borderColor = [UIColor blackColor].CGColor;
+    CGRect buttonFrame = self.iWantThisFreeItemButton.frame;
+    buttonFrame.size.height = 54;
+    self.iWantThisFreeItemButton.frame = buttonFrame;
     
     
     self.navigationController.view.backgroundColor = [UIColor blackColor];
@@ -77,6 +80,8 @@
     _headerImageView.frame = headerImageFrame;
     [self.view insertSubview:_headerImageView belowSubview:_freeItemDataTable];
     _freeItemDataTable.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    [self.view sendSubviewToBack:_headerImageView];
     
     
     
@@ -126,8 +131,7 @@
         headerImageFrame.origin.y = _headerImageYOffset - ((scrollOffset / 3));
     } else {
         headerImageFrame.origin.y = _headerImageYOffset - scrollOffset;
-        tableViewFrame.origin.y = scrollOffset;
-
+//        tableViewFrame.origin.y = scrollOffset;
     }
     
 //    _freeItemDataTable.frame = tableViewFrame;
