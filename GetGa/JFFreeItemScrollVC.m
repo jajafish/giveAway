@@ -66,7 +66,6 @@
     buttonFrame.size.height = 54;
     self.iWantThisFreeItemButton.frame = buttonFrame;
     
-    
     self.navigationController.view.backgroundColor = [UIColor blackColor];
     self.navigationItem.title = self.giveItem.giveItemName;
 
@@ -86,12 +85,13 @@
     [tableHeaderView addSubview:blackBorderView];
     _freeItemDataTable.tableHeaderView = tableHeaderView;
     
-//    _headerImageYOffset = 150.0;
-    _headerImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"dad.png"]];
-    CGRect headerImageFrame = _headerImageView.frame;
-//    headerImageFrame.origin.y = 25;
-    _headerImageView.frame = headerImageFrame;
-    [self.view.superview insertSubview:_headerImageView aboveSubview:_freeItemDataTable];
+    
+    UIImage *itemImage = self.giveItem.image;
+    _headerImageView = [[UIImageView alloc]init];
+    _headerImageView.image = itemImage;
+    CGRect tableHeaderFrame = tableHeaderView.frame;
+    _headerImageView.frame = tableHeaderFrame;
+    [self.view insertSubview:_headerImageView belowSubview:_freeItemDataTable.tableHeaderView];
 }
 
 
