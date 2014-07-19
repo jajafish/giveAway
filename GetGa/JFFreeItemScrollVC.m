@@ -45,12 +45,11 @@
 {
     
     [super viewDidLoad];
-
     
     self.freeItemDataTable.delegate = self;
     self.freeItemDataTable.dataSource = self;
     
-    self.freeItemImageView.image = [UIImage imageNamed:@"dad.png"];
+
 
     self.freeItemImageNameLabel.text = self.giveItem.giveItemName;
     
@@ -71,32 +70,38 @@
     self.navigationController.view.backgroundColor = [UIColor blackColor];
     self.navigationItem.title = self.giveItem.giveItemName;
 
+    [self setUpGiverPhoto];
+    [self setUpTableViewParallax];
 
+}
+
+
+
+-(void)setUpTableViewParallax
+{
+    UIView *tableHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, 180.0)];
+    UIView *blackBorderView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 179.0, self.view.frame.size.width, 1.0)];
+    tableHeaderView.backgroundColor = [UIColor clearColor];
+    blackBorderView.backgroundColor = [UIColor blackColor];
+    [tableHeaderView addSubview:blackBorderView];
+    _freeItemDataTable.tableHeaderView = tableHeaderView;
     
-    _headerImageYOffset = -150.0;
+//    _headerImageYOffset = 150.0;
     _headerImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"dad.png"]];
     CGRect headerImageFrame = _headerImageView.frame;
-    headerImageFrame.origin.y = _headerImageYOffset;
+//    headerImageFrame.origin.y = 25;
     _headerImageView.frame = headerImageFrame;
-    [self.view insertSubview:_headerImageView belowSubview:_freeItemDataTable];
-    _freeItemDataTable.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
-    [self.view sendSubviewToBack:_headerImageView];
-    
-    
-    
+    [self.view.superview insertSubview:_headerImageView aboveSubview:_freeItemDataTable];
+}
 
-    
 
-////    QUERY FOR GIVER PHOTO
-//    [self queryForItemGiverProfilePhoto];
-//    self.freeItemGiverPhoto.layer.cornerRadius = self.freeItemGiverPhoto.frame.size.width / 2;
-//    self.freeItemGiverPhoto.clipsToBounds = YES;
-//    self.freeItemGiverPhoto.layer.borderWidth = 1.5f;
-//    self.freeItemGiverPhoto.layer.borderColor = [UIColor blackColor].CGColor;
-    
-    
-    
+-(void)setUpGiverPhoto
+{
+    //    [self queryForItemGiverProfilePhoto];
+    //    self.freeItemGiverPhoto.layer.cornerRadius = self.freeItemGiverPhoto.frame.size.width / 2;
+    //    self.freeItemGiverPhoto.clipsToBounds = YES;
+    //    self.freeItemGiverPhoto.layer.borderWidth = 1.5f;
+    //    self.freeItemGiverPhoto.layer.borderColor = [UIColor blackColor].CGColor;
 }
 
 
