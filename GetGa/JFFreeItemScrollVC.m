@@ -73,20 +73,24 @@
 
 -(void)setUpTableViewParallax
 {
+    _headerImageYOffset = 50;
+    
     UIView *tableHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, 180.0)];
     UIView *blackBorderView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 179.0, self.view.frame.size.width, 1.0)];
     tableHeaderView.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.2];
     blackBorderView.backgroundColor = [UIColor blackColor];
     [tableHeaderView addSubview:blackBorderView];
     _freeItemDataTable.tableHeaderView = tableHeaderView;
+    _freeItemDataTable.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.0];
     
     
     UIImage *itemImage = self.giveItem.image;
     _headerImageView = [[UIImageView alloc]init];
     _headerImageView.image = itemImage;
     CGRect tableHeaderFrame = tableHeaderView.frame;
+    tableHeaderFrame.origin.y = _headerImageYOffset;
     _headerImageView.frame = tableHeaderFrame;
-    [self.view insertSubview:_headerImageView belowSubview:_freeItemDataTable.tableHeaderView];
+    [self.view insertSubview:_headerImageView belowSubview:_freeItemDataTable];
 }
 
 
