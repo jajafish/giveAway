@@ -31,6 +31,7 @@
 @property double headerImageYOffset;
 @property (strong, nonatomic) UIImageView *headerImageView;
 @property (strong, nonatomic) UIImage *itemImage;
+@property CGFloat heightOfItemImage;
 
 
 @end
@@ -79,8 +80,8 @@
 {
     _headerImageYOffset = 50;
     
-    CGFloat heightOfItemImage = _itemImage.size.height;
-    CGFloat desiredHeightOfItemImageFrame = (heightOfItemImage - 200);
+    _heightOfItemImage = _itemImage.size.height;
+    CGFloat desiredHeightOfItemImageFrame = (_heightOfItemImage - 200);
     
     UIView *tableHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, desiredHeightOfItemImageFrame)];
     CGFloat properPlaceForYOriginOfBlackLine = (desiredHeightOfItemImageFrame - 0.01);
@@ -139,14 +140,19 @@
     CGRect tableViewFrame = _freeItemDataTable.frame;
     CGFloat initialTableViewYOrigin = tableViewFrame.origin.y;
     
-    if (scrollOffset < 0 | scrollOffset > 0){
-        headerImageFrame.origin.y = _headerImageYOffset - ((scrollOffset / 3));
-    } else {
-        headerImageFrame.origin.y = _headerImageYOffset - scrollOffset;
-//        tableViewFrame.origin.y = scrollOffset;
-    }
     
-//    _freeItemDataTable.frame = tableViewFrame;
+    CGFloat negativeHeightOfImage = 0 - _heightOfItemImage;
+    
+//    while (scrollOffset < negativeHeightOfImage) {
+        if (scrollOffset < 0 | scrollOffset > 0){
+            headerImageFrame.origin.y = _headerImageYOffset - ((scrollOffset / 3));
+        } else {
+            headerImageFrame.origin.y = _headerImageYOffset - scrollOffset;
+            //        tableViewFrame.origin.y = scrollOffset;
+        }
+//    }
+  
+    _freeItemDataTable.frame = tableViewFrame;
     _headerImageView.frame = headerImageFrame;
     
 }
