@@ -30,6 +30,7 @@
 @property (strong, nonatomic) PFChatRoom *selectedChat;
 @property double headerImageYOffset;
 @property (strong, nonatomic) UIImageView *headerImageView;
+@property (strong, nonatomic) UIImage *itemImage;
 
 
 @end
@@ -42,6 +43,9 @@
 {
     
     [super viewDidLoad];
+    _itemImage = self.giveItem.image;
+
+    
     
     self.freeItemDataTable.delegate = self;
     self.freeItemDataTable.dataSource = self;
@@ -75,7 +79,10 @@
 {
     _headerImageYOffset = 50;
     
-    UIView *tableHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, 180.0)];
+    CGFloat heightOfItemImage = _itemImage.size.height;
+    CGFloat desiredHeightOfItemImageFrame = (heightOfItemImage - 30);
+    
+    UIView *tableHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, desiredHeightOfItemImageFrame)];
     UIView *blackBorderView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 179.0, self.view.frame.size.width, 1.0)];
     tableHeaderView.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.2];
     blackBorderView.backgroundColor = [UIColor blackColor];
@@ -83,10 +90,8 @@
     _freeItemDataTable.tableHeaderView = tableHeaderView;
     _freeItemDataTable.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.0];
     
-    
-    UIImage *itemImage = self.giveItem.image;
-    _headerImageView = [[UIImageView alloc]init];
-    _headerImageView.image = itemImage;
+        _headerImageView = [[UIImageView alloc]init];
+    _headerImageView.image = _itemImage;
     CGRect tableHeaderFrame = tableHeaderView.frame;
     tableHeaderFrame.origin.y = _headerImageYOffset;
     _headerImageView.frame = tableHeaderFrame;
