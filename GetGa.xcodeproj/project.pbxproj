@@ -50,6 +50,9 @@
 		E775596F1932637C00CD76A0 /* appshot.png in Resources */ = {isa = PBXBuildFile; fileRef = E775596E1932637C00CD76A0 /* appshot.png */; };
 		E77BE7CA195C870000DAB268 /* PFChatRoom.m in Sources */ = {isa = PBXBuildFile; fileRef = E77BE7C9195C870000DAB268 /* PFChatRoom.m */; };
 		E789BFE61956CAA300486BBE /* JFFreeItemScrollVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E789BFE51956CAA300486BBE /* JFFreeItemScrollVC.m */; };
+		E7A11B59197485C70007A2B3 /* JFFreeItemDescriptionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A11B58197485C70007A2B3 /* JFFreeItemDescriptionTableViewCell.m */; };
+		E7A11B5C197485D90007A2B3 /* JFFreeItemMapTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A11B5B197485D90007A2B3 /* JFFreeItemMapTableViewCell.m */; };
+		E7A11B5F197485E50007A2B3 /* JFFreeItemGiverTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A11B5E197485E50007A2B3 /* JFFreeItemGiverTableViewCell.m */; };
 		E7ADA1F21956AD2700FA17CF /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = E7ADA1F11956AD2700FA17CF /* UIImage+ImageEffects.m */; };
 		E7ADA1F61956BD2100FA17CF /* JFGiveItemCategorySelectVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7ADA1F51956BD2100FA17CF /* JFGiveItemCategorySelectVC.m */; };
 		E7ADA1F91956C00500FA17CF /* JFGiveItemCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7ADA1F81956C00500FA17CF /* JFGiveItemCategoryCell.m */; };
@@ -57,6 +60,7 @@
 		E7BB0417193AAC6D000DEF36 /* JFMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7BB0416193AAC6D000DEF36 /* JFMainViewController.m */; };
 		E7C8AE99193700AA00856D4B /* JFGiveItemDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C8AE98193700AA00856D4B /* JFGiveItemDetailsVC.m */; };
 		E7C8AE9C19370B7C00856D4B /* JFConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C8AE9B19370B7C00856D4B /* JFConstants.m */; };
+		E7CEAFC2197330F5004EB42F /* JFFreeItemDescriptionTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CEAFC1197330F5004EB42F /* JFFreeItemDescriptionTextView.m */; };
 		E7F3054C194A4F8B007AA625 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F3054B194A4F8B007AA625 /* CoreLocation.framework */; };
 		E7F5D2C8193831BF00B17BE0 /* JFGiveItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F5D2C7193831BF00B17BE0 /* JFGiveItemCell.m */; };
 		E7F5D2CB19383F4800B17BE0 /* PFGiveItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F5D2CA19383F4800B17BE0 /* PFGiveItem.m */; };
@@ -140,6 +144,12 @@
 		E77BE7C9195C870000DAB268 /* PFChatRoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFChatRoom.m; sourceTree = "<group>"; };
 		E789BFE41956CAA300486BBE /* JFFreeItemScrollVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFFreeItemScrollVC.h; sourceTree = "<group>"; };
 		E789BFE51956CAA300486BBE /* JFFreeItemScrollVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFFreeItemScrollVC.m; sourceTree = "<group>"; };
+		E7A11B57197485C70007A2B3 /* JFFreeItemDescriptionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFFreeItemDescriptionTableViewCell.h; sourceTree = "<group>"; };
+		E7A11B58197485C70007A2B3 /* JFFreeItemDescriptionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFFreeItemDescriptionTableViewCell.m; sourceTree = "<group>"; };
+		E7A11B5A197485D90007A2B3 /* JFFreeItemMapTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFFreeItemMapTableViewCell.h; sourceTree = "<group>"; };
+		E7A11B5B197485D90007A2B3 /* JFFreeItemMapTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFFreeItemMapTableViewCell.m; sourceTree = "<group>"; };
+		E7A11B5D197485E50007A2B3 /* JFFreeItemGiverTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFFreeItemGiverTableViewCell.h; sourceTree = "<group>"; };
+		E7A11B5E197485E50007A2B3 /* JFFreeItemGiverTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFFreeItemGiverTableViewCell.m; sourceTree = "<group>"; };
 		E7ADA1F01956AD2700FA17CF /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		E7ADA1F11956AD2700FA17CF /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		E7ADA1F41956BD2100FA17CF /* JFGiveItemCategorySelectVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFGiveItemCategorySelectVC.h; sourceTree = "<group>"; };
@@ -154,6 +164,8 @@
 		E7C8AE98193700AA00856D4B /* JFGiveItemDetailsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFGiveItemDetailsVC.m; sourceTree = "<group>"; };
 		E7C8AE9A19370B7C00856D4B /* JFConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFConstants.h; sourceTree = "<group>"; };
 		E7C8AE9B19370B7C00856D4B /* JFConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFConstants.m; sourceTree = "<group>"; };
+		E7CEAFC0197330F5004EB42F /* JFFreeItemDescriptionTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFFreeItemDescriptionTextView.h; sourceTree = "<group>"; };
+		E7CEAFC1197330F5004EB42F /* JFFreeItemDescriptionTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFFreeItemDescriptionTextView.m; sourceTree = "<group>"; };
 		E7F3054B194A4F8B007AA625 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		E7F5D2C6193831BF00B17BE0 /* JFGiveItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFGiveItemCell.h; sourceTree = "<group>"; };
 		E7F5D2C7193831BF00B17BE0 /* JFGiveItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFGiveItemCell.m; sourceTree = "<group>"; };
@@ -421,6 +433,19 @@
 			name = "give item";
 			sourceTree = "<group>";
 		};
+		E7A11B56197485A80007A2B3 /* freeItemTable */ = {
+			isa = PBXGroup;
+			children = (
+				E7A11B57197485C70007A2B3 /* JFFreeItemDescriptionTableViewCell.h */,
+				E7A11B58197485C70007A2B3 /* JFFreeItemDescriptionTableViewCell.m */,
+				E7A11B5A197485D90007A2B3 /* JFFreeItemMapTableViewCell.h */,
+				E7A11B5B197485D90007A2B3 /* JFFreeItemMapTableViewCell.m */,
+				E7A11B5D197485E50007A2B3 /* JFFreeItemGiverTableViewCell.h */,
+				E7A11B5E197485E50007A2B3 /* JFFreeItemGiverTableViewCell.m */,
+			);
+			name = freeItemTable;
+			sourceTree = "<group>";
+		};
 		E7ADA1F31956BD0700FA17CF /* give item category select */ = {
 			isa = PBXGroup;
 			children = (
@@ -458,8 +483,11 @@
 		E7B7775A195567160027D6B5 /* free item */ = {
 			isa = PBXGroup;
 			children = (
+				E7A11B56197485A80007A2B3 /* freeItemTable */,
 				E789BFE41956CAA300486BBE /* JFFreeItemScrollVC.h */,
 				E789BFE51956CAA300486BBE /* JFFreeItemScrollVC.m */,
+				E7CEAFC0197330F5004EB42F /* JFFreeItemDescriptionTextView.h */,
+				E7CEAFC1197330F5004EB42F /* JFFreeItemDescriptionTextView.m */,
 			);
 			name = "free item";
 			sourceTree = "<group>";
@@ -543,6 +571,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Jared Fishman";
 				TargetAttributes = {
+					E775592E19325CC600CD76A0 = {
+						DevelopmentTeam = NPGACGB5HF;
+					};
 					E775594F19325CC600CD76A0 = {
 						TestTargetID = E775592E19325CC600CD76A0;
 					};
@@ -643,9 +674,12 @@
 				E7F5D2CB19383F4800B17BE0 /* PFGiveItem.m in Sources */,
 				E749E9F3195A059D002472F6 /* TopBar.m in Sources */,
 				E74317A3194EABFC007F32E5 /* JFMyGiveItemCollectionCell.m in Sources */,
+				E7A11B5F197485E50007A2B3 /* JFFreeItemGiverTableViewCell.m in Sources */,
 				E749E9F1195A059D002472F6 /* MessageCell.m in Sources */,
+				E7CEAFC2197330F5004EB42F /* JFFreeItemDescriptionTextView.m in Sources */,
 				E7ADA1F61956BD2100FA17CF /* JFGiveItemCategorySelectVC.m in Sources */,
 				E775594319325CC600CD76A0 /* JFAppDelegate.m in Sources */,
+				E7A11B59197485C70007A2B3 /* JFFreeItemDescriptionTableViewCell.m in Sources */,
 				E7C8AE99193700AA00856D4B /* JFGiveItemDetailsVC.m in Sources */,
 				E749C2CF194FC62200A5240D /* JFGiveItemLogisticsVC.m in Sources */,
 				E789BFE61956CAA300486BBE /* JFFreeItemScrollVC.m in Sources */,
@@ -654,6 +688,7 @@
 				E73837181970D5D700F8398C /* JFavCameraVC.m in Sources */,
 				E7ADA1F91956C00500FA17CF /* JFGiveItemCategoryCell.m in Sources */,
 				E74EE5BE1962F0DD005D1606 /* PFChatMessage.m in Sources */,
+				E7A11B5C197485D90007A2B3 /* JFFreeItemMapTableViewCell.m in Sources */,
 				E7C8AE9C19370B7C00856D4B /* JFConstants.m in Sources */,
 				E7312B02194FE9BC00210849 /* JFProfilePhotoHeader.m in Sources */,
 				E7BB0417193AAC6D000DEF36 /* JFMainViewController.m in Sources */,
@@ -785,6 +820,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(PODS_ROOT)/Parse\"",
 					"$(inherited)",
@@ -804,6 +841,7 @@
 				INFOPLIST_FILE = "GetGa/GetGa-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -814,6 +852,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(PODS_ROOT)/Parse\"",
 					"$(inherited)",
@@ -833,6 +873,7 @@
 				INFOPLIST_FILE = "GetGa/GetGa-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

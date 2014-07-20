@@ -57,7 +57,6 @@
             break;
     }
     
-    
     return cell;
 }
 
@@ -74,7 +73,6 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    
     if ([segue.identifier isEqualToString:@"itemCategoryToItemLogistics"]){
         if ([segue.destinationViewController isKindOfClass:[JFGiveItemLogisticsVC class]]){
             JFGiveItemLogisticsVC *targetVC = segue.destinationViewController;
@@ -83,7 +81,6 @@
             targetVC.giveItemCategory = self.selectedCategory;
         }
     }
-    
 }
 
 

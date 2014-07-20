@@ -50,9 +50,7 @@
 
 -(void) updatedLocation:(NSNotification*)notif {
     CLLocation* userLocation = (CLLocation*)[[notif userInfo] valueForKey:@"newLocationResult"];
-//    NSLog(@"from login, user location is %@", userLocation);
     self.currentLocation = userLocation;
-//    NSLog(@"the instance variable of the user's location is %@", self.currentLocation);
 }
 
 
@@ -69,7 +67,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - IB Actions
@@ -163,9 +160,7 @@
             JFGiverGetter *currentGiverGetter = (JFGiverGetter*)[JFGiverGetter object];
             currentGiverGetter.giveGetterName = userDictionary[@"name"];
             currentGiverGetter.giveGetterLatestLocation = mostRecentCoordinates;
-//            NSLog(@"current Giver Getter name is %@ %@", currentGiverGetter.giveGetterName, currentGiverGetter.giveGetterLatestLocation);
-        
-            
+
         }
         
     }];

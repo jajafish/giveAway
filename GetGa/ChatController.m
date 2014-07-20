@@ -448,13 +448,11 @@ static int chatInputStartingHeight = 40;
     
     if (!message[kMessageRuntimeSentBy]) {
         
-//        if (self.newlyCreatedObject.creator.objectId == [PFUser currentUser].objectId)
-        
          if ([message.from.objectId isEqualToString:[PFUser currentUser].objectId]) {
-            message[kMessageRuntimeSentBy] = [NSNumber numberWithInt:kSentByUser];
+            message[kMessageRuntimeSentBy] = [NSNumber numberWithInt:kSentByOpponent];
          }
          else {
-            message[kMessageRuntimeSentBy] = [NSNumber numberWithInt:kSentByOpponent];
+            message[kMessageRuntimeSentBy] = [NSNumber numberWithInt:kSentByUser];
          }
     
     }
@@ -503,6 +501,7 @@ static int chatInputStartingHeight = 40;
     
     PFQuery *messagesQuery = [PFQuery queryWithClassName:@"chatMessage"];
     [messagesQuery whereKey:@"chatRoom" equalTo:_chatRoom];
+    [messagesQuery orderByAscending:@"messageTime"];
     [messagesQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         
         if (!error){

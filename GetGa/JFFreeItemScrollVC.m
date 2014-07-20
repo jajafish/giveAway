@@ -7,117 +7,246 @@
 //
 
 #import "JFFreeItemScrollVC.h"
+#import "JFFreeItemDescriptionTextView.h"
 #import <MapKit/MapKit.h>
 #import <ILTranslucentView.h>
 #import <QuartzCore/QuartzCore.h>
 #import <CoreLocation/CoreLocation.h>
 #import "ChatController.h"
 #import "PFChatRoom.h"
+#import "JFFreeItemDescriptionTableViewCell.h"
+#import "JFFreeItemMapTableViewCell.h"
+#import "JFFreeItemGiverTableViewCell.h"
 
-@interface JFFreeItemScrollVC () <MKMapViewDelegate, UITextViewDelegate>
+@interface JFFreeItemScrollVC () <UITextViewDelegate, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
 @property (strong, nonatomic) IBOutlet UIImageView *freeItemImageView;
 @property (strong, nonatomic) IBOutlet UILabel *freeItemImageNameLabel;
-@property (strong, nonatomic) IBOutlet UILabel *freeItemCategoryLabel;
-@property (strong, nonatomic) IBOutlet UITextView *freeItemLogisticsTextView;
-@property (strong, nonatomic) IBOutlet MKMapView *freeItemLocationMapView;
-@property (strong, nonatomic) IBOutlet UIImageView *freeItemGiverPhoto;
-@property (strong, nonatomic) IBOutlet UILabel *freeItemGiverName;
+@property (strong, nonatomic) IBOutlet UITableView *freeItemDataTable;
 @property (strong, nonatomic) IBOutlet UIButton *iWantThisFreeItemButton;
-@property (strong, nonatomic) IBOutlet UIView *scrollContentView;
-
 @property (strong, nonatomic) UIImage *navBackgroundImage;
 @property (strong, nonatomic) UIImage *navBackgroundShadowImage;
 @property (strong, nonatomic) UIColor *navBackgroundColor;
-
-
 @property (strong, nonatomic) IBOutlet ILTranslucentView *blurView;
-
 @property (strong, nonatomic) PFChatRoom *selectedChat;
+@property double headerImageYOffset;
+@property (strong, nonatomic) UIImageView *headerImageView;
+@property (strong, nonatomic) UIImage *itemImage;
+@property CGFloat heightOfItemImage;
 
 
 @end
 
 @implementation JFFreeItemScrollVC {
-    
     CLLocationCoordinate2D itemLocation;
-    
-    
 }
 
 -(void)viewDidLoad
 {
     
     [super viewDidLoad];
-    
-    NSLog(@"item giver is %@", self.giveItem.itemGiver.objectId);
-    
-    
-    
-    [self.scoller setScrollEnabled:YES];
-    [self.scoller setContentSize:CGSizeMake(320, 936)];
-    
-    self.freeItemLogisticsTextView.delegate = self;
+    _itemImage = self.giveItem.image;
 
     
-    self.freeItemImageView.image = self.giveItem.image;
+    
+    self.freeItemDataTable.delegate = self;
+    self.freeItemDataTable.dataSource = self;
     
     self.freeItemImageNameLabel.text = self.giveItem.giveItemName;
-    self.freeItemCategoryLabel.text = self.giveItem.itemCategory;
-    self.freeItemLogisticsTextView.text = self.giveItem.itemDetailsLogistics;
-    self.freeItemGiverName.text = self.giveItem.itemGiver.giveGetterName;
-    
-    [self.scoller setContentOffset:CGPointMake(self.scoller.contentOffset.x, 0)
-                             animated:NO];
-    
-    self.scoller.delegate = self;
-
     
     NSLog(@"%@", NSStringFromCGRect(self.iWantThisFreeItemButton.frame));
-    
     
     self.blurView.translucentAlpha = 0.8;
     self.blurView.translucentStyle = UIBarStyleBlack;
     self.blurView.translucentTintColor = [UIColor clearColor];
     
-    
-    self.iWantThisFreeItemButton.layer.cornerRadius = 5;
+    self.iWantThisFreeItemButton.layer.cornerRadius = 13;
     self.iWantThisFreeItemButton.layer.borderWidth = 1;
     self.iWantThisFreeItemButton.layer.borderColor = [UIColor blackColor].CGColor;
-    
-    
-    self.freeItemGiverPhoto.image = self.giveItem.itemGiver.giveGetterProfileImage;
+    CGRect buttonFrame = self.iWantThisFreeItemButton.frame;
+    buttonFrame.size.height = 54;
+    self.iWantThisFreeItemButton.frame = buttonFrame;
     
     self.navigationController.view.backgroundColor = [UIColor blackColor];
     self.navigationItem.title = self.giveItem.giveItemName;
 
-    
-//    ITEM ON MAP
-    double lat = [self.giveItem.locationData[@"latitude"] doubleValue];
-    double lng = [self.giveItem.locationData[@"longitude"] doubleValue];
-    
-    self.freeItemLocationMapView.delegate = self;
-    CLLocationCoordinate2D cord = CLLocationCoordinate2DMake(lat, lng);
-    itemLocation = cord;
-    
-    MKCoordinateRegion startRegion = MKCoordinateRegionMakeWithDistance(cord, 1500, 1500);
-    [self.freeItemLocationMapView setRegion:startRegion animated:YES];
-    
-    [self.freeItemLocationMapView addOverlay:[MKCircle circleWithCenterCoordinate:cord radius:200]];
-
-    
-    [self queryForItemGiverProfilePhoto];
-    self.freeItemGiverPhoto.layer.cornerRadius = self.freeItemGiverPhoto.frame.size.width / 2;
-    self.freeItemGiverPhoto.clipsToBounds = YES;
-    self.freeItemGiverPhoto.layer.borderWidth = 1.5f;
-    self.freeItemGiverPhoto.layer.borderColor = [UIColor blackColor].CGColor;
-    
-    self.freeItemLogisticsTextView.editable = NO;
-    
+    [self setUpGiverPhoto];
+    [self setUpTableViewParallax];
 
 }
 
 
 
+-(void)setUpTableViewParallax
+{
+    _headerImageYOffset = 50;
+    
+    _heightOfItemImage = _itemImage.size.height;
+    CGFloat desiredHeightOfItemImageFrame = (_heightOfItemImage - 200);
+    
+    UIView *tableHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, desiredHeightOfItemImageFrame)];
+    CGFloat properPlaceForYOriginOfBlackLine = (desiredHeightOfItemImageFrame - 0.01);
+    UIView *blackBorderView = [[UIView alloc]initWithFrame:CGRectMake(0.0, properPlaceForYOriginOfBlackLine, self.view.frame.size.width, 1.0)];
+    tableHeaderView.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.2];
+    blackBorderView.backgroundColor = [UIColor blackColor];
+    [tableHeaderView addSubview:blackBorderView];
+    _freeItemDataTable.tableHeaderView = tableHeaderView;
+    _freeItemDataTable.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.0];
+    
+        _headerImageView = [[UIImageView alloc]init];
+    _headerImageView.image = _itemImage;
+    CGRect tableHeaderFrame = tableHeaderView.frame;
+    tableHeaderFrame.origin.y = _headerImageYOffset;
+    _headerImageView.frame = tableHeaderFrame;
+    [self.view insertSubview:_headerImageView belowSubview:_freeItemDataTable];
+    
+    NSLog(@"the size of the headerImageView is %@ and the size of the image itself is %@", NSStringFromCGRect(_headerImageView.frame), NSStringFromCGSize(_itemImage.size));
+}
+
+
+-(void)setUpGiverPhoto
+{
+    //    [self queryForItemGiverProfilePhoto];
+    //    self.freeItemGiverPhoto.layer.cornerRadius = self.freeItemGiverPhoto.frame.size.width / 2;
+    //    self.freeItemGiverPhoto.clipsToBounds = YES;
+    //    self.freeItemGiverPhoto.layer.borderWidth = 1.5f;
+    //    self.freeItemGiverPhoto.layer.borderColor = [UIColor blackColor].CGColor;
+}
+
+
+
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+
+    return nil;
+    [_freeItemDataTable reloadData];
+    
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (section == 0){
+        return 1.0f;
+    }
+    return 32.0f;
+
+}
+
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGFloat scrollOffset = scrollView.contentOffset.y;
+    CGRect headerImageFrame = _headerImageView.frame;
+    CGRect tableViewFrame = _freeItemDataTable.frame;
+    CGFloat initialTableViewYOrigin = tableViewFrame.origin.y;
+    
+    
+    CGFloat negativeHeightOfImage = 0 - _heightOfItemImage;
+    
+//    while (scrollOffset < negativeHeightOfImage) {
+        if (scrollOffset < 0 | scrollOffset > 0){
+            headerImageFrame.origin.y = _headerImageYOffset - ((scrollOffset / 3));
+        } else {
+            headerImageFrame.origin.y = _headerImageYOffset - scrollOffset;
+            //        tableViewFrame.origin.y = scrollOffset;
+        }
+//    }
+  
+    _freeItemDataTable.frame = tableViewFrame;
+    _headerImageView.frame = headerImageFrame;
+    
+}
+
+
+#pragma mark - Table View
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    UITableViewCell *cell;
+    
+    switch (indexPath.row) {
+        case 0: {
+            
+            static NSString *cellID = @"Cell1";
+            JFFreeItemDescriptionTableViewCell *cell = [_freeItemDataTable dequeueReusableCellWithIdentifier:cellID];
+            
+            if (cell == nil){
+                cell = [[JFFreeItemDescriptionTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+            }
+            
+            cell.freeItemLogisticsTextView.text = self.giveItem.itemDetailsLogistics;
+            CGRect sizeOfText = cell.freeItemLogisticsTextView.frame;
+            cell.frame = sizeOfText;
+
+            return cell;
+            
+            break;
+        }
+        
+            
+        case 1: {
+            
+            static NSString *cellID = @"Cell2";
+            JFFreeItemMapTableViewCell *cell = [_freeItemDataTable dequeueReusableCellWithIdentifier:cellID];
+            
+            if (cell == nil){
+                cell = [[JFFreeItemMapTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+            }
+            
+            //    ITEM ON MAP
+            cell.freeItemLocationMapView.delegate = cell;
+            double lat = [self.giveItem.locationData[@"latitude"] doubleValue];
+            double lng = [self.giveItem.locationData[@"longitude"] doubleValue];
+            cell.freeItemLocationMapView.delegate = cell;
+            CLLocationCoordinate2D cord = CLLocationCoordinate2DMake(lat, lng);
+            itemLocation = cord;
+            MKCoordinateRegion startRegion = MKCoordinateRegionMakeWithDistance(cord, 1500, 1500);
+            [cell.freeItemLocationMapView setRegion:startRegion animated:YES];
+            [cell.freeItemLocationMapView addOverlay:[MKCircle circleWithCenterCoordinate:cord radius:200]];
+
+            return cell;
+    
+        }
+            
+        case 2: {
+        
+            static NSString *cellID = @"Cell3";
+            JFFreeItemGiverTableViewCell *cell = [_freeItemDataTable dequeueReusableCellWithIdentifier:cellID];
+            if (cell == nil){
+                cell = [[JFFreeItemGiverTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+            }
+            cell.freeItemGiverName.text = self.giveItem.itemGiverName;
+            cell.freeItemGiverPhoto.image = [UIImage imageNamed:@"dad.png"];
+            
+            return cell;
+            
+        }
+            
+        default:
+            break;
+    }
+    
+    return cell;
+    
+}
+
+-(MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay {
+    MKCircleView *circleView = [[MKCircleView alloc] initWithCircle:(MKCircle *)overlay];
+    circleView.fillColor = [UIColor blueColor];
+    circleView.alpha = 0.3;
+    return circleView;
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 3;
+}
 
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -126,9 +255,6 @@
                                                   forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.shadowImage = self.navBackgroundShadowImage;
     self.navigationController.view.backgroundColor = self.navBackgroundColor;
-    
-
-    
 }
 
 
@@ -140,16 +266,7 @@
     self.navBackgroundImage = [self.navigationController.navigationBar backgroundImageForBarMetrics:(UIBarMetricsDefault)];
     self.navBackgroundShadowImage = [self.navigationController.navigationBar shadowImage];
     self.navBackgroundColor = [self.navigationController.view backgroundColor];
-    
-//    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
-//                                                  forBarMetrics:UIBarMetricsDefault];
-//    self.navigationController.navigationBar.shadowImage = [UIImage new];
 
-    
- 
-    
-    
-    [self textViewDidChange:self.freeItemLogisticsTextView];
 }
 
 
@@ -157,43 +274,6 @@
     
     [self goToChatRoom];
     
-}
-
-
-//-(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
-//{
-//    static NSString *identifier = @"Current";
-//    MKAnnotationView *annotationView = (MKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
-//    
-//    if (annotationView == nil){
-//        annotationView = [[MKAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:identifier];
-//    }
-//    
-//    if (annotation == mapView.userLocation)
-//        return nil;
-//    
-//    annotationView.image = [UIImage imageNamed:@"dad.png"];
-//    annotationView.annotation = annotation;
-//    annotationView.canShowCallout = YES;
-//    return annotationView;
-//    
-//}
-
-
--(MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay {
-    MKCircleView *circleView = [[MKCircleView alloc] initWithCircle:(MKCircle *)overlay];
-    circleView.fillColor = [UIColor blueColor];
-    circleView.alpha = 0.3;
-    return circleView;
-}
-
-- (void)textViewDidChange:(UITextView *)textView
-{
-    CGFloat fixedWidth = _freeItemLogisticsTextView.frame.size.width;
-    CGSize newSize = [_freeItemLogisticsTextView sizeThatFits:CGSizeMake(fixedWidth, MAXFLOAT)];
-    CGRect newFrame = _freeItemLogisticsTextView.frame;
-    newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
-    _freeItemLogisticsTextView.frame = newFrame;
 }
 
 
@@ -207,12 +287,14 @@
         
         PFFile *photoFile = theOnlyPhoto[@"photoPictureFile"];
         [photoFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-            self.freeItemGiverPhoto.image = [UIImage imageWithData:data];
+     //       self.freeItemGiverPhoto.image = [UIImage imageWithData:data];
         }];
         
     }];
     
 }
+
+
 
 -(void)goToChatRoom
 {
@@ -255,11 +337,9 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    
     ChatController *chatVC = segue.destinationViewController;
     chatVC.chatRoom = self.selectedChat;
     chatVC.chatRoomTitle =  self.giveItem.itemGiver.giveGetterName;
-
 }
 
 
