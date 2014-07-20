@@ -139,7 +139,7 @@
     CGRect tableViewFrame = _freeItemDataTable.frame;
     CGFloat initialTableViewYOrigin = tableViewFrame.origin.y;
     
-    if (scrollOffset < 0){
+    if (scrollOffset < 0 | scrollOffset > 0){
         headerImageFrame.origin.y = _headerImageYOffset - ((scrollOffset / 3));
     } else {
         headerImageFrame.origin.y = _headerImageYOffset - scrollOffset;
