@@ -80,10 +80,11 @@
     _headerImageYOffset = 50;
     
     CGFloat heightOfItemImage = _itemImage.size.height;
-    CGFloat desiredHeightOfItemImageFrame = (heightOfItemImage - 30);
+    CGFloat desiredHeightOfItemImageFrame = (heightOfItemImage - 200);
     
     UIView *tableHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, desiredHeightOfItemImageFrame)];
-    UIView *blackBorderView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 179.0, self.view.frame.size.width, 1.0)];
+    CGFloat properPlaceForYOriginOfBlackLine = (desiredHeightOfItemImageFrame - 0.01);
+    UIView *blackBorderView = [[UIView alloc]initWithFrame:CGRectMake(0.0, properPlaceForYOriginOfBlackLine, self.view.frame.size.width, 1.0)];
     tableHeaderView.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.2];
     blackBorderView.backgroundColor = [UIColor blackColor];
     [tableHeaderView addSubview:blackBorderView];
@@ -96,6 +97,8 @@
     tableHeaderFrame.origin.y = _headerImageYOffset;
     _headerImageView.frame = tableHeaderFrame;
     [self.view insertSubview:_headerImageView belowSubview:_freeItemDataTable];
+    
+    NSLog(@"the size of the headerImageView is %@ and the size of the image itself is %@", NSStringFromCGRect(_headerImageView.frame), NSStringFromCGSize(_itemImage.size));
 }
 
 
