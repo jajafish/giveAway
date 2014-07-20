@@ -35,11 +35,8 @@
 @end
 
 @implementation JFFreeItemScrollVC {
-    
     CLLocationCoordinate2D itemLocation;
-    
 }
-
 
 -(void)viewDidLoad
 {
@@ -49,8 +46,6 @@
     self.freeItemDataTable.delegate = self;
     self.freeItemDataTable.dataSource = self;
     
-
-
     self.freeItemImageNameLabel.text = self.giveItem.giveItemName;
     
     NSLog(@"%@", NSStringFromCGRect(self.iWantThisFreeItemButton.frame));
@@ -80,7 +75,7 @@
 {
     UIView *tableHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, 180.0)];
     UIView *blackBorderView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 179.0, self.view.frame.size.width, 1.0)];
-    tableHeaderView.backgroundColor = [UIColor clearColor];
+    tableHeaderView.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.2];
     blackBorderView.backgroundColor = [UIColor blackColor];
     [tableHeaderView addSubview:blackBorderView];
     _freeItemDataTable.tableHeaderView = tableHeaderView;
@@ -163,8 +158,9 @@
             }
             
             cell.freeItemLogisticsTextView.text = self.giveItem.itemDetailsLogistics;
+            CGRect sizeOfText = cell.freeItemLogisticsTextView.frame;
+            cell.frame = sizeOfText;
 
-            
             return cell;
             
             break;
